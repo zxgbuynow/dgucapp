@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/widgets.css" />
+    <link rel="stylesheet" href="../css/swiper.min.css" />
+    <style>
+    		.main{
+    			margin-right: 10px;
+    		}
+    		.mui-table-view .mui-media-object{
+		    max-width: 72px; 
+    			height: 72px;
+    		}
+    		.mui-media-text {
+    			color: #646464;
+    			font-size: 15px;
+    		}
+    		.mui-media-author {
+    			font-size: 13px;
+    			margin-top: 5px;
+    		} 
+    		.swiper-container {width: 100%;height: 100%;}
+	    .swiper-slide {
+	        text-align: left;
+	        font-size: 12px;
+	        background: #fff;
+            color: #5D5D5D;
+            white-space: nowrap;
+            width: 100%!important;
+	    }
+		    
+	    .mui-table-view.mui-grid-view {display: -webkit-box;display: -moz-box;display: -ms-flexbox;display: -webkit-flex;display: flex;}
+		.swiper-pagination{display: none;}
+		.mui-bar .icon-xiaoxi {
+		    font-size: 30px;
+		    padding-top: 6px;
+		    padding-bottom: 7px;
+		}
+		.business-news-wrap {display: inline-flex;}
+    		.business-news-content .mui-flex{
+			height: 100%;
+		}
+		#swiper_news{
+			height: 20px;
+			line-height: 20px;
+		}
+		.business-news{padding:8px 0;border-top:1px solid #eee;border-bottom:1px solid #eee;position: relative;background: #fff;box-sizing: border-box;}
+		/*.business-news-title{width: 50px;height:20px;border-right:1px solid #d9d9d9;background-image: url(../images/faxian_icon2.png);background-repeat: no-repeat; background-size: 30px; background-position:center;}*/
+		/*.business-news-title img{width: 100%;}*/
+		/*.business-news-title{font-size:16px;font-weight:bold;color:#777;text-align: right;width: 48px;}*/
+		.business-news-title{width: 30px;border-right:1px solid #d9d9d9;margin-left: 10px;}
+		.business-news-content{height:20px;overflow: hidden;}
+		.business-news-icon{width: 34px!important;height:20px;text-align: center;line-height: 20px;font-size: 16px;color:#ff974b;}
+		.business-news-box{position: absolute;top: 0;left: 0;width: 100%;}
+		.business-news-item{height:20px;line-height: 20px;padding: 0;font-size: 12px;color:#5D5D5D;}
+		.business-news-content .mui-table-view-cell:after{height:0;}
+		.business-news-list{margin:0 10px;}
+		.business-news-more{height:20px;line-height: 20px;font-size:12px;font-weight: bold;color:#989898;border-left: 1px solid #d9d9d9;position: relative;}
+		.business-news-more {padding:0 20px 0 5px;color: #ff974b;}
+		.business-news-more i{font-size:12px;color:#ff974b;position: absolute;top: 50%; right: 8px; -moz-transform: translate(0, -50%); -ms-transform: translate(0, -50%); -webkit-transform: translate(0, -50%); transform: translate(0, -50%);}
+		.swiper-slide-class{
+	      	padding: 10px 10px;
+	      }
+	      .swiper-slide-class img{
+	      	height="150px"
+	      }
+    </style>
+  </head>
+
+  <body>
+    <header class="home-header">
+      <div class="header-logo"><img src="../img/daguan.png"></div>
+      <div class="main">
+        <form onsubmit="return false;">
+          <div class="mui-input-row header-search-form"><input type="search" onfocus="toSearch(this,'_www/view/artical/list.html')" class="header-search mui-input-clear" placeholder="寻找感兴趣的文章"></div>
+        </form>
+      </div>
+      <i class="search-hide icon-func bbc-icon callmm"  style="font-size: 15px;">客服</i>
+      <a href="#" class="txt-func search-cancel" style="display:none;">取消</a>
+    </header>
+    <div class="container">
+      <div class="mui-scroll-wrapper bbc-pullrefresh-top">
+        <div class="mui-scroll">
+          <div class="mui-content content-bottom-padded-nav">
+          	<!--<div class="business-news index-content-item">
+			<div class="business-news-wrap mui-flex ">
+				<div class="business-news-title" id="businessQurey1"><i class="mui-icon mui-icon-chat"></i></div>
+				<div class="business-news-content cell">
+					<div class="mui-flex">
+						<div class="cell business-news-list">
+							<div class="swiper-container" id="swiper_news">
+								<div class="swiper-wrapper">
+									<div class="swiper-slide ">国珍热点国珍热点国珍热点国珍热点国珍热点</div>
+									<div class="swiper-slide ">国珍焦点</div>
+									<div class="swiper-slide ">国珍激情点</div>  
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	    </div>-->
+          	<!--轮播 start-->
+          	<!--<div id="slider" class="mui-slider">
+		        <div class="mui-slider-group mui-slider-loop widgets-slider">
+
+		          <div class="mui-slider-item mui-slider-item-duplicate">
+		            <a class="action-webview" data-webview="" data-webparam=''>
+		              <img src="../img/widgets_slider_01.jpg">
+		            </a>
+		          </div>
+
+		          <div class="mui-slider-item">
+		            <a class="action-webview" data-webview="" data-webparam=''>
+		              <img src="../img/widgets_slider_01.jpg">
+		            </a>
+		          </div>
+		         <div class="mui-slider-item">
+		            <a class="action-webview" data-webview="" data-webparam=''>
+		              <img src="../img/widgets_slider_02.jpg">
+		            </a>
+		          </div>
+
+
+		          <div class="mui-slider-item mui-slider-item-duplicate">
+		            <a class="action-webview" data-webview="" data-webparam=''>
+		              <img src="../img/widgets_slider_01.jpg">
+		            </a>
+		          </div>
+		        </div>
+		        <div class="mui-slider-indicator">
+		          <div class="mui-indicator mui-active "></div>
+		          <div class="mui-indicator "></div>
+		        </div>
+		      </div>-->
+		      <!--轮播 end-->
+		      
+		      <!--文章 start-->
+		      <!--<section class="widgets-category-nav section-white">
+		        <div class="section-title">
+		          <div class="title-txt">好文推荐</div>
+		          <div class="more-link action-webview" data-webview="_www/view/category/category.html"><i class="bbc-icon bbc-icon-forward"></i></div>
+		        </div>
+		        <div class="mui-table-view">
+		          <ul class="mui-table-view mui-table-view-chevron">
+					<li class="mui-table-view-cell mui-media">
+						<a class="mui-navigate-right">
+							<img class="mui-media-object mui-pull-left" src="../img/widgets_39.gif">
+							<div class="mui-media-body">
+								CBD
+								<p class='mui-ellipsis mui-media-text'>烤炉模式的城，到黄昏，如同打翻的调色盘一般.</p>
+								<p class="mui-ellipsis mui-media-text mui-media-author">作者：老王</p>
+							</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<a class='mui-navigate-right' href="javascript:;">
+							<img class="mui-media-object mui-pull-left" src="../img/widgets_49.gif">
+							<div class="mui-media-body">
+								远眺
+								<p class='mui-ellipsis mui-media-text'>静静的看这个世界，最后终于疯了</p>
+								<p class='mui-ellipsis mui-media-text mui-media-author'>作者：老张</p>
+							</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<a class='mui-navigate-right' href="javascript:;">
+							<img class="mui-media-object mui-pull-left" src="../img/widgets_49.gif">
+							<div class="mui-media-body">
+								远眺
+								<p class='mui-ellipsis mui-media-text'>静静的看这个世界，最后终于疯了</p>
+								<p class='mui-ellipsis mui-media-text mui-media-author'>作者：老张</p>
+							</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<a class='mui-navigate-right' href="javascript:;">
+							<img class="mui-media-object mui-pull-left" src="../img/widgets_49.gif">
+							<div class="mui-media-body">
+								远眺
+								<p class='mui-ellipsis mui-media-text'>静静的看这个世界，最后终于疯了</p>
+								<p class='mui-ellipsis mui-media-text mui-media-author'>作者：老张</p>
+							</div>
+						</a>
+					</li>
+				  </ul>		
+		        </div>
+		      </section>-->
+		      <!--文章 end-->
+		      
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <nav class="mui-bar bbc-bar-tab">
+      <a class="bbc-tab-item bbc-active">
+        <span class="mui-icon bbc-icon bbc-icon-home"></span>
+        <span class="mui-tab-label">首页</span>
+      </a>
+      <a class="bbc-tab-item" data-webview="_www/view/counsellor/index.html">
+        <span class="mui-icon bbc-icon bbc-icon-view"></span>
+        <span class="mui-tab-label">咨询</span>
+      </a>
+      <a class="bbc-tab-item" data-webview="_www/view/msg/index.html">
+        <span class="mui-icon bbc-icon bbc-icon-message"></span>
+        <span class="mui-tab-label">消息</span>
+      </a>
+      <a class="bbc-tab-item" data-webview="_www/view/member/member.html">
+        <span class="mui-icon bbc-icon bbc-icon-user-empty"></span>
+        <span class="mui-tab-label">我的</span>
+      </a>
+    </nav>
+    <script src="../js/zepto.js"></script>
+    <script src="../js/mui.min.js"></script>
+    <script src="../js/template.min.js"></script>
+    <script src="../config.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/mipush.js"></script>
+    <script src="../js/swiper.min.js"></script>
+    
+	<script type="text/html" id="widget_slider">
+        <div id="slider" class="mui-slider">
+            <div class="mui-slider-group mui-slider-loop widgets-slider">
+                <!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+                <div class="mui-slider-item mui-slider-item-duplicate">
+                    <a class="action-webview" data-webview="<%= pic[pic.length-1].webview %>" data-webparam='<%= $json_string(pic[pic.length-1].webparam) %>'>
+              <img src="<%= $add_server(pic[pic.length-1].cover) %>">
+            </a>
+                </div>
+                <% for(var i in pic) { %>
+                    <div class="mui-slider-item">
+                        <a class="action-webview" data-webview="<%= pic[i].webview %>" data-webparam='<%= $json_string(pic[i].webparam) %>'>
+              <img src="<%= $add_server(pic[i].cover) %>">
+            </a>
+                    </div>
+                    <% } %>
+                        <!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+                        <div class="mui-slider-item mui-slider-item-duplicate">
+                            <a class="action-webview" data-webview="<%= pic[0].webview %>" data-webparam='<%= $json_string(pic[0].webparam) %>'>
+              <img src="<%= $add_server(pic[0].cover) %>">
+            </a>
+                        </div>
+            </div>
+            <div class="mui-slider-indicator">
+                <% for(var i=0; i<pic.length; i++) { %>
+                    <div class="mui-indicator <%= (i==0) ? 'mui-active' : ' ' %> "></div>
+                    <% } %>
+            </div>
+        </div>
+    </script>
+    <script type="text/html" id="widget_nav">
+		<section class="widgets-category-nav section-white">
+	        <ul class="widgets-icons-nav">
+	        	<!--<li class="action-webview" data-webview="_www/view/artical/tlist.html" ><i><a href="#"><img src="../img/widgets_02_07.png"></a></i><span>心理测试</li>-->
+	        		<li class="action-webview"  data-webview="_www/view/artical/ad.html" data-webparam='{"link":"www.baidu.com"}' ><i><a href="#"><img src="../img/widgets_02_05.png"></a></i><span>高效课程</li>
+	        		<!--<li class="action-webview" data-webview="_www/view/artical/list.html" ><i><a href="#"><img src="../img/widgets_02_09.png"></a></i><span>免费课程</li>-->
+	        		<li class="action-webview" data-webview="_www/view/artical/list.html" ><i><a href="#"><img src="../img/widgets_02_17.png"></a></i><span>心灵图书室</li>
+	        	<% for(var i=0; i<list.length; i++) { %>
+	        		<%if(i<5){%>
+	        			<li class="action-webview" data-webview="_www/view/counsellor/list.html" data-webparam='{"cat_id":<%= list[i].id %>}'><i><a href="#"><img src="<%= $add_server(list[i].cover) %>"></a></i><span><%= list[i].title %></li>
+	        		<%}%>	
+	       	<% } %>
+	       	<li class="action-webview" data-webview="_www/view/category/category.html" ><i><a href="#"><img src="../img/widgets_02_11.png"></a></i><span>更多分类</li>
+	        </ul>
+	      </section>
+	</script> 
+    <script type="text/html" id="widget_msg">
+		<div class="business-news index-content-item ">
+			<div class="business-news-wrap mui-flex ">
+				<div class="business-news-title" id="businessQurey1"><i class="mui-icon mui-icon-chat"></i></div>
+				<div class="business-news-content cell">
+					<div class="mui-flex">
+						<div class="cell business-news-list">
+							<div class="swiper-container" id="swiper_news">
+								<div class="swiper-wrapper">
+									<% for(var i=0; i<list.length; i++) { %>
+										<div class="swiper-slide "><%= list[i].display %></div>
+									 <% } %>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--<div class="business-news-more " id="businessQurey">
+					<div>更多<i class="mui-icon newageiconfont">&#xe62e;</i></div>
+				</div>-->
+			</div>
+	    </div>
+    	</script>
+    	<script type="text/html" id="class_list">
+    		<% if(pic){%>
+    		<section class="widgets-category-nav section-white">
+	        <div class="section-title">
+	          <div class="title-txt">课程</div>
+	        </div>
+	        <div class="mui-table-view">
+	          	<div class="swiper-container1">
+				  <div class="swiper-wrapper">
+				  	<% for(var m=0; m<pic.length; m++) { %>
+				    <div class="swiper-slide swiper-slide-class ">
+				    		<a class="action-webview"  data-webview="_www/view/artical/ad.html" data-webparam='{"link":"<%= pic[m].link%>"}'><img src="<%= $add_server(pic[m]['cover'])%>" style="height: 150px;"/></a>
+				    </div>
+				    <%}%>
+				  </div>
+				</div>
+	        </div>
+      	</section>
+      	<%}%>
+    	</script>
+    	<script type="text/html" id="active_list">
+    		<% if(pic){%>
+    		<section class="widgets-category-nav section-white">
+	        <div class="section-title">
+	          <div class="title-txt">活动</div>
+	        </div>
+	        <div class="mui-table-view">
+	          	<div class="swiper-container2">
+				  <div class="swiper-wrapper">
+				  	<% for(var m=0; m<pic.length; m++) { %>
+				    <div class="swiper-slide swiper-slide-class">
+				    		<a class="action-webview"  data-webview="_www/view/artical/ad.html" data-webparam='{"linkadr":<%= pic[m].link %>}'><img src="<%= $add_server(pic[m]['cover'])%>" style="height: 150px;"/></a>
+				    </div>
+				    <%}%>
+				  </div>
+				</div>
+	        </div>
+      	</section>
+      	<%}%>
+    	</script>
+    <script type="text/html" id="widget_article">
+        <section>  
+            <!--文章 start-->
+		      <section class="widgets-category-nav section-white">
+		        <div class="section-title">
+		          <div class="title-txt">好文推荐</div>
+		          <div class="more-link action-webview" data-webview="_www/view/artical/cate.html"><i class="bbc-icon bbc-icon-forward"></i></div>
+		        </div>
+		        <div class="mui-table-view">
+		          <ul class="mui-table-view mui-table-view-chevron">
+		          	<% for(var i=0; i<list.length; i++) { %>
+					<li class="mui-table-view-cell mui-media action-webview" data-webview="_www/view/artical/detail.html" data-webparam = '{"article_id":<%= list[i].id %>}'>
+						<a class="mui-navigate-right">
+							<img class="mui-media-object mui-pull-left" src="<%= $add_server(list[i].cover) %>">
+							<div class="mui-media-body">
+								<%= list[i].title %>
+								<p class='mui-ellipsis mui-media-text'><%= list[i].description %></p>
+								<p class="mui-ellipsis mui-media-text mui-media-author">作者：<%= list[i].author %></p>
+							</div>
+						</a>
+					</li>
+					 <% } %>
+				  </ul>		
+		        </div>
+		      </section>
+		      <!--文章 end-->
+        </section>  
+    </script>
+    <script type="text/html" id="widget_recommend">
+    		<section class="widgets-category-nav section-white">
+		        <div class="section-title">
+		          <div class="title-txt">推荐专家</div>
+		        </div>
+		        <div class="mui-table-view">
+		          <ul class="mui-table-view mui-table-view-chevron">
+		          	<% for(var i=0; i<list.length; i++) { %>
+					<li class="mui-table-view-cell mui-media action-webview" data-webview="_www/view/counsellor/detail.html" data-webparam='{"counsellor_id":<%= list[i].memberid %>}'>
+						<a class="mui-navigate-right">
+							<% if(list[i].online==1 ){%>
+								<span class="mui-badge mui-badge-green ">在线</span>
+							<%}else{%>
+								<span class="mui-badge mui-badge-danger ">下线</span>
+							<%}%>	
+							
+							<img class="mui-media-object mui-pull-left" src="<%= $add_server(list[i].avar) %>">
+							<div class="mui-media-body">
+								<p>
+									<span class="mui-text-left"><%= list[i].nickname %></span>
+									<span class="mui-text-right mui-media-action float-right mui-hidden">立即预约</span>
+								</p>
+								<p class='mui-ellipsis mui-media-text'><%= list[i].employment %>|<%= list[i].sign %></p>
+								<p class="mui-ellipsis mui-media-text mui-media-author">我在大观心理温暖过<%= list[i].trade %>人次</p>
+							</div>
+						</a>
+					</li>
+					<% } %>
+				  </ul>		
+		        </div>
+		      </section>
+    </script>
+
+    <script type="text/javascript">
+      mui.init({
+        swipeBack: true //启用右滑关闭功能
+      });
+      
+	  //获取数据 
+	  mui.plusReady(function() {
+	  	mui('.mui-scroll-wrapper').scroll({
+          indicators: false
+        });
+	  	console.log(plus.storage.getItem('updatelv'))
+//	  	plus.nativeUI.closeWaiting();
+	  	var i = plus.storage.getItem('updatelv')?1:0;
+	  	if(!plus.storage.getItem('updatelv')||!i){
+	  		i++;
+//	  		plus.storage.setItem('updatelv','1');
+//	  		console.log(plus.storage.getItem('updatelv')) 
+	  		plus.nativeUI.actionSheet( {title:"是否成为心窝会员",cancel:"关闭",buttons:[{title:"现在去升级"},{title:"以后再说"}]}, function(e){
+				if(e.index==1){
+					clicked('_www/view/member/updatelv.html'); 
+				}else{
+					plus.storage.setItem('updatelv','1');
+				}
+			});	
+			
+	  	}
+	  	
+	  	//lunbo
+	  	var param = {
+            'method': config.apimethod.lunbo,
+            'source':config.source,
+            'ismobile':0
+       }
+        $.dataRequest(param, function(rs) {
+        		var widgets = template('widget_slider', rs);
+            $('.mui-content').append(widgets);
+            var gallery = mui("#slider");
+	        gallery.slider({
+	          interval: 5000 //自动轮播周期，若为0则不自动播放，默认为0；
+	        });
+	        //nav
+	        var aparam = {
+	            'method': config.apimethod.category,
+	            'source':config.source
+	        }
+	        $.dataRequest(aparam, function(rs) {
+	        		var widgets = template('widget_nav', rs);
+	            $('.mui-content').append(widgets);
+	            
+	            //article
+		        var aparam = {
+		            'method': config.apimethod.msg,
+		            'source':config.source
+		        }
+		        $.dataRequest(aparam, function(rs) {
+		        		var widgets = template('widget_msg', rs);
+		            $('.mui-content').append(widgets);
+		            	var swiper = new Swiper('.swiper-container', {
+				        pagination: '.swiper-pagination',
+				        loop: true,
+				        direction: 'vertical',
+				        speed:3500,
+				        autoplay:true
+				    });
+				    //课程
+				    var aparam = {
+			            'method': config.apimethod.classList,
+			            'source':config.source
+			        }
+			        $.dataRequest(aparam, function(rs) {
+			        		var widgets = template('class_list', rs);
+			            $('.mui-content').append(widgets);
+			            	var mySwiper = new Swiper('.swiper-container1', {
+				        		slidesPerView: 1.5,
+				        		spaceBetween: 30,
+							speed:500,
+						})
+			            	//课程
+					    var aparam = {
+				            'method': config.apimethod.activeList,
+				            'source':config.source
+				        }
+				        $.dataRequest(aparam, function(rs) {
+				        		var widgets = template('active_list', rs);
+				            $('.mui-content').append(widgets);
+				            	var mySwiper = new Swiper('.swiper-container2', {
+					        		slidesPerView: 1.5,
+					        		spaceBetween: 30,
+								speed:500,
+							})
+				            	 //article
+					        var aparam = {
+					            'method': config.apimethod.article,
+					            'source':config.source
+					        }
+					        if(app.getState()){
+					        		var aparam = {
+						            'method': config.apimethod.article,
+						            'account':app.getState().token,
+						            'source':config.source
+						        }
+					        }
+					        $.dataRequest(aparam, function(rs) {
+					        		var widgets = template('widget_article', rs);
+					            $('.mui-content').append(widgets);
+					            	 //
+		//			            	 console.log(widgets)
+					             mui('.mui-scroll-wrapper').scroll({
+						          indicators: false
+						        });
+						        //recommond
+						        var aparam = {
+						            'method': config.apimethod.recommend,
+						            'source':config.source
+						        }
+						        if(app.getState()){
+						        		var aparam = {
+							            'method': config.apimethod.recommend,
+							            'account':app.getState().token,
+							            'source':config.source
+							        }
+						        }
+						        $.dataRequest(aparam, function(rt) {
+						        		for (var i in rt['list']) {
+						        			if(rt['list'][i].avar==''){
+						        				rt['list'][i].avar = 'static/admin/img/none.png';
+						        			}
+						        		}
+						        		var widgets = template('widget_recommend', rt);
+						            $('.mui-content').append(widgets);
+						            	 // 
+						             mui('.mui-scroll-wrapper').scroll({
+							          indicators: false
+							        });
+							     })
+						        
+					        })
+				        }) 
+				        
+			        })
+			       
+		        	
+		        })
+	            
+	        })
+	       	
+	        
+        })
+        
+       
+	  	
+	  })
+	  
+	 
+       $('.callmm').on('tap',function(){
+       	plus.device.dial( "10086", false );
+       })
+      $('.bbc-tab-item').on('tap', function() {
+        var webview = $(this).data('webview');
+        if(webview) {
+          mui.openWindow({
+            url: webview,
+            id: webview,
+            createNew: false, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+            show: {
+              autoShow: true, //页面loaded事件发生后自动显示，默认为true
+              aniShow: 'none'
+            },
+            extras:{
+              refresh: true
+            },
+            waiting: {
+              autoShow: true //自动显示等待框，默认为true
+            }
+          });
+          var openw = plus.webview.getWebviewById(webview);
+          if(openw) {
+            mui.fire(openw,'refresh'); 
+          }
+        }
+      });
+
+      mui.plusReady(function() {
+        // Android处理返回键
+        plus.key.addEventListener('backbutton', function() {
+          plus.runtime.quit();
+        }, false);
+      });
+    </script>
+  </body>
+
+</html>

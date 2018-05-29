@@ -1,0 +1,13 @@
+{
+  "view/passport/login.html": {
+    "href": "view/passport/login.html",
+    "resources": [
+      "fonts/iconfonts.eot",
+      "fonts/iconfonts.ttf",
+      "fonts/iconfonts.woff",
+      "fonts/iconfonts.svg",
+      "img/scratchcard_bg.png"
+    ],
+    "priority": 0
+  }
+}
