@@ -19,41 +19,44 @@
   <body>
     <header class="page-header">
       <i class="header-left icon-func bbc-icon bbc-icon-back mui-action-back"></i>
-      <div class="header-title">会员注册</div>
+      <div class="header-title">用户注册</div>
     </header>
-    <section class="container">
+    <section class="container" id="c-register">
       <form class="form-container">
         <input type="hidden" name="key" value="topwap_signup">
         <section class="mui-input-group">
         	   <div class="mui-input-row ">
-            <label><i class="require-item">*</i>姓名：</label>
+            <label><i class="require-item">*</i>姓名</label>
       		<input id="account" type="text" class="mui-input-clear" placeholder="请输入姓名">
          </div>
           <div class="mui-input-row ">
-            <label>邮箱：</label>
+            <label>邮箱</label>
       		<input id="email" type="text" class="mui-input-clear" placeholder="请输入邮箱">
           </div>
           <div class="mui-input-row ">
-            <label><i class="require-item">*</i>手机：</label>
+            <label><i class="require-item">*</i>手机</label>
       		<input id="mobile" type="text" class="mui-input-clear" placeholder="请输入手机号">
           </div>
           <div class="mui-input-row">
-            <label><i class="require-item">*</i>密码：</label>
+            <label><i class="require-item">*</i>密码</label>
             <input id="password" type="password" class="mui-input-password" placeholder="请输入密码">
           </div>
+          <div class="mui-input-row mui-content-padded-desc">
+          为了更好的为您服务，请填写注册信息。请放心，您的所有信息我们都将为您保密。您可以参看咨询协议
+        </div>
           <div class="mui-input-row">
-            <label>生日：</label>
+            <label>性别</label>
+            <select id="sex" name="sex" class="mui-input-clear mui-input " >
+        <option value="1" selected="selected">男</option>
+        <option value="0" >女</option>
+      </select>
+          </div>
+          <div class="mui-input-row">
+            <label>出生日期</label>
             <input id="birthday" type="datetime" class="mui-input-clear" placeholder="请输入生日">
           </div>
           <div class="mui-input-row">
-            <label>性别：</label>
-            <select id="sex" name="sex" class="mui-input-clear mui-input " >
-				<option value="1" selected="selected">男</option>
-				<option value="0" >女</option>
-			</select>
-          </div>
-          <div class="mui-input-row">
-            <label>学历：</label>
+            <label>学历</label>
             <select id="edu" name="edu" class="mui-input-clear mui-input " >
             		<option value="" selected="selected">请选择学历</option>
             		<option value="初中" >初中</option>
@@ -66,7 +69,7 @@
           </div>
           
           <div class="mui-input-row">
-            <label>年级：</label>
+            <label>年级</label>
             <select id="grade" name="grade" class="mui-input-clear mui-input " >
             		<option value="" selected="selected">请选择年级</option>
 				<option value="一年级" >一年级</option>
@@ -78,7 +81,7 @@
 			</select>
           </div>
           <div class="mui-input-row">
-            <label>职业：</label>
+            <label>职业</label>
             <select id="profession" name="profession" class="mui-input-clear mui-input " >
             		<option value="" selected="selected">请选择职业</option>
 				<option value="销售" >销售</option>
@@ -87,7 +90,7 @@
 			</select>
           </div>
           <div class="mui-input-row">
-            <label>婚姻：</label>
+            <label>婚姻</label>
             <select id="marital" name="marital" class="mui-input-clear mui-input " >
             		<option value="" selected="selected">请选择婚姻状况</option>
 				<option value="0" >未婚</option>
@@ -95,19 +98,19 @@
 			</select>
           </div>
           <div class="mui-input-row ">
-            <label>省：</label>
+            <label>省</label>
       		<input id="province" type="text" class="mui-input-clear" placeholder="请输入省">
           </div>
           <div class="mui-input-row ">
-            <label>市：</label>
+            <label>市</label>
       		<input id="city" type="text" class="mui-input-clear" placeholder="请输入市">
           </div>
           <div class="mui-input-row ">
-            <label>联系电话：</label>
+            <label>联系人电话</label>
       		<input id="tel" type="text" class="mui-input-clear" placeholder="请输入联系电话">
           </div>
           <div class="mui-input-row">
-            <label>是否接受过心理咨询：</label>
+            <label>是否接受过心理咨询</label>
             <select id="isconsolle" name="isconsolle" class="mui-input-clear mui-input " >
 				<option value="" selected="selected">请选择</option>
 				<option value="1" >是</option>
@@ -115,11 +118,11 @@
 			</select>
           </div>
           <div class="mui-input-row">
-            <label>咨询时间：</label>
+            <label>时间</label>
             <input id="consolletime" type="datetime" class="mui-input-clear" placeholder="咨询时间">
           </div>
           <div class="mui-input-row mui-hidden">
-            <label>机构中心：</label>
+            <label>机构中心</label>
             <select id="agency" name="agency" class="mui-input-clear mui-input agency-list" >
 				<option value="" selected="selected">请选择</option>
 			</select>
@@ -133,11 +136,8 @@
           <div class="box-item-flex1 fontS font-gray-20">我已阅读并同意<mark id="agreement" class="action-clickview" data-view="_www/view/passport/agreement.html">《咨询协议》</mark></div>
           
         </section>
-		<section class="mui-content-padded">
-          为了更好的为您服务，请填写注册信息。请放心，您的所有信息我们都将为您保密。您可以参看咨询协议
-        </section>
         <section class="mui-content-padded form-op-section">
-          <button id="register_next" type="button" class="mui-btn mui-btn-block mui-btn-warning bbc-btn-warning">下一步</button>
+          <button id="register_next" type="button" class="mui-btn mui-btn-block mui-btn-warning bbc-btn-warning">提交</button>
         </section>
       </form>
     </section>

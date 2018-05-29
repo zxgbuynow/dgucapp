@@ -9250,3 +9250,17 @@ input[type="search"].header-search {
 .mui-table-view-cell.mui-badge-custom .mui-navigate-right:after {
     display: none;
 }
+
+.mui-content-padded-desc {
+    padding: 1rem;
+    font-size: 0.9rem;
+    color: #b0b0b0;
+}
+
+#c-register .mui-input-group .mui-input-row:after {
+    right: 15px;
+}
+
+#c-register .mui-content-padded {
+    padding-top: 0;
+}
