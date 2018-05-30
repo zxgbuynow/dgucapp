@@ -9251,12 +9251,6 @@ input[type="search"].header-search {
     display: none;
 }
 
-.mui-content-padded-desc {
-    padding: 1rem;
-    font-size: 0.9rem;
-    color: #b0b0b0;
-}
-
 #c-register .mui-input-group .mui-input-row:after {
     right: 15px;
 }

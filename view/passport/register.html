@@ -13,6 +13,62 @@
     	.require-item{
     		color: red;
     	}
+      #c-register .form-container{
+        margin-top: 0.5rem;
+        padding-top: 0;
+        background: #fff;
+      }
+      #c-register .mui-input-row{
+        height: 3.4rem;
+      }
+      #c-register .mui-input-row input{
+        height: 100%;
+        margin-top: 0;
+      }
+      #c-register  .mui-input-row label{
+        padding: 1rem;
+      }
+      #c-register .mui-right-img{
+          position: absolute;
+          right: 0.9rem;
+          width: 20px;
+          height: 20px;
+          top: 1.1rem;
+      }
+      #c-register .mui-right-img.arrow-down{
+          height: 10px;
+          top: 1.4rem;
+      }
+      #c-register .mui-input-row select{
+        height: 3.4rem;
+      }
+      #c-register .mui-input-row .mui-def-option{
+        color: #efeff4 !important;
+        
+      }
+      #c-register #register_next {
+        background: url(../../img/icon-btnbg.png) no-repeat;
+        background-size: 100% 100%;
+        border-color: inherit;
+        border: 0;
+        width: 60%;
+        margin: 0 auto;
+      }
+      #c-register .shop-checkbox input{
+        right: 0.5rem;
+      }
+      #c-register .mui-input-row.mui-input-special label{
+        width: 11rem;
+      }
+      #c-register .mui-input-row.mui-content-padded-desc {
+          padding: 0.8rem 1rem;
+          font-size: 0.9rem;
+          color: #b0b0b0;
+          height: 100%;
+      }
+      #c-register .mui-input-group:after{
+        height: 0;
+      }      
     </style>
   </head>
 
@@ -54,11 +110,12 @@
           <div class="mui-input-row">
             <label>出生日期</label>
             <input id="birthday" type="datetime" class="mui-input-clear" placeholder="请输入生日">
+            <img src="../../img/icon-time.png" class="mui-right-img">
           </div>
           <div class="mui-input-row">
             <label>学历</label>
             <select id="edu" name="edu" class="mui-input-clear mui-input " >
-            		<option value="" selected="selected">请选择学历</option>
+            		<option value="" selected="selected" class="mui-def-option">请选择学历</option>
             		<option value="初中" >初中</option>
             		<option value="高中" >高中</option>
 				<option value="大专" >大专</option>
@@ -71,7 +128,7 @@
           <div class="mui-input-row">
             <label>年级</label>
             <select id="grade" name="grade" class="mui-input-clear mui-input " >
-            		<option value="" selected="selected">请选择年级</option>
+            		<option value="" selected="selected" class="mui-def-option">请选择年级</option>
 				<option value="一年级" >一年级</option>
 				<option value="二年级" >二年级</option>
 				<option value="三年级" >三年级</option>
@@ -79,23 +136,26 @@
 				<option value="五年级" >五年级</option>
 				<option value="六年级" >六年级</option>
 			</select>
+      <img src="../../img/icon-arrowdown.png" class="mui-right-img arrow-down">
           </div>
           <div class="mui-input-row">
             <label>职业</label>
             <select id="profession" name="profession" class="mui-input-clear mui-input " >
-            		<option value="" selected="selected">请选择职业</option>
+            		<option value="" selected="selected" class="mui-def-option">请选择职业</option>
 				<option value="销售" >销售</option>
 				<option value="客服" >客服</option>
 				<option value="工程师" >工程师</option>
 			</select>
+      <img src="../../img/icon-arrowdown.png" class="mui-right-img arrow-down">
           </div>
           <div class="mui-input-row">
             <label>婚姻</label>
             <select id="marital" name="marital" class="mui-input-clear mui-input " >
-            		<option value="" selected="selected">请选择婚姻状况</option>
+            		<option value="" selected="selected" class="mui-def-option">请选择婚姻状况</option>
 				<option value="0" >未婚</option>
 				<option value="1" >已婚</option>
 			</select>
+      <img src="../../img/icon-arrowdown.png" class="mui-right-img arrow-down">
           </div>
           <div class="mui-input-row ">
             <label>省</label>
@@ -109,22 +169,24 @@
             <label>联系人电话</label>
       		<input id="tel" type="text" class="mui-input-clear" placeholder="请输入联系电话">
           </div>
-          <div class="mui-input-row">
+          <div class="mui-input-row mui-input-special">
             <label>是否接受过心理咨询</label>
             <select id="isconsolle" name="isconsolle" class="mui-input-clear mui-input " >
-				<option value="" selected="selected">请选择</option>
+				<option value="" selected="selected" class="mui-def-option">请选择</option>
 				<option value="1" >是</option>
 				<option value="0" >否</option>
 			</select>
+      <img src="../../img/icon-arrowdown.png" class="mui-right-img arrow-down">
           </div>
           <div class="mui-input-row">
             <label>时间</label>
             <input id="consolletime" type="datetime" class="mui-input-clear" placeholder="咨询时间">
+            <img src="../../img/icon-time.png" class="mui-right-img">
           </div>
           <div class="mui-input-row mui-hidden">
             <label>机构中心</label>
             <select id="agency" name="agency" class="mui-input-clear mui-input agency-list" >
-				<option value="" selected="selected">请选择</option>
+				<option value="" selected="selected" class="mui-def-option">请选择</option>
 			</select>
           </div>
         </section>
