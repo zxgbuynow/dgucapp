@@ -8,6 +8,75 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <link rel="stylesheet" href="../../css/style.css" />
     <link rel="stylesheet" href="../../css/widgets.css" />
+    <style>
+
+      #cate_new  .mui-table-view-cell{
+        padding: 0.6rem;
+      }
+      #cate_new .mui-navigate-item{
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: row;
+        align-items: flex-end;
+        width: 100%;
+        margin-right: 0;
+      }
+      #cate_new .mui-navigate-item .mui-media-img{
+        width: 6.2rem;
+        height: 6.2rem;
+        border-radius: 10px;
+        margin-right: 0.5rem;
+      }
+      #cate_new .mui-navigate-item .mui-media-body{
+        margin-right: 1.5rem;
+
+      }
+      #cate_new .mui-c-dark{
+        color:#333;
+        font-size: 15px;
+        margin-bottom: 0.4rem;
+      }
+      #cate_new .mui-c-gray{
+        color:#858585;
+        font-size: 12px;
+      }
+      #cate_new .mui-art-item {
+        width: 100%;
+        font-size: 16px;
+        color: #666;
+      }
+      .section-title{
+        border-bottom: 1px solid #e4e5e6;
+        padding: 0.5rem 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .section-title.section-sel{
+        justify-content: flex-start;
+      }
+      .section-title .title-txt{
+        text-align: left;
+      }
+      .section-title.section-sel .title-txt{
+        width: 6.5rem;
+      }
+      .section-title.section-sel input{
+        height: 100%;
+      }
+      .section-title .title-txt img{
+        width: 20px;
+        height: 20px;
+        display: inline;
+        vertical-align: middle;
+        margin-right: 0.5rem;
+      }
+      .more-link img{
+        height: 6px;
+        width: 20px;
+        display: inline;
+      }
+    </style>
   </head>
   <body>
     <header class="page-header">
@@ -15,33 +84,40 @@
       <div class="header-title">咨询分类</div>
 
     </header>
-    <div class="container">
+    <div class="container" id="cate_new">
       <div class="mui-scroll-wrapper bbc-pullrefresh-top">
         <div class="mui-scroll">
           <div class="mui-content content-bottom-padded-nav">
-
+          <!--所在中心 start-->
+          <section class="widgets-category-nav section-white">
+              <div class="section-title section-sel">
+                <div class="title-txt"><img src="../../img/cate01.png">所在中心</div>
+                <div class="more-link action-webview" data-webview="_www/view/category/category.html"><input type="text" placeholder="北京"></div>
+              </div>
+            </section>
+            <!--所在中心 end-->
              <!--相关文章 start-->
 		      <section class="widgets-category-nav section-white">
               <div class="section-title">
-                <div class="title-txt">相关文章</div>
-                <div class="more-link action-webview" data-webview="_www/view/category/category.html">更多</div>
+                <div class="title-txt"><img src="../../img/cate01.png">相关文章</div>
+                <div class="more-link action-webview" data-webview="_www/view/category/category.html"><img src="../../img/more.png"></div>
               </div>
               <div class="mui-table-view">
                 <ul class="mui-table-view mui-table-view-chevron">
             <li class="mui-table-view-cell mui-media">
-              <a class="mui-navigate-right">
+              <div class="mui-art-item">
                   <p class='mui-media-text'>烤炉模式的城，到黄昏，如同打翻的调色盘一般.</p>
-              </a>
+              </div>
             </li>
             <li class="mui-table-view-cell mui-media">
-                <a class="mui-navigate-right">
-                    <p class='mui-media-text'>烤炉模式的城，到黄昏，如同打翻的调色盘一般.</p>
-                </a>
+                <div class="mui-art-item">
+                    <p class='mui-media-text'>烤炉模式的城，到黄昏，如同打翻的调色.</p>
+                </div>
               </li>
               <li class="mui-table-view-cell mui-media">
-                  <a class="mui-navigate-right">
-                      <p class='mui-media-text'>烤炉模式的城，到黄昏，如同打翻的调色盘一般.</p>
-                  </a>
+                  <div class="mui-art-item">
+                      <p class='mui-media-text'>烤炉模式的城，到黄昏，如同打翻的调.</p>
+                  </div>
                 </li>
             </ul>		
               </div>
@@ -50,51 +126,37 @@
             <!--在线咨询师 start-->
 		      <section class="widgets-category-nav section-white">
 		        <div class="section-title">
-		          <div class="title-txt">在线咨询师</div>
-		          <div class="more-link action-webview" data-webview="_www/view/category/category.html">更多</div>
+		          <div class="title-txt"><img src="../../img/cate02.png">在线咨询师</div>
+		          <div class="more-link action-webview" data-webview="_www/view/category/category.html"><img src="../../img/more.png"></div>
 		        </div>
 		        <div class="mui-table-view">
-		          <ul class="mui-table-view mui-table-view-chevron">
-					<li class="mui-table-view-cell mui-media">
-						<a class="mui-navigate-right">
-							<img class="mui-media-object mui-pull-left" src="../img/widgets_39.gif">
+		          <ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<div class="mui-navigate-item">
+							<img class="mui-media-img" src="../img/widgets_39.gif">
 							<div class="mui-media-body">
-								CBD
-								<p class='mui-ellipsis mui-media-text'>烤炉模式的城，到黄昏，如同打翻的调色盘一般.</p>
-								<p class="mui-ellipsis mui-media-text mui-media-author">作者：老王</p>
-							</div>
-						</a>
+                <p class="mui-c-dark">周立</p>
+                <p class="mui-c-gray">南京咨询中心</p>
+								<p class='mui-c-gray'>擅长：学生咨询 职业发展</p>
+								<p class="mui-c-gray">咨询次数：300次</p>
+								<p class="mui-c-gray">好评率：98%</p>
+              </div>
+              <p class="mui-c-gray">详情</p>
+						</div>
 					</li>
-					<li class="mui-table-view-cell mui-media">
-						<a class='mui-navigate-right' href="javascript:;">
-							<img class="mui-media-object mui-pull-left" src="../img/widgets_49.gif">
-							<div class="mui-media-body">
-								远眺
-								<p class='mui-ellipsis mui-media-text'>静静的看这个世界，最后终于疯了</p>
-								<p class='mui-ellipsis mui-media-text mui-media-author'>作者：老张</p>
-							</div>
-						</a>
-					</li>
-					<li class="mui-table-view-cell mui-media">
-						<a class='mui-navigate-right' href="javascript:;">
-							<img class="mui-media-object mui-pull-left" src="../img/widgets_49.gif">
-							<div class="mui-media-body">
-								远眺
-								<p class='mui-ellipsis mui-media-text'>静静的看这个世界，最后终于疯了</p>
-								<p class='mui-ellipsis mui-media-text mui-media-author'>作者：老张</p>
-							</div>
-						</a>
-					</li>
-					<li class="mui-table-view-cell mui-media">
-						<a class='mui-navigate-right' href="javascript:;">
-							<img class="mui-media-object mui-pull-left" src="../img/widgets_49.gif">
-							<div class="mui-media-body">
-								远眺
-								<p class='mui-ellipsis mui-media-text'>静静的看这个世界，最后终于疯了</p>
-								<p class='mui-ellipsis mui-media-text mui-media-author'>作者：老张</p>
-							</div>
-						</a>
-					</li>
+					<li class="mui-table-view-cell">
+              <div class="mui-navigate-item">
+                <img class="mui-media-img" src="../img/widgets_39.gif">
+                <div class="mui-media-body">
+                  <p class="mui-c-dark">周立</p>
+                  <p class="mui-c-gray">南京咨询中心</p>
+                  <p class='mui-c-gray'>擅长：学生咨询 职业发展</p>
+                  <p class="mui-c-gray">咨询次数：300次</p>
+                  <p class="mui-c-gray">好评率：98%</p>
+                </div>
+                <p class="mui-c-gray">详情</p>
+              </div>
+            </li>
 				  </ul>		
 		        </div>
 		      </section>
