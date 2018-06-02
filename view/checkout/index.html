@@ -9,7 +9,111 @@
 		<link href="../../css/style.css" rel="stylesheet" />
 		<link href="../../css/counsellor.css" rel="stylesheet" />
 		<style>
-			
+			.section-white{
+				background: #fff;
+			}
+			.mui-font-red{
+				color: #ff0000;
+			}
+			.mui-table-view-cell > a:not(.mui-btn){
+				margin: 0;
+			}
+			.consult_form .form .hd{
+				height: 40px;
+				line-height: 40px;
+			    border-bottom: 1px solid #f5f5f5;
+			}
+			.consult_form .form .hd h2{
+				color: #000;
+				font-size: 16px;
+				font-weight: 600;
+			}	
+			.consult_form .form .hd span{
+				margin-left: 0.8rem;
+				font-size: 13px;
+			}
+			.consult_form .zxfs{
+				margin-bottom: 0;
+			}
+			.consult_form .form .body{
+				background: #fff;
+				margin: 0;
+				margin-bottom: 10px;
+			}
+			.consult_form .zxfs ul{
+				margin: 0;
+			}
+			.consult_form .zxfs ul li{
+				background: #fff;
+				height: 30px;
+			    margin-left: 5.5rem;
+			    text-align: left;
+			    padding: 0;
+			}
+			.consult_form .zxfs ul li .price{
+				font-size: 11px;
+			}
+			.consult_form .zxfs ul li .symbol{
+				color: #ff0000;
+				font-size: 15px;
+			}
+			.consult_form .zxfs ul li .tip{
+				font-size: 10px;
+			}
+			.consult_form .zxfs ul li:after{
+				display: none;
+			}
+			.order-time .hd{
+				border-bottom: 0;
+			}
+			.order-time .hd-tip{
+				margin-left: 4.5rem;
+				padding: 1.5rem 0 1rem 1rem;
+			}
+			.order-time .hd-tip .tips{
+				font-size: 13px;
+				color: #b0b0b0;
+			}
+			.order-time .hd-tip .time-det{
+				color: #666;
+			}
+			.total-con{
+				text-align: center;
+				font-size: 20px;
+				font-weight: 600;
+				padding-top: 2rem;
+				padding-bottom: 2rem;
+			}
+			.total-con .f_orange{
+				color: #ff0000;
+				font-size: 25px;
+			}
+			.total-con .symbol{
+				color: #b0b0b0;
+				font-size: 14px;
+			}
+			#createTrade {
+		        background: url(../../img/icon-btnbg.png) no-repeat;
+		        background-size: 100% 100%;
+		        border-color: inherit;
+		        border: 0;
+		        width: 60%;
+		        margin: 0 auto;
+		      }
+			.con-nums {
+				display: flex;
+				justify-content: flex-start;
+				align-items: center;
+			}
+			.spinner{
+				margin: 0;
+				height: 1.8rem;
+				border: 0;
+			}
+			.spinner .mui-numbox{
+				margin: 0;
+				height: 1.8rem;
+			}
 		</style>
 	</head>
 	<body>
@@ -19,68 +123,77 @@
 		</div>
 		<div class="mui-content">
 			<div class="consult_form">
-    <div class="form">
-        <form action="" method="post" id="yuyue-form">
-                <div class="zxfs">
-                    <div class="hd">
-                        <h2>
-                            咨询方式<small>每次<i class="counsellor-per"></i>分钟</small>
-                        </h2>
-                    </div>
-                    <div class="body">
-                    		<ul class="mui-table-view mui-table-view-radio">
-							<!--<li class="mui-table-view-cell" id="1" val="200">
-								<a class="mui-navigate-right">
-									<h2>文字咨询</h2>
-									<p>200.00元/次</p>
-								</a>
-							</li>
-							<li class="mui-table-view-cell mui-selected" id="2" val="200">
-								<a class="mui-navigate-right">
-									<h2>语音咨询</h2>
-									<p>300.00元/次</p>
-								</a>
-							</li>
-							<li class="mui-table-view-cell" id="3" val="200">
-								<a class="mui-navigate-right">
-									<h2>视频咨询</h2>
-									<p>400.00元/次</p>
-								</a>
-							</li>
-							<li class="mui-table-view-cell" id="4" val="200">
-								<a class="mui-navigate-right">
-									<h2>面对面</h2>
-									<p>800.00元/次</p>
-								</a>
-							</li>-->
-						</ul>
-
-                        <div class="">
-                            <div class="attr-txt" style="float: left;">
-                                <p>咨询次数</p>
-                            </div>
-                            <div class="spinner i_box">
-                                <div class="mui-numbox">
+			    <div class="form">
+			        <form action="" method="post" id="yuyue-form">
+			            <seciton class="zxfs section-white">
+			                <div class="body">
+				                <div class="hd">
+				                    <h2>咨询方式<span>50分钟/次</span></h2>
+				                </div>
+				            	<ul class="mui-table-view mui-table-view-radio">
+									<li class="mui-table-view-cell" id="1" val="200">
+										<a class="mui-navigate-right">
+											<input type="radio" name="consult-type" id="tel">
+											<label for="tel">电话咨询</label>
+											<span class="price">￥<em class="symbol">200</em>/次</span>
+										</a>
+									</li>
+									<li class="mui-table-view-cell mui-selected" id="2" val="200">
+										<a class="mui-navigate-right">
+											<input type="radio" name="consult-type" id="text">
+											<label for="text">文字咨询</h2>
+											<span class="price">￥<em class="symbol">200</em>/次</span>
+										</a>
+									</li>
+									<li class="mui-table-view-cell" id="3" val="200">
+										<a class="mui-navigate-right">
+											<input type="radio" name="consult-type" id="video">
+											<label for="video">视频咨询</label>
+											<span class="price">￥<em class="symbol">200</em>/次<i class="tip">（暂不提供）</i></span>
+										</a>
+									</li>
+									<li class="mui-table-view-cell" id="4" val="200">
+										<a class="mui-navigate-right">
+											<input type="radio" name="consult-type" id="face">
+											<label for="face">地面咨询</label>
+											<span class="price">￥<em class="symbol">200</em>/次</span>
+										</a>
+									</li>
+								</ul>
+				            </div>
+			            </seciton>
+			            <section class="order-time section-white">
+			            	<div class="hd">
+			                    <h2>预约时间<span class="mui-font-red">查看咨询师开放时间</span></h2>
+			                </div>
+			                <div class="hd-tip">
+				                <p class="tips">已选择</p>
+				                <p class="time-det">5月12日 星期五 下午5点</p>
+			                </div>
+			            </section>
+			            <section class="con-nums section-white">
+			                <div class="hd">
+			                    <h2>咨询次数</h2>
+			                </div>
+			                <div class="spinner i_box">
+			                    <div class="mui-numbox">
 									<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
 									<input class="mui-input-numbox" type="number" id="per" value="1"/>
 									<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
 								</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="foot">
-                        <span class="total">总计</span>
-                        <span class="f_orange num"><span id="zx-total">0.00</span></span>
-                    </div>
-            </div>
-                
-        </form>
-    </div>
-</div>
+			                </div>
+			            </section>
+			            <section class="total-con section-white">
+			                <p class="total">总计<span class="f_orange num"><em class="symbol">￥</em>500</span></p>
+			                <div class="content-horizontal-padded form-op-section">
+						        <button id="createTrade" class="mui-btn mui-btn-block mui-btn-warning bbc-btn-warning ">提交</button>
+						    </div>
+			            </section>
+			        </form>
+			    </div>
+			</div>
 		</div>	
-		<section class="content-horizontal-padded form-op-section">
-	        <button id="createTrade" class="mui-btn mui-btn-block mui-btn-warning bbc-btn-warning ">提交</button>
-	      </section>
+		
 		  <script src="../../js/zepto.js"></script>
 		  <script src="../../js/mui.min.js"></script>
 		  <script src="../../js/template.min.js"></script>

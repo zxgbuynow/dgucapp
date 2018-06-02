@@ -66,7 +66,8 @@
 		.business-news-more {padding:0 20px 0 5px;color: #ff974b;}
 		.business-news-more i{font-size:12px;color:#ff974b;position: absolute;top: 50%; right: 8px; -moz-transform: translate(0, -50%); -ms-transform: translate(0, -50%); -webkit-transform: translate(0, -50%); transform: translate(0, -50%);}
 		.swiper-slide-class{
-	      	padding: 10px 10px;
+	      	/*padding: 10px 10px;*/
+	      	width: 80% !important;
 	      }
 	      .swiper-slide-class img{
 	      	height: 150px;
@@ -194,7 +195,26 @@
 		        </div>
 		      </section>-->
 		      <!--文章 end-->
-		      
+		      <div class="swiper-container1">
+				  <div class="swiper-wrapper">
+				    <div class="swiper-slide swiper-slide-class ">
+				    	<a class="action-webview"  data-webview="_www/view/artical/ad.html" data-webparam='{"link":"<%= pic[m].link%>"}'>
+				    		<img src="../img/widgets_49.gif" style="width: 100%;height: 150px;"/>
+				    	</a>
+				    </div>
+				    <div class="swiper-slide swiper-slide-class ">
+				    	<a class="action-webview"  data-webview="_www/view/artical/ad.html" data-webparam='{"link":"<%= pic[m].link%>"}'>
+				    		<img src="../img/widgets_49.gif" style="width: 100%;height: 150px;"/>
+				    	</a>
+				    </div>
+				    <div class="swiper-slide swiper-slide-class ">
+				    	<a class="action-webview"  data-webview="_www/view/artical/ad.html" data-webparam='{"link":"<%= pic[m].link%>"}'>
+				    		<img src="../img/widgets_49.gif" style="width: 100%;height: 150px;"/>
+				    	</a>
+				    </div>
+				  </div>
+				</div>
+
           </div>
         </div>
       </div>
@@ -404,6 +424,17 @@
       mui.init({
         swipeBack: true //启用右滑关闭功能
       });
+
+    var swiper = new Swiper('.swiper-container1', {
+      slidesPerView: 'auto',
+
+      // spaceBetween: 15,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+  
       
 	  //获取数据 
 	  mui.plusReady(function() {
@@ -413,8 +444,8 @@
 	  	console.log(plus.storage.getItem('updatelv'))
 //	  	plus.nativeUI.closeWaiting();
 	  	var i = plus.storage.getItem('updatelv')?1:0;
-	  	if(!plus.storage.getItem('updatelv')||!i){
-	  		i++;
+	  	// if(!plus.storage.getItem('updatelv')||!i){
+	  		// i++;
 //	  		plus.storage.setItem('updatelv','1');
 //	  		console.log(plus.storage.getItem('updatelv')) 
 	  		plus.nativeUI.actionSheet( {title:"是否成为心窝会员",cancel:"关闭",buttons:[{title:"现在去升级"},{title:"以后再说"}]}, function(e){
@@ -425,7 +456,7 @@
 				}
 			});	
 			
-	  	}
+	  	// }
 	  	
 	  	//lunbo
 	  	var param = {
