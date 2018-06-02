@@ -9,6 +9,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <link rel="stylesheet" href="../../../css/style.css" />
     <link rel="stylesheet" href="../../../css/widgets.css" />
+    <link rel="stylesheet" href="../css/swiper.min.css" />
     <style>
     		.mui-keyboards{
 			position: absolute;
@@ -105,24 +106,76 @@
       	justify-content: space-around;
       	flex-direction: row;
       }
+      .mui-time-wraper label{
+      	width: 4rem;
+      }
+
       .mui-time-wraper .mui-media-body{
       	display: flex;
-      	justify-content: space-around;
+      	justify-content: flex-start;
       	align-items: center;
+      	flex-wrap: wrap;
       }
       .mui-time-wraper .mui-time-item{
       	padding: 0.3rem 0.5rem;
+      	margin-right: 0.5rem;
+      	margin-bottom: 1rem;
+      	flex: 0 0 30%;
+      }
+      .mui-time-wraper .mui-time-item.mui-time-active{
       	border: 1px solid #4ecfc6;
+
+      }
+      .mui-time-wraper .mui-time-item:nth-child(3n){
+      	margin-right: 0;
       }
       .mui-time-wraper .mui-time-item span{
       	display: block;
       }
-      .mui-time-wraper .mui-time-item span.mui-font-red{
-      	visibility: visible;
-      }
-      .mui-time-wraper .mui-time-item.mui-time-active .mui-font-red{
+      .mui-time-wraper .mui-time-item .mui-font-red{
 		visibility: hidden;
       }
+      .mui-time-wraper .mui-time-item.mui-time-active span.mui-font-red{
+      	visibility: visible;
+      }
+      #register_next {
+        background: url(../../../img/icon-btnbg.png) no-repeat;
+        background-size: 100% 100%;
+        border-color: inherit;
+        border: 0;
+        width: 60%;
+        margin: 0 auto;
+      }
+      .swiper-container {
+      width: 100%;
+      height: 100%;
+    }
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+      width: 60%;
+    }
+    .swiper-slide:nth-child(2n) {
+      width: 40%;
+    }
+    .swiper-slide:nth-child(3n) {
+      width: 20%;
+    }
     </style>
   </head>
 
@@ -149,20 +202,20 @@
 		    </div>
 		</section>
 		<section class="widgets-category-nav section-white">
-	        <div class="mui-table-view">
-	            <div class="mui-table-view-cell">
-	                <div class="mui-navigate-item">
-	                    <img class="mui-media-img" src="../img/widgets_39.gif">
-	                    <div class="mui-media-body">
-	                        <p class="mui-c-dark">周立</p>
-	                        <!-- <p class="mui-c-gray">南京咨询中心</p>
-	                        <p class='mui-c-gray'>擅长：学生咨询 职业发展</p>
-	                        <p class="mui-c-gray">咨询次数：300次</p>
-	                        <p class="mui-c-gray">好评率：98%</p> -->
-	                    </div>
-	                </div>
-	            </div>
-		    </div>
+	        <div class="swiper-container">
+			    <div class="swiper-wrapper">
+			      <div class="swiper-slide">Slide 1</div>
+			      <div class="swiper-slide">Slide 2</div>
+			      <div class="swiper-slide">Slide 3</div>
+			      <div class="swiper-slide">Slide 4</div>
+			      <div class="swiper-slide">Slide 5</div>
+			      <div class="swiper-slide">Slide 6</div>
+			      <div class="swiper-slide">Slide 7</div>
+			      <div class="swiper-slide">Slide 8</div>
+			      <div class="swiper-slide">Slide 9</div>
+			      <div class="swiper-slide">Slide 10</div>
+			    </div>
+	    	</div>
 		</section>
 		<section class="widgets-category-nav section-white">
 	        <div class="mui-table-view">
@@ -188,6 +241,30 @@
 	                        </p>
 	                    </div>
 	                </div>
+	                <div class="mui-time-wraper">
+	                    <label>下午</label>
+	                    <div class="mui-media-body">
+	                        <p class="mui-time-item mui-c-dark mui-time-active">
+	                        	<span class="time">9:00</span>
+	                        	<span class="mui-font-red">可预约</span>
+	                        </p>
+	                        <p class="mui-time-item mui-c-dark">
+	                        	<span class="time">9:00</span>
+	                        	<span class="mui-font-red">可预约</span>
+	                        </p>
+	                        <p class="mui-time-item mui-c-dark">
+	                        	<span class="time">9:00</span>
+	                        	<span class="mui-font-red">可预约</span>
+	                        </p>
+	                        <p class="mui-time-item mui-c-dark">
+	                        	<span class="time">9:00</span>
+	                        	<span class="mui-font-red">可预约</span>
+	                        </p>
+	                    </div>
+	                </div>
+	                <section class="mui-content-padded">
+			          <button id="register_next" type="button" class="mui-btn mui-btn-block mui-btn-warning bbc-btn-warning">确定</button>
+			        </section>
 	            </div>
 		    </div>
 		</section>
@@ -199,6 +276,7 @@
     <script src="../../../js/template.min.js"></script>
     <script src="../../../config.js"></script>
     <script src="../../../js/app.js"></script>
+    <script src="../../../js/swiper.min.js"></script>
     <script type="text/html" id="container_list">
     		<section class="mui-keyboards">
 			<div class="mui-number-section">
@@ -221,6 +299,13 @@
 		</section>
     	</script>
     <script type="text/javascript">
+
+	    var swiper = new Swiper('.swiper-container', {
+	      slidesPerView: 4,
+	      spaceBetween: 30,
+	      centeredSlides: true,
+	    });
+  
     	//mui-btn-danger mui-btn-grey 
       mui.plusReady(function() {
 	      var counsellor_id = plus.webview.currentWebview().counsellor_id;
