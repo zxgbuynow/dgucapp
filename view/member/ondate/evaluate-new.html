@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>反馈详情</title>
+		<link href="../../../css/mui.min.css" rel="stylesheet" />
+		<link href="../../../css/mui.picker.css" rel="stylesheet" />
+		<link href="../../../css/mui.poppicker.css" rel="stylesheet" />
+		<link href="../../../css/app.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../../../css/feedback.css" />
+		<style type="text/css">
+			html,
+			body {
+				font-size: 13px;
+				height: 100%;
+				background-color: #efeff4;
+			}
+			.mui-scroll-wrapper{
+				margin-top:50px;
+			}
+			.green_bg{
+				background: #fff;
+			}
+			.green_bg a{
+				color: #ea2329;
+			}
+			.mui-btn-primary{
+				background: #ea2329;
+				border-color: #ea2329;
+			}
+			/*.green_bg h1{
+				color: #fff;
+			}*/
+			.mui-content-padded{
+				padding: 10px 10px;
+			}
+			.counsellor-info{
+    			margin-bottom: 0.6rem;
+    			padding-top: 3.2rem;
+    		}
+    		.counsellor-head-content{
+    			text-align: center;
+    			padding-top: 2rem;
+    			padding-bottom: 1rem;
+    			background: url(../../../img/head-bg.png) no-repeat;
+    			background-size: 100% 100%;
+    			margin-bottom: 0.6rem;
+    		}
+    		.counsellor-head-content .avatar{
+			    height: 9rem;
+			    width: 9rem;
+			    border-radius: 50%;
+			    border: 5px solid #fff;
+    		}
+    		.counsellor-head-content .teacher-name{
+    			font-size: 25px;
+    			font-weight: 600;
+    			margin-top: 0.8rem;
+    		}
+    		.counsellor-head-content .zixun-time-block{
+    			padding-bottom: 0;
+    			margin-bottom: 0;
+    			background: transparent;
+    		}
+    		.counsellor-head-content .zixun-time-block .star{
+    			width: 13px;
+    			height: 14px;
+    		}
+			.counsellor-homepage-content{
+				padding: 0;
+			}
+			#evaluate {
+		        background: url(../../../img/icon-btnbg.png) no-repeat;
+		        background-size: 100% 100%;
+		        border-color: inherit;
+		        border: 0;
+		        width: 60%;
+		        margin: 0 auto;
+		    }
+		    .mui-btn-block{
+		    	padding: 5px 0;
+		    }
+		    .comment-wraper{
+		    	background: #fff;
+		    }
+		    .comment-wraper .mui-input-row{
+		    	padding: 1rem;
+		    }
+		    .comment-wraper .mui-input-row #evaluateCotent{
+				height: 20rem;
+				border: 1px solid #999;
+				border-radius: 0;
+		    }
+		</style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav green_bg">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title" id="title">评价</h1>
+		</header>
+		<div class="counsellor-homepage-content">
+		    <section class="container section-white counsellor-info">
+				<div class="counsellor-head-content">
+					<img src="https://ossimg.xinli001.com/20170823/c91ab41f014b8df7bb2e8d4df9b594ca.png!120x120" class="avatar">			
+					<h2 class="teacher-name">朱志慧</h2>
+					<div class="icons mui-inline" style="margin-left: 6px;">
+						<i data-index="1" class="mui-icon mui-icon-star"></i>
+						<i data-index="2" class="mui-icon mui-icon-star"></i>
+						<i data-index="3" class="mui-icon mui-icon-star"></i>
+						<i data-index="4" class="mui-icon mui-icon-star"></i>
+						<i data-index="5" class="mui-icon mui-icon-star"></i>
+					</div>
+				</div>
+		    </section>
+		    <section class="comment-wraper">
+				<div class="row mui-input-row">
+					<textarea id='evaluateCotent' class="mui-input-clear question" placeholder="对本次咨询是否满意？说说您的想法吧..."></textarea>
+				</div>
+				<div class="mui-content-padded">
+	                <button id="evaluate" type="button" class="mui-btn mui-btn-block mui-btn-warning bbc-btn-warning">提交</button>
+	            </div>
+		    </section>
+		    
+		</div>
+		<script src="../../../js/mui.min.js"></script>
+		<script src="../../../js/shopex.js"></script>
+		<script src="../../../js/zepto.js"></script>
+		<script src="../../../js/template.min.js"></script>
+		<script src="../../../config.js"></script>
+		<script src="../../../js/app.js"></script>
+		
+		<script>
+			mui.init();
+			var starIndex = 1;
+			document.addEventListener('plusready', function(){
+				var state = app.getState();
+				var self = plus.webview.currentWebview();
+				var bn = self.c_id;
+				mui('.icons').on('tap','i',function(){
+				  	var index = parseInt(this.getAttribute("data-index"));
+				  	var parent = this.parentNode;
+				  	var children = parent.children;
+				  	if(this.classList.contains("mui-icon-star")){
+				  		for(var i=0;i<index;i++){
+			  				children[i].classList.remove('mui-icon-star');
+			  				children[i].classList.add('mui-icon-star-filled');
+				  		}
+				  	}else{
+				  		for (var i = index; i < 5; i++) {
+				  			children[i].classList.add('mui-icon-star')
+				  			children[i].classList.remove('mui-icon-star-filled')
+				  		}
+				  	}
+				  	starIndex = index*2;
+			  });
+			  
+			  //
+			  document.getElementById("evaluate").addEventListener('tap',function(){
+			  	
+			  	var param = {
+			  		'method': config.apimethod.evaluate,
+			        'account': state.account,
+			        'c_id': bn,
+			        'source':config.source,
+			  		'sorce' :starIndex,
+			  		'cotent':document.getElementById("evaluateCotent").value
+			  	}
+		        	$.dataRequest(param, function(c) {
+		        		mui.toast('评分成功')
+		        		setTimeout(function(){
+		        			var parentview = plus.webview.currentWebview().opener();
+			          	parentview.reload(true);
+			          	var ws = plus.webview.currentWebview();
+			          	plus.webview.close(ws,'slide-out-bottom');
+		        		},1000);
+	            })
+			  	
+			  })
+        		}, false);
+		</script>
+	</body>
+</html>
