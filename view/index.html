@@ -37,7 +37,7 @@
 	    }
 		    
 	    .mui-table-view.mui-grid-view {display: -webkit-box;display: -moz-box;display: -ms-flexbox;display: -webkit-flex;display: flex;}
-		.swiper-pagination{display: none;}
+		/*.swiper-pagination{display: none;}*/
 		.mui-bar .icon-xiaoxi {
 		    font-size: 30px;
 		    padding-top: 6px;
@@ -100,48 +100,20 @@
 		    margin: 0 auto;
 		    display: block
 		}
-
-		#pagination {
-		    position: absolute;
-		    bottom: 100px;
-		    width: 100%
-		}
-
-		#pagination .swiper-pagination-bullet {
-		    width: 9.5%;
-		    float: left;
-		    margin: 0 0 0 6.15%;
-		    background: 0;
-		    opacity: 1
-		}
-
-		.swiper-pagination-bullet i {
-		    background: #41203f;
-		    width: 24px;
-		    height: 24px;
-		    line-height: 24px;
-		    font-size: 12px;
-		    border-radius: 50px;
-		    display: block;
-		    font-style: normal;
-		    text-align: center;
-		    margin: 0 auto;
-		    color: #f5b55c
-		}
-
-		.swiper-pagination-bullet-active i {
-		    -webkit-transform: scale(1.5);
-		    background: url(../images/shouye_nvsheng_huangseb.png) no-repeat center 50%;
-		    background-size: auto 100%;
-		    color: #815d4b
-		}
 		.swiper-wrapper-new .swiper-container{
 			height: 10rem;
-			padding: 0.5rem 0;
+			padding-top: 2rem;
+			padding-bottom: 1rem;
 		}
 		.swiper-wrapper-new .swiper-wrapper{
 			height: 100%;
 			margin: 0;
+		}
+		.swiper-wrapper-new .swiper-pagination-custom{
+			top: 0;
+		}
+		.swiper-wrapper-new .swiper-pagination-bullet-active{
+			background: #4ecfc6;
 		}
     </style>
   </head>
@@ -266,13 +238,13 @@
 		        </div>
 		      </section>-->
 		      <!--文章 end-->
-		      <section class="widgets-category-nav section-white swiper-wrapper-new">
-			        <div class="section-title">
-			          <div class="title-txt">好文推荐</div>
-				      <div class="more-link action-webview" data-webview="_www/view/category/category.html">更多</div>
-			        </div>
-			      <div class="swiper-container swiper-container5">
-			        <div class="swiper-wrapper">
+		    <section class="widgets-category-nav section-white swiper-wrapper-new">
+		        <div class="section-title">
+		          <div class="title-txt">好文推荐</div>
+			      <div class="more-link action-webview" data-webview="_www/view/category/category.html">更多</div>
+		        </div>
+			    <div class="swiper-container swiper-container5">
+				    <div class="swiper-wrapper">
 			            <div class="swiper-slide swiper-slide-custom"><img src="../img/widgets_49.gif" class="main-img"></div>
 			            <div class="swiper-slide swiper-slide-custom"><img src="../img/widgets_49.gif" class="main-img"></div>
 			            <div class="swiper-slide swiper-slide-custom"><img src="../img/widgets_41.gif" class="main-img"></div>
@@ -280,6 +252,7 @@
 			            <div class="swiper-slide swiper-slide-custom"><img src="../img/widgets_45.gif" class="main-img"></div>
 			            <div class="swiper-slide swiper-slide-custom"><img src="../img/widgets_50.gif" class="main-img"></div>
 			        </div>
+		        	<div class="swiper-pagination swiper-pagination-custom"></div>
 			    </div>
 			</section>
 
@@ -496,6 +469,7 @@
     var mySwiper = new Swiper(".swiper-container5", {
 	slidesPerView: "auto",
 	centeredSlides: true,
+	pagination: '.swiper-pagination-custom',
 });
   
       

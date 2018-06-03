@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/widgets.css" />
+    <link rel="stylesheet" href="../../css/swiper.min.css" />
+    <style>
+
+    .artical-list{
+      margin-bottom: 3.7rem;
+    }
+    .artical-list section{
+      margin-top: 0.6rem;
+    }
+    header.home-header{
+      background: #4ecfc6;
+    }
+    header .header-left{
+      color: #fff;
+    }
+    header .icon-func{
+      font-size: 13px;
+      color: #fff;
+      display: block;
+      position: relative;
+      width: 2.8rem;
+      height: auto; 
+      text-align: center;
+      line-height: normal; 
+    }
+    .home-header .service{
+      text-align: center;
+    }
+    .home-header .service img{
+      width: 20px;
+      height: 19px;
+      vertical-align: bottom;
+    }
+    .swiper-container {
+        width: 100%;
+        -webkit-perspective: 1200px;
+        -moz-perspective: 1200px;
+        -ms-perspective: 1200px;
+        perspective: 1200px
+    }
+
+    .swiper-wrapper {
+        margin-top: 10px
+    }
+
+    .swiper-slide.swiper-slide-custom {
+        width: 80%;
+        background: transparent;
+        -webkit-transform-style: preserve-3d;
+        -moz-transform-style: preserve-3d;
+        -ms-transform-style: preserve-3d;
+        transform-style: preserve-3d
+    }
+
+    .swiper-slide .main-img {
+        width: 90%;
+        height: 100%;
+        border-radius: 12px;
+        margin: 0 auto;
+        display: block
+    }
+
+    .swiper-wrapper-new .swiper-container {
+        height: 10rem;
+        padding-top: 2rem;
+        padding-bottom: 1rem;
+    }
+
+    .swiper-wrapper-new .swiper-wrapper {
+        height: 100%;
+        margin: 0;
+    }
+
+    .swiper-wrapper-new .swiper-pagination-custom {
+        top: 0;
+    }
+
+    .swiper-wrapper-new .swiper-pagination-bullet-active {
+        background: #4ecfc6;
+    }
+
+    .swiper-wrapper-new .slide-text {
+        text-align: center;
+        font-size: 14px;
+        color: #fff;
+        background: #759791;
+        opacity: 0.4;
+        height: 2rem;
+        width: 90%;
+        margin: 0 auto;
+        line-height: 2rem;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 2;
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+        box-shadow: 0px -6px 15px #759791;
+    }
+    </style>
+</head>
+
+<body>
+    <header class="home-header">
+        <i class="header-left icon-func bbc-icon bbc-icon-back mui-action-back"></i>
+        <div class="main">
+            <form onsubmit="return false;">
+                <div class="mui-input-row header-search-form">
+                    <input type="search" onfocus="toSearch(this,'_www/view/artical/list.html')" class="header-search mui-input-clear" placeholder="寻找感兴趣的文章">
+                </div>
+            </form>
+        </div>
+        <p class="service">
+          <img src="../../img/tel.png">
+          <i class="search-hide icon-func bbc-icon callmm">客服</i>
+        </p>
+    </header>
+    <div class="container artical-list">
+        <!--文章 end-->
+        <section class="widgets-category-nav section-white swiper-wrapper-new">
+            <div class="section-title">
+                <div class="title-txt">家庭教育</div>
+                <div class="more-link action-webview" data-webview="_www/view/category/category.html">更多</div>
+            </div>
+            <div class="swiper-container swiper-container1">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide swiper-slide-custom">
+                        <img src="../../img/widgets_49.gif" class="main-img">
+                        <p class="slide-text">让孩子快乐生活的两大金</p>
+                    </div>
+                    <div class="swiper-slide swiper-slide-custom">
+                        <img src="../../img/widgets_49.gif" class="main-img">
+                        <p class="slide-text">让孩子快乐生活的两大金</p>
+                    </div>
+                    <div class="swiper-slide swiper-slide-custom">
+                        <img src="../../img/widgets_41.gif" class="main-img">
+                        <p class="slide-text">让孩子快乐生活的两大金</p>
+                    </div>
+                    <div class="swiper-slide swiper-slide-custom">
+                        <img src="../../img/widgets_46.gif" class="main-img">
+                        <p class="slide-text">让孩子快乐生活的两大金</p>
+                    </div>
+                    <div class="swiper-slide swiper-slide-custom">
+                        <img src="../../img/widgets_45.gif" class="main-img">
+                        <p class="slide-text">让孩子快乐生活的两大金</p>
+                    </div>
+                    <div class="swiper-slide swiper-slide-custom">
+                        <img src="../../img/widgets_50.gif" class="main-img">
+                        <p class="slide-text">让孩子快乐生活的两大金</p>
+                    </div>
+                </div>
+                <div class="swiper-pagination swiper-pagination-custom"></div>
+            </div>
+        </section>
+        <section class="widgets-category-nav section-white swiper-wrapper-new">
+            <div class="section-title">
+                <div class="title-txt">精神官能症</div>
+                <div class="more-link action-webview" data-webview="_www/view/category/category.html">更多</div>
+            </div>
+            <div class="swiper-container swiper-container2">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide swiper-slide-custom">
+                        <img src="../../img/widgets_49.gif" class="main-img">
+                        <p class="slide-text">让孩子快乐生活的两大金</p>
+                    </div>
+                    <div class="swiper-slide swiper-slide-custom">
+                        <img src="../../img/widgets_49.gif" class="main-img">
+                        <p class="slide-text">让孩子快乐生活的两大金</p>
+                    </div>
+                    <div class="swiper-slide swiper-slide-custom">
+                        <img src="../../img/widgets_41.gif" class="main-img">
+                        <p class="slide-text">让孩子快乐生活的两大金</p>
+                    </div>
+                    <div class="swiper-slide swiper-slide-custom">
+                        <img src="../../img/widgets_46.gif" class="main-img">
+                        <p class="slide-text">让孩子快乐生活的两大金</p>
+                    </div>
+                    <div class="swiper-slide swiper-slide-custom">
+                        <img src="../../img/widgets_45.gif" class="main-img">
+                        <p class="slide-text">让孩子快乐生活的两大金</p>
+                    </div>
+                    <div class="swiper-slide swiper-slide-custom">
+                        <img src="../../img/widgets_50.gif" class="main-img">
+                        <p class="slide-text">让孩子快乐生活的两大金</p>
+                    </div>
+                </div>
+                <div class="swiper-pagination swiper-pagination-custom"></div>
+            </div>
+        </section>
+        <section class="widgets-category-nav section-white swiper-wrapper-new">
+            <div class="section-title">
+                <div class="title-txt">职场</div>
+                <div class="more-link action-webview" data-webview="_www/view/category/category.html">更多</div>
+            </div>
+            <div class="swiper-container swiper-container3">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide swiper-slide-custom">
+                        <img src="../../img/widgets_49.gif" class="main-img">
+                        <p class="slide-text">让孩子快乐生活的两大金</p>
+                    </div>
+                    <div class="swiper-slide swiper-slide-custom">
+                        <img src="../../img/widgets_49.gif" class="main-img">
+                        <p class="slide-text">让孩子快乐生活的两大金</p>
+                    </div>
+                    <div class="swiper-slide swiper-slide-custom">
+                        <img src="../../img/widgets_41.gif" class="main-img">
+                        <p class="slide-text">让孩子快乐生活的两大金</p>
+                    </div>
+                    <div class="swiper-slide swiper-slide-custom">
+                        <img src="../../img/widgets_46.gif" class="main-img">
+                        <p class="slide-text">让孩子快乐生活的两大金</p>
+                    </div>
+                    <div class="swiper-slide swiper-slide-custom">
+                        <img src="../../img/widgets_45.gif" class="main-img">
+                        <p class="slide-text">让孩子快乐生活的两大金</p>
+                    </div>
+                    <div class="swiper-slide swiper-slide-custom">
+                        <img src="../../img/widgets_50.gif" class="main-img">
+                        <p class="slide-text">让孩子快乐生活的两大金</p>
+                    </div>
+                </div>
+                <div class="swiper-pagination swiper-pagination-custom"></div>
+            </div>
+        </section>
+        <section class="widgets-category-nav section-white swiper-wrapper-new">
+            <div class="section-title">
+                <div class="title-txt">心理学</div>
+                <div class="more-link action-webview" data-webview="_www/view/category/category.html">更多</div>
+            </div>
+            <div class="swiper-container swiper-container4">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide swiper-slide-custom">
+                        <img src="../../img/widgets_49.gif" class="main-img">
+                        <p class="slide-text">让孩子快乐生活的两大金</p>
+                    </div>
+                    <div class="swiper-slide swiper-slide-custom">
+                        <img src="../../img/widgets_49.gif" class="main-img">
+                        <p class="slide-text">让孩子快乐生活的两大金</p>
+                    </div>
+                    <div class="swiper-slide swiper-slide-custom">
+                        <img src="../../img/widgets_41.gif" class="main-img">
+                        <p class="slide-text">让孩子快乐生活的两大金</p>
+                    </div>
+                    <div class="swiper-slide swiper-slide-custom">
+                        <img src="../../img/widgets_46.gif" class="main-img">
+                        <p class="slide-text">让孩子快乐生活的两大金</p>
+                    </div>
+                    <div class="swiper-slide swiper-slide-custom">
+                        <img src="../../img/widgets_45.gif" class="main-img">
+                        <p class="slide-text">让孩子快乐生活的两大金</p>
+                    </div>
+                    <div class="swiper-slide swiper-slide-custom">
+                        <img src="../../img/widgets_50.gif" class="main-img">
+                        <p class="slide-text">让孩子快乐生活的两大金</p>
+                    </div>
+                </div>
+                <div class="swiper-pagination swiper-pagination-custom"></div>
+            </div>
+        </section>
+    </div>
+    <nav class="mui-bar bbc-bar-tab">
+        <a class="bbc-tab-item bbc-active">
+        <span class="mui-icon bbc-icon bbc-icon-home"></span>
+        <span class="mui-tab-label">首页</span>
+      </a>
+        <a class="bbc-tab-item" data-webview="_www/view/counsellor/index.html">
+        <span class="mui-icon bbc-icon bbc-icon-view"></span>
+        <span class="mui-tab-label">咨询</span>
+      </a>
+        <a class="bbc-tab-item" data-webview="_www/view/msg/index.html">
+        <span class="mui-icon bbc-icon bbc-icon-message"></span>
+        <span class="mui-tab-label">消息</span>
+      </a>
+        <a class="bbc-tab-item" data-webview="_www/view/member/member.html">
+        <span class="mui-icon bbc-icon bbc-icon-user-empty"></span>
+        <span class="mui-tab-label">我的</span>
+      </a>
+    </nav>
+    <script src="../../js/zepto.js"></script>
+    <script src="../../js/mui.min.js"></script>
+    <script src="../../js/template.min.js"></script>
+    <script src="../../config.js"></script>
+    <script src="../../js/app.js"></script>
+    <script src="../../js/mipush.js"></script>
+    <script src="../../js/swiper.min.js"></script>
+    <script type="text/javascript">
+    var mySwiper = new Swiper(".swiper-container1", {
+        slidesPerView: "auto",
+        centeredSlides: true,
+        pagination: '.swiper-pagination-custom',
+    });
+    var mySwiper = new Swiper(".swiper-container2", {
+        slidesPerView: "auto",
+        centeredSlides: true,
+        pagination: '.swiper-pagination-custom',
+    });
+    var mySwiper = new Swiper(".swiper-container3", {
+        slidesPerView: "auto",
+        centeredSlides: true,
+        pagination: '.swiper-pagination-custom',
+    });
+    var mySwiper = new Swiper(".swiper-container4", {
+        slidesPerView: "auto",
+        centeredSlides: true,
+        pagination: '.swiper-pagination-custom',
+    });
+    </script>
+</body>
+
+</html>
