@@ -33,7 +33,7 @@
 	        background: #fff;
             color: #5D5D5D;
             white-space: nowrap;
-            width: 100%!important;
+            width: 100%;
 	    }
 		    
 	    .mui-table-view.mui-grid-view {display: -webkit-box;display: -moz-box;display: -ms-flexbox;display: -webkit-flex;display: flex;}
@@ -72,6 +72,77 @@
 	      .swiper-slide-class img{
 	      	height: 150px;
 	      }
+	      .swiper-container {
+		    width: 100%;
+		    -webkit-perspective: 1200px;
+		    -moz-perspective: 1200px;
+		    -ms-perspective: 1200px;
+		    perspective: 1200px
+		}
+
+		.swiper-wrapper {
+		    margin-top: 10px
+		}
+
+		.swiper-slide.swiper-slide-custom {
+		    width: 80%;
+		    background: transparent;
+		    -webkit-transform-style: preserve-3d;
+		    -moz-transform-style: preserve-3d;
+		    -ms-transform-style: preserve-3d;
+		    transform-style: preserve-3d
+		}
+
+		.swiper-slide .main-img {
+		    width: 90%;
+		    height: 100%;
+		    border-radius: 12px;
+		    margin: 0 auto;
+		    display: block
+		}
+
+		#pagination {
+		    position: absolute;
+		    bottom: 100px;
+		    width: 100%
+		}
+
+		#pagination .swiper-pagination-bullet {
+		    width: 9.5%;
+		    float: left;
+		    margin: 0 0 0 6.15%;
+		    background: 0;
+		    opacity: 1
+		}
+
+		.swiper-pagination-bullet i {
+		    background: #41203f;
+		    width: 24px;
+		    height: 24px;
+		    line-height: 24px;
+		    font-size: 12px;
+		    border-radius: 50px;
+		    display: block;
+		    font-style: normal;
+		    text-align: center;
+		    margin: 0 auto;
+		    color: #f5b55c
+		}
+
+		.swiper-pagination-bullet-active i {
+		    -webkit-transform: scale(1.5);
+		    background: url(../images/shouye_nvsheng_huangseb.png) no-repeat center 50%;
+		    background-size: auto 100%;
+		    color: #815d4b
+		}
+		.swiper-wrapper-new .swiper-container{
+			height: 10rem;
+			padding: 0.5rem 0;
+		}
+		.swiper-wrapper-new .swiper-wrapper{
+			height: 100%;
+			margin: 0;
+		}
     </style>
   </head>
 
@@ -87,9 +158,9 @@
       <a href="#" class="txt-func search-cancel" style="display:none;">取消</a>
     </header>
     <div class="container">
-      <div class="mui-scroll-wrapper bbc-pullrefresh-top">
+      <!-- <div class="mui-scroll-wrapper bbc-pullrefresh-top">
         <div class="mui-scroll">
-          <div class="mui-content content-bottom-padded-nav">
+          <div class="mui-content content-bottom-padded-nav"> -->
           	<!--<div class="business-news index-content-item">
 			<div class="business-news-wrap mui-flex ">
 				<div class="business-news-title" id="businessQurey1"><i class="mui-icon mui-icon-chat"></i></div>
@@ -195,29 +266,26 @@
 		        </div>
 		      </section>-->
 		      <!--文章 end-->
-		      <div class="swiper-container1">
-				  <div class="swiper-wrapper">
-				    <div class="swiper-slide swiper-slide-class ">
-				    	<a class="action-webview"  data-webview="_www/view/artical/ad.html" data-webparam='{"link":"<%= pic[m].link%>"}'>
-				    		<img src="../img/widgets_49.gif" style="width: 100%;height: 150px;"/>
-				    	</a>
-				    </div>
-				    <div class="swiper-slide swiper-slide-class ">
-				    	<a class="action-webview"  data-webview="_www/view/artical/ad.html" data-webparam='{"link":"<%= pic[m].link%>"}'>
-				    		<img src="../img/widgets_49.gif" style="width: 100%;height: 150px;"/>
-				    	</a>
-				    </div>
-				    <div class="swiper-slide swiper-slide-class ">
-				    	<a class="action-webview"  data-webview="_www/view/artical/ad.html" data-webparam='{"link":"<%= pic[m].link%>"}'>
-				    		<img src="../img/widgets_49.gif" style="width: 100%;height: 150px;"/>
-				    	</a>
-				    </div>
-				  </div>
-				</div>
+		      <section class="widgets-category-nav section-white swiper-wrapper-new">
+			        <div class="section-title">
+			          <div class="title-txt">好文推荐</div>
+				      <div class="more-link action-webview" data-webview="_www/view/category/category.html">更多</div>
+			        </div>
+			      <div class="swiper-container swiper-container5">
+			        <div class="swiper-wrapper">
+			            <div class="swiper-slide swiper-slide-custom"><img src="../img/widgets_49.gif" class="main-img"></div>
+			            <div class="swiper-slide swiper-slide-custom"><img src="../img/widgets_49.gif" class="main-img"></div>
+			            <div class="swiper-slide swiper-slide-custom"><img src="../img/widgets_41.gif" class="main-img"></div>
+			            <div class="swiper-slide swiper-slide-custom"><img src="../img/widgets_46.gif" class="main-img"></div>
+			            <div class="swiper-slide swiper-slide-custom"><img src="../img/widgets_45.gif" class="main-img"></div>
+			            <div class="swiper-slide swiper-slide-custom"><img src="../img/widgets_50.gif" class="main-img"></div>
+			        </div>
+			    </div>
+			</section>
 
-          </div>
+          <!-- </div>
         </div>
-      </div>
+      </div> -->
     </div>
     
     <nav class="mui-bar bbc-bar-tab">
@@ -425,15 +493,10 @@
         swipeBack: true //启用右滑关闭功能
       });
 
-    var swiper = new Swiper('.swiper-container1', {
-      slidesPerView: 'auto',
-
-      // spaceBetween: 15,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-    });
+    var mySwiper = new Swiper(".swiper-container5", {
+	slidesPerView: "auto",
+	centeredSlides: true,
+});
   
       
 	  //获取数据 
