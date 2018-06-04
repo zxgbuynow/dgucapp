@@ -5228,15 +5228,36 @@ a {
 }
 
 .bbc-bar-tab .bbc-tab-item {
-    display: table-cell;
-    width: 1%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    width: 25%;
+    float: left;
     height: 50px;
+}
+
+.bbc-bar-tab .bbc-tab-item .mui-tab-label {
+    font-size: 11px;
     color: #fff;
-    text-align: center;
-    vertical-align: middle;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+}
+
+.bbc-bar-tab .bbc-tab-item.bbc-active .mui-tab-label {
+    color: #ea2329;
+}
+
+.bbc-bar-tab .bbc-tab-item .iconmoon {
+    font-size: 20px;
+    margin-top: 0.3rem;
+    color: #6b6b6b;
+}
+
+.bbc-bar-tab .bbc-tab-item .iconmoon.icon-message {
+    font-size: 30px;
+}
+
+.bbc-bar-tab .bbc-tab-item .iconmoon.icon-mine {
+    font-size: 26px;
 }
 
 .bbc-bar-tab .bbc-tab-item.bbc-active {
