@@ -104,8 +104,8 @@
 		<div class="counsellor-homepage-content">
 		    <section class="container section-white counsellor-info">
 				<div class="counsellor-head-content">
-					<img src="https://ossimg.xinli001.com/20170823/c91ab41f014b8df7bb2e8d4df9b594ca.png!120x120" class="avatar">			
-					<h2 class="teacher-name">朱志慧</h2>
+					<img src="" class="avatar" id="head-img">			
+					<h2 class="teacher-name"></h2>
 					<div class="icons mui-inline" style="margin-left: 6px;">
 						<i data-index="1" class="mui-icon mui-icon-star"></i>
 						<i data-index="2" class="mui-icon mui-icon-star"></i>
@@ -139,6 +139,18 @@
 				var state = app.getState();
 				var self = plus.webview.currentWebview();
 				var bn = self.c_id;
+				var avar = self.avar||'';
+				var counsellor = self.counsellor;
+				if(counsellor){
+					$('.teacher-name').text(counsellor)
+				}
+				if(avar){
+
+					document.getElementById("head-img").src = config.imgser+avar;
+				}else{
+					document.getElementById("head-img").src = '../../../img/shop_logo.gif';
+				}
+				//获得咨询师头像和用户名
 				mui('.icons').on('tap','i',function(){
 				  	var index = parseInt(this.getAttribute("data-index"));
 				  	var parent = this.parentNode;

@@ -276,7 +276,7 @@
 
     <script type="text/html" id="trade_list">
         <% for(var i=0; i<list.length; i++) { %>
-      		<li class="mui-table-view-cell mui-media <%if (list[i].status=='2'||list[i].status=='0'){%>action-webview<% } %>" <%if (list[i].status=='0'){%>data-webview="_www/view/msg/chat.html" data-webparam = '{"jid":"2", "username":"<%= list[i].mobile %>" }' <%}else{%>data-webview="_www/view/member/ondate/evaluate.html" data-webparam = '{"c_id":<%= list[i].id %>}' <%}%>
+      		<li class="mui-table-view-cell mui-media <%if (list[i].status=='2'||list[i].status=='0'){%>action-webview<% } %>" <%if (list[i].status=='0'){%>data-webview="_www/view/msg/chat.html" data-webparam = '{"jid":"2", "username":"<%= list[i].mobile %>" }' <%}else{%>data-webview="_www/view/member/ondate/evaluate-new.html" data-webparam = '{"c_id":<%= list[i].id %>,"avar":<%= list[i].avar %>,"counsellor":<%= list[i].counsellor %>}' <%}%>
 	          <div class="box-flex">
               <div class="box-item-flex1">
   	          	<img class="mui-media-object " src="../../img/activity_ads.jpg">

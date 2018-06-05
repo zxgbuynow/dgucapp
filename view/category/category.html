@@ -32,6 +32,7 @@
   <script type="text/html" id="widget_category">
 	<section class="widgets-category-nav section-white">
         <ul class="widgets-icons-nav">
+        	<li class="action-webview" data-webview="_www/view/artical/tlist.html" ><i><a href="#"><img src="../../img/hearttest.png"></a></i><span>心理测试</li>
         	<% for(var i=0; i<list.length; i++) { %>
           <li class="action-webview" data-webview="_www/view/counsellor/list.html" data-webparam='{"cat_id":<%= list[i].id %>}'><i><a href="#"><img src="<%= $add_server(list[i].cover) %>"></a></i><span><%= list[i].title %></li>
        	<% } %>

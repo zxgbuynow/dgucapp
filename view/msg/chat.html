@@ -255,7 +255,15 @@
 			var username = usernm = plus.webview.currentWebview().username;
 			
 			if(username){
-				$('.header-title').html('与'+username+'聊天')
+				  var param = {
+			          'method': config.apimethod.userinfo,
+			          'account': username,
+			          'source':config.source
+			      }
+			      $.dataRequest(param, function(rs) {
+			      	$('.header-title').html('与'+rs.nickname+'聊天')
+			      })
+				
 			}
 			//删除未读状态
 			if(plus.storage.getItem(state.account+"msgbox_"+username+'_flag')){

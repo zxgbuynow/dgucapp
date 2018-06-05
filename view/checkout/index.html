@@ -124,14 +124,14 @@
 		<div class="mui-content">
 			<div class="consult_form">
 			    <div class="form">
-			        <form action="" method="post" id="yuyue-form">
+			        <!--<form action="" method="post" id="yuyue-form">-->
 			            <seciton class="zxfs section-white">
 			                <div class="body">
 				                <div class="hd">
-				                    <h2>咨询方式<span>50分钟/次</span></h2>
+				                    <h2>咨询方式<span class="counsellor-per">50分钟/次</span></h2>
 				                </div>
 				            	<ul class="mui-table-view mui-table-view-radio">
-									<li class="mui-table-view-cell" id="1" val="200">
+									<!--<li class="mui-table-view-cell" id="1" val="200">
 										<a class="mui-navigate-right">
 											<input type="radio" name="consult-type" id="tel">
 											<label for="tel">电话咨询</label>
@@ -158,15 +158,15 @@
 											<label for="face">地面咨询</label>
 											<span class="price">￥<em class="symbol">200</em>/次</span>
 										</a>
-									</li>
+									</li>-->
 								</ul>
 				            </div>
 			            </seciton>
-			            <section class="order-time section-white">
+			            <section class="order-time section-white ">
 			            	<div class="hd">
-			                    <h2>预约时间<span class="mui-font-red">查看咨询师开放时间</span></h2>
+			                    <h2>预约时间<span class="mui-font-red trade-date" >查看咨询师开放时间</span></h2>
 			                </div>
-			                <div class="hd-tip">
+			                <div class="hd-tip mui-hidden">
 				                <p class="tips">已选择</p>
 				                <p class="time-det">5月12日 星期五 下午5点</p>
 			                </div>
@@ -184,12 +184,12 @@
 			                </div>
 			            </section>
 			            <section class="total-con section-white">
-			                <p class="total">总计<span class="f_orange num"><em class="symbol">￥</em>500</span></p>
+			                <p class="total">总计<span class="f_orange num " id="zx-total"></span></p> 
 			                <div class="content-horizontal-padded form-op-section">
 						        <button id="createTrade" class="mui-btn mui-btn-block mui-btn-warning bbc-btn-warning ">提交</button>
 						    </div>
 			            </section>
-			        </form>
+			        <!--</form>-->
 			    </div>
 			</div>
 		</div>	
@@ -199,7 +199,7 @@
 		  <script src="../../js/template.min.js"></script>
 		  <script src="../../config.js"></script>
 		  <script src="../../js/app.js"></script>
-		  <script type="text/html" id="counsellor_info">
+		  <script type="text/html" id="counsellor_info1">
 		  	<% for(var i=0; i<chartArr.length; i++) { %>
 		  		<% if(chartArr[i].status){ %>
 		  		<li class="mui-table-view-cell <% if(i==0){ %> mui-selected <% } %>" id="<%= chartArr[i].chart %>" val="<%= chartArr[i].price %>">
@@ -211,10 +211,23 @@
 				<% } %>
 			<% } %>	
 		  </script>	
+		  <script type="text/html" id="counsellor_info">
+		  	<% for(var i=0; i<chartArr.length; i++) { %>
+		  		<% if(chartArr[i].status){ %>
+		  			<li class="mui-table-view-cell" >
+						<a class="mui-navigate-right">
+							<input type="radio" <%if(i==0){%> checked <%}%>  name="consult-type" id="<%= chartArr[i].chart %>" val="<%= chartArr[i].price %>">
+							<label for="face"><%= chartArr[i].show %></label>
+							<span class="price">￥<em class="symbol"><%= chartArr[i].price %>元</em>/次</span>
+						</a>
+					</li>
+				<% } %>
+			<% } %>	
+		  </script>
 		<script>
 			var chart = 'wordchart';
 			var price = 0;
-			var state = app.getState();
+			var state = app.getState(); 
 			var counsellor_id = 0;
 			var pertime =0;
 			var counsellor_mobile = 0;
@@ -222,26 +235,30 @@
 				//价格
 				counsellor_id = plus.webview.currentWebview().counsellor_id;
 				counsellor_mobile = plus.webview.currentWebview().counsellor_mobile;
-				var param = {
+				var param = { 
 				  'method': config.apimethod.counsellor,
 				  'source':config.source,
 				  'id': counsellor_id
 				}
 				$.dataRequest(param, function(rs) {
-				  	$('.counsellor-per').html(rs.per);
+				  	$('.counsellor-per').html(rs.per+'分钟/次');
 				  	pertime = rs.per;
 				  	//方式
 				  	var widgets = template('counsellor_info', rs);
 				  	
         				$('.mui-table-view-radio').append(widgets);
-        				$('.mui-table-view-radio').children('li').each(function(index, el) {
-        					if($(this).hasClass('mui-selected')){
-        						 price = $(this).attr('val');
-        						 chart = $(this).attr('id');
-        						totalprice(price);
-        					}
-        					
-        				})
+        				price = $("input[name='consult-type']:checked").attr('val');
+					chart = $("input[name='consult-type']:checked").attr('id');
+					totalprice(price);
+
+//      				$('.mui-table-view-radio').children('li').each(function(index, el) {
+//      					if($(this).hasClass('mui-selected')){
+//      						 price = $(this).attr('val');
+//      						 chart = $(this).attr('id');
+//      						totalprice(price);
+//      					}
+//      					
+//      				})
 				  	$('.mui-numbox').on('tap', '.mui-btn-numbox-minus,.mui-btn-numbox-plus', function() {
 						totalprice(price);
 			       }).on('focus', '.mui-input-numbox', function(e) {
@@ -257,18 +274,27 @@
 		         		totalprice(price);
 		         	})
 				})
+				 //查看咨询日程
+			      $('.trade-date').on('tap',function(){
+			      	clicked('_www/view/member/ondate/index.html',{counsellor_id:counsellor_id})
+			      })
 				
 			})
 			//计总
 			function totalprice(price ){
 				var per = $('#per').val();
 				$('#zx-total').text(Currency.format(price*per));
+
 			}
 			
 			//计算
-			mui('.mui-table-view').on('tap', '.mui-table-view-cell', function(e) {
-				chart = $(this).attr('id'); 
-				price = $(this).attr('val');
+			mui('.mui-table-view').on('click', '.mui-table-view-cell', function(e) {
+
+//				price = $("input[name='consult-type']:checked").val();
+				price = $("input[name='consult-type']:checked").attr('val');
+				chart = $("input[name='consult-type']:checked").attr('id');
+//				chart = $(this).attr('id'); 
+//				price = $(this).attr('val');
 				totalprice(price);	
 			})
 			
@@ -290,9 +316,16 @@
 				  'pertime':pertime,
 				  'account': state.token
 				}
+
 				w=plus.nativeUI.showWaiting();
 				$.dataRequest(param1, function(rs) {
 					 w.close();w=null;
+					 log(rs)
+					if(rs&&rs.flish){
+						mui.toast('您是心窝会员，网络免费咨询！');
+						clicked('_www/view/member/trade.html');
+						return true;
+					}
 					mui.toast('订单创建成功！');
 					clicked('_www/view/checkout/payment.html',{
 						'price':price*$('#per').val(), 

@@ -5240,7 +5240,8 @@ a {
 }
 
 .bbc-bar-tab .bbc-tab-item.bbc-active {
-    color: #ea2329;
+    /*color: #FF7400;*/
+    color: #02F0FF;
 }
 
 .bbc-bar-tab .bbc-tab-item .mui-icon {
@@ -6690,7 +6691,7 @@ header .header-left {
     position: relative;
     float: left;
     height: 3rem;
-    color: #ea2329;
+    color: #00C7C9;
     font-size: 1.2rem;
     z-index: 10;
 }

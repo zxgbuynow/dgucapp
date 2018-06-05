@@ -1,193 +1,208 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
-<head>
-<meta charset="utf-8">
-<title>Swiper demo</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-<!-- Link Swiper's CSS -->
-<link rel="stylesheet" href="../../../css/swiper.min.css">
-<!-- Demo styles -->
-<style>
-html,
-body {
-    position: relative;
-    height: 100%;
-}
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../../../css/style.css" />
+    <link rel="stylesheet" href="../../../css/widgets.css" />
+    <style>
+            .mui-keyboards{
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 45px;
+        }
+        .mui-keyboards .mui-number-section{
+            display: flex;
+            flex-flow: row wrap;
+            background: #fff;
+        }
+        .mui-keyboards .mui-number-section .mui-num-btn{
+            margin-bottom: 0;
+            flex: 0 0 25%;
+            text-align: center;
+            vertical-align:middle;
+            height: 5rem;
+            line-height: 2rem;
+            border: 1px solid #f5f5f5;
+            font-size: 13px;
+        }
+        .mui-keyboards .mui-number-section .mui-num-btn.mui-u-1of3{
+            flex: 0 0 33.338%;
+        }
+        .mui-keyboards .mui-number-section .mui-num-btn.mui-u-1of4{
+            flex: 0 0 33.3%;
+        }
+        .mui-keyboards .mui-number-section-left{
+            display: flex;
+            flex-flow: row wrap;
+            flex: 0 0 75%;
+        }
+        .mui-keyboards .mui-number-section-right{
+            flex: 0 0 25%;
+            margin-bottom: 0;
+            line-height: 160px;
+            text-align: center;
+            color: #fff;
+            background: #ea2329;
+        }
+        @media screen and (max-width: 320px){
+            .mui-total-money{
+                height: 8.8rem;
+                line-height: 10rem;
+              }
+              .mui-keyboards .mui-number-section .mui-num-btn{
+                height: 3.8rem;
+                line-height: 3.8rem;
+              }
+              .mui-keyboards .mui-number-section-right{
+                height: 121.59px;
+                line-height: 121.59px;
+              }
+        }
+    </style>
+  </head>
 
-body {
-    background: #eee;
-    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    color: #000;
-    margin: 0;
-    padding: 0;
-}
-
-/*.swiper-container {
-    width: 100%;
-    height: 10rem;
-    padding: 0.5rem;
-}
-
-.swiper-slide {
-    text-align: center;
-    font-size: 18px;
-    background: #fff;
-    height: 6rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    flex-direction: column;
-    padding: 0.5rem;
-    font-size: 15px;
-}
-
-.swiper-slide p {
-    margin: 0;
-}*/
-
-img {
-    width: 100%;
-    height: 100%;
-}
-
-@charset "utf-8";
-* {
-    margin: 0;
-    padding: 0
-}
-
-html {
-    height: 100%
-}
-
-body {
-    height: 100%;
-    background: url(../images/shouye_nvsheng_bg.png);
-    background-size: 100% 100%
-}
-
-#header img {
-    width: 100%
-}
-
-.swiper-container {
-    width: 100%;
-    -webkit-perspective: 1200px;
-    -moz-perspective: 1200px;
-    -ms-perspective: 1200px;
-    perspective: 1200px
-}
-
-.swiper-wrapper {
-    margin-top: 10px
-}
-
-.swiper-slide {
-    width: 80%;
-    -webkit-transform-style: preserve-3d;
-    -moz-transform-style: preserve-3d;
-    -ms-transform-style: preserve-3d;
-    transform-style: preserve-3d
-}
-
-.swiper-slide .main-img {
-    width: 90%;
-    margin: 0 auto;
-    display: block
-}
-
-#pagination {
-    position: absolute;
-    bottom: 100px;
-    width: 100%
-}
-
-#pagination .swiper-pagination-bullet {
-    width: 9.5%;
-    float: left;
-    margin: 0 0 0 6.15%;
-    background: 0;
-    opacity: 1
-}
-
-.swiper-pagination-bullet i {
-    background: #41203f;
-    width: 24px;
-    height: 24px;
-    line-height: 24px;
-    font-size: 12px;
-    border-radius: 50px;
-    display: block;
-    font-style: normal;
-    text-align: center;
-    margin: 0 auto;
-    color: #f5b55c
-}
-
-.swiper-pagination-bullet-active i {
-    -webkit-transform: scale(1.5);
-    background: url(../images/shouye_nvsheng_huangseb.png) no-repeat center 50%;
-    background-size: auto 100%;
-    color: #815d4b
-}
-
-@media screen and (min-height:481px) {
-    .swiper-wrapper {
-        margin-top: 20px
-    }
-    #pagination {
-        bottom: 110px
-    }
-}
-
-@media screen and (min-height:569px) {
-    .swiper-wrapper {
-        margin-top: 40px
-    }
-    #pagination {
-        bottom: 120px
-    }
-    .swiper-pagination-bullet i {
-        width: 30px;
-        height: 30px;
-        line-height: 30px;
-        font-size: 15px
-    }
-}
-
-#footer {
-    position: absolute;
-    bottom: 0
-}
-
-#footer img {
-    width: 100%;
-    display: block
-}
-</style></head>
-
-<body>
-    <!-- Swiper -->
-    <div class="swiper-container">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="../../../img/widgets_49.gif" class="main-img"></div>
-            <div class="swiper-slide"><img src="../../../img/widgets_49.gif" class="main-img"></div>
-            <div class="swiper-slide"><img src="../../../img/widgets_49.gif" class="main-img"></div>
-            <div class="swiper-slide"><img src="../../../img/widgets_49.gif" class="main-img"></div>
-            <div class="swiper-slide"><img src="../../../img/widgets_49.gif" class="main-img"></div>
-            <div class="swiper-slide"><img src="../../../img/widgets_49.gif" class="main-img"></div>
-        </div>
-    </div>
-    <!-- Swiper JS -->
-    <script src="../../../js/swiper.min.js"></script>
-    <script>
-    var mySwiper = new Swiper(".swiper-container", {
-	slidesPerView: "auto",
-	centeredSlides: true,
-});
+  <body>
+    <header class="page-header">
+          <i class="header-left icon-func bbc-icon bbc-icon-back mui-action-back"></i>
+      <div class="header-title">当前工作按排情况</div>
+    </header>
+    <div class="container" id="container"> 
+       <!--<section class="mui-keyboards">
+            <div class="mui-number-section">
+                <p class="mui-num-btn mui-u-1of4" data-val="7">19:00~20:00<span style="font-size: 15px;"><br />可预约</span></p>
+                <p class="mui-num-btn mui-u-1of4" data-val="7">9:00<span style="font-size: 15px;"><br />可预约</span></p>
+                <p class="mui-num-btn mui-u-1of4" data-val="7">9:00<span style="font-size: 15px;"><br />可预约</span></p>
+                <p class="mui-num-btn mui-u-1of4" data-val="7">9:00<span style="font-size: 15px;"><br />可预约</span></p>
+                <p class="mui-num-btn mui-u-1of4" data-val="7">9:00<span style="font-size: 15px;"><br />可预约</span></p>
+                <p class="mui-num-btn mui-u-1of4" data-val="7">9:00<span style="font-size: 15px;"><br />可预约</span></p>
+                <p class="mui-num-btn mui-u-1of4" data-val="7">9:00<span style="font-size: 15px;"><br />可预约</span></p>
+                <p class="mui-num-btn mui-u-1of4" data-val="7">9:00<span style="font-size: 15px;"><br />可预约</span></p>
+                <p class="mui-num-btn mui-u-1of4" data-val="7">9:00<span style="font-size: 15px;"><br />可预约</span></p>
+                <p class="mui-num-btn mui-u-1of4" data-val="7">9:00<span style="font-size: 15px;"><br />可预约</span></p>
+                <p class="mui-num-btn mui-u-1of4" data-val="7">9:00<span style="font-size: 15px;"><br />可预约</span></p>
+                <p class="mui-num-btn mui-u-1of4" data-val="7">9:00<span style="font-size: 15px;"><br />可预约</span></p>
+                <p class="mui-num-btn mui-u-1of4" data-val="7">9:00<span style="font-size: 15px;"><br />可预约</span></p>
+                <p class="mui-num-btn mui-u-1of4" data-val="7">9:00<span style="font-size: 15px;"><br />可预约</span></p>
+                <p class="mui-num-btn mui-u-1of4" data-val="7">9:00<span style="font-size: 15px;"><br />可预约</span></p>
+                <p class="mui-num-btn mui-u-1of4" data-val="7">9:00<span style="font-size: 15px;"><br />可预约</span></p>
+                <p class="mui-num-btn mui-u-1of4 mui-btn-danger" data-val="7">9:00<span style="font-size: 15px;"><br />约满</span></p>
+                <p class="mui-num-btn mui-u-1of4" data-val="7">9:00<span style="font-size: 15px;"><br />可预约</span></p>
+                <p class="mui-num-btn mui-u-1of4" data-val="7">9:00<span style="font-size: 15px;"><br />可预约</span></p>
+                <p class="mui-num-btn mui-u-1of4" data-val="7">9:00<span style="font-size: 15px;"><br />可预约</span></p>
+                <p class="mui-num-btn mui-u-1of4" data-val="7">9:00<span style="font-size: 15px;"><br />可预约</span></p>
+                <p class="mui-num-btn mui-u-1of4" data-val="7">9:00<span style="font-size: 15px;"><br />可预约</span></p>
+                <p class="mui-num-btn mui-u-1of4 mui-btn-danger" data-val="7">9:00<span style="font-size: 15px;"><br />约满</span></p>
+                <p class="mui-num-btn mui-u-1of4 mui-btn-grey" data-val="7">9:00~10:00<span style="font-size: 15px;"><br />不预约</span></p>
+                
+            </div>
+            <div style="text-align: center; margin-top: 20px;">
+                <p>咨询师电话：1832127131</p> 
+            </div>
+        </section>-->
+    </div> 
+   
+    
+    <script src="../../../js/zepto.js"></script>
+    <script src="../../../js/mui.min.js"></script>
+    <script src="../../../js/template.min.js"></script>
+    <script src="../../../config.js"></script>
+    <script src="../../../js/app.js"></script>
+    <script type="text/html" id="container_list">
+            <section class="mui-keyboards">
+            <div class="mui-number-section">
+                <% for(var i=0; i<list.length; i++) { %>
+                <p class="mui-num-btn mui-u-1of4 <%if (list[i].s=='1'){%> mui-btn-danger <%}else if(list[i].s=='2'){%> mui-btn-grey <%}%>" data-val="<%= list[i].t%>"><%= list[i].t%>
+                    <%if (list[i].s=='1'){%>
+                        <span style="font-size: 15px;"><br />约滿</span>
+                    <%}else if(list[i].s=='2'){%>
+                        <span style="font-size: 15px;"><br />不预约</span>
+                    <%}else{%>  
+                        <span style="font-size: 15px;"><br />可预约</span>
+                    <%}%>
+                    
+                </p>
+                <%}%>
+            </div>
+            <div style="text-align: center; margin-top: 20px;display: none;">
+                <p>咨询师电话：<%= user[0]%></p> 
+            </div>
+        </section>
+        </script>
+    <script type="text/javascript">
+        //mui-btn-danger mui-btn-grey 
+      mui.plusReady(function() {
+          var counsellor_id = plus.webview.currentWebview().counsellor_id;
+          var tid = plus.webview.currentWebview().tid||0;
+          var curdate = plus.webview.currentWebview().curdate;
+          var state = app.getState();
+//        log(plus.webview.currentWebview())
+          //时间分段
+//        var times = ['9:00','9:30','10:00','10:30','11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30','17:00','17:30','18:00','18:30','19:00'];
+          var times = ['9:00~10:00','10:00~11:00','11:00~12:00','12:00~13:00','13:00~14:00','14:00~15:00','14:00~15:00','15:00~16:00','16:00~17:00','17:00~18:00','18:00~19:00','19:00~20:00','20:00~21:00'];
+          var param = {
+              'method': config.apimethod.calendatoday,
+              'account': counsellor_id,
+              'day': Math.floor(curdate/1000),
+              'source':config.source
+          }
+          log(param); 
+          
+          $.dataRequest(param, function(rs) {
+            var widgets = template('container_list', rs);
+                $('.container').append(widgets);
+            log(rs) 
+            if(tid){
+                mui('.container').on('tap','.mui-num-btn',function(){
+                    if(!$(this).hasClass('mui-btn-grey')&&!$(this).hasClass('mui-btn-danger')){
+                        var hour = $(this).data('val').split('~');
+                        var dayn = new Date(curdate);
+                        var days = dayn.getFullYear()+'-'+(dayn.getMonth()+1)+'-'+dayn.getDate()+' '+hour[0];
+    
+                        plus.nativeUI.confirm( "确认预约该时段?", function(e){
+                            
+                            if(e.index==0){
+                                var param = {
+                                  'method': config.apimethod.oncalenda,
+                                  'account': counsellor_id,
+                                  'hour': days,
+                                  'tid': tid,
+                                  'source':config.source
+                              }
+                            log(param)
+                             $.dataRequest(param, function(rs) {
+    //                          log(rs);return false;
+                                mui.toast('预约成功')
+                                    setTimeout(function(){
+    //                                  var parentview = plus.webview.currentWebview().opener();
+                                        var parentview = plus.webview.getWebviewById('_www/view/member/trade.html');
+                                        var parentview1 = plus.webview.getWebviewById('_www/view/member/trade_list.html');
+                                        parentview1.reload(true)
+                                        parentview.show()
+                                    parentview.reload(true);
+                                    
+    //                              var preview = plus.webview.getWebviewById('_www/view/member/ondate/index.html');
+    //                              plus.webview.close(preview,'slide-out-bottom');
+                                    var ws = plus.webview.currentWebview();
+                                    plus.webview.close(ws,'slide-out-bottom');
+                                    },1000);
+                             })
+                                
+                            }
+                        });
+                    }
+                    
+                })
+            }
+            
+          })
+      })
     </script>
-</body>
+  </body>
 
 </html>

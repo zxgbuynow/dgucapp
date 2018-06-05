@@ -315,17 +315,21 @@
 			                    <span class="num"><em class="symbol">￥</em><%= chartArr[i].price %></span><span>/小时</span>
 			                </p>
 			                <p class="price">
-			                    <span class="num"><em class="symbol">￥</em><%= chartArr[i].price %></span><span>/小时</span><img src="../../img/meb.png">
+			                		<% if(chartArr[i].chart == 'facechart'){%>
+			                			<span class="num"><em class="symbol">￥</em><%= chartArr[i].price %></span><span>/小时</span><img src="../../img/meb.png">
+			                		<%}else{%>
+			                    <span class="num"><em class="symbol">￥</em>0</span><span>/小时</span><img src="../../img/meb.png">
+			                    <%}%>
 			                </p>
 						</div>
 					<% } %>
 				<% } %>	
 				<div class="zixun-desc">
 	                <p>心窝会员： </p>
-	                <p>36.5元，365天，文字语音咨询不限次数，地面咨询￥500 /次</p>
+	                <p>36.5元，365天，文字语音咨询不限次数</p>
 	            </div>
 	            <div class="mui-content-padded">
-	                <button id="register_next" type="button" class="mui-btn mui-btn-block mui-btn-warning bbc-btn-warning">立即注册</button>
+	                <button id="register_next" type="button" class="mui-btn mui-btn-block mui-btn-warning bbc-btn-warning action-webview" data-webview="_www/view/member/updatelv.html">立即注册</button>
 	            </div>
 				<!--<div class="zixun-way">
 					<img src="../../img/yuying.png" />

@@ -100,19 +100,22 @@
 								   				res['list'][i]['avat'] = config.imgser+rs[res['list'][i]['name']];
 								   				avarList.push({
 								   					name:res['list'][i]['name'],
+								   					nickname:res['list'][i]['name'],
 								   					avar:config.imgser+rs[res['list'][i]['name']]
 								   				})
 								   			}else{
 								   				res['list'][i]['avat'] = '../../img/widgets_02_19.png';
 								   				avarList.push({
 								   					name:res['list'][i]['name'],
+								   					nickname:res['list'][i]['name'],
 								   					avar:'../../img/widgets_02_19.png'
 								   				})
 								   				
 								   			}
 								   			
 								   		}
-//								   		log(avarList)
+								   		log(rs)
+								   		log(avarList)
 								   		var widgets = template('friend_list', res);
 //					                  	console.log(widgets) 
 		            						$('.container').append(widgets);
