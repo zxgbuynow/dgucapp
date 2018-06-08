@@ -77,14 +77,15 @@
 			height: 100%;
 		}
 		#swiper_news{
-			height: 20px;
-			line-height: 20px;
+			height: 26px;
+			line-height: 26px;
 		}
-		.business-news{padding:8px 0;border-top:1px solid #eee;border-bottom:1px solid #eee;position: relative;background: #fff;box-sizing: border-box;}
+		.business-news{padding:7px 0;border-bottom:1px solid #eee;position: relative;background: #fff;box-sizing: border-box;margin-bottom: 0.6rem;}
 		/*.business-news-title{width: 50px;height:20px;border-right:1px solid #d9d9d9;background-image: url(../images/faxian_icon2.png);background-repeat: no-repeat; background-size: 30px; background-position:center;}*/
 		/*.business-news-title img{width: 100%;}*/
 		/*.business-news-title{font-size:16px;font-weight:bold;color:#777;text-align: right;width: 48px;}*/
 		.business-news-title{width: 30px;margin-left: 10px;}
+		.business-news-title img{vertical-align: middle;}
 		.business-news-content{height:20px;overflow: hidden;}
 		.business-news-icon{width: 34px!important;height:20px;text-align: center;line-height: 20px;font-size: 16px;color:#ff974b;}
 		.business-news-box{position: absolute;top: 0;left: 0;width: 100%;}
@@ -109,10 +110,6 @@
 		    perspective: 1200px
 		}
 
-		.swiper-wrapper {
-		    margin-top: 10px
-		}
-
 		.swiper-slide.swiper-slide-custom {
 		    width: 80%;
 		    background: transparent;
@@ -129,11 +126,7 @@
 		    margin: 0 auto;
 		    display: block
 		}
-		.swiper-wrapper-new .swiper-container{
-			height: 10rem;
-			padding-top: 2rem;
-			padding-bottom: 1rem;
-		}
+
 		.swiper-wrapper-new .swiper-wrapper{
 			height: 100%;
 			margin: 0;
@@ -141,11 +134,10 @@
 		.swiper-wrapper-new .swiper-pagination-custom{
 			top: 0;
 		}
-		.swiper-wrapper-new .swiper-pagination-bullet-active{
-			background: #4ecfc6;
-		}
+		
 		.container{
 			margin-bottom: 50px;
+			padding-top: 0;
 		}
 		.more-link{
 			color:#2B343A!important;
@@ -156,10 +148,6 @@
         -moz-perspective: 1200px;
         -ms-perspective: 1200px;
         perspective: 1200px
-    }
-
-    .swiper-wrapper {
-        margin-top: 10px
     }
 
     .swiper-slide.swiper-slide-custom {
@@ -180,7 +168,7 @@
     }
 
     .swiper-wrapper-new .swiper-container {
-        height: 10rem;
+        height: 12rem;
         padding-top: 2rem;
         padding-bottom: 1rem;
     }
@@ -196,6 +184,10 @@
 
     .swiper-wrapper-new .swiper-pagination-bullet-active {
         background: #4ecfc6;
+    }
+    .swiper-pagination-bullet{
+    	width: 6px;
+    	height: 6px;
     }
 
     .swiper-wrapper-new .slide-text {
@@ -216,10 +208,35 @@
         border-bottom-left-radius: 12px;
         border-bottom-right-radius: 12px;
         box-shadow: 0px -6px 15px #759791;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     .swiper-pagination{
     		z-index:-1;
     }
+    .mui-table-view-chevron .mui-badge{
+    	color: #e60012;
+    	border: 1px solid #e60012;
+    	background: transparent;
+    	border-radius: 20px;
+	    padding: 2px 3px;
+    }
+    .widgets-cate {
+    	margin-bottom: 0rem;
+    }
+    #slider {
+    	height: 13.5rem;
+    }
+    #slider .widgets-slider{
+    	height: 100%;
+    }
+    #slider .mui-slider .mui-slider-group{
+    	height: 100%;
+    }
+	.mui-slider .mui-slider-group .mui-slider-item > a:not(.mui-control-item) {
+    	height: 100%;
+    }
+
     </style>
   </head>
   <body>
@@ -383,6 +400,7 @@
           <!-- </div>
         </div>
       </div> -->
+
     </div>
     <nav class="mui-bar bbc-bar-tab" >
 	      <a class="bbc-tab-item bbc-active" >
@@ -459,7 +477,7 @@
         </div>
     </script>
     <script type="text/html" id="widget_nav">
-		<section class="widgets-category-nav section-white">
+		<section class="widgets-category-nav section-white widgets-cate">
 	        <ul class="widgets-icons-nav">
 	        	<!--<li class="action-webview" data-webview="_www/view/artical/tlist.html" ><i><a href="#"><img src="../img/widgets_02_07.png"></a></i><span>心理测试</li>-->
 	        		<li class="action-webview"  data-webview="_www/view/artical/list.html" data-webparam='{"cat_id":18}' ><i><a href="#"><img src="../img/xiaolv.png"></a></i><span>高效课程</li>
@@ -548,29 +566,25 @@
     <script type="text/html" id="widget_article">
         <section>  
             <!--文章 start-->
-		      <section class="widgets-category-nav section-white">
+    		<section class="widgets-category-nav section-white swiper-wrapper-new">
 		        <div class="section-title">
 		          <div class="title-txt">好文推荐</div>
-		          <div class="more-link action-webview" data-webview="_www/view/artical/cate.html">更多</div>
+			      <div class="more-link action-webview"  data-webview="_www/view/artical/list.html" data-webparam='{"cat_id":19}'>更多</div>
 		        </div>
-		        <div class="mui-table-view">
-		          <ul class="mui-table-view mui-table-view-chevron">
-		          	<% for(var i=0; i<list.length; i++) { %>
-					<li class="mui-table-view-cell mui-media action-webview" data-webview="_www/view/artical/detail.html" data-webparam = '{"article_id":<%= list[i].id %>}'>
-						<a class="mui-navigate-right">
-							<img class="mui-media-object mui-pull-left mui-media-object-article" src="<%= $add_server(list[i].cover) %>">
-							<div class="mui-media-body">
-								<%= list[i].title %>
-								<p class='mui-ellipsis mui-media-text'><%= list[i].keywords %></p>
-								<p class="mui-ellipsis mui-media-text mui-media-author mui-hidden">作者：<%= list[i].author %></p>
-							</div>
-						</a>
-					</li>
-					 <% } %>
-				  </ul>		
-		        </div>
-		      </section>
-		      <!--文章 end-->
+			    <div class="swiper-container swiper-container3">
+				    <div class="swiper-wrapper">
+				    		<% for(var i=0; i<list.length; i++) { %>
+					    		<div class="swiper-slide swiper-slide-custom action-webview" >
+					    			<a class="action-webview" data-webview="_www/view/artical/detail.html" data-webparam = '{"article_id":<%= list[i].id %>}'>
+					    				<img src="<%= $add_server(list[i]['cover'])%>" class="main-img "/>
+					    			</a>
+					    			<p class="slide-text"><%= list[i].keywords %></p>
+					    		</div>
+					    <%}%>
+			        </div>
+		        	<div class="swiper-pagination swiper-pagination-custom"></div>
+			    </div>
+			</section>
         </section>  
     </script>
     <script type="text/html" id="widget_recommend">
@@ -612,7 +626,7 @@
       mui.init({
         swipeBack: true //启用右滑关闭功能
       });
-
+      
 //  var mySwiper = new Swiper(".swiper-container5", {
 //	slidesPerView: "auto",
 //	centeredSlides: true,
@@ -691,9 +705,11 @@
 						log(rs)
 			        		var widgets = template('class_list', rs);
 			            $('.container').append(widgets);
-			            	var mySwiper = new Swiper('.swiper-container1', {
-				        		slidesPerView: 1.8,
-				        		spaceBetween: 1,
+			            var mySwiper = new Swiper('.swiper-container1', {
+			        		slidesPerView: 1.5,
+			        		spaceBetween: 1,
+			        		centeredSlides: true,
+			        		initialSlide: 1,
 							speed:500,
 							pagination: '.swiper-pagination-custom',
 						})
@@ -704,13 +720,15 @@
 				            'ismobile':0
 				       }
 				        $.dataRequest(aparam3, function(rs) {
-				        		var widgets = template('active_list', rs);
+				        	var widgets = template('active_list', rs);
 				            $('.container').append(widgets);
-				            	var mySwiper = new Swiper('.swiper-container2', {
-					        		slidesPerView: 1.8,
+				            var mySwiper = new Swiper('.swiper-container2', {
+					        		slidesPerView: 1.5,
 					        		spaceBetween: 1,
-								speed:500,
-								pagination: '.swiper-pagination-custom',
+					        		centeredSlides: true,
+					        		initialSlide: 1,
+									speed:500,
+									pagination: '.swiper-pagination-custom',
 							})
 				            	 //article
 					        var aparam4 = {
@@ -726,8 +744,16 @@
 						        }
 					        }
 					        $.dataRequest(aparam4, function(rs) {
-					        		var widgets = template('widget_article', rs);
+					        	var widgets = template('widget_article', rs);
 					            $('.container').append(widgets);
+				            	var mySwiper = new Swiper('.swiper-container3', {
+					        		slidesPerView: 1.5,
+					        		spaceBetween: 1,
+					        		centeredSlides: true,
+					        		initialSlide: 1,
+									speed:500,
+									pagination: '.swiper-pagination-custom',
+								})
 					            	 //
 		//			            	 console.log(widgets)
 					             mui('.mui-scroll-wrapper').scroll({
