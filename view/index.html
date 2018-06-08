@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/widgets.css" />
     <link rel="stylesheet" href="../css/swiper.min.css" />
-    <link rel="stylesheet" href="../css/moon-style.css" />
+    <!--<link rel="stylesheet" href="../css/moon-style.css" />-->
     <style>
     		.main{
     			margin-right: 10px;
@@ -42,7 +42,10 @@
 		    }
     		.mui-table-view .mui-media-object{
 		    max-width: 72px; 
-    			height: 72px;
+    			height: 72px; 
+    		}
+    		.mui-media-object-article{
+    			max-width: 90px!important; 
     		}
     		.mui-media-text {
     			color: #646464;
@@ -96,7 +99,7 @@
 	      	width: 80% !important;
 	      }
 	      .swiper-slide-class img{
-	      	height: 150px;
+	      	height: 120px;
 	      }
 	      .swiper-container {
 		    width: 100%;
@@ -120,7 +123,7 @@
 		}
 
 		.swiper-slide .main-img {
-		    width: 90%;
+		    width: 80%;
 		    height: 100%;
 		    border-radius: 12px;
 		    margin: 0 auto;
@@ -144,9 +147,81 @@
 		.container{
 			margin-bottom: 50px;
 		}
+		.more-link{
+			color:#2B343A!important;
+		}
+		.swiper-container {
+        width: 100%;
+        -webkit-perspective: 1200px;
+        -moz-perspective: 1200px;
+        -ms-perspective: 1200px;
+        perspective: 1200px
+    }
+
+    .swiper-wrapper {
+        margin-top: 10px
+    }
+
+    .swiper-slide.swiper-slide-custom {
+        width: 80%;
+        background: transparent;
+        -webkit-transform-style: preserve-3d;
+        -moz-transform-style: preserve-3d;
+        -ms-transform-style: preserve-3d;
+        transform-style: preserve-3d
+    }
+
+    .swiper-slide .main-img {
+        width: 90%;
+        height: 100%;
+        border-radius: 12px;
+        margin: 0 auto;
+        display: block
+    }
+
+    .swiper-wrapper-new .swiper-container {
+        height: 10rem;
+        padding-top: 2rem;
+        padding-bottom: 1rem;
+    }
+
+    .swiper-wrapper-new .swiper-wrapper {
+        height: 100%;
+        margin: 0;
+    }
+
+    .swiper-wrapper-new .swiper-pagination-custom {
+        top: 0;
+    }
+
+    .swiper-wrapper-new .swiper-pagination-bullet-active {
+        background: #4ecfc6;
+    }
+
+    .swiper-wrapper-new .slide-text {
+        text-align: center;
+        font-size: 14px;
+        color: #FFFFFF;
+        background: #759791;
+        opacity: 0.8;
+        height: 2rem;
+        width: 90%;
+        margin: 0 auto;
+        line-height: 2rem;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 2;
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+        box-shadow: 0px -6px 15px #759791;
+    }
+    .swiper-pagination{
+    		z-index:-1;
+    }
     </style>
   </head>
-
   <body>
     <header class="home-header">
       <!--<div class="header-logo"><img src="../img/daguan.png"></div>--> 
@@ -162,6 +237,24 @@
       <a href="#" class="txt-func search-cancel" style="display:none;">取消</a>
     </header>
     <div class="container">
+    	<!--<section class="widgets-category-nav section-white">
+	        <div class="section-title">
+	          <div class="title-txt">课程</div>
+	          <div class="more-link action-webview" data-webview="_www/view/category/category.html">更多</div>
+	        </div>
+	        <div class="mui-table-view">
+	          	<div class="swiper-container1">
+				  <div class="swiper-wrapper">
+
+				    <div class="swiper-slide swiper-slide-class ">
+				    		<a class="action-webview"  data-webview="_www/view/artical/ad.html" data-webparam='{"link":"<%= pic[m].link%>"}'><img src="../img/goods_detail_img_02.jpg" style="height: 150px;"/></a>
+				    </div>
+
+				  </div>
+				</div>
+	        </div>
+      	</section>
+      	
       <!-- <div class="mui-scroll-wrapper bbc-pullrefresh-top">
         <div class="mui-scroll">
           <div class="mui-content content-bottom-padded-nav"> -->
@@ -272,17 +365,17 @@
 		      <!--文章 end-->
 		    <!--<section class="widgets-category-nav section-white swiper-wrapper-new">
 		        <div class="section-title">
-		          <div class="title-txt">好文推荐</div>
+		          <div class="title-txt">活动</div>
 			      <div class="more-link action-webview" data-webview="_www/view/category/category.html">更多</div>
 		        </div>
 			    <div class="swiper-container swiper-container5">
 				    <div class="swiper-wrapper">
-			            <div class="swiper-slide swiper-slide-custom"><img src="../img/widgets_49.gif" class="main-img"></div>
-			            <div class="swiper-slide swiper-slide-custom"><img src="../img/widgets_49.gif" class="main-img"></div>
-			            <div class="swiper-slide swiper-slide-custom"><img src="../img/widgets_41.gif" class="main-img"></div>
-			            <div class="swiper-slide swiper-slide-custom"><img src="../img/widgets_46.gif" class="main-img"></div>
-			            <div class="swiper-slide swiper-slide-custom"><img src="../img/widgets_45.gif" class="main-img"></div>
-			            <div class="swiper-slide swiper-slide-custom"><img src="../img/widgets_50.gif" class="main-img"></div>
+			            <div class="swiper-slide swiper-slide-custom"><img src="../img/widgets_49.gif" class="main-img"><p class="slide-text">让孩子快乐生活的两大金</p></div>
+			            <div class="swiper-slide swiper-slide-custom"><img src="../img/widgets_49.gif" class="main-img"><p class="slide-text">让孩子快乐生活的两大金</p></div>
+			            <div class="swiper-slide swiper-slide-custom"><img src="../img/widgets_41.gif" class="main-img"><p class="slide-text">让孩子快乐生活的两大金</p></div>
+			            <div class="swiper-slide swiper-slide-custom"><img src="../img/widgets_46.gif" class="main-img"><p class="slide-text">让孩子快乐生活的两大金</p></div>
+			            <div class="swiper-slide swiper-slide-custom"><img src="../img/widgets_45.gif" class="main-img"><p class="slide-text">让孩子快乐生活的两大金</p></div>
+			            <div class="swiper-slide swiper-slide-custom"><img src="../img/widgets_50.gif" class="main-img"><p class="slide-text">让孩子快乐生活的两大金</p></div>
 			        </div>
 		        	<div class="swiper-pagination swiper-pagination-custom"></div>
 			    </div>
@@ -291,29 +384,42 @@
         </div>
       </div> -->
     </div>
-    
-    <nav class="mui-bar bbc-bar-tab">
+    <nav class="mui-bar bbc-bar-tab" >
+	      <a class="bbc-tab-item bbc-active" >
+	        <span class="mui-icon bbc-icon bbc-icon-home"></span>
+	        <span class="mui-tab-label">首页</span>
+	      </a>
+	      <a class="bbc-tab-item" data-webview="_www/view/counsellor/index.html">
+	        <span class="mui-icon bbc-icon bbc-icon-list"></span>
+	        <span class="mui-tab-label">咨询</span>
+	      </a>
+	      <a class="bbc-tab-item " data-webview="_www/view/msg/index.html">
+	        <span class="mui-icon bbc-icon bbc-icon-message"></span>
+	        <span class="mui-tab-label">消息</span>
+	      </a>
+	      <a class="bbc-tab-item" data-webview="_www/view/member/member.html">
+	        <span class="mui-icon bbc-icon bbc-icon-user-empty"></span>
+	        <span class="mui-tab-label">我的</span>
+	      </a>
+	   </nav>
+    <!--<nav class="mui-bar bbc-bar-tab">
       <a class="bbc-tab-item bbc-active">
-      	<!-- <span class="mui-icon bbc-icon bbc-icon-home"></span> -->
         <span class="icon-home iconmoon"></span>
         <span class="mui-tab-label">首页</span>
       </a>
       <a class="bbc-tab-item" data-webview="_www/view/counsellor/index.html">
-        <!-- <span class="mui-icon bbc-icon bbc-icon-view"></span> -->
-        <span class="icon-consult iconmoon"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span></span>
+        <span class="icon-consult iconmoon"></span>
         <span class="mui-tab-label">咨询</span>
       </a>
       <a class="bbc-tab-item" data-webview="_www/view/msg/index.html">
-        <!-- <span class="mui-icon bbc-icon bbc-icon-message"></span> -->
-        <span class="icon-message iconmoon"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span>
+        <span class="icon-message iconmoon"></span>
         <span class="mui-tab-label">消息</span>
       </a>
       <a class="bbc-tab-item" data-webview="_www/view/member/member.html">
-        <!-- <span class="mui-icon bbc-icon bbc-icon-user-empty"></span> -->
         <span class="icon-mine iconmoon"></span>
         <span class="mui-tab-label">我的</span>
       </a>
-    </nav>
+    </nav>-->
     <script src="../js/zepto.js"></script>
     <script src="../js/mui.min.js"></script>
     <script src="../js/template.min.js"></script>
@@ -356,7 +462,7 @@
 		<section class="widgets-category-nav section-white">
 	        <ul class="widgets-icons-nav">
 	        	<!--<li class="action-webview" data-webview="_www/view/artical/tlist.html" ><i><a href="#"><img src="../img/widgets_02_07.png"></a></i><span>心理测试</li>-->
-	        		<li class="action-webview"  data-webview="_www/view/artical/ad.html" data-webparam='{"link":"www.baidu.com"}' ><i><a href="#"><img src="../img/xiaolv.png"></a></i><span>高效课程</li>
+	        		<li class="action-webview"  data-webview="_www/view/artical/list.html" data-webparam='{"cat_id":18}' ><i><a href="#"><img src="../img/xiaolv.png"></a></i><span>高效课程</li>
 	        		<!--<li class="action-webview" data-webview="_www/view/artical/list.html" ><i><a href="#"><img src="../img/widgets_02_09.png"></a></i><span>免费课程</li>-->
 	        		<li class="action-webview" data-webview="_www/view/artical/list.html" ><i><a href="#"><img src="../img/readroom.png"></a></i><span>心灵图书室</li>
 	        	<% for(var i=0; i<list.length; i++) { %>
@@ -393,44 +499,50 @@
     	</script>
     	<script type="text/html" id="class_list">
     		<% if(pic){%>
-    		<section class="widgets-category-nav section-white">
+    		<section class="widgets-category-nav section-white swiper-wrapper-new">
 	        <div class="section-title">
 	          <div class="title-txt">课程</div>
-	          <div class="more-link action-webview" data-webview="_www/view/category/category.html">更多</div>
+		      <div class="more-link action-webview" data-webview="_www/view/artical/list.html" data-webparam='{"cat_id":18}'>更多</div>
 	        </div>
-	        <div class="mui-table-view">
-	          	<div class="swiper-container1">
-				  <div class="swiper-wrapper">
-				  	<% for(var m=0; m<pic.length; m++) { %>
-				    <div class="swiper-slide swiper-slide-class ">
-				    		<a class="action-webview"  data-webview="_www/view/artical/ad.html" data-webparam='{"link":"<%= pic[m].link%>"}'><img src="<%= $add_server(pic[m]['cover'])%>" style="height: 150px;"/></a>
-				    </div>
+		    <div class="swiper-container swiper-container1">
+			    <div class="swiper-wrapper">
+			    		<% for(var i=0; i<pic.length; i++) { %>
+				    		<div class="swiper-slide swiper-slide-custom">
+				    			<a class="action-webview" data-webview="<%= pic[i].webview %>" data-webparam='<%= $json_string(pic[i].webparam) %>'>
+				    				<img src="<%= $add_server(pic[i]['cover'])%>" class="main-img"/>
+				    				<p class="slide-text"><%= pic[i].name %></p>
+				    			</a>
+				    			
+				    		</div>
 				    <%}%>
-				  </div>
-				</div>
-	        </div>
-      	</section>
+		       </div> 
+	        	<div class="swiper-pagination swiper-pagination-custom"></div>
+		    </div>
+		</section>
+		
       	<%}%>
     	</script>
     	<script type="text/html" id="active_list">
     		<% if(pic){%>
-    		<section class="widgets-category-nav section-white">
+    		<section class="widgets-category-nav section-white swiper-wrapper-new">
 	        <div class="section-title">
 	          <div class="title-txt">活动</div>
-	          <div class="more-link action-webview" data-webview="_www/view/category/category.html">更多</div>
+		      <div class="more-link action-webview"  data-webview="_www/view/artical/list.html" data-webparam='{"cat_id":19}'>更多</div>
 	        </div>
-	        <div class="mui-table-view">
-	          	<div class="swiper-container2">
-				  <div class="swiper-wrapper">
-				  	<% for(var m=0; m<pic.length; m++) { %>
-				    <div class="swiper-slide swiper-slide-class">
-				    		<a class="action-webview"  data-webview="_www/view/artical/ad.html" data-webparam='{"linkadr":<%= pic[m].link %>}'><img src="<%= $add_server(pic[m]['cover'])%>" style="height: 150px;"/></a>
-				    </div>
+		    <div class="swiper-container swiper-container2">
+			    <div class="swiper-wrapper">
+			    		<% for(var i=0; i<pic.length; i++) { %>
+				    		<div class="swiper-slide swiper-slide-custom action-webview" >
+				    			<a class="action-webview" data-webview="<%= pic[i].webview %>" data-webparam='<%= $json_string(pic[i].webparam) %>'>
+				    				<img src="<%= $add_server(pic[i]['cover'])%>" class="main-img "/>
+				    			</a>
+				    			<p class="slide-text"><%= pic[i].name %></p>
+				    		</div>
 				    <%}%>
-				  </div>
-				</div>
-	        </div>
-      	</section>
+		        </div>
+	        	<div class="swiper-pagination swiper-pagination-custom"></div>
+		    </div>
+		</section>
       	<%}%>
     	</script>
     <script type="text/html" id="widget_article">
@@ -446,11 +558,11 @@
 		          	<% for(var i=0; i<list.length; i++) { %>
 					<li class="mui-table-view-cell mui-media action-webview" data-webview="_www/view/artical/detail.html" data-webparam = '{"article_id":<%= list[i].id %>}'>
 						<a class="mui-navigate-right">
-							<img class="mui-media-object mui-pull-left" src="<%= $add_server(list[i].cover) %>">
+							<img class="mui-media-object mui-pull-left mui-media-object-article" src="<%= $add_server(list[i].cover) %>">
 							<div class="mui-media-body">
 								<%= list[i].title %>
-								<p class='mui-ellipsis mui-media-text'><%= list[i].description %></p>
-								<p class="mui-ellipsis mui-media-text mui-media-author">作者：<%= list[i].author %></p>
+								<p class='mui-ellipsis mui-media-text'><%= list[i].keywords %></p>
+								<p class="mui-ellipsis mui-media-text mui-media-author mui-hidden">作者：<%= list[i].author %></p>
 							</div>
 						</a>
 					</li>
@@ -484,7 +596,7 @@
 									<span class="mui-text-left"><%= list[i].nickname %></span>
 									<span class="mui-text-right mui-media-action float-right mui-hidden">立即预约</span>
 								</p>
-								<p class='mui-ellipsis mui-media-text'><%= list[i].employment %>|<%= list[i].sign %></p>
+								<p class='mui-ellipsis mui-media-text'><%if(list[i].tearch){%>大观讲师 |<%}%><%if(list[i].leader){%>大观Leader<%}%>|<%= list[i].sign %></p>
 								<p class="mui-ellipsis mui-media-text mui-media-author">我在大观心理温暖过<%= list[i].trade %>人次</p>
 								<p class="mui-detail">详情</p>
 							</div>
@@ -504,6 +616,7 @@
 //  var mySwiper = new Swiper(".swiper-container5", {
 //	slidesPerView: "auto",
 //	centeredSlides: true,
+//	slidesPerView: 1.8,
 //	pagination: '.swiper-pagination-custom',
 //});
   
@@ -571,42 +684,48 @@
 				    //课程
 				    var aparam = {
 			            'method': config.apimethod.classList,
-			            'source':config.source
+			            'source':config.source,
+			            'ismobile':0
 			        }
 			        $.dataRequest(aparam, function(rs) {
+						log(rs)
 			        		var widgets = template('class_list', rs);
 			            $('.container').append(widgets);
 			            	var mySwiper = new Swiper('.swiper-container1', {
-				        		slidesPerView: 1,
-				        		spaceBetween: 30,
+				        		slidesPerView: 1.8,
+				        		spaceBetween: 1,
 							speed:500,
+							pagination: '.swiper-pagination-custom',
 						})
 			            	//课程
-					    var aparam = {
+					    var aparam3 = {
 				            'method': config.apimethod.activeList,
-				            'source':config.source
-				        }
-				        $.dataRequest(aparam, function(rs) {
+				            'source':config.source,
+				            'ismobile':0
+				       }
+				        $.dataRequest(aparam3, function(rs) {
 				        		var widgets = template('active_list', rs);
 				            $('.container').append(widgets);
 				            	var mySwiper = new Swiper('.swiper-container2', {
-					        		slidesPerView: 1,
-					        		spaceBetween: 30,
+					        		slidesPerView: 1.8,
+					        		spaceBetween: 1,
 								speed:500,
+								pagination: '.swiper-pagination-custom',
 							})
 				            	 //article
-					        var aparam = {
+					        var aparam4 = {
 					            'method': config.apimethod.article,
 					            'source':config.source
 					        }
-					        if(app.getState()){
-					        		var aparam = {
+
+					        if(app.getState().token!=undefined){
+					        		var aparam4 = {
 						            'method': config.apimethod.article,
 						            'account':app.getState().token,
 						            'source':config.source
 						        }
 					        }
-					        $.dataRequest(aparam, function(rs) {
+					        $.dataRequest(aparam4, function(rs) {
 					        		var widgets = template('widget_article', rs);
 					            $('.container').append(widgets);
 					            	 //
@@ -615,25 +734,25 @@
 						          indicators: false
 						        });
 						        //recommond
-						        var aparam = {
+						        var aparam2 = {
 						            'method': config.apimethod.recommend,
 						            'source':config.source
 						        }
-						        if(app.getState()){
-						        		var aparam = {
+						        if(app.getState().token!=undefined){
+						        		var aparam2 = {
 							            'method': config.apimethod.recommend,
 							            'account':app.getState().token,
 							            'source':config.source
 							        }
 						        }
-						        $.dataRequest(aparam, function(rt) {
+						        $.dataRequest(aparam2, function(rt) {
 						        		for (var i in rt['list']) {
 						        			if(rt['list'][i].avar==''){
 						        				rt['list'][i].avar = 'static/admin/img/none.png';
 						        			}
 						        		}
 						        		var widgets = template('widget_recommend', rt);
-						            $('.mui-content').append(widgets);
+						            $('.container').append(widgets);
 						            	 // 
 						             mui('.mui-scroll-wrapper').scroll({
 							          indicators: false

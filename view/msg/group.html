@@ -94,20 +94,29 @@
 								          'source':config.source
 								   }
 								   $.dataRequest(param, function(rs) {
+								   		log(rs)
 								   		var avarList = [];
 								   		for (var i in res['list']) {
 								   			if(rs[res['list'][i]['name']]){
-								   				res['list'][i]['avat'] = config.imgser+rs[res['list'][i]['name']];
+								   				if(rs[res['list'][i]['name']]['avar']){
+								   					res['list'][i]['avat'] = config.imgser+rs[res['list'][i]['name']]['avar'];
+								   				}else{
+								   					res['list'][i]['avat'] = '../../img/widgets_02_19.png';
+								   				}
+								   				
+								   				if(rs[res['list'][i]['name']]['nickname']){
+								   					res['list'][i]['nickname'] = rs[res['list'][i]['name']]['nickname'];
+								   				}
 								   				avarList.push({
 								   					name:res['list'][i]['name'],
-								   					nickname:res['list'][i]['name'],
-								   					avar:config.imgser+rs[res['list'][i]['name']]
+//								   					nickname:rs[res['list'][i]['name']]['nickname'],
+								   					avar:config.imgser+rs[res['list'][i]['name']]['avar']
 								   				})
 								   			}else{
 								   				res['list'][i]['avat'] = '../../img/widgets_02_19.png';
 								   				avarList.push({
 								   					name:res['list'][i]['name'],
-								   					nickname:res['list'][i]['name'],
+//								   					nickname:res['list'][i]['name'],
 								   					avar:'../../img/widgets_02_19.png'
 								   				})
 								   				
@@ -115,7 +124,7 @@
 								   			
 								   		}
 								   		log(rs)
-								   		log(avarList)
+								   		log(res)
 								   		var widgets = template('friend_list', res);
 //					                  	console.log(widgets) 
 		            						$('.container').append(widgets);
@@ -124,6 +133,8 @@
 //			                  	var widgets = template('friend_list', res);
 //			                  	console.log(widgets) 
 //          						$('.container').append(widgets);
+			                  }else{
+			                  	$('.container').html('')
 			                  }
 //			                  console.log(JSON.stringify(res))
 			           },

@@ -247,8 +247,8 @@
 		 */
 		var msgInit = {
 		    el: '#msg-list', //消息容器
-		    senderAvatar: '../../img/qq.png',  //发送者头像
-		    receiverAvatar: '../../img/shop.png', //接收者头像
+		    senderAvatar: '../../img/widgets_02_19.png',  //发送者头像
+		    receiverAvatar: '../../img/widgets_02_19.png', //接收者头像
 		}
 		mui.plusReady(function(){
 			var jid = userjid = plus.webview.currentWebview().jid;
@@ -367,13 +367,13 @@
 			   }
 			   $.dataRequest(param, function(rs) {
 			   		var rt = rs.data;
-//			   		console.log(JSON.stringify(rs))
-			   		if(rs[state.account]){
-			   			msgInit.senderAvatar = config.imgser+rs[state.account];
+			   		console.log(JSON.stringify(rs))
+			   		if(rs[state.account]['avar']){
+			   			msgInit.senderAvatar = config.imgser+rs[state.account]['avar'];
 			   			log(msgInit.senderAvatar);
 			   		}
-			   		if(rs[usernm]){
-			   			msgInit.receiverAvatar = config.imgser+rs[usernm];
+			   		if(rs[usernm]['avar']){
+			   			msgInit.receiverAvatar = config.imgser+rs[usernm]['avar'];
 			   			log(msgInit.receiverAvatar);
 			   		}
 			   		setTimeout(function(){
@@ -385,11 +385,11 @@
 //						        mui.toast(msg);
 						        // 收到文本消息在页面展示
 						        if(from==usernm){
-						        		msgShow('receiver','text',msg);
+						        		msgShow('receiver','text',msg, rs[usernm]['nickname']);
 						        		msgScrollTop();
 						        }else{
 						        		//TODO 处理缓存
-						        		setMsg('receiver','text',msg);
+						        		setMsg('receiver','text',msg, rs[usernm]['nickname']);
 						        		//处理未读
     									plus.storage.setItem(message.from+"msgbox_"+message.to+'_flag','yes');
 						        }
@@ -430,7 +430,7 @@
 						    msgTextFocus();
 						    if(validateReg.test(msg)){
 						        // 消息展示出来
-						        msgShow('sender','text',msg);
+						        msgShow('sender','text',msg,rs[usernm]['nickname']);
 						        // 发送文本消息到环信服务器
 						        sendPrivateText(msg,usernm);
 	//					        conn.sendPrivateText({
@@ -488,7 +488,7 @@
 			    msgText: mui('#msg-text')[0],
 			    msgSendText: mui('#msg-send-text')[0]
 			}
-			var setMsg = function(who,type,msg){
+			var setMsg = function(who,type,msg,nickname){
 				//查看是否有历史消息
 					msgbox = plus.storage.getItem(state.account+"msgbox_"+usernm);
 //					console.log('-------')
@@ -500,6 +500,7 @@
 						msgbox.push({
 							who:who,
 							type:type,
+							nickname:nickname,
 							body:{
 						        senderAvatar: msgInit.senderAvatar,
 						        receiverAvatar: msgInit.receiverAvatar,
@@ -511,6 +512,7 @@
 						msgbox.push({
 							who:who,
 							type:type,
+							nickname,nickname,
 							body:{
 						        senderAvatar: msgInit.senderAvatar,
 						        receiverAvatar: msgInit.receiverAvatar,
@@ -527,7 +529,7 @@
 			 * @param {Object} type 消息类型,可选参数: {params} 'text','url','img'
 			 * @param {Object} msg ('text'和'url'类型的msg是文字，img类型的msg是img地址)
 			 */
-			var msgShow = function(who,type,msg){
+			var msgShow = function(who,type,msg,nickname){
 //				msgbox = plus.storage.removeItem("msgbox");
 //				msgbox = plus.storage.removeItem("msgbox_"+usernm);
 				
@@ -542,6 +544,7 @@
 						msgbox.push({
 							who:who,
 							type:type,
+							nickname:nickname,
 							body:{
 						        senderAvatar: msgInit.senderAvatar,
 						        receiverAvatar: msgInit.receiverAvatar,
@@ -553,6 +556,7 @@
 						msgbox.push({
 							who:who,
 							type:type,
+							nickname:nickname,
 							body:{
 						        senderAvatar: msgInit.senderAvatar,
 						        receiverAvatar: msgInit.receiverAvatar,

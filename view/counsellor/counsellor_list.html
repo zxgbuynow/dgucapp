@@ -57,16 +57,16 @@
     		<section class="widgets-category-nav section-white">
 		        <div class="mui-table-view">
 		          <ul class="mui-table-view mui-table-view-chevron">
-		          	<% for(var i=0; i<list.length; i++) { %>
+		          	<% for(var i in list) { %>	
 					<li class="mui-table-view-cell mui-media action-webview" data-webview="_www/view/counsellor/detail.html" data-webparam='{"counsellor_id":<%= list[i].memberid %>}'>
 						<a class="mui-navigate-right"> 
 							<img class="mui-media-object mui-pull-left" src="<%= $add_server(list[i].avar) %>">
 							<div class="mui-media-body">
 								<p>
-									<span class="mui-text-left"><%= list[i].nickname %></span>
+									<span class="mui-text-left mui-hidden"><%= list[i].nickname %></span>
 									<span class="mui-text-right mui-media-action float-right mui-hidden">立即预约</span>
 								</p>
-								<p class='mui-ellipsis mui-media-text'><%= list[i].employment %>|<%= list[i].sign %></p>
+								<p class='mui-ellipsis mui-media-text'><%if(list[i].tearch){%>大观讲师 |<%}%><%if(list[i].leader){%>大观Leader<%}%> |<%= list[i].sign %></p>
 								<p class="mui-ellipsis mui-media-text mui-media-author">我在大观心理温暖过<%= list[i].trade %>人次</p>
 							</div>
 						</a>
@@ -80,20 +80,22 @@
     <script>
       mui.plusReady(function() {
         var fw = plus.webview.currentWebview().parent();
-        var cat_id = fw.catid || '';
+        var cat_id = fw.cat_id || '';
         var keyword = fw.keyword || '';
         var shopid = fw.shopid || '';
 		var state = app.getState();
 		getclist();
-		function getclist(){
+		function getclist(){ 
 			var param = {
 	            'method': config.apimethod.counsellorlist,
 	            'cat_id': cat_id,
 	            'source':config.source,
 	            'search_keywords': keyword,
 	            'shopid':shopid
-	       }
+	      }
+			log(param);
 	        $.dataRequest(param, function(rs) {
+			log(rs)
 	        		var widgets = template('counsellor_list', rs);
 	            $('.counsellor-list').append(widgets);
 	            	 // 
@@ -109,8 +111,11 @@
           if(event.detail.search_keywords!=''){
             keyword = event.detail.search_keywords;
           }
+
           cat_id = event.detail.cat_id;
-          $('.goods-list').empty();
+          log(keyword)
+          
+          $('.counsellor-list').empty();
           //获取数据
           getclist();
         });

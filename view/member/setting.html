@@ -104,13 +104,14 @@
       });
 	  var birthday = null;
       var state = app.getState();
+      var data = null;
       var param = {
           'method': config.apimethod.userinfo,
           'account': state.account,
           'source':config.source
       }
       $.dataRequest(param, function(rs) {
-        var data = rs;
+        data = rs;
         document.getElementById('account_info').innerText = data.username;
 //      document.getElementById('username_info').innerText = data.username;
         document.getElementById('nickname_info').innerText = data.nickname;
@@ -233,16 +234,22 @@
 			mui('#forward').popover('hide');
 		};
 		function defaultImg() {
-			if(mui.os.plus){
-				plus.io.resolveLocalFileSystemURL("_doc/head.jpg", function(entry) {
-					var s = entry.fullPath + "?version=" + new Date().getTime();;
-					document.getElementById("head-img").src = s;
-				}, function(e) {
-					document.getElementById("head-img").src = '../../../img/shop_logo.gif';
-				})
-			}else{
-				document.getElementById("head-img").src = '../../../img/shop_logo.gif';
-			}
+			if(data.avar){
+	        		console.log(data.avar)
+	            document.getElementById("head-img").src = config.imgser+data.avar;
+	        }else{
+	            document.getElementById("head-img").src = '../../shop_logo.gif';
+	        }
+//			if(mui.os.plus){
+//				plus.io.resolveLocalFileSystemURL("_doc/head.jpg", function(entry) {
+//					var s = entry.fullPath + "?version=" + new Date().getTime();;
+//					document.getElementById("head-img").src = s;
+//				}, function(e) {
+//					document.getElementById("head-img").src = '../../../img/shop_logo.gif';
+//				})
+//			}else{
+//				document.getElementById("head-img").src = '../../../img/shop_logo.gif';
+//			}
 			
 		}
 		function appendFile(path, em) {
@@ -281,9 +288,9 @@
 	            plus.nativeUI.closeWaiting();
 	               var parent = plus.webview.getWebviewById('_www/view/member/member.html');
 	               parent.reload();
-	               parent.onloaded = function(){
-	                 mui.back();
-	               }
+//	               parent.onloaded = function(){
+//	                 mui.back();
+//	               }
 	        });
 //          mui.setItem(em.id, base64);
 

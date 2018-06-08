@@ -18,7 +18,7 @@ WebIM.config = {
     /*
      * Application AppKey
      */
-    appkey: '1179180408253819#daguan',
+    appkey: '1116180606099961#daguan',
 
     /*
      * Whether to use wss

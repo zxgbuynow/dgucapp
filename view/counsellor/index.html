@@ -9,7 +9,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <link rel="stylesheet" href="../../css/style.css" />
     <link rel="stylesheet" href="../../css/widgets.css" />
-    <link rel="stylesheet" href="../../css/moon-style.css" />
+    <!--<link rel="stylesheet" href="../../css/moon-style.css" />-->
     <style>
     		.main{
     			margin-right: 10px;
@@ -199,33 +199,49 @@
 		</div>
 
 	</div>
-    <nav class="mui-bar bbc-bar-tab">
-      <a class="bbc-tab-item bbc-active">
-      	<!-- <span class="mui-icon bbc-icon bbc-icon-home"></span> -->
+	<nav class="mui-bar bbc-bar-tab" >
+      <a class="bbc-tab-item " data-webview="_www/view/index.html">
+        <span class="mui-icon bbc-icon bbc-icon-home"></span>
+        <span class="mui-tab-label">首页</span>
+      </a>
+      <a class="bbc-tab-item bbc-active" >
+        <span class="mui-icon bbc-icon bbc-icon-list"></span>
+        <span class="mui-tab-label">咨询</span>
+      </a>
+      <a class="bbc-tab-item " data-webview="_www/view/msg/index.html">
+        <span class="mui-icon bbc-icon bbc-icon-message"></span>
+        <span class="mui-tab-label">消息</span>
+      </a>
+      <a class="bbc-tab-item" data-webview="_www/view/member/member.html">
+        <span class="mui-icon bbc-icon bbc-icon-user-empty"></span>
+        <span class="mui-tab-label">我的</span>
+      </a>
+   </nav>
+    <!--<nav class="mui-bar bbc-bar-tab">
+      <a class="bbc-tab-item "  data-webview="_www/view/index.html">
         <span class="icon-home iconmoon"></span>
         <span class="mui-tab-label">首页</span>
       </a>
-      <a class="bbc-tab-item" data-webview="_www/view/counsellor/index.html">
-        <!-- <span class="mui-icon bbc-icon bbc-icon-view"></span> -->
+      <a class="bbc-tab-item bbc-active" >
         <span class="icon-consult iconmoon"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span></span>
         <span class="mui-tab-label">咨询</span>
       </a>
-      <a class="bbc-tab-item" data-webview="_www/view/msg/index.html">
-        <!-- <span class="mui-icon bbc-icon bbc-icon-message"></span> -->
+      <a class="bbc-tab-item " data-webview="_www/view/msg/index.html">
         <span class="icon-message iconmoon"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span>
         <span class="mui-tab-label">消息</span>
       </a>
       <a class="bbc-tab-item" data-webview="_www/view/member/member.html">
-        <!-- <span class="mui-icon bbc-icon bbc-icon-user-empty"></span> -->
         <span class="icon-mine iconmoon"></span>
         <span class="mui-tab-label">我的</span>
       </a>
-    </nav>
+    </nav>-->
     <script src="../../js/zepto.js"></script>
     <script src="../../js/mui.min.js"></script>
     <script src="../../js/template.min.js"></script>
     <script src="../../config.js"></script>
     <script src="../../js/app.js"></script>
+    <script src="../../js/mui.lazyload.js"></script>
+	<script src="../../js/mui.lazyload.img.js"></script>
     <script type="text/html" id="agency_list">
     		<% for(var i in list) { %>	
     			<li class="mui-table-view-cell" ><a class="mui-navigate-right" style="font-size: 12px;" val="<%= list[i].id %>"><%= list[i].title %></a></li>
@@ -268,7 +284,7 @@
 									<span class="mui-text-left"><%= list[i].nickname %></span>
 									<span class="mui-text-right mui-media-action float-right mui-hidden">立即预约</span>
 								</p>
-								<p class='mui-ellipsis mui-media-text'><%= list[i].employment %>|<%= list[i].sign %></p>
+								<p class='mui-ellipsis mui-media-text'><%if(list[i].tearch){%>大观讲师 |<%}%><%if(list[i].leader){%>大观Leader<%}%>|<%= list[i].sign %></p>
 								<p class="mui-ellipsis mui-media-text mui-media-author">我在大观心理温暖过<%= list[i].trade %>人次</p>
 							</div>
 						</a>
@@ -305,10 +321,13 @@
 	        				rt['list'][i].avar = 'static/admin/img/none.png';
 	        			}
 	        		}
-	        		log(rt);
+//	        		log(rt);
 	        		var widgets = template('widget_recommend', rt);
 //	        		console.log(widgets)
 	            $('.mui-content').append(widgets);
+//	            mui(document).imageLazyload({
+//					placeholder: '../../img/60x60.gif'
+//				});
 	            	 // 
 	             mui('.mui-scroll-wrapper').scroll({
 		          indicators: false

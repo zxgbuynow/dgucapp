@@ -126,14 +126,14 @@
 		    	line-height: 3.25rem;
 		    }
 		    .op-group .trade-talk{
-		    	background: #3384ae;
+		    	background: #41ACD9;
 		    }
 		    .op-group .trade-confirm{
-		    	background: #ff0100;
+		    	background: #41B7D9;
 		    	box-shadow: 4px 4px 10px #d84f34;
 		    }
 		    .op-group .trade-date{
-		    	background: #f95b3c;
+		    	background: #41C5D9; 
 		    }
 		    .op-group .op-group-item.col-half:after{
 		    	display: none;
@@ -283,8 +283,12 @@
 		</section>
 		<section class="qualification-block">
 			<div class="section tags">
-				<h3 class="title">从业资质<span class="year"><%= employment %></span></h3>
-				<p class="certification"><span class="tag2"><%= intro %></span></p>
+				<h3 class="title">
+					<span class="year">
+						大观咨询师 | <%if(tearch){%>大观讲师 |<%}%><%if(leader){%>大观Leader<%}%>
+					</span>
+				</h3>
+				<!--<p class="certification"><span class="tag2"><%= intro %></span></p>-->
 				<i class="icon-teacherpage-new ic-stamp"></i>
 			</div>
 			<div class="section">
@@ -306,7 +310,7 @@
 							<% }else if(chartArr[i].chart == 'speechchart'){ %>
 								<img src="../../img/yuyin.png" />
 							<% }else if(chartArr[i].chart == 'videochart'){ %>
-								<img src="../../img/video-new.png" />
+								<img src="../../img/face-new.png" />
 							<% }else{ %>
 								<img src="../../img/video-new.png" />
 							<% } %>
@@ -316,7 +320,7 @@
 			                </p>
 			                <p class="price">
 			                		<% if(chartArr[i].chart == 'facechart'){%>
-			                			<span class="num"><em class="symbol">￥</em><%= chartArr[i].price %></span><span>/小时</span><img src="../../img/meb.png">
+			                			<span class="num"><em class="symbol">￥</em>500</span><span>/小时</span><img src="../../img/meb.png">
 			                		<%}else{%>
 			                    <span class="num"><em class="symbol">￥</em>0</span><span>/小时</span><img src="../../img/meb.png">
 			                    <%}%>
@@ -326,7 +330,7 @@
 				<% } %>	
 				<div class="zixun-desc">
 	                <p>心窝会员： </p>
-	                <p>36.5元，365天，文字语音咨询不限次数</p>
+	                <p>36.5元，365天，文字语音咨询不限次数，<i style="color: red;">视频咨询（7月8日开放）</i></p>
 	            </div>
 	            <div class="mui-content-padded">
 	                <button id="register_next" type="button" class="mui-btn mui-btn-block mui-btn-warning bbc-btn-warning action-webview" data-webview="_www/view/member/updatelv.html">立即注册</button>
@@ -351,12 +355,14 @@
 		<section class="qualification-block desc">
 			<div class="section">
 				<h3 class="title">咨询师介绍</h3>
-				<p class="certifi">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;周力 大观注册心理咨询师，大观讲师，国家二级心理咨询师，小团体leader周力大观注册心理咨询师，大观讲师，国家级心理咨询师，小团体leader</p>
+				<div class="certifi fontS font-gray-20">
+					<%= intro%>
+				</div>
 				<p class="comment-con">
 					<img src="../../img/comment.png">
 				</p>
 			</div>
-		</section>
+	  </section>
   </script>	
   <script>
     mui.plusReady(function() {
@@ -367,10 +373,13 @@
           'source':config.source,
           'id': counsellor_id
       }
-      $.dataRequest(param, function(rs) {
+      log(param);
+      $.dataRequest(param, function(rs) { 
       	log(rs) 
       	counsellor_mobile = rs.mobile;
+      	console.log(rs.avar) 
       	if(!rs.avar){
+      		
       		rs.avar = '../../img/widgets_02_19.png';
       	}
       	var widgets = template('counsellor_info', rs);

@@ -18,6 +18,77 @@
       .swiper-slide img{
       	height="150px"
       }
+      .swiper-container {
+        width: 100%;
+        -webkit-perspective: 1200px;
+        -moz-perspective: 1200px;
+        -ms-perspective: 1200px;
+        perspective: 1200px
+    }
+
+    .swiper-wrapper {
+        margin-top: 10px
+    }
+
+    .swiper-slide.swiper-slide-custom {
+        width: 80%;
+        background: transparent;
+        -webkit-transform-style: preserve-3d;
+        -moz-transform-style: preserve-3d;
+        -ms-transform-style: preserve-3d;
+        transform-style: preserve-3d
+    }
+
+    .swiper-slide .main-img {
+        width: 90%;
+        height: 100%;
+        /*max-height: 150px;*/
+        border-radius: 12px;
+        margin: 0 auto;
+        display: block
+    }
+
+    .swiper-wrapper-new .swiper-container {
+        height: 10rem;
+        padding-top: 2rem;
+        padding-bottom: 1rem;
+    }
+
+    .swiper-wrapper-new .swiper-wrapper {
+        height: 100%;
+        margin: 0;
+    }
+
+    .swiper-wrapper-new .swiper-pagination-custom {
+        top: 0;
+    }
+
+    .swiper-wrapper-new .swiper-pagination-bullet-active {
+        background: #4ecfc6;
+    }
+
+    .swiper-wrapper-new .slide-text {
+        text-align: center;
+        font-size: 14px;
+        color: #FFFFFF;
+        background: #759791;
+        opacity: 0.8;
+        height: 2rem;
+        width: 81%;
+        margin: 0 auto;
+        line-height: 2rem;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 2;
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+        box-shadow: 0px -6px 15px #759791;
+    }
+    .swiper-pagination{
+    		z-index:-1;
+    }
     </style>
   </head>
 
@@ -71,12 +142,27 @@
     <script type="text/html" id="artical_list">
     		<% for(var i=0; i<data.length; i++) { %>
     		<% if(data[i]['list']){%>
-    		<section class="widgets-category-nav section-white">
+    		<section class="widgets-category-nav section-white swiper-wrapper-new">
 	        <div class="section-title">
 	          <div class="title-txt"><%= data[i]['name']%></div>
 	          <div class="more-link action-webview" data-webview="_www/view/artical/list.html" data-webparam='{"cat_id":<%= data[i].cid %>}'><i class="bbc-icon bbc-icon-forward"></i></div>
 	        </div>
-	        <div class="mui-table-view">
+	        <div class="swiper-container swiper-container1">
+			    <div class="swiper-wrapper">
+			    		<% for(var m=0; m<data[i]['list'].length; m++) { %>
+				    		<div class="swiper-slide swiper-slide-custom">
+				    			<a class="action-webview"data-webview="_www/view/artical/detail.html" data-webparam='{"article_id":<%= data[i]["list"][m].id %>}'>
+				    				<img src="<%= $add_server(data[i]['list'][m]['cover'])%>" class="main-img"/>
+				    				<p class="slide-text"><%= data[i]['list'][m]['title']%></p>
+				    			</a>
+				    			
+				    		</div>
+				    <%}%>
+		       </div> 
+	        	<div class="swiper-pagination swiper-pagination-custom"></div>
+		    </div>
+		    
+	        <!--<div class="mui-table-view">
 	          	<div class="swiper-container">
 				  <div class="swiper-wrapper">
 				  	<% for(var m=0; m<data[i]['list'].length; m++) { %>
@@ -86,7 +172,7 @@
 				    <%}%>
 				  </div>
 				</div>
-	        </div>
+	        </div>-->
       	</section>
       	<%}%>
       	<%}%>
@@ -100,15 +186,16 @@
             'source':config.source
 	    }
         $.dataRequest(param, function(rs) {
-//      		log(rs);return;
+        		log(rs);
         		var widgets = template('artical_list', rs);
 //      		console.log(widgets)
             $('.container').append(widgets);
             
             	var mySwiper = new Swiper('.swiper-container', {
-	        		slidesPerView: 1.5,
+	        		slidesPerView: 1.8,
 	        		spaceBetween: 30,
 				speed:500,
+				pagination: '.swiper-pagination-custom',
 			})
         })
         
