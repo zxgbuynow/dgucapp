@@ -6011,8 +6011,7 @@ select:-webkit-autofill {
     text-overflow: ellipsis;
     height: 1.6rem;
     line-height: 1.6rem;
-    text-align: center;
-    padding-left: 1.8rem;
+    text-align: left;
 }
 
 .section-title .more-link {
