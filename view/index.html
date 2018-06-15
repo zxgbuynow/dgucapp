@@ -236,11 +236,108 @@
 	.mui-slider .mui-slider-group .mui-slider-item > a:not(.mui-control-item) {
     	height: 100%;
     }
+    .section-card {
+    	margin: 0.6rem;
+    	padding: 1rem 0.5rem;
+	    border-radius: 10px;
+	    background: #fff;
+    }
+    .card-wrapper {
+    	display: flex;
+    	justify-content: flex-start;
+    }
+	.card-wrapper .small-img {
+		width: 18px;
+    	height: 18px;
+	}
+	.card-wrapper .addr-img {
+		width: 15px;
+		height: 18px;
+	}
+	.card-wrapper .card-item{
+    	
+    }
+    .card-wrapper .card-info {
+    	margin-right: 0.5rem;
+    	margin-top: 0.5rem;
+    	width: 18rem;
+    	text-align: center;
+    	flex: 20% 0 0;
+    }
+    .card-wrapper .card-content {
+    	width: 80%;
+    }
+    .card-wrapper .card-info .card-name {
+    	font-size: 20px;
+    	color: #000;
+    }
+    .card-wrapper .card-addr{
+    	display: flex;
+    	justify-content: flex-start;
+    	align-items: center;
+    	flex-direction: column;
+    	margin: 0.7rem 0;
+    }
 
+    .card-wrapper .card-addr span{
+    	color: #999;
+    	font-size: 13px;
+    }
+    .card-wrapper .card-content .card-title{
+		font-size: 15px;
+		color: #585858;
+    }
+    .card-wrapper .card-content .card-ellispse {
+    	overflow: hidden;
+    	text-overflow: ellipsis;
+    	white-space: nowrap;
+    }
+    .card-wrapper .card-content .card-img {
+    	width: 14rem;
+    	height: 8rem;
+    	margin: 0.8rem 0;
+    }
+    .card-wrapper .card-content .card-img img{
+    	width: 100%;
+    	height: 100%;
+    }
+    .card-wrapper .card-content .card-desc {
+    	color: #585858;
+    	font-size: 12px;
+    	margin-bottom: 1rem;
+	    display: -webkit-box;
+    	-webkit-line-clamp: 3;
+	    -webkit-box-orient: vertical;
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+    }
+    .card-wrapper .card-content .card-desc span{
+    	color: #385a8b;
+    	font-size: 12px;
+    }
+    .card-wrapper .card-content .card-opre {
+    	display: flex;
+    	justify-content: space-around;
+    	align-items: center;
+    }
+    .card-wrapper .card-content .card-opre p{
+    	display: flex;
+    	justify-content: flex-start;
+    	align-items: center;
+    }
+    .card-wrapper .card-content .card-opre p span{
+    	color: #747474;
+    	font-size: 12px;
+    	margin-left: 0.2rem;
+    }
+    .card-wrapper .card-content .card-opre .more{
+    	color: #ff5858;
+    	font-size: 15px;
+    }
     </style>
   </head>
   <body>
-    <header class="home-header">
+    <header class="home-header" style="display: none;">
       <!--<div class="header-logo"><img src="../img/daguan.png"></div>--> 
       <div class="main" style="margin-left: 20px;">
         <form onsubmit="return false;">
@@ -400,7 +497,59 @@
           <!-- </div>
         </div>
       </div> -->
-
+	<section class="widgets-category-nav">
+        <div class="section-title">
+          <div class="title-txt">专家推荐</div>
+          <div class="more-link action-webview" data-webview="_www/view/category/category.html">更多</div>
+        </div>
+        <div class="section-card">
+          <ul class="mui-table-view-chevron">
+			<li class="card-wrapper" data-webview="_www/view/counsellor/detail.html" data-webparam='{"counsellor_id":<%= list[i].memberid %>}'>
+				<div class="card-item card-info">
+					<p class="card-name">陈仙丹</p>
+					<p class="card-addr">
+						<img src="../img/addr.jpg" class="addr-img">
+						<span>中国大陆</span>
+				    </p>
+					<p class="mui-badge mui-badge-danger ">下线</p>
+				</div>
+				<div  class="card-item card-content">
+					<p class="card-title">大观注册心理师 讲师</p>
+					<p class="card-title card-ellispse">两性情爱 | 职场冲突 | 亲自咨询 | 职场冲突</p>
+					<p class="card-img">
+						<img  src="../img/widgets_41.gif">
+					</p>
+					<p class="card-desc"><span>来访者评价：</span>在您这里我哭过、笑过、思考过，收获 了满满的正能量！相信在未来的日子里，您会一直是 我内心的明灯在您这里我哭过、笑过、思考过，收获 了满满的正能量！相信在未来的日子里，您会一直是 我内心的明灯</p>
+					<div class="card-opre">
+						<p>
+							<img  class="small-img" src="../img/heart.jpg">
+							<span>温暖100人</span>
+						</p>
+						<p>
+							<img  class="small-img" src="../img/comment.jpg">
+							<span>90%好评率</span>
+						</p>
+						<p class="more">了解我更多</p>
+					</div>
+				</div>
+				
+				<!-- <a class="mui-navigate-right">
+					<span class="mui-badge mui-badge-danger ">下线</span>
+					<img class="mui-media-object mui-pull-left" src="<%= $add_server(list[i].avar) %>">
+					<div class="mui-media-body">
+						<p>
+							<span class="mui-text-left">fkalsdfjlaskf</span>
+							<span class="mui-text-right mui-media-action float-right mui-hidden">立即预约</span>
+						</p>
+						<p class='mui-ellipsis mui-media-text'>大观讲师></p>
+						<p class="mui-ellipsis mui-media-text mui-media-author">我在大观心理温暖过人次</p>
+						<p class="mui-detail">详情</p>
+					</div>
+				</a> -->
+			</li>
+		  </ul>		
+        </div>
+      </section>
     </div>
     <nav class="mui-bar bbc-bar-tab" >
 	      <a class="bbc-tab-item bbc-active" >
@@ -627,12 +776,13 @@
         swipeBack: true //启用右滑关闭功能
       });
       
-//  var mySwiper = new Swiper(".swiper-container5", {
-//	slidesPerView: "auto",
-//	centeredSlides: true,
-//	slidesPerView: 1.8,
-//	pagination: '.swiper-pagination-custom',
-//});
+//  var swiper = new Swiper('.swiper-container', {
+//     pagination: '.swiper-pagination',
+//     loop: true,
+//     direction: 'vertical',
+//     speed:3500,
+//     autoplay:true
+// });
   
       
 	  //获取数据 
