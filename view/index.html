@@ -16,7 +16,7 @@
     			margin-right: 10px;
     		}
     		header.home-header{
-    			background: -webkit-gradient(linear, 0% 0%, 0% 100%,from(#00C7C9), to(transparent));
+    			background: -webkit-gradient(linear, 0% 0%, 0% 100%,from(transparent), to(transparent));
 			    border-bottom: none;
     		}
     		header .header-left{
@@ -219,13 +219,14 @@
     	border: 1px solid #e60012;
     	background: transparent;
     	border-radius: 20px;
-	    padding: 2px 3px;
+	    padding: 2px 3px; 
     }
     .widgets-cate {
     	margin-bottom: 0rem;
     }
     #slider {
-    	height: 13.5rem;
+    	height: 11.9rem;
+    	margin-bottom ：0.6rem
     }
     #slider .widgets-slider{
     	height: 100%;
@@ -327,7 +328,18 @@
 		        </div>
 		      </div>-->
 		      <!--轮播 end-->
-		      
+		      <!--<section class="widgets-category-nav section-white widgets-cate">
+	 	        <ul class="widgets-icons-nav">
+	 	        		<li class="action-webview"  data-webview="_www/view/artical/list.html" data-webparam='{"cat_id":18}' ><i><a href="#"><img src="../img/xiaolv.png"></a></i><span>高效课程</li>
+	 	        		<li class="action-webview" data-webview="_www/view/artical/list.html" ><i><a href="#"><img src="../img/readroom.png"></a></i><span>心灵图书室</li>
+	 	        			<li class="action-webview" data-webview="_www/view/counsellor/list.html" data-webparam='{"cat_id":16}'><i><a href="#"><img src="http://39.105.4.51:88//uploads/images/20180606/1c4ae79c3708f3b038ba983a83dda770.png"></a></i><span>结婚再婚</li>
+	 	        			<li class="action-webview" data-webview="_www/view/counsellor/list.html" data-webparam='{"cat_id":15}'><i><a href="#"><img src="http://39.105.4.51:88//uploads/images/20180606/537cfb0c26db427d67970242bb10f9b5.png"></a></i><span>心理困扰</li>
+	 	        			<li class="action-webview" data-webview="_www/view/counsellor/list.html" data-webparam='{"cat_id":14}'><i><a href="#"><img src="http://39.105.4.51:88//uploads/images/20180606/e4d3a801e163b36d5ee25fa85847f344.png"></a></i><span>生涯规划</li>
+	 	        			<li class="action-webview" data-webview="_www/view/counsellor/list.html" data-webparam='{"cat_id":12}'><i><a href="#"><img src="http://39.105.4.51:88//uploads/images/20180606/32632e232abd620f6e4d3d3a19fa1b31.png"></a></i><span>学业困境</li>
+	 	        			<li class="action-webview" data-webview="_www/view/counsellor/list.html" data-webparam='{"cat_id":11}'><i><a href="#"><img src="http://39.105.4.51:88//uploads/images/20180607/335b9716725b812c6e3d4e60783b157d.png"></a></i><span>婚姻家庭</li>
+	 	       	<li class="action-webview" data-webview="_www/view/category/category.html" ><i><a href="#"><img src="../img/catemore.png"></a></i><span>更多分类</li>
+	 	        </ul>
+	 	      </section>-->
 		      <!--文章 start-->
 		      <!--<section class="widgets-category-nav section-white">
 		        <div class="section-title">
@@ -489,7 +501,7 @@
 	        		<%}%>	
 	       	<% } %>
 	       	<li class="action-webview" data-webview="_www/view/category/category.html" ><i><a href="#"><img src="../img/catemore.png"></a></i><span>更多分类</li>
-	        </ul>
+	        </ul> 
 	      </section>
 	</script> 
     <script type="text/html" id="widget_msg">
@@ -679,7 +691,7 @@
 	        $.dataRequest(aparam, function(rs) {
 	        		var widgets = template('widget_nav', rs);
 	            $('.container').append(widgets);
-	            
+//	            console.log(widgets)
 	            //article
 		        var aparam = {
 		            'method': config.apimethod.msg,
