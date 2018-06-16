@@ -350,6 +350,60 @@
     	color: #ff5858;
     	font-size: 15px;
     }
+    .widgets-column-section {
+		background: #fff;
+		padding: 0 0.5rem;
+    }
+    .widgets-column-section .column-wraper {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+    }
+    .widgets-column-section .expert-item{
+		margin-right: 0.5rem;
+		flex: 60% 0 0;
+		height: 8rem;
+    	background: url(../img/expert-bg.png) no-repeat;
+    	background-size: 100% 100%;
+    	position: relative;
+    }
+    .widgets-column-section .expert-title{
+    	text-align: left;
+    	position: absolute;
+    	left: 0.2rem;
+    	top: 0.3rem;
+    	font-size: 17px;
+    	color: #000;
+    }
+    .widgets-column-section .artical-wraper{
+    	width: 38%;
+    	height: 8rem;
+    	background: url(../img/article-bg.png) no-repeat;
+    	background-size: 100% 100%;
+    	position: relative;
+    }
+    .widgets-column-section .artical-title{
+    	color: #000;
+    	font-size: 17px;
+    	position: absolute;
+    	left: 0.2rem;
+    	top: 0.3rem;
+    }
+    .widgets-column-section #swiper_artical{
+    	height: 2rem;
+    	line-height: 2rem;
+    	box-sizing: border-box;
+    	position: absolute;
+    	left: 0;
+    	right: 0;
+    	bottom: 0;
+    }
+    .widgets-column-section #swiper_artical .swiper-slide {
+    	background-color: rgba(255,255,255,0.4);
+		color: #000; 
+		font-size: 14px; 
+		text-align: center;
+    }
     </style>
   </head>
   <body>
@@ -367,7 +421,7 @@
       <a href="#" class="txt-func search-cancel" style="display:none;">取消</a>
     </header>
     <div class="container">
-    	<!--<section class="widgets-category-nav section-white">
+    	<section class="widgets-category-nav section-white">
 	        <div class="section-title">
 	          <div class="title-txt">课程</div>
 	          <div class="more-link action-webview" data-webview="_www/view/category/category.html">更多</div>
@@ -385,10 +439,10 @@
 	        </div>
       	</section>
       	
-      <!-- <div class="mui-scroll-wrapper bbc-pullrefresh-top">
+       <div class="mui-scroll-wrapper bbc-pullrefresh-top">
         <div class="mui-scroll">
-          <div class="mui-content content-bottom-padded-nav"> -->
-          	<!--<div class="business-news index-content-item">
+          <div class="mui-content content-bottom-padded-nav"> 
+          	<div class="business-news index-content-item">
 			<div class="business-news-wrap mui-flex ">
 				<div class="business-news-title" id="businessQurey1"><i class="mui-icon mui-icon-chat"></i></div>
 				<div class="business-news-content cell">
@@ -405,8 +459,9 @@
 					</div>
 				</div>
 			</div>
-	    </div>-->
-          	<!--轮播 start-->
+	    </div>
+
+          	<!--轮播 start
           	<!--<div id="slider" class="mui-slider">
 		        <div class="mui-slider-group mui-slider-loop widgets-slider">
 
@@ -513,6 +568,24 @@
           <!-- </div>
         </div>
       </div> -->
+
+      <section class="widgets-column-section">
+        <div class="column-wraper">
+			<div  class="expert-item">
+				<p class="expert-title">找专家</p>
+			</div>
+			<div  class="artical-wraper">
+				<p class="artical-title">文章推荐</p>
+				<div class="swiper-container" id="swiper_artical">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide ">国珍热点国珍热点国珍热点国珍热点国珍热点</div>
+						<div class="swiper-slide ">国珍焦点</div>
+						<div class="swiper-slide ">国珍激情点</div>  
+					</div>
+				</div>				
+			</div>
+        </div>
+      </section>
 	<section class="widgets-category-nav">
         <div class="section-title">
           <div class="title-txt">专家推荐</div>
@@ -549,20 +622,6 @@
 						<p class="more">了解我更多</p>
 					</div>
 				</div>
-				
-				<!-- <a class="mui-navigate-right">
-					<span class="mui-badge mui-badge-danger ">下线</span>
-					<img class="mui-media-object mui-pull-left" src="<%= $add_server(list[i].avar) %>">
-					<div class="mui-media-body">
-						<p>
-							<span class="mui-text-left">fkalsdfjlaskf</span>
-							<span class="mui-text-right mui-media-action float-right mui-hidden">立即预约</span>
-						</p>
-						<p class='mui-ellipsis mui-media-text'>大观讲师></p>
-						<p class="mui-ellipsis mui-media-text mui-media-author">我在大观心理温暖过人次</p>
-						<p class="mui-detail">详情</p>
-					</div>
-				</a> -->
 			</li>
 		  </ul>		
         </div>
@@ -793,13 +852,12 @@
         swipeBack: true //启用右滑关闭功能
       });
       
-//  var swiper = new Swiper('.swiper-container', {
-//     pagination: '.swiper-pagination',
-//     loop: true,
-//     direction: 'vertical',
-//     speed:3500,
-//     autoplay:true
-// });
+ var swiper = new Swiper('#swiper_artical', {
+    loop: true,
+    direction: 'vertical',
+    speed:3500,
+    autoplay:true
+});
   
       
 	  //获取数据 
