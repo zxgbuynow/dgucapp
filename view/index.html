@@ -237,13 +237,180 @@
 	.mui-slider .mui-slider-group .mui-slider-item > a:not(.mui-control-item) {
     	height: 100%;
     }
+    .section-card {
+    	margin: 0.6rem;
+    	padding: 1rem 0.5rem;
+	    border-radius: 10px;
+	    background: #fff;
+    }
+    .card-wrapper {
+    	display: flex;
+    	justify-content: flex-start;
+    }
+	.card-wrapper .small-img {
+		width: 18px;
+    	height: 18px;
+	}
+	.card-wrapper .addr-img {
+		width: 15px;
+		height: 18px;
+	}
+	.card-wrapper .card-item{
+    	
+    }
+    .card-wrapper .card-info {
+    	margin-right: 0.5rem;
+    	margin-top: 0.5rem;
+    	width: 18rem;
+    	text-align: center;
+    	flex: 20% 0 0;
+    }
+    .card-wrapper .card-info .mui-badge {
+	    border-radius: 5px;
+	    padding: 3px;
+    }
+    .card-wrapper .card-info .mui-badge-danger{
+	    color: #9dc8d3;
+		border: 1px solid #d3d3d3;
+		background: transparent;
+    }
+    .card-wrapper .card-info .mui-badge-green{
+    	border: 0;
+	    color: #fff;
+		background: #17e3ff;
+		padding: 3px 4px;
+		
+    }
+    .card-wrapper .card-content {
+    	width: 80%;
+    }
+    .card-wrapper .card-info .card-name {
+    	font-size: 16px;
+    	color: #000;
+    }
+    .card-wrapper .card-addr{
+    	display: flex;
+    	justify-content: flex-start;
+    	align-items: center;
+    	flex-direction: column;
+    	margin: 0.7rem 0;
+    }
 
+    .card-wrapper .card-addr span{
+    	color: #999;
+    	font-size: 13px;
+    }
+    .card-wrapper .card-content .card-title{
+		font-size: 15px;
+		color: #585858;
+    }
+    .card-wrapper .card-content .card-ellispse {
+    	overflow: hidden;
+    	text-overflow: ellipsis;
+    	white-space: nowrap;
+    }
+    .card-wrapper .card-content .card-img {
+    	width: 14rem;
+    	height: 8rem;
+    	margin: 0.8rem 0;
+    }
+    .card-wrapper .card-content .card-img img{
+    	width: 100%;
+    	height: 100%;
+    }
+    .card-wrapper .card-content .card-desc {
+    	color: #585858;
+    	font-size: 12px;
+    	margin-bottom: 1rem;
+	    display: -webkit-box;
+    	-webkit-line-clamp: 3;
+	    -webkit-box-orient: vertical;
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+    }
+    .card-wrapper .card-content .card-desc span{
+    	color: #385a8b;
+    	font-size: 12px;
+    }
+    .card-wrapper .card-content .card-opre {
+    	display: flex;
+    	justify-content: space-around;
+    	align-items: center;
+    }
+    .card-wrapper .card-content .card-opre p{
+    	display: flex;
+    	justify-content: flex-start;
+    	align-items: center;
+    }
+    .card-wrapper .card-content .card-opre p span{
+    	color: #747474;
+    	font-size: 12px;
+    	margin-left: 0.2rem;
+    }
+    .card-wrapper .card-content .card-opre .more{
+    	color: #ff5858;
+    	font-size: 15px;
+    }
+    .widgets-column-section {
+		background: #fff;
+		padding: 0 0.5rem;
+    }
+    .widgets-column-section .column-wraper {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+    }
+    .widgets-column-section .expert-item{
+		margin-right: 0.5rem;
+		flex: 60% 0 0;
+		height: 8rem;
+    	background: url(../img/expert-bg.png) no-repeat;
+    	background-size: 100% 100%;
+    	position: relative;
+    }
+    .widgets-column-section .expert-title{
+    	text-align: left;
+    	position: absolute;
+    	left: 0.2rem;
+    	top: 0.3rem;
+    	font-size: 17px;
+    	color: #000;
+    }
+    .widgets-column-section .artical-wraper{
+    	width: 38%;
+    	height: 8rem;
+    	background: url(../img/article-bg.png) no-repeat;
+    	background-size: 100% 100%;
+    	position: relative;
+    }
+    .widgets-column-section .artical-title{
+    	color: #000;
+    	font-size: 17px;
+    	position: absolute;
+    	left: 0.2rem;
+    	top: 0.3rem;
+    }
+    .widgets-column-section #swiper_artical{
+    	height: 2rem;
+    	line-height: 2rem;
+    	box-sizing: border-box;
+    	position: absolute;
+    	left: 0;
+    	right: 0;
+    	bottom: 0;
+    }
+    .widgets-column-section #swiper_artical .swiper-slide {
+    	background-color: rgba(255,255,255,0.4);
+		color: #000; 
+		font-size: 14px; 
+		text-align: center;
+    }
     </style>
   </head>
   <body>
     <header class="home-header">
-      <!--<div class="header-logo"><img src="../img/daguan.png"></div>--> 
-      <div class="main" style="margin-left: 20px;">
+      <div class="header-logo"><img src="../img/newlogo.png"></div> 
+      <div class="main" >
         <form onsubmit="return false;">
           <div class="mui-input-row header-search-form"><input type="search" onfocus="toSearch(this,'_www/view/artical/list.html')" class="header-search mui-input-clear" placeholder="寻找感兴趣的文章"></div>
         </form>
@@ -255,7 +422,7 @@
       <a href="#" class="txt-func search-cancel" style="display:none;">取消</a>
     </header>
     <div class="container">
-    	<!--<section class="widgets-category-nav section-white">
+    	<!-- <section class="widgets-category-nav section-white">
 	        <div class="section-title">
 	          <div class="title-txt">课程</div>
 	          <div class="more-link action-webview" data-webview="_www/view/category/category.html">更多</div>
@@ -271,12 +438,12 @@
 				  </div>
 				</div>
 	        </div>
-      	</section>
+      	</section> -->
       	
-      <!-- <div class="mui-scroll-wrapper bbc-pullrefresh-top">
+       <!-- <div class="mui-scroll-wrapper bbc-pullrefresh-top">
         <div class="mui-scroll">
-          <div class="mui-content content-bottom-padded-nav"> -->
-          	<!--<div class="business-news index-content-item">
+          <div class="mui-content content-bottom-padded-nav"> 
+          	<div class="business-news index-content-item">
 			<div class="business-news-wrap mui-flex ">
 				<div class="business-news-title" id="businessQurey1"><i class="mui-icon mui-icon-chat"></i></div>
 				<div class="business-news-content cell">
@@ -339,7 +506,7 @@
 	 	        			<li class="action-webview" data-webview="_www/view/counsellor/list.html" data-webparam='{"cat_id":11}'><i><a href="#"><img src="http://39.105.4.51:88//uploads/images/20180607/335b9716725b812c6e3d4e60783b157d.png"></a></i><span>婚姻家庭</li>
 	 	       	<li class="action-webview" data-webview="_www/view/category/category.html" ><i><a href="#"><img src="../img/catemore.png"></a></i><span>更多分类</li>
 	 	        </ul>
-	 	      </section>-->
+	 	      </section>--> 
 		      <!--文章 start-->
 		      <!--<section class="widgets-category-nav section-white">
 		        <div class="section-title">
@@ -413,6 +580,63 @@
         </div>
       </div> -->
 
+      <!--<section class="widgets-column-section">
+        <div class="column-wraper">
+			<div  class="expert-item">
+				<p class="expert-title">找专家</p>
+			</div>
+			<div  class="artical-wraper">
+				<p class="artical-title">文章推荐</p>
+				<div class="swiper-container" id="swiper_artical">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide ">国珍热点国珍热点国珍热点国珍热点国珍热点</div>
+						<div class="swiper-slide ">国珍焦点</div>
+						<div class="swiper-slide ">国珍激情点</div>  
+					</div>
+				</div>				
+			</div>
+        </div>
+      </section>-->
+	<!--<section class="widgets-category-nav">
+        <div class="section-title">
+          <div class="title-txt">专家推荐</div>
+          <div class="more-link action-webview" data-webview="_www/view/category/category.html">更多</div>
+        </div>
+        <div class="section-card">
+          <ul class="mui-table-view-chevron">
+			<li class="card-wrapper" data-webview="_www/view/counsellor/detail.html" data-webparam='{"counsellor_id":<%= list[i].memberid %>}'>
+				<div class="card-item card-info">
+					<p class="card-name">陈仙丹</p>
+					<p class="card-addr">
+						<img src="../img/addr.jpg" class="addr-img">
+						<span>中国大陆</span>
+				    </p>
+					<p class="mui-badge mui-badge-danger ">离线</p>
+					<p class="mui-badge mui-badge-green ">在线</p>
+				</div>
+				<div  class="card-item card-content">
+					<p class="card-title">大观注册心理师 讲师</p>
+					<p class="card-title card-ellispse">两性情爱 | 职场冲突 | 亲自咨询 | 职场冲突</p>
+					<p class="card-img">
+						<img  src="../img/widgets_41.gif">
+					</p>
+					<p class="card-desc"><span>来访者评价：</span>在您这里我哭过、笑过、思考过，收获 了满满的正能量！相信在未来的日子里，您会一直是 我内心的明灯在您这里我哭过、笑过、思考过，收获 了满满的正能量！相信在未来的日子里，您会一直是 我内心的明灯</p>
+					<div class="card-opre">
+						<p>
+							<img  class="small-img" src="../img/heart.jpg">
+							<span>温暖100人</span>
+						</p>
+						<p>
+							<img  class="small-img" src="../img/comment.jpg">
+							<span>90%好评率</span>
+						</p>
+						<p class="more">了解我更多</p>
+					</div>
+				</div>
+			</li>
+		  </ul>		
+        </div>
+      </section>-->
     </div>
     <nav class="mui-bar bbc-bar-tab" >
 	      <a class="bbc-tab-item bbc-active" >
@@ -633,17 +857,85 @@
 		        </div>
 		      </section>
     </script>
-
+	<script type="text/html" id="widget_find">
+		<section class="widgets-column-section">
+	        <div class="column-wraper">
+				<div  class="expert-item  action-webview" data-webview="_www/view/counsellor/index.html">
+					<p class="expert-title">找专家</p>
+				</div>
+				<div  class="artical-wraper">
+					<p class="artical-title action-webview" data-webview="_www/view/artical/index.html">文章推荐</p>
+					<div class="swiper-container" id="swiper_artical">
+						<div class="swiper-wrapper">
+							<% for(var i=0; i<list.length; i++) { %>
+								<div class="swiper-slide  action-webview" data-webview="_www/view/artical/detail.html" data-webparam = '{"article_id":<%= list[i].id %>}'><%= list[i].keywords %></div>
+							 <% } %>
+						</div>
+					</div>				
+				</div>
+	        </div>
+      	</section>
+	</script>
+	<script type="text/html" id="widget_counsellor">
+		<section class="widgets-category-nav">
+	        <div class="section-title">
+	          <div class="title-txt">大观心师</div>
+	          <div class="more-link action-webview" data-webview="_www/view/category/category.html">更多</div>
+	        </div>
+	        <div class="section-card">
+	          <ul class="mui-table-view-chevron">
+	          	<% for(var i=0; i<list.length; i++) { %>
+				<li class="card-wrapper" >
+					<div class="card-item card-info">
+						<p class="card-name"><%= list[i].nickname %></p>
+						<p class="card-addr">
+							<img src="../img/addr.jpg" class="addr-img">
+							<span>中国大陆</span>
+					    </p>
+					    <% if(list[i].online==1 ){%>
+					    		<p class="mui-badge mui-badge-danger ">离线</p>
+							<p class="mui-badge mui-badge-green ">在线</p>
+						<%}else{%>
+							<p class="mui-badge mui-badge-green ">离线</p>
+							<p class="mui-badge mui-badge-danger ">在线</p>
+						<%}%>
+					</div>
+					<div  class="card-item card-content">
+						<p class="card-title"><%if(list[i].tearch){%>大观讲师 |<%}%><%if(list[i].leader){%>大观Leader<%}%></p>
+						<p class="card-title card-ellispse"><%= list[i].sign %></p>
+						<p class="card-img">
+							<img  src="<%= $add_server(list[i].avar) %>">
+						</p>
+						<p class="card-desc mui-hidden"><span>来访者评价：</span>在您这里我哭过、笑过、思考过，收获 了满满的正能量！相信在未来的日子里，您会一直是 我内心的明灯在您这里我哭过、笑过、思考过，收获 了满满的正能量！相信在未来的日子里，您会一直是 我内心的明灯</p>
+						<div class="card-opre">
+							<p>
+								<img  class="small-img" src="../img/heart.jpg">
+								<span>温暖<%= list[i].trade %>人</span>
+							</p>
+							<p>
+								<img  class="small-img mui-hidden" src="../img/comment.jpg">
+								<span class="mui-hidden">90%好评率</span>
+							</p>
+							<p class="more action-webview" data-webview="_www/view/counsellor/detail.html" data-webparam='{"counsellor_id":<%= list[i].memberid %>}'>了解我更多</p>
+						</div>
+					</div>
+				</li>
+				<% } %>
+			  </ul>		
+	        </div>
+	      </section>
+	</script>
+	
     <script type="text/javascript">
       mui.init({
         swipeBack: true //启用右滑关闭功能
       });
       
-//  var mySwiper = new Swiper(".swiper-container5", {
-//	slidesPerView: "auto",
-//	centeredSlides: true,
-//	slidesPerView: 1.8,
-//	pagination: '.swiper-pagination-custom',
+// var swiper = new Swiper('#swiper_artical', {
+//  loop: true,
+//  direction: 'vertical',
+//  speed:3500,
+//  autoplay:true
 //});
   
       
@@ -691,7 +983,6 @@
 	        $.dataRequest(aparam, function(rs) {
 	        		var widgets = template('widget_nav', rs);
 	            $('.container').append(widgets);
-//	            console.log(widgets)
 	            //article
 		        var aparam = {
 		            'method': config.apimethod.msg,
@@ -707,101 +998,83 @@
 				        speed:3500,
 				        autoplay:true
 				    });
-				    //课程
-				    var aparam = {
-			            'method': config.apimethod.classList,
-			            'source':config.source,
-			            'ismobile':0
+				    //找专家
+			        var aparam4 = {
+			            'method': config.apimethod.article,
+			            'source':config.source
 			        }
-			        $.dataRequest(aparam, function(rs) {
-						log(rs)
-			        		var widgets = template('class_list', rs);
+
+			        if(app.getState().token!=undefined){
+			        		var aparam4 = {
+				            'method': config.apimethod.article,
+				            'account':app.getState().token,
+				            'source':config.source
+				        }
+			        }
+			        $.dataRequest(aparam4, function(rs) {
+			        	var widgets = template('widget_find', rs);
 			            $('.container').append(widgets);
-			            var mySwiper = new Swiper('.swiper-container1', {
-			        		slidesPerView: 1.5,
-			        		spaceBetween: 1,
-			        		centeredSlides: true,
-			        		initialSlide: 1,
-							speed:500,
-							pagination: '.swiper-pagination-custom',
-						})
-			            	//课程
-					    var aparam3 = {
-				            'method': config.apimethod.activeList,
+			             var swiper = new Swiper('#swiper_artical', {
+						  loop: true,
+						  direction: 'vertical',
+						  speed:3500,
+						  autoplay:true
+						});
+			            	 //
+//			            	 console.log(widgets)
+			             mui('.mui-scroll-wrapper').scroll({
+				          indicators: false
+				        });
+				        
+				        //课程
+					    var aparam = {
+				            'method': config.apimethod.classList,
 				            'source':config.source,
 				            'ismobile':0
-				       }
-				        $.dataRequest(aparam3, function(rs) {
-				        	var widgets = template('active_list', rs);
+				        }
+				        $.dataRequest(aparam, function(rs) {
+							log(rs)
+				        		var widgets = template('class_list', rs);
 				            $('.container').append(widgets);
-				            var mySwiper = new Swiper('.swiper-container2', {
-					        		slidesPerView: 1.5,
-					        		spaceBetween: 1,
-					        		centeredSlides: true,
-					        		initialSlide: 1,
-									speed:500,
-									pagination: '.swiper-pagination-custom',
+				            var mySwiper = new Swiper('.swiper-container1', {
+				        		slidesPerView: 1.5,
+				        		spaceBetween: 1,
+				        		centeredSlides: true,
+				        		initialSlide: 1,
+								speed:500,
+								pagination: '.swiper-pagination-custom',
 							})
-				            	 //article
-					        var aparam4 = {
-					            'method': config.apimethod.article,
+				            
+				            //专家
+					        var aparam2 = {
+					            'method': config.apimethod.recommend,
 					            'source':config.source
 					        }
-
 					        if(app.getState().token!=undefined){
-					        		var aparam4 = {
-						            'method': config.apimethod.article,
+					        		var aparam2 = {
+						            'method': config.apimethod.recommend,
 						            'account':app.getState().token,
 						            'source':config.source
 						        }
 					        }
-					        $.dataRequest(aparam4, function(rs) {
-					        	var widgets = template('widget_article', rs);
+					        $.dataRequest(aparam2, function(rt) {
+					        	log(rt)
+					        		for (var i in rt['list']) {
+					        			if(rt['list'][i].avar==''){
+					        				rt['list'][i].avar = 'static/admin/img/none.png';
+					        			}
+					        		}
+					        		var widgets = template('widget_counsellor', rt);
 					            $('.container').append(widgets);
-				            	var mySwiper = new Swiper('.swiper-container3', {
-					        		slidesPerView: 1.5,
-					        		spaceBetween: 1,
-					        		centeredSlides: true,
-					        		initialSlide: 1,
-									speed:500,
-									pagination: '.swiper-pagination-custom',
-								})
-					            	 //
-		//			            	 console.log(widgets)
+					            	 // 
 					             mui('.mui-scroll-wrapper').scroll({
 						          indicators: false
 						        });
-						        //recommond
-						        var aparam2 = {
-						            'method': config.apimethod.recommend,
-						            'source':config.source
-						        }
-						        if(app.getState().token!=undefined){
-						        		var aparam2 = {
-							            'method': config.apimethod.recommend,
-							            'account':app.getState().token,
-							            'source':config.source
-							        }
-						        }
-						        $.dataRequest(aparam2, function(rt) {
-						        		for (var i in rt['list']) {
-						        			if(rt['list'][i].avar==''){
-						        				rt['list'][i].avar = 'static/admin/img/none.png';
-						        			}
-						        		}
-						        		var widgets = template('widget_recommend', rt);
-						            $('.container').append(widgets);
-						            	 // 
-						             mui('.mui-scroll-wrapper').scroll({
-							          indicators: false
-							        });
-							     })
-						        
-					        })
-				        }) 
-				        
-			        })
-			       
+						     })
+				        })
+				    
+			       })
+			        
 		        	
 		        })
 	            
@@ -816,7 +1089,7 @@
 	  
 	 
        $('.callmm').on('tap',function(){
-       	plus.device.dial( "10086", false );
+       	plus.device.dial( "4001001355", false );
        })
       $('.bbc-tab-item').on('tap', function() {
         var webview = $(this).data('webview');
