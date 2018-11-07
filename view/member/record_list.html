@@ -276,17 +276,17 @@
 
     <script type="text/html" id="trade_list">
         <% for(var i=0; i<list.length; i++) { %>
-      		<li class="mui-table-view-cell mui-media <%if (list[i].status=='2'||list[i].status=='0'){%>action-webview<% } %>" <%if (list[i].status=='0'){%>data-webview="_www/view/msg/chat.html" data-webparam = '{"jid":"2", "username":"<%= list[i].mobile %>" }' <%}else{%>data-webview="_www/view/member/ondate/evaluate-new.html" data-webparam = '{"c_id":<%= list[i].id %>,"avar":<%= list[i].avar %>,"counsellor":<%= list[i].counsellor %>}' <%}%>
+      		<li class="mui-table-view-cell mui-media <%if (list[i].status=='2'){%>action-webview<% } %>  <%if (list[i].status=='0'){%>godate <% } %> " <%if (list[i].status=='0'){%>data-webview="_www/view/msg/chat.html" data-cid="<%= list[i].id %>" data-webparam = '{"jid":"3", "username":"<%= list[i].mobile %>" }' <%}else{%>data-webview="_www/view/member/ondate/evaluate-new.html" data-webparam = {"c_id":<%= list[i].id %>,"avar":"<%= list[i].avar %>","counsellor":"<%= list[i].counsellor %>"} <%}%>
 	          <div class="box-flex">
               <div class="box-item-flex1">
-  	          	<img class="mui-media-object " src="../../img/activity_ads.jpg">
+  	          	<!--<img class="mui-media-object " src="../../img/activity_ads.jpg">-->
                 <div>
-  	              <p><%= list[i].member%></p>
+  	              <p><%= list[i].counsellor%></p>
   	              <p class="fontS font-gray-60 fonts" >咨询时间：<%= list[i].st%></p>
                 </div>
 	            </div>
 	            <div class="box-item-flex2 content-right deposit-detail-amount">
-                <p class="voice">语音</p>
+                <p class="voice"><%= list[i].chart%></p>
                 <p class="btn-options">
                   <%if (list[i].status=='1'){%><span class="btns font-red">已咨询</span>
                   <% } %>
@@ -313,7 +313,32 @@
         	  'page_no': config.cpage,
           'page_size': config.pagesize
       }
+//      log(param)
         $.tabWithPageRequest(param, 'trade_list', 'scroll1', 'status');
+        mui('#slider').on('tap','.godate',function(){
+        		var webview = $(this).data('webview');
+        		var webparam = $(this).data('webparam');
+        		var cid = $(this).data('cid');
+//      		log(webparam);return false;
+        		plus.nativeUI.confirm( "请选择?", function(e){
+				if(e.index==0){
+					clicked(webview,webparam)
+				}else{ 
+					if(e.index==-1){
+						return false;
+					}
+					//取消预约
+					var param = {
+                          'method': config.apimethod.cancleDate,
+                          'cid': cid,
+                          'source':config.source
+                    }
+                     $.dataRequest(param, function(rs) {
+                     	plus.webview.currentWebview().reload(true)
+                     })
+				}
+			},'',['去咨询','取消预约']);
+        })
       })
     </script>
   </body>

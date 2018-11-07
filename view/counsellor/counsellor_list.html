@@ -63,7 +63,7 @@
 							<img class="mui-media-object mui-pull-left" src="<%= $add_server(list[i].avar) %>">
 							<div class="mui-media-body">
 								<p>
-									<span class="mui-text-left mui-hidden"><%= list[i].nickname %></span>
+									<span class="mui-text-left "><%= list[i].nickname %></span>
 									<span class="mui-text-right mui-media-action float-right mui-hidden">立即预约</span>
 								</p>
 								<p class='mui-ellipsis mui-media-text'><%if(list[i].tearch){%>大观讲师 |<%}%><%if(list[i].leader){%>大观Leader<%}%> |<%= list[i].sign %></p>
@@ -83,6 +83,8 @@
         var cat_id = fw.cat_id || '';
         var keyword = fw.keyword || '';
         var shopid = fw.shopid || '';
+        
+        var sex,online,ondate;
 		var state = app.getState();
 		getclist();
 		function getclist(){ 
@@ -90,8 +92,11 @@
 	            'method': config.apimethod.counsellorlist,
 	            'cat_id': cat_id,
 	            'source':config.source,
-	            'search_keywords': keyword,
-	            'shopid':shopid
+	            'search_keywords': keyword
+//	            'sex': sex,
+//	            'online': online,
+//	            'ondate': ondate,
+//	            'shopid':shopid
 	      }
 			log(param);
 	        $.dataRequest(param, function(rs) {
@@ -108,13 +113,17 @@
         
         
         window.addEventListener('getlist', function(event) {
+        	console.log('here')
+        		mui.toast('here')
           if(event.detail.search_keywords!=''){
             keyword = event.detail.search_keywords;
           }
 
           cat_id = event.detail.cat_id;
-          log(keyword)
-          
+//        sex = event.detail.sex;
+//        shopid = event.detail.shopid;
+//        online = event.detail.online;
+//        ondate = event.detail.ondate;
           $('.counsellor-list').empty();
           //获取数据
           getclist();

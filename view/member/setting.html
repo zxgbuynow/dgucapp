@@ -303,11 +303,13 @@
             var state = app.getState();
 //          var wa = plus.nativeUI.showWaiting();
 //            var parent = plus.webview.currentWebview().opener();
-//            parent.reload(true);
+//            parent.reload(true); 
+			 
               app.setState({});
               conn.close();
 	           setTimeout(function(){
 	            	  clicked('_www/view/passport/login.html');
+//	            	  plus.webview.currentWebview().close()
 
 	            },300)
                

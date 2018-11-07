@@ -44,13 +44,17 @@
 			    font-size: 21px;
 
     		}
+    		.mc-cell-catch{
+    			background-color: #3ab54a !important;
+    			border-radius: 30px;
+    		}
     </style>
   </head>
 
   <body>
     <header class="page-header">
     	  <i class="header-left icon-func bbc-icon bbc-icon-back mui-action-back"></i>
-      <div class="header-title">咨询师当月工作按排</div>
+      <div class="header-title">咨询师当月工作安排</div>
     </header>
     <div class="container" id="container" style="margin-bottom: 50px;"> 
        
@@ -69,15 +73,45 @@
       });
       var counsellor_id = 0;
       var tid
+//    Mc();
+//    var rs = [4];
+//    $(".mc-table-cell").each(function(el){
+//    	var i = el+1;
+//		if(rs.indexOf(i)>-1){
+//			$(this).addClass('mc-cell-catch')
+//		}
+//	});
       mui.plusReady(function() {
-         Mc();
          counsellor_id = plus.webview.currentWebview().counsellor_id;
          tid = plus.webview.currentWebview().tid||0;
+         Mc();
 //       log(plus.webview.currentWebview())
       });
 	  function Mc(){
 		var today = mui.DateUtil.addDate(mui.DateUtil.getToday(),0);
 		var MC = mui("#container").MCalendar({date:today});
+		var state = app.getState();
+	  	var param = {
+            'method': config.apimethod.getCurrentCander,
+            'source':config.source,
+            'account':counsellor_id
+       }
+	  	log(param)
+       $.dataRequest(param, function(rs) {
+				 
+       	if(rs&&rs.length>0){
+					var c = 0;
+	       	$(".mc-table-cell").each(function(el,m){
+						if(!$(m).attr('disabled')){
+							c++;
+						}
+				var i = el+1;
+				if(rs.indexOf(c)>-1){
+					$(this).addClass('mc-cell-catch')
+				} 
+			});
+		}
+       })
 //		$('.mc-table-cell').addEventListener('tap', function() {
 //			mui.toast()
 //		})

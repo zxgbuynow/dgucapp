@@ -70,7 +70,7 @@
   <body>
     <header class="page-header">
           <i class="header-left icon-func bbc-icon bbc-icon-back mui-action-back"></i>
-      <div class="header-title">当前工作按排情况</div>
+      <div class="header-title">当前工作安排情况</div>
     </header>
     <div class="container" id="container"> 
        <!--<section class="mui-keyboards">
@@ -144,7 +144,7 @@
 //        log(plus.webview.currentWebview())
           //时间分段
 //        var times = ['9:00','9:30','10:00','10:30','11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30','17:00','17:30','18:00','18:30','19:00'];
-          var times = ['9:00~10:00','10:00~11:00','11:00~12:00','12:00~13:00','13:00~14:00','14:00~15:00','14:00~15:00','15:00~16:00','16:00~17:00','17:00~18:00','18:00~19:00','19:00~20:00','20:00~21:00'];
+          var times = ['9:00~10:00','10:00~11:00','11:00~12:00','12:00~13:00','13:00~14:00','14:00~15:00','15:00~16:00','16:00~17:00','17:00~18:00','18:00~19:00','19:00~20:00','20:00~21:00'];
           var param = {
               'method': config.apimethod.calendatoday,
               'account': counsellor_id,
@@ -174,7 +174,7 @@
                                   'tid': tid,
                                   'source':config.source
                               }
-                            log(param)
+
                              $.dataRequest(param, function(rs) {
     //                          log(rs);return false;
                                 mui.toast('预约成功')
@@ -190,6 +190,7 @@
     //                              plus.webview.close(preview,'slide-out-bottom');
                                     var ws = plus.webview.currentWebview();
                                     plus.webview.close(ws,'slide-out-bottom');
+//                                  clicked('_www/view/index.html');
                                     },1000);
                              })
                                 
@@ -197,6 +198,12 @@
                         });
                     }
                     
+                })
+            }else{
+            		mui('.container').on('tap','.mui-num-btn',function(){
+                    if(!$(this).hasClass('mui-btn-grey')&&!$(this).hasClass('mui-btn-danger')){
+                    		mui.toast('付款后可预约')
+                    }
                 })
             }
             

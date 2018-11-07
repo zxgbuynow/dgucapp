@@ -74,10 +74,12 @@
           	}
             log(param);
           	$.dataRequest(param, function(rs) {
-          		log(rs)
-//          		setTimeout(function() {
-	              clicked('_www/view/passport/login.html', {}, 'slide-in-bottom')
-//	            }, 1000);
+//        		log(rs)
+		        plus.webview.close('_www/view/passport/register.html', 'none');
+		        clicked('_www/view/passport/login.html', {}, 'slide-in-bottom')
+            		setTimeout(function() {
+				  plus.webview.close('_www/view/passport/verificationsms.html', 'none');
+	            }, 1000);
         		});
         
        });

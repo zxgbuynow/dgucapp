@@ -17,22 +17,42 @@ conn.listen({
     onClosed: function ( message ) {},         //连接关闭回调
     onTextMessage: function ( message ) {
     		console.log(JSON.stringify(message))
-    		mui.toast('new msg')
+//  		mui.toast('new msg')
 //		console.log('-------------111-----------------')
     		//TODO 处理缓存
-    		setImMsg('receiver','text', message.data, message.from, message.to);
+    		var users = [];
+		users.push(message.to);
+//		console.log(message.to)
+		users.push(message.from);
+//		console.log(usernm)
+		var userjoin = users.join(',');
+		log(userjoin);
+	    var param = {
+	          'method': config.apimethod.getAvatar,
+	          'users': userjoin,
+	          'source':config.source
+	   }
+	   $.dataRequest(param, function(rs) {
+	   		var rt = rs.data;
+	   		console.log(JSON.stringify(rs))
+	   		if(rs[message.to]['avar']){
+	   			var senderAvatar = config.imgser+rs[message.from]['avar'];
+//	   			log(msgInit.senderAvatar);
+	   		}
+	   		if(rs[message.from]['avar']){
+	   			var receiverAvatar = config.imgser+rs[message.to]['avar'];
+//	   			log(msgInit.receiverAvatar);
+	   		}
+	    		setImMsg('receiver','text', message.data, message.from, message.to,rs[message.from]['nickname'],senderAvatar,receiverAvatar);
+	    		//处理刷新会话
+	    		if (window.plus) {
+	        		if(plus.webview.currentWebview().id == '_www/view/msg/index.html'){
+					var msgind = plus.webview.getWebviewById('_www/view/msg/index.html');
+					mui.fire(msgind, 'refreshmsglist');
+	        		}
+	        }
+    	})
     		
-    		//处理刷新会话
-    		if (window.plus) {
-//  			mui.toast('falg')
-        		if(plus.webview.currentWebview().id == '_www/view/msg/index.html'){
-//      			plus.webview.currentWebview().reload()
-				var msgind = plus.webview.getWebviewById('_www/view/msg/index.html');
-				mui.fire(msgind, 'refreshmsglist');
-        		}
-//      		log(plus.webview.currentWebview())
-//              		plus.webview.currentWebview().reload()
-        }
     	},    //收到文本消息
     onEmojiMessage: function ( message ) {},   //收到表情消息
     onPictureMessage: function ( message ) {}, //收到图片消息
@@ -168,28 +188,32 @@ var handlePresence = function(e) {
     }
 };
 
-var setImMsg = function(who, type, msg, from, to){
+var setImMsg = function(who, type, msg, from, to, nickname,senderAvatar,receiverAvatar){
 	//查看是否有历史消息
 		var msgbox = plus.storage.getItem(to+"msgbox_"+from);
+		var receiverAvatar = senderAvatar;
+		var senderAvatar = receiverAvatar;
+		var msg = encodemsg(msg).replace(/\n/mg, ''); 
 		//头像
-		var avarlist = plus.storage.getItem("avarList");
-		if(avarlist){
-			avarlist = JSON.parse(avarlist)
-			for (var i in avarlist) {
-				if(avarlist[i]['name']==to){
-					var receiverAvatar = avarlist[i]['avar']||'../../img/widgets_02_19.png';
-				}
-				if(avarlist[i]['name']==from){
-					var senderAvatar = avarlist[i]['avar']||'../../img/widgets_02_19.png';
-				}
-			}
-		}
+//		var avarlist = plus.storage.getItem("avarList");
+//		if(senderAvatar){
+//			avarlist = JSON.parse(avarlist)
+//			for (var i in avarlist) {
+//				if(avarlist[i]['name']==to){
+//					var receiverAvatar = avarlist[i]['avar']||'../../img/widgets_02_19.png';
+//				}
+//				if(avarlist[i]['name']==from){
+//					var senderAvatar = avarlist[i]['avar']||'../../img/widgets_02_19.png';
+//				}
+//			}
+//		}
 
 		if(msgbox){
 			msgbox = objToArrayim(JSON.parse(msgbox));
 			msgbox.push({
 				who:who,
 				type:type,
+				nickname:nickname,
 				body:{
 			        senderAvatar: senderAvatar||'../../img/widgets_02_19.png',
 			        receiverAvatar: receiverAvatar||'../../img/widgets_02_19.png',
@@ -201,6 +225,7 @@ var setImMsg = function(who, type, msg, from, to){
 			msgbox.push({
 				who:who,
 				type:type,
+				nickname:from,
 				body:{
 			        senderAvatar: senderAvatar||'../../img/widgets_02_19.png',
 			        receiverAvatar: receiverAvatar||'../../img/widgets_02_19.png',
@@ -220,4 +245,18 @@ function objToArrayim(array) {
     }
 //  console.log(arr);
     return arr;
+}
+
+function encodemsg(str) {
+    if (!str || str.length === 0) {
+        return '';
+    }
+    var s = '';
+    s = str.replace(/&amp;/g, "&");
+    s = s.replace(/<(?=[^o][^)])/g, "&lt;");
+    s = s.replace(/>/g, "&gt;");
+    s = s.replace(/\"/g, "&quot;");
+    s = s.replace(/\n/g, "<br>");
+    s = s.replace(/&lt;br\/&gt;/g, "");
+    return s;
 }

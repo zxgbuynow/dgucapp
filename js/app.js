@@ -365,7 +365,7 @@ var Currency = {
           users.push(loginInfo);
           localStorage.setItem('$users', JSON.stringify(users));
           
-          return owner.createState(loginInfo.account, data.id, callback);
+          return owner.createState(loginInfo.account, data.id,data.nickname, callback);
         } else {
           return callback(response.msg);
         }
@@ -377,9 +377,10 @@ var Currency = {
     });
   };
 
-  owner.createState = function(name, token, callback) {
+  owner.createState = function(name, token, nickname,callback) {
     var state = owner.getState();
     state.account = name;
+    state.nickname = nickname;
     state.token = token;
     owner.setState(state);
     return callback();
@@ -807,8 +808,11 @@ function preateClear() {
             var self = this;
             setTimeout(function() {
               data.page_no = config.cpage;
-              count = 0
+              count = 1
+              log('down')
+              log(data)
               $.dataRequest(data, function(response) {
+              	log(data)
                 var result = template(renderFor, response.data);
                 $(self.element.firstElementChild).html(result);
               });
@@ -822,14 +826,18 @@ function preateClear() {
             var self = this;
             count++
             data.page_no = count;
+            log('up')
+            log(data)
             $.dataRequest(data, function(response) {
+            	console.log('up data')
+            	log(response) 
               if(!isEmptyObject(response.data) && response.data.pagers.total){
                 var total = Math.ceil(response.data.pagers.total / config.pagesize);
                 if(count > total){
                   self.endPullUpToRefresh(true);
                 }else{
                   var result = template(renderFor, response.data);
-                 
+//               console.log(result)
                   $(self.element.firstElementChild).append(result);
                   
                   self.endPullUpToRefresh();
@@ -1099,7 +1107,25 @@ $(function() {
     }
   });
 });
-
+if(document.getElementById("msg-count")){
+	mui.plusReady(function() {
+		//消息
+       	var state = app.getState();
+	  	var param = {
+            'method': config.apimethod.getUserMsgCount,
+            'source':config.source,
+            'account':state.account
+       }
+       $.dataRequest(param, function(rs) {
+       		if(rs){
+				document.getElementById("msg-count").classList.remove('mui-hidden');
+				document.getElementById("msg-count").innerHTML = rs;
+			}else{
+				document.getElementById("msg-count").classList.add('mui-hidden');
+			}
+       })
+	})
+}
 //document.addEventListener('plusready',backreload);
 //function backreload(){
 //var old_back = mui.back;

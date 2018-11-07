@@ -74,13 +74,16 @@
 
   <body class="body-padding-xs">
     <div class="user-header box">
-      <a id="setting" data-view="_www/view/member/setting.html" class="user-setting bbc-icon bbc-icon-setting action-clickview" style="right: 4rem;"></a>
-      <a id="msg" data-view="_www/view/member/msg.html" class="user-setting bbc-icon bbc-icon-message-gap " ></a>
+      <a id="setting" data-view="_www/view/member/setting.html" class="user-setting bbc-icon bbc-icon-setting action-clickview" ></a>
+      <!-- <a id="msg" data-view="_www/view/member/msg.html" class="user-setting bbc-icon bbc-icon-message-gap mui-hidden" ></a> -->
       
       <div id="user_info" class="user-logined " data-view="_www/view/member/userinfo/userinfo.html">
+      	
+        <img class="mui-hidden start-icon" src="../../img/wdj.png" width="30px" style="z-index: 11;position: absolute;margin: 42px 42px;"/>
+        
         <div class="login-avatar">
         		<!--<i class="bbc-icon bbc-icon-member fontB"></i>-->
-        		<img class="userinfo-avatar" id="head-img" src="" />
+        		<img class="userinfo-avatar" id="head-img" src="" onerror="Javascript:this.src='../../img/newlogo.png' "/>
         </div>
         <div  class="user-accout">您好，<span id="account"></span></div>
         <div><span id="grade_name" class="fontS font-yellow"></span></div>
@@ -98,7 +101,7 @@
         <li data-needlog="true" data-view="_www/view/member/safe/safe.html" class="mui-table-view-cell mui-hidden">
           <a class="mui-navigate-right"><i class="user-icon bbc-icon bbc-icon-password user-safe"></i> 测试管理</a>
         </li>
-        <li data-needlog="true" data-view="_www/view/member/favorite/favorite.html" class="mui-table-view-cell ">
+        <li data-needlog="true" data-view="_www/view/member/clac/index.html" class="mui-table-view-cell action-clickview">
           <a class="mui-navigate-right"><i class="user-icon bbc-icon bbc-icon-history-gap user-favorite"></i> 我的课程/活动</a>
         </li>
       </ul>
@@ -109,12 +112,17 @@
         <li data-needlog="true" data-view="_www/view/member/safe/safe.html" class="mui-table-view-cell action-clickview">
           <a class="mui-navigate-right"><i class="user-icon bbc-icon bbc-icon-rate-empty user-rate"></i> 账户管理</a>
         </li>
-        <li data-needlog="true" data-view="_www/view/member/point/integral.html" class="mui-table-view-cell action-clickview">
-          <a class="mui-navigate-right"><i class="user-icon bbc-icon bbc-icon-communication user-complain"></i> 积分/优惠券</a>
+        <li data-needlog="true" data-view="_www/view/member/point/coupon.html" class="mui-table-view-cell action-clickview">
+          <a class="mui-navigate-right"><i class="user-icon bbc-icon bbc-icon-assets user-assets"></i> 优惠券</a>
         </li>
-        <li data-needlog="true" data-view="_www/view/member/favorite/favorite.html" class="mui-table-view-cell mui-hidden">
+        <li data-needlog="true" data-view="_www/view/member/fav/index.html" class="mui-table-view-cell action-clickview">
           <a class="mui-navigate-right"><i class="user-icon bbc-icon bbc-icon-star-empty user-favorite"></i> 我的收藏</a>
         </li>
+        <li data-needlog="true" data-view="_www/view/member/complaint/complaint.html" class="mui-table-view-cell action-clickview">
+          <a class="mui-navigate-right"><i class="user-icon bbc-icon bbc-icon-communication user-complain"></i> 我的投诉</a>
+        </li>
+        <!--<li  class="mui-table-view-cell " onclick="testApp('weixin://wwww.baidu.com')">打开微信
+        </li>-->
       </ul>
     </section>
     
@@ -127,8 +135,12 @@
         <span class="mui-icon bbc-icon bbc-icon-list"></span>
         <span class="mui-tab-label">咨询</span>
       </a>
+      <a class="bbc-tab-item" data-webview="_www/view/clac/index.html">
+        <span class="mui-icon bbc-icon bbc-icon-moments"></span>
+        <span class="mui-tab-label">课程/活动</span>
+      </a>
       <a class="bbc-tab-item " data-webview="_www/view/msg/index.html">
-        <span class="mui-icon bbc-icon bbc-icon-message"></span>
+        <span class="mui-icon bbc-icon bbc-icon-message"><span class="mui-badge mui-badge-danger mui-hidden" id="msg-count"></span></span>
         <span class="mui-tab-label">消息</span>
       </a>
       <a class="bbc-tab-item bbc-active" >
@@ -169,7 +181,7 @@
     <script type="text/javascript" charset="utf-8">
     var state = app.getState();
       mui.plusReady(function() {
-//    	app.setState({});
+//   	 app.setState({});
       	window.addEventListener('refresh', fetchMemberData);
       	fetchMemberData();
       	function fetchMemberData(){
@@ -191,6 +203,9 @@
 			      }
 			      $.dataRequest(param, function(rs) {
 			        var data = rs;
+			        if(data.is_diamonds){
+			        		$('.start-icon').removeClass('mui-hidden')
+			        }
 			        if(data.avar){
 			        		console.log(data.avar)
 			            document.getElementById("head-img").src = config.imgser+data.avar;
@@ -239,6 +254,33 @@
 //        }
         }
       });
+      function testApp(url) {       	
+          var timeout, t = 1000, hasApp = true; 
+          setTimeout(function () { 
+            if (!hasApp) { 
+                //没有安装微信
+//              var r=confirm("您没有安装微信，请先安装微信!");
+//              if (r==true){
+//                  location.href="http://weixin.qq.com/"
+//              } 
+            }else{
+                //安装微信
+            }
+            document.body.removeChild(ifr); 
+          }, 2000) 
+          
+          var t1 = Date.now(); 
+          var ifr = document.createElement("iframe"); 
+          ifr.setAttribute('src', url); 
+          ifr.setAttribute('style', 'display:none'); 
+          document.body.appendChild(ifr); 
+          timeout = setTimeout(function () { 
+             var t2 = Date.now(); 
+             if (!t1 || t2 - t1 < t + 100) { 
+               hasApp = false; 
+             } 
+          }, t); 
+        } 
     </script>
   </body>
 

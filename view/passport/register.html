@@ -142,9 +142,17 @@
             <label>职业</label>
             <select id="profession" name="profession" class="mui-input-clear mui-input " >
             		<option value="" selected="selected" class="mui-def-option">请选择职业</option>
-				<option value="销售" >销售</option>
-				<option value="客服" >客服</option>
-				<option value="工程师" >工程师</option>
+				<option value="军人" >军人</option>
+				<option value="警察" >警察</option>
+				<option value="教师" >教师</option>
+				<option value="公务员" >公务员</option>
+				<option value="白领" >白领</option>
+				<option value="蓝领" >蓝领</option>
+				<option value="无业" >无业</option>
+				<option value="退休" >退休</option>
+				<option value="家庭主妇（夫）" >家庭主妇（夫）</option>
+				<option value="学生" >学生</option>
+				<option value="其他" >其他</option>
 			</select>
       <img src="../../img/icon-arrowdown.png" class="mui-right-img arrow-down">
           </div>
@@ -180,7 +188,7 @@
           </div>
           <div class="mui-input-row">
             <label>时间</label>
-            <input id="consolletime" type="datetime" class="mui-input-clear" placeholder="咨询时间">
+            <input id="consolletime" type="datetime" class="mui-input-clear" placeholder="过往接受心理咨询时间">
             <img src="../../img/icon-time.png" class="mui-right-img">
           </div>
           <div class="mui-input-row mui-hidden">
@@ -257,12 +265,12 @@
 //			dTime.setHours(6, 0);
 			plus.nativeUI.pickDate(function(e) {
 				var d = e.date;
-				$('#consolletime').val( d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate());
+				$('#consolletime').val( d.getFullYear() + "-" + (d.getMonth() + 1));
 			}, function(e) {
 				mui.toast('请选择日期')
 			}, {
 				title: "请选择日期",
-				time: dTime
+				date: dTime
 			});
 		});
         $('#register_next').on('tap', function() {
@@ -328,7 +336,7 @@
 				// 环信SDK注册
 	            var options = {
 	                username : mobile,
-	                password : password,
+	                password : '123456',
 	                nickname : account,
 	                appKey : WebIM.config.appkey,
 	                apiUrl: WebIM.config.apiURL,
@@ -366,7 +374,7 @@
 
 
       document.getElementById('agreement').addEventListener('tap', function() {
-        //clicked('_www/view/passport/agreement.html', {}, 'slide-in-bottom');
+          clicked('_www/view/passport/agreement.html', {}, 'slide-in-bottom');
       });
       
       window.addEventListener('readed',function(event){

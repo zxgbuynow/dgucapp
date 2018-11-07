@@ -141,7 +141,18 @@
 		    .qualification-block.desc{
 		    	margin-bottom: 0;
 		    }
-
+			.mui-table-view .mui-media-object{
+			    max-width: 72px; 
+	    			height: 72px;
+	    		}
+	    		.mui-media-text {
+	    			color: #646464;
+	    			font-size: 15px;
+	    		}
+	    		.mui-media-author {
+	    			font-size: 13px;
+	    			margin-top: 5px;
+	    		} 
     </style>
     
   </head>
@@ -165,7 +176,7 @@
 				</div> -->
 			<!-- </div> -->
 	    </section>
-	    <!-- <section class="qualification-block">
+	     <!--<section class="qualification-block">
 			<div class="section">
 				<h3 class="title">从业资质<span class="year">从业10年</span></h3>
 				<p class="certification">国家二级咨询师 | 博士学位证书 | 博士毕业证书</p>
@@ -236,12 +247,33 @@
 		<section class="qualification-block desc">
 			<div class="section">
 				<h3 class="title">咨询师介绍</h3>
-				<p class="certifi">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;周力 大观注册心理咨询师，大观讲师，国家二级心理咨询师，小团体leader周力大观注册心理咨询师，大观讲师，国家级心理咨询师，小团体leader</p>
+				<div class="certifi">高校教育与发展心理学教师\r\n国家二级心理咨询师\r\n社区矫正特约讲师及咨询师\r\n中国心理危机干预协会会员\r\n小团体带领人\r\n生命教育导师\r\n三亩心田心理咨询顾问\r\n从业10年，致力于学校、家庭、社区积极心理教育与生命教育、家庭教育的推展。\r\n在高校开展生命教育和积极心理学的课程。\r\n深入雅安地震灾区，从事灾后心理重建、特殊学生走访以及活动教学工作。\r\n发起“不输在家庭教育上”系列读书会公益活动，并举办系列家庭教育讲座。\r\n参与自杀危机救援及抑郁症病人家属的支持工作。</div>
 				<p class="comment-con">
 					<img src="../../img/comment.png">
 				</p>
 			</div>
-		</section> -->
+		</section>
+		<section class="qualification-block desc">
+			<div class="section">
+				<h3 class="title">相关文章</h3>
+				<div class="certifi">
+					<ul class="mui-table-view mui-table-view-chevron">
+
+						<li class="mui-table-view-cell mui-media action-webview" data-webview="_www/view/member/article/edit.html"  data-webparam = '{"article_id":<%= list[i].id %>}'>
+							<a class="mui-navigate-right">
+								<img class="mui-media-object mui-pull-left" src="../../img/60x60.gif">
+								<div class="mui-media-body">
+									111
+									<p class='mui-ellipsis mui-media-text'>222</p>
+									<p class="mui-ellipsis mui-media-text mui-media-author">作者：本人</p>
+								</div>
+							</a>
+						</li>
+					  </ul>	
+				</div>
+				
+			</div>
+		</section>-->
 	</div>
     <section class="action-bar-mini op-group mui-hidden">
         <div class="op-group-item col-half trade-talk" id="addfriend">与他沟通</a></div>
@@ -274,9 +306,14 @@
 				<div class="zixun-time-block">
 					<img class="star" src="../../img/star-y.png">
 					<img class="star" src="../../img/star-y.png">
-					<img class="star" src="../../img/star-g.png">
-					<img class="star" src="../../img/star-g.png">
-					<img class="star" src="../../img/star-g.png">
+					<img class="star" src="../../img/star-y.png">
+					<img class="star" src="../../img/star-y.png">
+					<% if(start>8 ){%>
+						<img class="star" src="../../img/star-y.png">
+					<%}else{%>
+						<img class="star" src="../../img/star-g.png">
+					<%}%>
+					
 					<!-- <p class="txt">我在大观心理温暖过<span class="times"><%= trade %></span>人次</p> -->
 				</div>
 			</div>
@@ -319,21 +356,18 @@
 			                    <span class="num"><em class="symbol">￥</em><%= chartArr[i].price %></span><span>/小时</span>
 			                </p>
 			                <p class="price">
-			                		<% if(chartArr[i].chart == 'facechart'){%>
-			                			<span class="num"><em class="symbol">￥</em>500</span><span>/小时</span><img src="../../img/meb.png">
-			                		<%}else{%>
-			                    <span class="num"><em class="symbol">￥</em>0</span><span>/小时</span><img src="../../img/meb.png">
-			                    <%}%>
+								<span class="num"><em class="symbol">￥</em><%= chartArr[i].price1 %></span><span>/小时</span><img src="../../img/meb.png">
+			                    
 			                </p>
 						</div>
 					<% } %>
 				<% } %>	
 				<div class="zixun-desc">
 	                <p>心窝会员： </p>
-	                <p>36.5元，365天，文字语音咨询不限次数，<i style="color: red;">视频咨询（7月8日开放）</i></p>
+	                <p>36.5元，365天，文字语音咨询不限次数<!--<i style="color: red;">视频咨询（7月8日开放）</i>--></p>
 	            </div>
 	            <div class="mui-content-padded">
-	                <button id="register_next" type="button" class="mui-btn mui-btn-block mui-btn-warning bbc-btn-warning action-webview" data-webview="_www/view/member/updatelv.html">立即注册</button>
+	                <button id="register_next" type="button" class="mui-btn mui-btn-block mui-btn-warning bbc-btn-warning action-webview" data-webview="_www/view/member/updatelv.html">升级为心窝会员</button>
 	            </div>
 				<!--<div class="zixun-way">
 					<img src="../../img/yuying.png" />
@@ -355,14 +389,38 @@
 		<section class="qualification-block desc">
 			<div class="section">
 				<h3 class="title">咨询师介绍</h3>
-				<div class="certifi fontS font-gray-20">
+				<!--<div class="certifi fontS font-gray-20">-->
+				<div class="certifi intro">
 					<%= intro%>
 				</div>
 				<p class="comment-con">
-					<img src="../../img/comment.png">
+					<!--<img src="../../img/comment.png">-->
 				</p>
 			</div>
 	  </section>
+	  <section class="qualification-block desc">
+			<div class="section">
+				<h3 class="title">相关文章</h3>
+				<div class="certifi"> 
+					<ul class="mui-table-view mui-table-view-chevron">
+						<% for(var i in article) { %>
+							
+						<li class="mui-table-view-cell mui-media action-webview" data-webview="_www/view/artical/detail.html"  data-webparam = '{"article_id":<%= article[i].id %>}'>
+							<a class="mui-navigate-right">
+								<img class="mui-media-object mui-pull-left" src="<%= $add_server(article[i].cover) %>">
+								<div class="mui-media-body">
+									<%= article[i].title %>
+									<p class='mui-ellipsis mui-media-text'><%= article[i].description %></p>
+									<p class="mui-ellipsis mui-media-text mui-media-author">作者：<%= nickname %></p>
+								</div>
+							</a>
+						</li>
+						<% } %>
+					  </ul>	
+				</div>
+				
+			</div>
+		</section>
   </script>	
   <script>
     mui.plusReady(function() {
@@ -375,15 +433,23 @@
       }
       log(param);
       $.dataRequest(param, function(rs) { 
-      	log(rs) 
+      	log(rs.article) 
       	counsellor_mobile = rs.mobile;
       	console.log(rs.avar) 
       	if(!rs.avar){
       		
       		rs.avar = '../../img/widgets_02_19.png';
       	}
+//    	if(rs.intro){
+//    		rs.intro = rs.intro.replace(/\r\n/g, '/n');
+//    	}
+      	console.log(rs)
       	var widgets = template('counsellor_info', rs);
         $('.counsellor-info').append(widgets);
+        var text = $('.intro').text()
+        var des = text.replace(/\r\n/g, '<br/>').replace(/\n/g, '<br/>').replace(/\s/g, ' ');
+        $('.intro').empty()
+        $('.intro').append(des)
         $('.op-group').removeClass('mui-hidden')
         	 // 
          mui('.mui-scroll-wrapper').scroll({

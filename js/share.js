@@ -58,6 +58,7 @@ function shareAction(sb, msginfo) {
  * @param {plus.share.ShareService} s
  */
 function shareMessage(msg, s) {
+	log(msg);log(s)
     s.send(
         msg,
         function() {
@@ -93,6 +94,7 @@ var appshare = function (msgdata) {
       mui('#share_sheet').popover('toggle');
       // 弹出分享列表
       $('#share_sheet').unbind('tap').on('tap','.action-share',function(){
+      	mui.toast('分享给朋友可以获得优惠券')
         var plat = $(this).data('platform');
         var shareData;
         if(plat=='qq'){

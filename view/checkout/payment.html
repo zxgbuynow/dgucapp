@@ -168,6 +168,7 @@
               if(xhr.status == 200) {
               	id = id.substring(0,id.length-3);
               	log(xhr.responseText)
+              	log(pays[id])
                 plus.payment.request(pays[id], xhr.responseText, function(result) {
                 		if(paytype){
                 			clicked('_www/view/index.html');
@@ -193,6 +194,7 @@
                 		}
                   	
                 }, function(error) {
+                	log(error)
                   plus.nativeUI.alert("支付失败：" + error.code);
                 });
               } else {

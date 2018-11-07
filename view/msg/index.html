@@ -55,8 +55,12 @@
 	        <span class="mui-icon bbc-icon bbc-icon-list"></span>
 	        <span class="mui-tab-label">咨询</span>
 	      </a>
+	      <a class="bbc-tab-item" data-webview="_www/view/clac/index.html">
+	        <span class="mui-icon bbc-icon bbc-icon-moments"></span>
+	        <span class="mui-tab-label">课程/活动</span>
+	      </a>
 	      <a class="bbc-tab-item bbc-active" >
-	        <span class="mui-icon bbc-icon bbc-icon-message"></span>
+	        <span class="mui-icon bbc-icon bbc-icon-message"><span class="mui-badge mui-badge-danger mui-hidden" id="msg-count"></span></span>
 	        <span class="mui-tab-label">消息</span>
 	      </a>
 	      <a class="bbc-tab-item" data-webview="_www/view/member/member.html">
@@ -93,7 +97,7 @@
 	    <script src="../../js/im/im.js"></script>
 	    <script id="session_list" type="text/html">
 	    		<% for(var i=0; i<list.length; i++) { %>
-		    		<li class="mui-table-view-cell mui-media action-webview" data-webview="_www/view/msg/chat.html" data-webparam = '{"jid":"1", "username":"<%= list[i].nm %>" }'>
+		    		<li class="mui-table-view-cell mui-media action-webview" data-webview="_www/view/msg/chat.html" data-webparam = '{"jid":"1", "username":"<%= list[i].nmkey %>" }'>
 					<img class="mui-media-object mui-pull-left" src="<%= list[i].receiverAvatar %>">
 					<div class="mui-media-body">
 						<%= list[i].nm %>
@@ -128,25 +132,27 @@
 	//			log(numKeys)
 				for(var i=0; i<numKeys; i++) {
 					keystr = plus.storage.key(i);
-	//				console.log(keystr) 
+//					console.log(keystr) 
 					if(keystr.indexOf(state.account+"msgbox_")>=0){
 						if(keystr.indexOf("_flag")>=0){
 							continue
-						}
+						} 
 	//					keyNames.push(keystr); 
 	//					values.push(plus.storage.getItem(keystr))
 						val = JSON.parse(plus.storage.getItem(keystr));
 						lval = val.pop()
-						log(lval)
+				 
+						log(keystr.split('_')[1]) 
 						var flag = plus.storage.getItem(keystr+'_flag')||0;
 						sessionList.push({
-//							nm:keystr.split('_')[1],
+							nmkey:keystr.split('_')[1],
 							nm:lval['nickname'],
 							receiverAvatar:lval['body']['receiverAvatar'],
 							msg:lval['body']['msg'],
 							fls:flag
 						})
 					}
+					
 				}
 				if(sessionList){
 					res = {
@@ -155,7 +161,7 @@
 					$('.session-list').html('')
 					var widgets = template('session_list', res);
 	            		$('.session-list').append(widgets);
-	//          		console.log(widgets)
+	          		console.log(widgets) 
 				}else{
 					$('.session-list').html('')
 				}
@@ -195,7 +201,8 @@
 					lval = val.pop()
 					var flag = plus.storage.getItem(keystr+'_flag')||0;
 					sessionList.push({
-						nm:keystr.split('_')[1],
+						nmkey:keystr.split('_')[1],
+						nm:lval['nickname'],
 						receiverAvatar:lval['body']['receiverAvatar'],
 						msg:lval['body']['msg'],
 						fls:flag

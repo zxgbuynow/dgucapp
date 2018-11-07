@@ -216,9 +216,16 @@
 		  		<% if(chartArr[i].status){ %>
 		  			<li class="mui-table-view-cell" >
 						<a class="mui-navigate-right">
-							<input type="radio" <%if(i==0){%> checked <%}%>  name="consult-type" id="<%= chartArr[i].chart %>" val="<%= chartArr[i].price %>">
+							<input type="radio" <%if(i==0){%> checked <%}%>  name="consult-type" id="<%= chartArr[i].chart %>" <%if(is_diamonds){%>val="<%= chartArr[i].price1 %>"  <%}else{%> val="<%= chartArr[i].price %>" <%}%>>
 							<label for="face"><%= chartArr[i].show %></label>
-							<span class="price">￥<em class="symbol"><%= chartArr[i].price %>元</em>/次</span>
+							<span class="price">￥<em class="symbol">
+								<%if(is_diamonds){%> 
+										<%= chartArr[i].price1 %>
+									<%}else{%> 
+										<%= chartArr[i].price %>
+								<%}%> 
+								
+								元</em>/次</span>
 						</a>
 					</li>
 				<% } %>
@@ -238,8 +245,10 @@
 				var param = { 
 				  'method': config.apimethod.counsellor,
 				  'source':config.source,
-				  'id': counsellor_id
+				  'id': counsellor_id,
+				  'account':state.account
 				}
+				log(param)
 				$.dataRequest(param, function(rs) {
 				  	$('.counsellor-per').html(rs.per+'分钟/次');
 				  	pertime = rs.per;
@@ -328,7 +337,8 @@
 					}
 					mui.toast('订单创建成功！');
 					clicked('_www/view/checkout/payment.html',{
-						'price':price*$('#per').val(), 
+//						'price':price*$('#per').val(),
+						'price':rs.price,
 						'tid':rs.tid,
 						'counsellor_mobile':counsellor_mobile
 					});

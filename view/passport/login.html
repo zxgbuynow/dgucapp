@@ -106,13 +106,13 @@
           var state = app.getState();
           var entrance = plus.webview.currentWebview().entrance;
           var toMain = function() {
-//          var parentview = plus.webview.currentWebview().opener();
-//          parentview.reload(true);
-            if(plus.webview.getWebviewById('_www/view/index.html')){
-            		plus.webview.getWebviewById('_www/view/index.html').show()
-            }else{
+            var parentview = plus.webview.currentWebview().opener();
+            parentview.reload(true);
+//          if(plus.webview.getWebviewById('_www/view/index.html')){
+//          		plus.webview.getWebviewById('_www/view/index.html').show()
+//          }else{
 //          		clicked('_www/view/index.html')
-            }
+//          }
             
 			var mv = plus.webview.getWebviewById('_www/view/member/member.html');
 			if(mv){
@@ -151,7 +151,7 @@
 	              var options = {
 				    apiUrl: WebIM.config.apiURL,
 				    user: accountBox.value,
-				    pwd: passwordBox.value,
+				    pwd: '123456',
 				    appKey: WebIM.config.appkey,
 				    success: function (token) {
 				        var token = token.access_token;

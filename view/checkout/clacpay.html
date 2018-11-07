@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../css/style.css">
+    <style type="text/css">
+        
+    </style>
+  </head>
+
+  <body>
+    <header class="page-header">
+      <i class="header-left icon-func bbc-icon bbc-icon-back mui-action-back"></i>
+      <div class="header-title">订单支付</div>
+    </header>
+    <section class="container">
+
+    </section>
+  </body>
+  <script src="../../js/zepto.js"></script>
+  <script src="../../js/mui.min.js"></script>
+  <script src="../../js/template.min.js"></script>
+  <script src="../../config.js"></script>
+  <script src="../../js/app.js"></script>
+  <script src="../../js/im/webim.config.js"></script>
+	<script src="../../js/im/strophe-1.2.8.js"></script>
+	<script src="../../js/im/websdk-1.4.13.js"></script>
+	<script src="../../js/im/im.js"></script>
+	
+  <script type="text/html" id="payment">
+    <form class="form-container no-header-padded">
+      <section class="section-white section-container">
+        <div class="section-init">应付金额</div>
+        <div class="section-init pay-num" data-value="<%= price %>">
+          <%= $format_price(price) %>
+        </div>
+      </section>
+      
+      <section class="section-white pay-style">
+        <div class="section-title order-goods-header">
+          <div class="title-txt">优惠券</div>
+        </div>
+        <div class="mui-input-group coupon-lists" style="font-size: 13px;">
+          <div class="mui-input-row mui-radio bbc-radio ">
+            <label>不使用</label>
+            <input class="coupon-radio" name="coupon" type="radio" value="0" checked="" price="0">
+          </div>
+          
+
+        </div>
+      </section>
+      
+      <section class="section-white pay-style">
+        <div class="section-title order-goods-header">
+          <div class="title-txt">请选择支付方式</div>
+        </div>
+
+        <div class="mui-input-group">
+          <div class="mui-input-row mui-radio bbc-radio ">
+            <label><i class="bbc-icon bbc-icon-zhifubao pay-style-zhifubao"></i> 支付宝</label>
+            <input name="payment" type="radio" value="alipayApp" >
+          </div>
+          <div class="mui-input-row mui-radio bbc-radio mui-hidden">
+            <label><i class="bbc-icon bbc-icon-weixin pay-style-weixin"></i> 微信</label>
+            <input name="payment" type="radio" value="wxpayApp">
+          </div>
+
+        </div>
+      </section>
+      <section class="mui-content-padded form-op-section">
+        <button type="button" class="mui-btn mui-btn-block mui-btn-warning bbc-btn-warning action-pay" onclick="return false;">确认支付</button>
+      </section>
+    </form>
+  </script>
+  <script type="text/html" id="coupon_list">
+  	<% for(var i=0; i<list.length; i++) { %>
+  	 <div class="mui-input-row mui-radio bbc-radio ">
+        <label><%= list[i].title%></label>
+        <input class="coupon-radio" name="coupon" type="radio" value="<%= list[i].id%>" price="<%= list[i].price%>">
+      </div>
+     <% } %>
+  </script>
+
+  <script>
+    var state = app.getState();
+    var  couponid = 0;
+    mui.plusReady(function() {
+      var tid = plus.webview.currentWebview().tid;
+      var price = plus.webview.currentWebview().price;
+      var paytype = plus.webview.currentWebview().paytype||'';
+      var pay_id;
+
+      mui.init({
+        beforeback: function() {
+          var fw = plus.webview.currentWebview().opener();
+          var ffw = fw.opener();
+	        ffw.reload(true);
+	        ffw.addEventListener('loaded',function(){
+	          plus.webview.close(fw);
+	          setTimeout(function(){
+	            //返回true，继续页面关闭逻辑
+	            return false;
+	          },200);
+	        });
+        }
+      });
+	  
+	  //优惠券
+	  var state = app.getState();
+      var param = {
+          'method': config.apimethod.couponmy,
+          'account': state.token,
+          'source':config.source
+      }
+      $.dataRequest(param, function(rs) {
+      	log(rs)
+      	var widgets = template('coupon_list', rs);
+        $('.coupon-lists').append(widgets);
+      })
+      if(tid) {
+        fetchPayment(tid);
+      }
+
+      function fetchPayment(pid) {
+      	var rs = {};
+      	  if(price){
+      	  	rs.price = price 
+      	  }
+          var tempEl = template('payment', rs);
+          $('.container').html(tempEl);
+          var total = price;
+          $(window).on('click', '.coupon-radio', function() {
+          	couponid = $(this).val();
+          	var price = $(this).attr('price');
+          	if(parseFloat(total)-parseFloat(price)<0){
+          		couponid = 0;
+//        		$('input[name="coupon"]').attr("checked","checked")
+          		mui.toast('不能使用该优惠券');return false;
+          		$('.pay-num').text('￥0.01')
+          		
+          	}else{
+          		$('.pay-num').text('￥'+(parseFloat(total)-parseFloat(price)).toFixed(2))
+          	}
+          	
+          })
+          $(window).on('tap', '.action-pay', function() {
+              if($('input[name="payment"]:checked').length == 0) {
+                mui.alert('请选择支付方式');
+                return
+              }
+              pay_id = $('input[name="payment"]:checked').val();
+              var SERVER = config.server +  '/pay/dopay?accessToken=' + state.token + '&payment_id=' + pid + '&method=' + config.apimethod.tradepay + '&pay_app_id=' + pay_id+'&source='+config.source+"&couponid="+couponid;
+			  //更新优惠券
+			  //发起支付
+              pay(SERVER, pay_id, pid, total);
+
+          });
+
+      };
+
+      var pays={};
+      // 1. 获取支付通道
+      // 获取支付通道
+      plus.payment.getChannels(function(channels) {
+        for(var i in channels){
+          channel = channels[i];
+          pays[channel.id]=channel;
+        }
+        checkServices(channel)
+      }, function(e) {
+        mui.alert("获取支付通道失败：" + e.message);
+      });
+
+      // 检测是否安装支付服务
+      function checkServices(pc){
+        if(!pc.serviceReady){
+          var txt=null;
+          switch(pc.id){
+            case "alipay":
+            txt="检测到系统未安装“支付宝快捷支付服务”，无法完成支付操作，是否立即安装？";
+            break;
+            default:
+            txt="系统未安装“"+pc.description+"”服务，无法完成支付，是否立即安装？";
+            break;
+          }
+          plus.nativeUI.confirm(txt,function(e){
+            if(e.index==0){
+              pc.installService();
+            }
+          },pc.description);
+        }
+      }
+
+      // 2. 发起支付请求
+      function pay(server, id, pid, total) {
+        // 从服务器请求支付订单
+        var PAYSERVER = '';
+        if(id == 'alipayApp' || id == "wxpayApp") {
+          PAYSERVER = server;
+        } else {
+          plus.nativeUI.alert("不支持此支付通道！", null, "抱歉!");
+          return;
+        }
+        w=plus.nativeUI.showWaiting();
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+          switch(xhr.readyState) {
+            case 4:
+              w.close();w=null;
+              if(xhr.status == 200) {
+              	id = id.substring(0,id.length-3);
+              	log(xhr.responseText)
+              	log(pays[id])
+                plus.payment.request(pays[id], xhr.responseText, function(result) {
+                		if(paytype){
+                			clicked('_www/view/index.html');
+                		}else{
+                			clicked('_www/view/member/clac/index.html');
+                		}
+                  	
+                }, function(error) {
+                	log(error)
+                  plus.nativeUI.alert("支付失败：" + error.code);
+                });
+              } else {
+              	log(xhr);
+                alert("获取订单信息失败！");
+              }
+              break;
+            default:
+              break;
+          }
+        }
+        xhr.open('GET', PAYSERVER);
+        xhr.send();
+      }
+
+      
+    });
+  </script>
+
+</html>

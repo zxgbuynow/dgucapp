@@ -141,6 +141,7 @@
 				var bn = self.c_id;
 				var avar = self.avar||'';
 				var counsellor = self.counsellor;
+				log(self)
 				if(counsellor){
 					$('.teacher-name').text(counsellor)
 				}
@@ -148,7 +149,7 @@
 
 					document.getElementById("head-img").src = config.imgser+avar;
 				}else{
-					document.getElementById("head-img").src = '../../../img/shop_logo.gif';
+					document.getElementById("head-img").src = '../../../img/72x72.png';
 				}
 				//获得咨询师头像和用户名
 				mui('.icons').on('tap','i',function(){
@@ -180,6 +181,7 @@
 			  		'sorce' :starIndex,
 			  		'cotent':document.getElementById("evaluateCotent").value
 			  	}
+
 		        	$.dataRequest(param, function(c) {
 		        		mui.toast('评分成功')
 		        		setTimeout(function(){

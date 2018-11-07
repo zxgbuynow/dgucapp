@@ -462,6 +462,9 @@
     .card-wrapper .card-new-content .card-new-opre{
 		margin-top: 0.5rem;
     }
+    .container{
+    	margin-bottom: 52px;
+    }
     </style>
   </head>
   <body>
@@ -478,7 +481,7 @@
         </p>
       <a href="#" class="txt-func search-cancel" style="display:none;">取消</a>
     </header>
-    <div class="container">
+    <div class="container " id="pullrefresh">
     	<!-- <section class="widgets-category-nav section-white">
 	        <div class="section-title">
 	          <div class="title-txt">课程</div>
@@ -638,7 +641,7 @@
       </div> -->
 
 
-      <section class="widgets-column-section">
+      <!--<section class="widgets-column-section">
         <div class="column-wraper">
 			<div  class="expert-item">
 				<p class="expert-title">找专家</p>
@@ -654,7 +657,7 @@
 				</div>				
 			</div>
         </div>
-      </section>
+      </section>-->
 	<!-- <section class="widgets-category-nav">
         <div class="section-title">
           <div class="title-txt">专家推荐</div>
@@ -696,7 +699,7 @@
         </div>
       </section> -->
 
-      <section class="widgets-category-nav">
+      <!--<section class="widgets-category-nav">
 	    <div class="section-title">
 	        <div class="title-txt">大观心师</div>
 	        <div class="more-link action-webview" data-webview="_www/view/category/category.html">更多</div>
@@ -741,7 +744,7 @@
 	            </div>
 	        </li>
 	    </ul>
-	</section>
+	</section>-->
 
       <!--<section class="widgets-column-section">
         <div class="column-wraper">
@@ -810,8 +813,12 @@
 	        <span class="mui-icon bbc-icon bbc-icon-list"></span>
 	        <span class="mui-tab-label">咨询</span>
 	      </a>
+	      <a class="bbc-tab-item" data-webview="_www/view/clac/index.html">
+	        <span class="mui-icon bbc-icon bbc-icon-moments"></span>
+	        <span class="mui-tab-label">课程/活动</span>
+	      </a>
 	      <a class="bbc-tab-item " data-webview="_www/view/msg/index.html">
-	        <span class="mui-icon bbc-icon bbc-icon-message"></span>
+	        <span class="mui-icon bbc-icon bbc-icon-message"><span class="mui-badge mui-badge-danger mui-hidden" id="msg-count"></span></span>
 	        <span class="mui-tab-label">消息</span>
 	      </a>
 	      <a class="bbc-tab-item" data-webview="_www/view/member/member.html">
@@ -879,15 +886,15 @@
 		<section class="widgets-category-nav section-white widgets-cate">
 	        <ul class="widgets-icons-nav">
 	        	<!--<li class="action-webview" data-webview="_www/view/artical/tlist.html" ><i><a href="#"><img src="../img/widgets_02_07.png"></a></i><span>心理测试</li>-->
-	        		<li class="action-webview"  data-webview="_www/view/artical/list.html" data-webparam='{"cat_id":18}' ><i><a href="#"><img src="../img/xiaolv.png"></a></i><span>高效课程</li>
+	        		<li class="action-webview mui-hidden"  data-webview="_www/view/artical/list.html" data-webparam='{"cat_id":18}' ><i><a href="#"><img src="../img/xiaolv.png"></a></i><span>高效课程</li>
 	        		<!--<li class="action-webview" data-webview="_www/view/artical/list.html" ><i><a href="#"><img src="../img/widgets_02_09.png"></a></i><span>免费课程</li>-->
-	        		<li class="action-webview" data-webview="_www/view/artical/list.html" ><i><a href="#"><img src="../img/readroom.png"></a></i><span>心灵图书室</li>
+	        		<li class="action-webview mui-hidden" data-webview="_www/view/artical/list.html" ><i><a href="#"><img src="../img/readroom.png"></a></i><span>心灵图书室</li>
 	        	<% for(var i=0; i<list.length; i++) { %>
-	        		<%if(i<5){%>
+	        		<%if(i<8){%>
 	        			<li class="action-webview" data-webview="_www/view/counsellor/list.html" data-webparam='{"cat_id":<%= list[i].id %>}'><i><a href="#"><img src="<%= $add_server(list[i].cover) %>"></a></i><span><%= list[i].title %></li>
 	        		<%}%>	
 	       	<% } %>
-	       	<li class="action-webview" data-webview="_www/view/category/category.html" ><i><a href="#"><img src="../img/catemore.png"></a></i><span>更多分类</li>
+	       	<li class="action-webview mui-hidden" data-webview="_www/view/category/category.html" ><i><a href="#"><img src="../img/catemore.png"></a></i><span>更多分类</li>
 	        </ul> 
 	      </section>
 	</script> 
@@ -1027,7 +1034,7 @@
 					<p class="expert-title">找专家</p>
 				</div>
 				<div  class="artical-wraper">
-					<p class="artical-title action-webview" data-webview="_www/view/artical/index.html">文章推荐</p>
+					<p class="artical-title action-webview" data-webview="_www/view/artical/list.html">文章推荐</p>
 					<div class="swiper-container" id="swiper_artical">
 						<div class="swiper-wrapper">
 							<% for(var i=0; i<list.length; i++) { %>
@@ -1089,11 +1096,50 @@
 	      </section>
 	</script>
 	
+	<script type="text/html" id="widget_counsellors">
+		<section class="widgets-category-nav">
+	    <div class="section-title">
+	        <div class="title-txt">大观心师</div>
+	        <div class="more-link action-webview" data-webview="_www/view/category/category.html">更多</div>
+	    </div>
+	    <ul class="mui-table-view-chevron">
+	    		<% for(var i=0; i<list.length; i++) { %>
+	        <li class="card-wrapper card-wrapper-new action-webview" data-webview="_www/view/counsellor/detail.html" data-webparam='{"counsellor_id":<%= list[i].memberid %>}'>
+	            <div class="avatar">
+	                <img src="<%= $add_server(list[i].avar) %>">
+	            </div>
+	            <div class="flex flex-hb flex-dc info-detail">
+	                <div class="card-new-info">
+	                    <p class="card-name"><%= list[i].nickname %></p>
+	                    <p class="card-addrs"><%= list[i].shopname %> </p>
+	                </div>
+	                <div class="card-new-content">
+	                    <p class="card-title"><%if(list[i].tearch){%>大观讲师 |<%}%><%if(list[i].leader){%>大观Leader|<%}%>大观注册心师</p>
+	                    <p class="card-title card-ellispse">擅长领域：<%= list[i].sign %></p>
+	                    <div class="flex flex-hb flex-dr card-new-opre">
+	                    		<% if(list[i].online==1 ){%>
+								<p class="mui-badge mui-badge-green ">在线</p>
+							<%}else{%>
+								<p class="mui-badge mui-badge-green ">离线</p>
+							<%}%>
+	                        <p class="more action-webview" data-webview="_www/view/counsellor/detail.html" data-webparam='{"counsellor_id":<%= list[i].memberid %>}'>了解我更多</p>
+	                    </div>
+	                </div>
+	            </div>
+	        </li>
+	        <% } %>
+	    </ul>
+	</section>
+	</script>
+	<script type="text/html" id="widget_single_pic">
+        <section class="single-img action-webview" data-webview="<%= webview %>" >
+            <img src="<%= $add_server(cover) %>">
+        </section>
+    </script>
     <script type="text/javascript">
       mui.init({
         swipeBack: true //启用右滑关闭功能
       });
-      
 // var swiper = new Swiper('#swiper_artical', {
 //  loop: true,
 //  direction: 'vertical',
@@ -1188,7 +1234,27 @@
 			             mui('.mui-scroll-wrapper').scroll({
 				          indicators: false
 				        });
-				        
+				        //会员升级
+					    var aparam = {
+				            'method': config.apimethod.updatemember,
+				            'source':config.source,
+				            'ismobile':0
+				        }
+					    if(app.getState().token!=undefined){
+					    		var aparam = {
+					            'method': config.apimethod.updatemember,
+					            'source':config.source,
+					            'account':app.getState().token,
+					            'ismobile':0
+					        }
+					    }
+				        $.dataRequest(aparam, function(rs) {
+			        			if(rs!=1){
+			        				var widgets = template('widget_single_pic', rs);
+			            			$('.container').append(widgets);
+			        			}
+
+				        		
 				        //课程
 					    var aparam = {
 				            'method': config.apimethod.classList,
@@ -1227,7 +1293,7 @@
 					        				rt['list'][i].avar = 'static/admin/img/none.png';
 					        			}
 					        		}
-					        		var widgets = template('widget_counsellor', rt);
+					        		var widgets = template('widget_counsellors', rt);
 					            $('.container').append(widgets);
 					            	 // 
 					             mui('.mui-scroll-wrapper').scroll({
@@ -1238,7 +1304,7 @@
 				    
 			       })
 			        
-		        	
+		        	 })
 		        })
 	            
 	        })

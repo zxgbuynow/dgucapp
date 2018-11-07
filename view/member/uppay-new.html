@@ -60,7 +60,7 @@
         <div class="mui-content-group section-white">
           <p class="title">您将拥有</p>
           <p> 1、线上200位咨询师一年的免费咨询</p>
-          <p> 2、会员价格的地面咨询</p>
+          <p> 2、会员价格的视频咨询</p>
           <p> 3、会员价格的地面咨询</p>
 
           <section class="content-horizontal-padded form-op-section" style="margin-top: -20px;">
@@ -88,6 +88,9 @@
       mui.plusReady(function() {
       	var type = plus.webview.currentWebview().type;
       	if(type == 1){
+      		if(app.getState().token){
+      			document.getElementById("account").value = app.getState().account;
+      		}
       		$('.header-title').html('升级心窝会员')
       	}else{
       		$('.header-title').html('赠送心窝会员')
