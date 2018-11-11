@@ -386,6 +386,10 @@ a:active {
     clear: both;
 }
 
+.mui-clearfix {
+	*zoom:1;
+}
+
 .mui-bg-primary {
     background-color: #007aff;
 }
@@ -9283,3 +9287,145 @@ input[type="search"].header-search {
 #c-register .mui-content-padded {
     padding-top: 0;
 }
+
+/**
+ * 专家推荐列表
+ */
+.doctor-list-header{
+	background: #fff;
+	padding: 10px 0;
+	text-align: center;
+}
+.doctor-list-header .title{
+	font-size: 0.99rem;
+}
+.doctor-list-header ul{
+	width:100%;
+	padding: 6px 0;
+	display: -webkit-flex;
+    -webkit-flex-direction: row;
+    display: flex;
+    flex-direction: row;
+	font-size: 0.8rem;
+}
+.doctor-list-header ul li.doctor-list-item .mui-tab-label{
+	display: inline-block;
+	height: 1.2rem;
+    overflow: hidden;
+}
+.doctor-list-header ul li:first-child{flex-grow: 1;}
+.doctor-list-header ul li:second-child{flex-grow: 1;}
+.doctor-list-header ul li:last-child{flex-grow: 1;}
+
+.doctor-list-header ul li i.bbc-icon-doctype,li.doctor-list-item span.bbc-icon-doctype{
+	display: block;
+	text-align: center;
+	height: 1.2rem;
+	line-height: 1.2rem;
+}
+.mui-table-view-chevron .card-new-info .bbc-icon-doctype.small{
+	font-size:12px;
+	margin: 0 -2px;
+}
+.mui-table-view-chevron .card-new-info .card-name i:first-child,.mui-table-view-chevron .card-new-info .doctor-address i:first-child{
+	margin-left:2px;
+}
+
+.doctor-list-header ul li span.blue,.mui-table-view-chevron .card-new-info .bbc-icon-doctype.blue{
+	color: #4284DE;
+}
+.doctor-list-header ul li span.orange,.mui-table-view-chevron .card-new-info .bbc-icon-doctype.orange{
+	color: #F99607;
+}
+.doctor-list-header ul li span.pink,.mui-table-view-chevron .card-new-info .bbc-icon-doctype.pink{
+	color: #E95759;
+}
+.flex-box{
+	width: 100%;
+	display: -webkit-flex;
+	-webkit-flex-direction: row;
+	display: flex;
+	flex-direction: row;
+}
+        
+.flex-g1 {
+	flex-grow: 1;
+}
+        
+.flex-g2 {
+	flex-grow: 2;
+}
+.card-ellispse {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.doctor-address{
+	font-size: 10px;
+	line-height:2rem;
+	color: #8c8c8c;
+	width: 32%;
+    margin-right: 0.6rem;
+	text-align: right;
+}
+.doctor-address span{
+	vertical-align: bottom;
+	line-height:1.8rem;
+	display: inline;
+}
+.rt1{
+	padding-right: 2px;
+}
+.doctor-sign-list{
+	margin-top: -2px;
+	margin-bottom: 12px;
+}
+.doctor-sign-list span{
+	display: inline-block;
+	border-radius: 4px;
+	padding: 2px 3px;
+	color: #8c8c8c;
+	font-size: 12px;
+	border: 1px solid #8c8c8c;
+	margin: 0 auto 4px auto;
+	white-space: nowrap;
+	
+}
+.doctor-honor{
+	color: #8c8c8c;
+	font-size: 12px;
+	margin: 0 0.6rem;
+	height: 1.2rem;
+	overflow: hidden;
+}
+.doctor-honor span.star{
+	display: inline;
+	padding-left: 0.8rem;
+}
+.d-icon-detail{
+	color: #ff5858;
+    font-size: 14px;
+    width: 6.54rem;
+    text-align: right;
+    margin-right: 0.2rem;
+}
+.mui-table-view-chevron .mui-badge.mui-badge-blue,.mui-table-view-chevron .mui-badge.mui-badge-gray {
+    border: 0;
+    color: #fff;
+    min-width: 36px;
+	max-width: 36px;
+    height: 1.2rem;
+	padding: 3px 6px;
+	border-radius: 4px;
+	width: auto;
+}
+.mui-table-view-chevron .mui-badge.mui-badge-blue {
+    background-color: #5784CF;
+}
+.mui-table-view-chevron .mui-badge.mui-badge-gray {
+    background-color: #949998;
+}
+.mui-list-bd-headline{
+	border-bottom: 1px solid #E6E6E6;
+}
+/** 专家推荐列表**/
