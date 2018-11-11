@@ -59,7 +59,7 @@
 
   <body>
     <header class="home-header">
-      <div class="header-logo"><img src="../../img/72x72.png"></div>
+      <div class="header-logo"><img src="../../img/newlogo.png"></div>
       <!--<div class="main">
         <form onsubmit="return false;">
           <div class="mui-input-row header-search-form"><input type="search" onfocus="toSearch(this,'_www/view/counsellor/list.html')" class="header-search mui-input-clear" placeholder="寻找咨询师"></div>
@@ -335,11 +335,14 @@
         $.dataRequest(param, function(rs) {
         		var widgets = template('widget_category', rs);
             $('.mui-content').append(widgets);
+            //
+            
             //recommond
 	        var aparam = {
 	            'method': config.apimethod.recommend,
 	            'source':config.source
 	        }
+
 	        $.dataRequest(aparam, function(rt) {
 	        		for (var i in rt['list']) {
 	        			if(rt['list'][i].avar==''){

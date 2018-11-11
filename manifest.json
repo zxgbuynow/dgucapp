@@ -1568,7 +1568,8 @@
 					"view/msg/chat.html",
 					"view/counsellor/index.html",
 					"view/passport/login.html",
-					"view/index.html"
+					"view/index.html",
+					"view/clac/index.html"
 				],
 				"priority": 0
 			},
