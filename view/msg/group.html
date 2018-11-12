@@ -39,18 +39,22 @@
 		        <div class="mui-table-view">
 		          <ul class="mui-table-view mui-table-view-chevron">
 		          	<% for(var i in list) { %>
-								
+							
 					<li class="mui-table-view-cell mui-media action-webview" data-webview="_www/view/msg/chat.html" data-webparam = '{"jid":"1", "username":"<%= list[i].mobile %>" }'>
 						<img class="mui-media-object mui-pull-left" src="<%= list[i].avar %>">
 						<div class="mui-media-body">
 							<%= list[i].nickname %>
-							<span>职场冲突</span>
+							<p class="mui-ellipsis mui-media-text mui-media-author">
+								<% for(var m in list[i].signarr) { %>
+									<span><%= list[i].signarr[m] %></span>
+								<% }%>
+							</p>
 						</div>
 					</li>
 					<%}%>
 				  </ul>		
 		        </div>
-		      </section>
+		      </section> 
         </script>
 	    
 		<script type="text/javascript" charset="utf-8">
@@ -59,7 +63,7 @@
 			if(state.token){
 				var token = plus.storage.getItem('webim_'+state.account)
 				var options = {
-				    apiUrl: WebIM.config.apiURL,
+				    apiUrl: WebIM.config.apiURL, 
 				    user: state.account,
 				    accessToken: token,
 				    appKey: WebIM.config.appkey

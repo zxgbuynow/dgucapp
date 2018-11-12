@@ -6696,6 +6696,7 @@ header .icon-func {
     display: block;
     position: relative;
     color: #ea2329;
+    /*color: #ea2329;*/
     font-size: 1.2rem;
     width: 2.8rem;
     height: 2.8rem;
@@ -6885,7 +6886,8 @@ header.home-header {
     display: -webkit-box;
     -webkit-box-pack: center;
     -webkit-box-align: center;
-    background: #fff;
+   background: #fff;
+  	/*background: #4982E6;*/
 }
 
 header.home-header .main {

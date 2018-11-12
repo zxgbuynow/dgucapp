@@ -18,6 +18,7 @@ var config = {
         activeList: 'active.list', //活动广告
         category: 'counsellor.category', //咨询分类
         recommend: 'counsellor.recommend', //推荐咨询师
+        deskrecommend: 'counsellor.deskrecommend', //平台推荐咨询师
         counsellor: 'counsellor.info', //咨询师
         ondate: 'counsellor.ondate', //预约
         point: 'user.point', //积分明细
