@@ -1247,7 +1247,8 @@
 			"view/passport/login.html",
 			"view/msg/chat.html",
 			"view/member/ondate/index.html",
-			"view/member/updatelv.html"
+			"view/member/updatelv.html",
+			"view/counsellor/eve.html"
 		],
 		"resources": []
 	},

@@ -599,8 +599,39 @@
 					<%= intro%>
 				</div>
 				<p class="comment-con">
-					<!--<img src="../../img/comment.png">-->
+					<img src="../../img/comment.png">
+					<div class="more-link action-webview mui-pull-right" data-webview="_www/view/counsellor/eve.html" data-webparam = '{"counsellor_id":<%= counsellor_id %>}'>更多</div>
 				</p>
+				<ul class="mui-table-view mui-table-view-chevron">
+					<% for(var i in evalist) { %>
+						
+					<li class="mui-table-view-cell mui-media " >
+						<a class="">
+							<span class="mui-pull-right mui-badge"> <%= $timestamp_To_Date(evalist[i].create_time) %></span>
+							<img class="mui-media-object mui-pull-left" src="<%= $add_server(evalist[i].avar) %>">
+							<div class="mui-media-body">
+								<%= evalist[i].nickname %><i style="font-size: 12px;color: deeppink;"> <%if(evalist[i].is_diamonds){ %>心窝会员<%}%></i>
+								<p class='mui-ellipsis mui-media-text'>
+									<img class="star" src="../../img/star-y.png">
+									<img class="star" src="../../img/star-y.png">
+									<img class="star" src="../../img/star-y.png">
+									<img class="star" src="../../img/star-y.png">
+									<% if(evalist[i].sorce>8 ){%>
+										<img class="star" src="../../img/star-y.png">
+									<%}else{%>
+										<img class="star" src="../../img/star-g.png">
+									<%}%>
+									
+								</p>
+								<p class="mui-ellipsis mui-media-text mui-media-author"><%= evalist[i].cotent %></p>
+								
+							</div>
+							
+							
+						</a>
+					</li>
+					<% } %>
+				  </ul>	
 			</div>
 	  </section>
 	  <section class="qualification-block desc">
@@ -779,10 +810,10 @@
 	  }
       log(param);
       $.dataRequest(param, function(rs) { 
-      	log(rs)  
+      	log(rs) 
       	counsellor_mobile = rs.mobile;
       	console.log(rs.avar) 
-      	
+      	rs.counsellor_id = counsellor_id;
       	if(rs.isfav==1){
       		$('.addfav').addClass('isfaved')
       		$('.addfav').next('span').text('已收藏')

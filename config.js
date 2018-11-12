@@ -67,6 +67,7 @@ var config = {
         smsginfo:'smsg.info',
         clcareply:'clca.reply',
         delfav:'fav.del',
-		getUserList:'getUser.list'
+		getUserList:'getUser.list',
+		evalist:'counsellor.evalist'
     }
 }
