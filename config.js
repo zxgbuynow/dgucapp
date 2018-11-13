@@ -68,6 +68,8 @@ var config = {
         clcareply:'clca.reply',
         delfav:'fav.del',
 		getUserList:'getUser.list',
-		evalist:'counsellor.evalist'
+		evalist:'counsellor.evalist',
+		cancleUp:'cancle.up',
+		clacevaluate:'user.clacevaluate',
     }
 }

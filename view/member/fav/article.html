@@ -24,6 +24,24 @@
 		    border-color: #00C7C9;
 		    color: #00C7C9;
 		}
+		.mui-table-view .mui-media-object{
+	    		max-width: 80px; 
+			height: 80px;
+		}
+		.mui-media-text {
+			color: #646464;
+			font-size: 13px;
+		}
+		.mui-media-author { 
+			font-size: 11px;
+			margin-top: 5px;
+		} 
+		.mui-media-action{
+			font-size: 11px;
+		}
+		.mui-table-view-chevron .mui-table-view-cell{
+			padding-right: 15px;
+		}
     </style>
   </head>
 
@@ -54,15 +72,23 @@
 	        <div class="mui-table-view">
 	          <ul class="mui-table-view mui-table-view-chevron">
 	          	<% for(var i=0; i<list.length; i++) { %>
-				<li class="mui-table-view-cell mui-media action-webview" data-webview="_www/view/artical/detail.html" data-webparam='{"article_id":<%= list[i].id %>}'>
-					<a class="mui-navigate-right">
-						<img class="mui-media-object mui-pull-left" src="<%= $add_server(list[i].pic) %>" >
-						<div class="mui-media-body">
-							<p>
-								<span class="mui-text-left"><%= list[i].title %></span>
-							</p>
+				<li class="mui-table-view-cell mui-media " >
+					<div class="mui-table">
+		                <div class="mui-table-cell mui-col-xs-10 ">
+							<img class="mui-media-object mui-pull-left" src="<%= $add_server(list[i].pic) %>" >
+							<div class="mui-media-body">
+								<p>
+									<span class="mui-text-left mui-ellipsis"><%= list[i].title %></span>
+								</p>
+								<p class="mui-ellipsis-2 mui-media-text "><%= list[i].description %></p>
+								<p class='mui-ellipsis mui-media-text mui-media-author'>作者：<%= list[i].author %></p>
+							</div>
 						</div>
-					</a>
+						<div class="mui-table-cell mui-col-xs-2 mui-text-right" >
+                    			<p><span class="mui-media-text  mui-btn-yellow go-delete" data-fid="<%= list[i].id %>"  style="color: #FFFFFF;">删除</span></p>
+		                </div>
+					</div>
+					
 				</li>
 				<% } %>
 			  </ul>		
@@ -78,7 +104,7 @@
 	  	var param = {
             'method': config.apimethod.favlist,
             'source':config.source,
-            'typeid': 3,
+            'typeid': 3,  
             'account': state.token
       }
        $.dataRequest(param, function(rs) {
@@ -101,6 +127,23 @@
 	            		},2000)
             		}
             		
+            })
+            $(window).on('tap','.go-delete',function(){
+            		mui.toast('delete')
+            		var fid = $(this).data('fid');
+            		var param = {
+		            'method': config.apimethod.delfav,
+		            'source':config.source,
+					'fid':fid,
+					'typeid':3,
+		            'account': state.token
+		      	}
+	       		$.dataRequest(param, function(rs) { 
+	       			mui.toast('删除成功！');
+	       			var cview = plus.webview.currentWebview();
+	          		cview.reload(true);
+	       		})
+	       		
             })
        })
     }) 

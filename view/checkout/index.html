@@ -306,7 +306,7 @@
 				counsellor_id = plus.webview.currentWebview().counsellor_id;
 				counsellor_mobile = plus.webview.currentWebview().counsellor_mobile;
 				var param = { 
-				  'method': config.apimethod.counsellor,
+				  'method': config.apimethod.counsellor, 
 				  'source':config.source,
 				  'id': counsellor_id,
 				  'account':state.account
@@ -317,6 +317,13 @@
 				  	pertime = rs.per;
 				  	//方式
 				  	var widgets = template('counsellor_info', rs);
+				  	if(!rs.condate){
+				  		$('.trade-date').addClass('nodate');
+				  		$('.trade-date').html('该咨询师暂无可预约时间');
+				  		$('.trade-date').removeClass('mui-font-red');
+				  		$('#createTrade').removeClass('bbc-btn-warning');
+				  		$('#createTrade').addClass('bbc-btn-grey');
+				  	}
 				  	
         				$('.mui-table-view-radio').append(widgets);
         				price = $("input[name='consult-type']:checked").attr('val');
@@ -348,11 +355,11 @@
 				})
 				 //查看咨询日程
 			      $('.trade-date').on('tap',function(){
+			      	if($(this).hasClass('nodate')){
+			      		return false;
+			      	}
 			      	clicked('_www/view/member/ondate/index.html',{counsellor_id:counsellor_id})
 			      })
-						
-						
-				
 			})
 			//计总
 			function totalprice(price ){
@@ -370,11 +377,30 @@
 				chart = $("input[name='consult-type']:checked").attr('id');
 //				chart = $(this).attr('id'); 
 //				price = $(this).attr('val');
+				if($("input[name='consult-type']:checked").attr('id')=='facechart'){
+			 		mui.toast('地面咨询'); 
+			 	}
 				totalprice(price);	
 			})
 			
 			//提交
 			$('#createTrade').on('tap', function(e) {
+				if($(this).hasClass('bbc-btn-grey')){
+//		      		return false;
+		      	}
+				var msg = [
+					'1.退款条件　　　',
+					'2.自确认　　'
+				].join("\n");
+				
+				mui.confirm(msg, '预约需知', ['确认', '取消'], function(e) {
+					if (e.index == 0) {
+						mui.toast('确认');
+					}else{
+						mui.toast('取消');
+					}
+				})
+				
 //				clicked('_www/view/checkout/payment.html',{
 //						'price':price,
 //						'tid':'12345678'

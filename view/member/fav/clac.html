@@ -24,6 +24,24 @@
 		    border-color: #00C7C9;
 		    color: #00C7C9;
 		}
+		.mui-table-view .mui-media-object{
+	    		max-width: 80px; 
+			height: 80px;
+		}
+		.mui-media-text {
+			color: #646464;
+			font-size: 13px;
+		}
+		.mui-media-author { 
+			font-size: 11px;
+			margin-top: 5px;
+		} 
+		.mui-media-action{
+			font-size: 11px;
+		}
+		.mui-table-view-chevron .mui-table-view-cell{
+			padding-right: 15px;
+		}
     </style>
   </head>
 
@@ -48,7 +66,7 @@
     <script src="../../../js/template.min.js"></script>
     <script src="../../../config.js"></script>
     <script src="../../../js/app.js"></script>
-    <script type="text/html" id="fav_list">
+    <script type="text/html" id="fav_list1">
         <section class="widgets-category-counsellor section-white">
 	        <% if(list){%>
 	        <div class="mui-table-view">
@@ -76,6 +94,36 @@
 	        <% } %>
 		</section>
     </script>
+    <script type="text/html" id="fav_list">
+        <section class="widgets-category-counsellor section-white">
+	        <% if(list){%>
+	        <div class="mui-table-view">
+	          <ul class="mui-table-view mui-table-view-chevron">
+	          	<% for(var i in list) { %>
+					<li class="mui-table-view-cell mui-media " >
+						<div class="mui-table">
+			                <div class="mui-table-cell mui-col-xs-10 action-webview"  data-webview="_www/view/clac/detail.html" data-webparam='{"acid":<%= list[i].id %>,"actype":<%= list[i].typeid %>}'>
+								<img class="mui-media-object mui-pull-left" src="<%= $add_server(list[i].pic) %>" >
+								<div class="mui-media-body">
+									<p>
+										<span class="mui-text-left mui-ellipsis"><%= list[i].title %></span>
+									</p>
+									<p class="mui-ellipsis mui-media-text ">地点：<%= list[i].address %></p>
+								<p class='mui-ellipsis mui-media-text mui-media-author'>时间：<%= $timestamp_To_Time(list[i].start_time) %></p>
+								</div>
+							</div>
+							<div class="mui-table-cell mui-col-xs-2 mui-text-right" >
+	                    			<p><span class="mui-media-text  mui-btn-yellow go-delete" data-fid="<%= list[i].id %>" data-type="<%= list[i].typeid %>"  style="color: #FFFFFF;">删除</span></p>
+			                </div>
+						</div>
+						
+					</li>
+				<% } %>
+			  </ul>		
+	        </div>
+	        <% } %>
+		</section>
+    </script>
     <script type="text/javascript" charset="utf-8">
     
 	mui.plusReady(function() {
@@ -92,8 +140,9 @@
        		if(rs){
        			rt = {
        				'list':rs
-       			}
+       			} 
        		}
+
        		var widgets = template('fav_list', rt);
             $('.mui-content').append(widgets);
             //事件注册
@@ -109,21 +158,20 @@
             })
             
             //注册删除
-            $(window).on('tap', '.action-del', function() {
+            $(window).on('tap','.go-delete',function(){
             		var that = $(this);
 		        mui.confirm('确认删除该条课程/活动吗？', '确认提示', function(e) {
 		          if(e.index == 1) {
-		          	var id = that.data('id');
+		          	var fid = that.data('fid');
 		          	var type = that.data('type');
 		          	var param = {
 			          'method': config.apimethod.delfav,
 			          'source':config.source,
 			          'typeid': type,
-			          'fid': id,
+			          'fid': fid,
 			          'account': state.token
 			          
 			      	}
-					log(param) ;
 					$.dataRequest(param, function(rs) {
 						that.parents('li').remove();
               			mui.toast('移除成功');

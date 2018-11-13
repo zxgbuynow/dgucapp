@@ -276,7 +276,7 @@
 
     <script type="text/html" id="trade_list">
         <% for(var i=0; i<list.length; i++) { %>
-      		<li class="mui-table-view-cell mui-media <%if (list[i].status=='2'){%>action-webview<% } %>  <%if (list[i].status=='0'){%>godate <% } %> " <%if (list[i].status=='0'){%>data-webview="_www/view/msg/chat.html" data-cid="<%= list[i].id %>" data-webparam = '{"jid":"3", "username":"<%= list[i].mobile %>" }' <%}else{%>data-webview="_www/view/member/ondate/evaluate-new.html" data-webparam = {"c_id":<%= list[i].id %>,"avar":"<%= list[i].avar %>","counsellor":"<%= list[i].counsellor %>"} <%}%>
+      		<li class="mui-table-view-cell mui-media <%if (list[i].status=='2'){%>action-webview<% } %>  <%if (list[i].status=='0'){%>godate <% } %> " <%if (list[i].status=='0'){%>data-webview="_www/view/msg/chat.html" data-cid="<%= list[i].id %>" data-ondate="<%= list[i].start_time %>" data-chart="<%= list[i].chartkey %>" data-webparam = '{"jid":"3", "username":"<%= list[i].mobile %>" }' <%}else{%>data-webview="_www/view/member/ondate/evaluate-new.html" data-webparam = {"c_id":<%= list[i].mid %>,"avar":"<%= list[i].avar %>","counsellor":"<%= list[i].counsellor %>"} <%}%>
 	          <div class="box-flex">
               <div class="box-item-flex1">
   	          	<!--<img class="mui-media-object " src="../../img/activity_ads.jpg">-->
@@ -306,26 +306,55 @@
       mui.plusReady(function() {
         var state = app.getState();
         var param = {
-          'method': config.apimethod.recordlist,
-          'account': state.token,
+          'method': config.apimethod.recordlist,  
+          'account': 631,//state.token,
           'source':config.source,
           'status': 'all',
         	  'page_no': config.cpage,
           'page_size': config.pagesize
-      }
+      } 
 //      log(param)
         $.tabWithPageRequest(param, 'trade_list', 'scroll1', 'status');
         mui('#slider').on('tap','.godate',function(){
         		var webview = $(this).data('webview');
         		var webparam = $(this).data('webparam');
         		var cid = $(this).data('cid');
+        		var ondate = $(this).data('ondate');
+        		var chart = $(this).data('chart');
 //      		log(webparam);return false;
-        		plus.nativeUI.confirm( "请选择?", function(e){
+//      		plus.nativeUI.confirm( "请选择?", function(e){
+        		mui.confirm(' ','请选择? ', ['去咨询', '取消预约'], function(e) {
 				if(e.index==0){
-					clicked(webview,webparam)
+					if(chart=='facechart'){
+						mui.confirm('是否已经完成地面咨询', ['是', '否'], function(f) {
+							if (f.index == 0) {
+								//更新预约状态
+								var param = {
+			                          'method': config.apimethod.cancleUp,
+			                          'cid': cid,
+			                          'source':config.source
+			                    }
+			                     $.dataRequest(param, function(rs) {
+			                     	plus.webview.currentWebview().reload(true)
+			                     })
+
+							}else{
+								clicked(webview,webparam)
+							}
+						})
+					}else{
+						clicked(webview,webparam)
+					}
+					
+
 				}else{ 
 					if(e.index==-1){
 						return false;
+					}
+					//是否已过时间
+					var timestamp = (new Date()).getTime();
+					if(timestamp>ondate*1000){
+						mui.toast('很抱歉，已过了预约，不能取消');return false;
 					}
 					//取消预约
 					var param = {
