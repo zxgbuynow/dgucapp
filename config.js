@@ -13,10 +13,12 @@ var config = {
         userinfo: 'user.userinfo', //我的、
         article: 'home.article', //好文推荐
         lunbo: 'home.lunbo', //广告
+        advsg: 'home.adv', //广告
         classList: 'class.list', //课程广告
         activeList: 'active.list', //活动广告
         category: 'counsellor.category', //咨询分类
         recommend: 'counsellor.recommend', //推荐咨询师
+        deskrecommend: 'counsellor.deskrecommend', //平台推荐咨询师
         counsellor: 'counsellor.info', //咨询师
         ondate: 'counsellor.ondate', //预约
         point: 'user.point', //积分明细
@@ -65,6 +67,7 @@ var config = {
         smsginfo:'smsg.info',
         clcareply:'clca.reply',
         delfav:'fav.del',
-		getUserList:'getUser.list'
+		getUserList:'getUser.list',
+		evalist:'counsellor.evalist'
     }
 }

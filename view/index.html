@@ -477,7 +477,7 @@
       <div class="header-logo"><img src="../img/newlogo.png"></div> 
       <div class="main" >
         <form onsubmit="return false;">
-          <div class="mui-input-row header-search-form"><input type="search" onfocus="toSearch(this,'_www/view/artical/list.html')" class="header-search mui-input-clear" placeholder="寻找感兴趣的文章"></div>
+          <div class="mui-input-row header-search-form"><input type="search" onfocus="toSearch(this,'_www/view/artical/list.html')" class="header-search mui-input-clear" placeholder="寻找感兴趣的内容"></div>
         </form>
       </div>
       <p class="service">
@@ -768,7 +768,7 @@
 			</div>
         </div>
       </section>-->
-	<section class="widgets-category-nav">
+	<section class="widgets-category-nav mui-hidden">
 		<div class="doctor-list-header">
 			<div class="title">专家推荐</div>
 			<ul>
@@ -988,7 +988,7 @@
     		<section class="widgets-category-nav section-white swiper-wrapper-new">
 	        <div class="section-title">
 	          <div class="title-txt">课程</div>
-		      <div class="more-link action-webview" data-webview="_www/view/artical/list.html" data-webparam='{"cat_id":18}'>更多</div>
+		      <div class="more-link action-webview" data-webview="_www/view/clac/index.html" data-webparam='{"cat_id":18}'>更多</div>
 	        </div>
 		    <div class="swiper-container swiper-container1">
 			    <div class="swiper-wrapper">
@@ -1037,7 +1037,7 @@
     		<section class="widgets-category-nav section-white swiper-wrapper-new">
 		        <div class="section-title">
 		          <div class="title-txt">好文推荐</div>
-			      <div class="more-link action-webview"  data-webview="_www/view/artical/list.html" data-webparam='{"cat_id":19}'>更多</div>
+			      <div class="more-link action-webview"  data-webview="_www/view/artical/list.html" >更多</div>
 		        </div>
 			    <div class="swiper-container swiper-container3">
 				    <div class="swiper-wrapper">
@@ -1163,11 +1163,71 @@
 						</li>
 				</ul>
 			</div>
+<<<<<<< HEAD
 	    <div class="section-title">
 	        <div class="title-txt">大观心师</div>
 	        <div class="more-link action-webview" data-webview="_www/view/category/category.html">更多</div>
 	    </div>
+=======
+	    <!--<div class="section-title">
+	        <div class="title-txt">大观心师</div>
+	        <div class="more-link action-webview" data-webview="_www/view/category/category.html">更多</div>
+	    </div>-->
+>>>>>>> a3b1f6b2fdefe6bf744dedfcfec50cb8cd12106d
 	    <ul class="mui-table-view-chevron">
+	    		<% for(var i=0; i<list.length; i++) { %>
+			<li class="card-wrapper card-wrapper-new action-webview" data-webview="_www/view/counsellor/detail.html" data-webparam='{"counsellor_id":<%= list[i].memberid %>}'>
+				<div class="avatar">
+						<img src="<%= $add_server(list[i].avar) %>">
+				</div>
+				<div class="flex flex-hb flex-dc info-detail">
+						<div class="card-new-info">
+							<div class="flex-box">
+								<p class="card-name flex-g2"><%= list[i].nickname %>
+									<i class="mui-icon bbc-icon bbc-icon-home bbc-icon-doctype small blue"></i>
+									<%if(list[i].tearch){%> 
+										<i class="mui-icon bbc-icon bbc-icon-home bbc-icon-doctype small orange"></i>
+									<%}%>
+									<%if(list[i].leader){%>
+										<i class="mui-icon bbc-icon bbc-icon-home bbc-icon-doctype small pink"></i>
+									<%}%>
+									
+								</p>
+								<p class="doctor-address flex-g1 card-ellispse">
+									<i class="mui-icon bbc-icon bbc-icon-home bbc-icon-doctype small blue rt1"></i>
+									<span><%= list[i].city %></span>
+								</p>
+							</div>
+						</div>
+						<div class="doctor-sign-list">
+							<% for(var m in list[i].signarr) { %>
+								<span><%= list[i].signarr[m] %></span>
+							<%}%>
+							<!--<span>职场冲突</span>-->
+							<!--<span>亲自咨询</span>-->
+						</div>
+						<p class="card-addrs card-ellispse"><%= list[i].slogan %></p>
+						<div class="card-new-content">
+								<div class="flex-box card-new-opre">
+									<% if(list[i].online==1 ){%>
+										<p class="mui-badge mui-badge-blue flex-g1">在线</p>
+									<%}else{%>
+										<p class="mui-badge mui-badge-gray flex-g1">离线</p>
+									<%}%>
+									
+									<!-- <p class="mui-badge mui-badge-gray flex-g1">离线</p> -->
+									<p class="doctor-honor flex-g2 ">
+										<span>住进 <%= list[i].trade %> 个人的心窝</span>
+										<span class="star">好评率：<%= list[i].start %></span>
+									</p>
+									<p class="d-icon-detail action-webview flex-g1" data-webview="_www/view/counsellor/detail.html" data-webparam='{"counsellor_id":<%= list[i].memberid %>}'>详情》</p>
+								</div>
+						</div>
+				</div>
+			</li>
+			<% } %>
+		</ul>
+	    <ul class="mui-table-view-chevron mui-hidden">
 	    		<% for(var i=0; i<list.length; i++) { %>
 	        <li class="card-wrapper card-wrapper-new action-webview" data-webview="_www/view/counsellor/detail.html" data-webparam='{"counsellor_id":<%= list[i].memberid %>}'>
 	            <div class="avatar">
@@ -1197,7 +1257,7 @@
 	</section>
 	</script>
 	<script type="text/html" id="widget_single_pic">
-        <section class="single-img action-webview" data-webview="<%= webview %>" >
+        <section class="single-img action-webview" data-webview="<%= webview %>" data-webparam='<%= $json_string(webparam) %>'>
             <img src="<%= $add_server(cover) %>">
         </section>
     </script>
@@ -1301,13 +1361,13 @@
 				        });
 				        //会员升级
 					    var aparam = {
-				            'method': config.apimethod.updatemember,
+				            'method': config.apimethod.advsg,
 				            'source':config.source,
 				            'ismobile':0
 				        }
 					    if(app.getState().token!=undefined){
 					    		var aparam = {
-					            'method': config.apimethod.updatemember,
+					            'method': config.apimethod.advsg,
 					            'source':config.source,
 					            'account':app.getState().token,
 					            'ismobile':0
@@ -1316,7 +1376,7 @@
 				        $.dataRequest(aparam, function(rs) {
 			        			if(rs!=1){
 			        				var widgets = template('widget_single_pic', rs);
-			            			$('.container').append(widgets);
+			            			$('.container').append(widgets); 
 			        			}
 
 				        		
@@ -1351,6 +1411,7 @@
 						            'source':config.source
 						        }
 					        }
+					        log(aparam2) 
 					        $.dataRequest(aparam2, function(rt) {
 					        	log(rt)
 					        		for (var i in rt['list']) {
