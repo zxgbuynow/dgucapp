@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../../css/style.css">
+	<link href="../../css/pay.css" rel="stylesheet" />
+	<style>
+	</style>
+  </head>
+
+  <body class="section-gray">
+    <header class="page-header">
+      <div class="mui-navbar-inner mui-bar mui-bar-nav mui-navbar-center">
+		<i class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left bbc-icon bbc-icon-back"></i>
+		<h1 class="mui-center mui-title">订单支付</h1>
+		<a class="mui-right mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-right service">
+			<img src="../../img/tel.png">
+			<i class="search-hide icon-func bbc-icon callmm">客服</i>
+		</a>
+      </div>
+    </header>
+    <section class="container">
+		<div class="doct-list-tab-container">
+			<ul class="doct-list-tab clearfix">
+				<li class="doct-list-tab-item">全部</li>
+				<li class="doct-list-tab-item ">待支付</li>
+				<li class="doct-list-tab-item ">已支付</li>
+				<li class="doct-list-tab-item on">取消</li>
+			</ul>
+		</div>
+		<div class="order-list">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell mui-media no-bottom-bd">
+					<a href="javascript:;" class="cell-flex">
+						<div class="mui-media-body">
+							<h3 class='mui-ellipsis'>涂预约《大观精油芳香体验沙龙》</h3>
+							<p class="order-progress-content">当前进度: 1/1 <span><i>￥</i>30.00</span></p>
+							<p class='mui-ellipsis order-time-txt'>2018-10-25</p>
+						</div>
+						<div class="mui-media-object box-item-flex1">
+							<span>待支付</span>
+						</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media no-bottom-bd">
+					<a href="javascript:;" class="cell-flex">
+						<div class="mui-media-body">
+							<h3 class='mui-ellipsis'>涂预约《大观精油芳香体验沙龙》</h3>
+							<p class="order-progress-content">当前进度: 1/1 <span><i>￥</i>30.00</span></p>
+							<p class='mui-ellipsis order-time-txt'>2018-10-25</p>
+						</div>
+						<div class="mui-media-object box-item-flex1">
+							<span>已支付</span>
+							<span>点击可预约</span>
+						</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div class="nopay-order-list">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell mui-media">
+					<a href="javascript:;" class="cell-flex">
+						<h3 class="mui-ellipsis">涂预约《大观精油芳香体验沙龙》</h3>
+						<p class="order-progress-content"><span><i>￥</i>30.00</span></p>
+						<div class="mui-media-object box-item-flex1">
+							<span>待支付</span>
+						</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<a href="javascript:;" class="cell-flex">
+						<h3 class="mui-ellipsis">涂预约《大观精油芳香体验沙龙》</h3>
+						<p class="order-progress-content"><span><i>￥</i>30.00</span></p>
+						<div class="mui-media-object box-item-flex1">
+							<span>待支付</span>
+						</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+    </section>
+  </body>
+  <script src="../../js/zepto.js"></script>
+  <script src="../../js/mui.min.js"></script>
+  <script src="../../js/template.min.js"></script>
+  <script src="../../config.js"></script>
+  <script src="../../js/app.js"></script>
+  <script src="../../js/im/webim.config.js"></script>
+	<script src="../../js/im/strophe-1.2.8.js"></script>
+	<script src="../../js/im/websdk-1.4.13.js"></script>
+	<script src="../../js/im/im.js"></script>
+	
+ 
+  <script>
+    var state = app.getState();
+    var  couponid = 0;
+    mui.plusReady(function() {
+      var tid = plus.webview.currentWebview().tid;
+      var price = plus.webview.currentWebview().price;
+      var paytype = plus.webview.currentWebview().paytype||'';
+      var pay_id;
+
+      mui.init({
+        beforeback: function() {
+          var fw = plus.webview.currentWebview().opener();
+          var ffw = fw.opener();
+	        ffw.reload(true);
+	        ffw.addEventListener('loaded',function(){
+	          plus.webview.close(fw);
+	          setTimeout(function(){
+	            //返回true，继续页面关闭逻辑
+	            return false;
+	          },200);
+	        });
+        }
+      });
+	  
+    });
+  </script>
+
+</html>
