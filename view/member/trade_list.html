@@ -112,9 +112,9 @@
     <div id="slider" class="mui-slider mui-fullscreen bbc-tab-bar">
       <div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
         <a class="mui-control-item mui-active" href="#item1mobile">全部</a>
-        <a class="mui-control-item " href="#item2mobile">已支付</a>
-        <a class="mui-control-item" href="#item3mobile">取消</a>
-        <a class="mui-control-item" href="#item4mobile">冻结</a>
+        <a class="mui-control-item " href="#item2mobile">待支付</a>
+        <a class="mui-control-item" href="#item3mobile">已支付</a>
+        <a class="mui-control-item" href="#item4mobile">取消</a>
         <!--<a class="mui-control-item" href="#item5mobile">冻结</a>-->
       </div>
       <div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-3" ></div>
@@ -135,7 +135,7 @@
         <div id="item2mobile" class="mui-slider-item mui-control-content ">
           <div id="scroll2" class="mui-scroll-wrapper">
             <div class="mui-scroll" data-count="1" data-total="">
-              <ul class="mui-table-view redpackets-list" data-type="1">
+              <ul class="mui-table-view redpackets-list" data-type="0">
                 <div class="mui-loading">
                   <div class="mui-spinner">
                   </div>
@@ -147,7 +147,7 @@
         <div id="item3mobile" class="mui-slider-item mui-control-content">
           <div id="scroll3" class="mui-scroll-wrapper">
             <div class="mui-scroll" data-count="1" data-total="">
-              <ul class="mui-table-view redpackets-list" data-type="2">
+              <ul class="mui-table-view redpackets-list" data-type="1">
                 <div class="mui-loading">
                   <div class="mui-spinner">
                   </div>
@@ -159,7 +159,7 @@
         <div id="item4mobile" class="mui-slider-item mui-control-content">
           <div id="scroll4" class="mui-scroll-wrapper">
             <div class="mui-scroll" data-count="1" data-total="">
-              <ul class="mui-table-view redpackets-list" data-type="3">
+              <ul class="mui-table-view redpackets-list" data-type="2">
                 <div class="mui-loading">
                   <div class="mui-spinner">
                   </div>
@@ -200,18 +200,26 @@
       				<% } %>
 	              <% } %>
 	              <%if (list[i].status=='0'){%>
+	              	action-webview
 	              <% } %>
 	              <%if (list[i].status=='2'){%>
 	              <% } %>
 	              <%if (list[i].status=='3'){%>
 	              <% } %>
-      			" data-webview="_www/view/member/ondate/index.html" data-webparam = '{"counsellor_id":<%= list[i].mid %>,"tid":<%= list[i].id %>}'>
+      			" <%if (list[i].status=='0'){%>data-webview="_www/view/checkout/index.html"<%}else{%>data-webview="_www/view/member/ondate/index.html"<%}%> data-webparam = '{"counsellor_id":<%= list[i].mid %>,"tid":<%= list[i].id %>}'>
 	          <div class="box-display">
 	            <div class="box-item-flex1">
 	              <%= list[i].title%><br>
+	              <%if (list[i].status!='0'){%>
 	              <span class="fontS font-gray-60 fonts font-blue" ><%= list[i].process%></span>
+	              <%}%>
 	              <span class="fontS font-gray-60 fonts" ><%= $format_price(list[i].payment)%>
 	              </span>
+	              <%if (list[i].status!='0'){%>
+	              <br>
+	              <span class="fontS font-gray-60 fonts" ><%= $timestamp_To_Date(list[i].created_time)%>
+	              </span>
+	              <%}%>
 	            </div>
 	            <div class="box-item-flex2 content-right deposit-detail-amount  font-red">
 	            	  <%if (list[i].status=='1'){%>已支付
@@ -244,6 +252,10 @@
       }
 	log(param)  
         $.tabWithPageRequest(param, 'trade_list', 'scroll1', 'status');
+        //
+        $(window).on('tap','',function(){
+        	
+        })
       })
     </script>
   </body>

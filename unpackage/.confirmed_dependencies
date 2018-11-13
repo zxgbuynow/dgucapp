@@ -866,7 +866,8 @@
 			"view/member/fav/index.html",
 			"view/member/clac/index.html",
 			"view/member/point/coupon.html",
-			"view/h5.html"
+			"view/h5.html",
+			"view/member/complaint/complaint.html"
 		]
 	},
 	"view/member/setting.html": {
@@ -1301,7 +1302,8 @@
 	},
 	"view/member/trade_list.html": {
 		"refer": [
-			"view/member/ondate/index.html"
+			"view/member/ondate/index.html",
+			"view/checkout/index.html"
 		],
 		"resources": []
 	},
@@ -1394,7 +1396,8 @@
 	"view/member/fav/index.html": {
 		"refer": [
 			"view/h5.html",
-			"view/member/fav/clac.html"
+			"view/member/fav/clac.html",
+			"view/member/fav/article.html"
 		],
 		"resources": []
 	},
@@ -1417,7 +1420,8 @@
 	},
 	"view/member/fav/article.html": {
 		"refer": [
-			"view/member/fav/clac.html"
+			"view/member/fav/clac.html",
+			"view/member/fav/index.html"
 		],
 		"resources": []
 	},
@@ -1443,7 +1447,8 @@
 	},
 	"view/member/clac/index.html": {
 		"refer": [
-			"view/clac/detail.html"
+			"view/clac/detail.html",
+			"view/member/clac/eval.html"
 		],
 		"resources": []
 	}
