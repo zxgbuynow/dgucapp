@@ -450,3 +450,52 @@
 	font-size:14px;
 	color: #C4C4C4;
 }
+
+.counsellor-head-content{
+			text-align: center;
+			padding-top: 4rem;
+			padding-bottom: 0.4rem;
+			background: #4883DD;
+			margin-bottom: 0.6rem;
+		color: #fff;
+	}
+
+/**评价**/
+.counsellor-info .section.eve-form{
+	padding: 0 0.7rem;
+  margin: 0;
+  border: 0;
+}
+.eve-form .title{
+	font-size: 14px;
+	color: #8C8C8C;
+	text-align: center;
+}
+.eve-form .star-options{
+	text-align: center;
+	margin: 5px auto;
+}
+.eve-form .star-options img {
+    width: 20px;
+    height: 20px;
+}
+.eve-form .desc-body{
+	width: 80%;
+	margin: 0 auto;
+}
+.eve-form .desc-body textarea{
+	resize:none;
+	min-height: 180px;
+  max-height: 360px;
+	padding: 8px;
+	text-align: left;
+}
+
+.eve-form .btn-options .mui-btn{
+	background: #4883DD;
+	border-color: inherit;
+	border: 0;
+	width: 60%;
+	margin: 0 auto;
+	border-radius: 24px;
+}

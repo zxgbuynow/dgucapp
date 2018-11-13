@@ -1277,8 +1277,6 @@ input[type="submit"].mui-active:enabled,
 
 .mui-bar-nav {
     top: 0;
-    -webkit-box-shadow: 0px 1px 6px #CCC;
-    box-shadow: 0px 1px 6px #CCC;
 }
 
 .mui-bar-nav ~ .mui-content .mui-anchor {
@@ -1748,6 +1746,13 @@ input[type="submit"].mui-active:enabled,
     content: '';
     -webkit-transform: scaleY(0.5);
     transform: scaleY(0.5);
+}
+
+.mui-table-view-cell.no-bottom-bd:after {
+    height: 0px;
+    background: none;
+		-webkit-transform: scaleY(0);
+		transform: scaleY(0);
 }
 
 .mui-table-view-cell.mui-radio input[type=radio],
@@ -2550,12 +2555,27 @@ select:focus {
 
 .mui-bar-nav .service{
 	display: inline-block;
-	width: 20px;
+	line-height: normal;
+	text-align: center;
+	top: 5px;
 }
 .mui-bar-nav .service img {
-    width: 100%;
+    width: 20px;
     height: auto;
-    vertical-align: middle;
+}
+
+.mui-bar-nav .service .icon-func {
+    font-size: 13px;
+    color: #fff;
+    display: block;
+    text-align: center;
+    line-height: 0.6rem;
+		width: auto;
+    height: auto;
+}
+
+.mui-bar .mui-btn-nav.mui-pull-right{
+	margin-right: 0;
 }
 
 .mui-radio input[type="radio"],
@@ -5096,6 +5116,9 @@ a {
 .section-white {
     background: #fff;
 }
+.section-gray {
+	background: #efeff4;
+}
 
 .box-display {
     display: -webkit-box;
@@ -5119,18 +5142,22 @@ a {
 
 .box-item-flex1 {
     -webkit-box-flex: 1;
+		box-flex: 1;
 }
 
 .box-item-flex2 {
     -webkit-box-flex: 2;
+		box-flex: 2;
 }
 
 .box-item-flex3 {
     -webkit-box-flex: 3;
+		box-flex: 3;
 }
 
 .box-item-flex4 {
     -webkit-box-flex: 4;
+		box-flex: 3;
 }
 
 .theme-border-top {
@@ -6736,7 +6763,6 @@ header {
     position: fixed;
     left: 0;
     top: 0;
-    right: 0;
     z-index: 15;
     height: 2.8rem;
 }
@@ -9483,7 +9509,6 @@ input[type="search"].header-search {
 .mui-list-bd-headline{
 	border-bottom: 1px solid #E6E6E6;
 }
-<<<<<<< HEAD
 .star-item .star {
     width: 12px;
     height: 12px;
