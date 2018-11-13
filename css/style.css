@@ -5157,7 +5157,7 @@ a {
 
 .box-item-flex4 {
     -webkit-box-flex: 4;
-		box-flex: 3;
+		box-flex: 4;
 }
 
 .theme-border-top {
@@ -6763,6 +6763,7 @@ header {
     position: fixed;
     left: 0;
     top: 0;
+    right: 0;
     z-index: 15;
     height: 2.8rem;
 }
@@ -6771,7 +6772,6 @@ header .icon-func {
     display: block;
     position: relative;
     color: #ea2329;
-    /*color: #ea2329;*/
     font-size: 1.2rem;
     width: 2.8rem;
     height: 2.8rem;
@@ -6823,7 +6823,6 @@ header .header-title {
     text-overflow: ellipsis;
     vertical-align: middle;
 }
-
 .redpackets-list {
     padding: 0.6rem;
 }
