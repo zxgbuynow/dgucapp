@@ -297,6 +297,79 @@
 							</a>
 						</div>
 					</div>
+					<div class="doct-desc-section">
+						<div class="section-title art-header">
+							<div class="title-txt">咨询师介绍</div>
+						</div>
+						<div class="desc-txt">
+							<p>咨询师介绍咨询师介绍咨询师介绍咨询师介绍
+							咨询师介绍咨询师介绍咨询师介绍咨询师介绍咨询
+							师介绍咨询师介绍咨询师介绍咨询师介绍咨询师介
+							绍咨询师介绍咨询师介绍咨询师介绍咨询师介绍咨
+							询师介绍咨询师介绍咨询师介绍咨询师介绍咨询师介绍</p>
+						</div>
+					</div>
+					<div class="doct-estimate-section">
+						<div class="section-title cons-detail-sub-header">
+							<div class="title-txt bg-blue-txt">评价</div>
+							<div class="more-link action-webview wd2" data-webview="_www/view/category/category.html">更多&gt
+							</div>
+						</div>
+						<div class="doct-estimate-body">
+							<ul class="mui-table-view">
+								<li class="list-cell mui-media action-webview" data-webview="_www/view/member/article/edit.html"  data-webparam = '{"article_id":<%= list[i].id %>}'>
+									<a class="sub-cell flex-box">
+										<div class="flex-g0">
+											<img class="header-img40" src="../../img/60x60.gif">
+										</div>
+										<div class="mui-media-body content-list">
+											<div class="clearfix content-sub">
+												<p class="mui-pull-left uname">瑶***s<span class="cons-btn icon-bd-vip">心窝会员</span></p>
+												<p class="mui-pull-right utime">时间：2018-7-20</p>
+											</div>
+											<p class="star-item">
+												<img class="star" src="../../img/star-y.png">
+												<img class="star" src="../../img/star-y.png">
+												<img class="star" src="../../img/star-y.png">
+											</p>
+											<p class='cell-desc'>很久很久之前，流传着这样一个传说：世界各地散落着七颗龙珠，只要集齐七枚龙珠</p>
+										</div>
+									</a>
+								</li>
+							</ul>	
+						</div>
+					</div>
+					<div class="doct-article-section">
+						<div class="section-title art-header">
+							<div class="title-txt">相关文章</div>
+							<div class="more-link action-webview wd2" data-webview="_www/view/category/category.html">更多&gt
+							</div>
+						</div>
+						<div class="doct-article-body">
+							<ul class="mui-table-view">
+								<li class="list-cell mui-media action-webview" data-webview="_www/view/member/article/edit.html"  data-webparam = '{"article_id":<%= list[i].id %>}'>
+									<a class="sub-cell">
+										<img class="mui-media-object mui-pull-left" src="../../img/60x60.gif">
+										<div class="mui-media-body">
+											<h3>再见！祝好！营地结营记录</h3>
+											<p class='mui-ellipsis-2 cell-desc'>很久很久之前，流传着这样一个传说：世界各地散落着七颗龙珠，只要集齐七枚龙珠</p>
+											<p class="mui-ellipsis cell-desc cell-author">作者：本人</p>
+										</div>
+									</a>
+								</li>
+								<li class="list-cell mui-media action-webview" data-webview="_www/view/member/article/edit.html"  data-webparam = '{"article_id":<%= list[i].id %>}'>
+									<a class="sub-cell">
+										<img class="mui-media-object mui-pull-left" src="../../img/60x60.gif">
+										<div class="mui-media-body">
+											<h3>再见！祝好！营地结营记录</h3>
+											<p class='mui-ellipsis-2 cell-desc'>很久很久之前，流传着这样一个传说：世界各地散落着七颗龙珠，只要集齐七枚龙珠</p>
+											<p class="mui-ellipsis cell-desc cell-author">作者：本人</p>
+										</div>
+									</a>
+								</li>
+							</ul>	
+						</div>	
+						</div>
 				</section>
 			<!--咨询师详情 end-->
 	    <!-- <section class="container section-white counsellor-info">
@@ -859,7 +932,9 @@
 			mui.toast('请先登录')
 		}
       })
-      
+      $('.dialog').on('click', function(){
+      		//mui.alert('登陆成功','','确定',null,'div')
+      })
       //查看咨询日程
       $('.trade-date').on('tap',function(){
       	clicked('_www/view/member/ondate/index.html',{counsellor_id:counsellor_id})

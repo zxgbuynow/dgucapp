@@ -339,11 +339,17 @@
 }
 
 .cons-submit-options .cons-btn{
-		display: inline-block;
-		margin: 0 10px;
-		border-radius: 16px;
-		padding:5px 8px;
+	display: inline-block;
+	margin: 0 10px;
+	border-radius: 16px;
+	padding:5px 8px;
+}
+@media only screen and (max-width:367px) {
+	.cons-submit-options .cons-btn {
+	    margin: 0 2px;
 	}
+}
+
 	.cons-submit-options .cons-btn.icon-heart{
 		border: 1px solid #AFCAEF;
 		padding-left: 36px;
@@ -357,4 +363,90 @@
 		background: url(../img/video-new.png) no-repeat 6px center;
 		background-size: 24px 24px;
 	}
+	
+	
+	.section-title.cons-detail-sub-header{
+		padding: 0.5rem 1rem;
+	}
+	.doct-article-section ul li.list-cell{
+		position: relative;
+		padding: .7rem .4rem;
+		border-bottom: 1px solid #e6e6e6;
+	}
+	.doct-article-section ul li.list-cell:first-child{
+		padding: 0 .4rem 0.7rem;
+	}
+	.doct-article-section .list-cell .sub-cell{
+		display: block;
+		padding: 0 .7rem;
+	}
+	.doct-article-section .list-cell h3{
+		color: #5A5A5A;
+		font-size: 16px;
+	}
+	.doct-article-section .list-cell .cell-desc{
+		padding: 8px 0 0 0;
+		color: #646464;
+    font-size: 14px;
+	}
+	.doct-article-section .list-cell .cell-desc.cell-author{
+		padding: 8px 0 0 0;
+		font-size: 12px;
+	}
+	
+	.cons-btn.icon-bd-vip{
+		order: 0;
+		padding: .2rem .3rem .2rem 1.2rem;
+    background: #E25E5D url(../img/video-new.png) no-repeat 4px center;
+    background-size: 0.8rem 0.8rem;
+    font-size: 0.6rem;
+    border-radius: 10px;
+		color: #fff;
+	}
+	
+	.doct-desc-section,.doct-estimate-section,.doct-article-section{
+		border-bottom: 4px solid #e6e6e6; 
+	}
+	
+	.doct-desc-section .desc-txt{
+		padding: 0 1rem .7rem;
+		color: #979797;
+		font-size: 14px;
+	}
+	
+	.doct-estimate-body li .sub-cell{
+		padding: 0.7rem 1rem;
+	}
+	.doct-estimate-body li .sub-cell:first-child{
+		padding-top: 0;
+	}
+	.content-list{
+		margin-left: 0.6rem;
+		color: #8E8E8E;
+	}
+	.content-list .content-sub .utime{
+		color: #8E8E8E;
+		font-size: .8rem;
+	}
+	.content-list .content-sub .cell-desc{
+		padding-top: .7rem;
+		font-size: 1rem;
+	}
+	.sub-cell .header-img40{
+		width: 42px;
+		height: 42px;
+	}
+	/****/
+.counsellor-per{
+	color: #C4C4C4;
+	font-weight: normal;
+}
+.icon-price-symbol{
+	font-size:10px;
+	color: #C4C4C4;
+}
 
+.no-opentime-tip{
+	font-size:14px;
+	color: #C4C4C4;
+}
