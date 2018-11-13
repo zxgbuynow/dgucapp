@@ -142,6 +142,7 @@
        				'list':rs
        			} 
        		}
+
        		var widgets = template('fav_list', rt);
             $('.mui-content').append(widgets);
             //事件注册
@@ -161,17 +162,16 @@
             		var that = $(this);
 		        mui.confirm('确认删除该条课程/活动吗？', '确认提示', function(e) {
 		          if(e.index == 1) {
-		          	var id = that.data('fid');
+		          	var fid = that.data('fid');
 		          	var type = that.data('type');
 		          	var param = {
 			          'method': config.apimethod.delfav,
 			          'source':config.source,
 			          'typeid': type,
-			          'fid': id,
+			          'fid': fid,
 			          'account': state.token
 			          
 			      	}
-					log(param) ;
 					$.dataRequest(param, function(rs) {
 						that.parents('li').remove();
               			mui.toast('移除成功');
