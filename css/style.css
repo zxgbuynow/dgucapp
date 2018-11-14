@@ -7010,6 +7010,20 @@ header.page-header:before {
     height: 1px;
     background: #E8E8E8;
 }
+/**蓝底无边框导航**/
+header.page-header.nobd {
+    background: none;
+}
+
+header.page-header.nobd:before {
+    content: " ";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 0;
+    background: #E8E8E8;
+}
 
 header.icons-header {
     top: 0;
@@ -9439,6 +9453,12 @@ input[type="search"].header-search {
         
 .flex-g2 {
 	flex-grow: 2;
+}
+.flex-g3 {
+	flex-grow: 3;
+}
+.flex-g4 {
+	flex-grow: 4;
 }
 .card-ellispse {
 	overflow: hidden;

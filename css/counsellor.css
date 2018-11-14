@@ -461,15 +461,23 @@
 	}
 
 /**评价**/
-.counsellor-info .section.eve-form{
+.counsellor-info .section.eve-form,.counsellor-article-info .section.refund-form{
 	padding: 0 0.7rem;
   margin: 0;
   border: 0;
+}
+.counsellor-article-info .section.refund-form{
+	padding: 0 1.2rem;
 }
 .eve-form .title{
 	font-size: 14px;
 	color: #8C8C8C;
 	text-align: center;
+}
+.refund-form .title{
+	font-size: 16px;
+	color: #8C8C8C;
+	margin-bottom: 15px;
 }
 .eve-form .star-options{
 	text-align: center;
@@ -479,11 +487,14 @@
     width: 20px;
     height: 20px;
 }
-.eve-form .desc-body{
+.eve-form .desc-body,.refund-form .desc-body{
 	width: 80%;
 	margin: 0 auto;
 }
-.eve-form .desc-body textarea{
+.refund-form .desc-body{
+	width: 100%;
+}
+.eve-form .desc-body textarea,.refund-form .desc-body textarea{
 	resize:none;
 	min-height: 180px;
   max-height: 360px;
@@ -491,11 +502,14 @@
 	text-align: left;
 }
 
-.eve-form .btn-options .mui-btn{
+.eve-form .btn-options .mui-btn,.refund-form .btn-options .mui-btn{
 	background: #4883DD;
 	border-color: inherit;
 	border: 0;
 	width: 60%;
 	margin: 0 auto;
 	border-radius: 24px;
+}
+.refund-form .btn-options .mui-btn{
+	margin-top: 80px;
 }

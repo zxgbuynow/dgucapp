@@ -112,6 +112,8 @@
 	border: 0;
 	border: none;
 	background: #fff;
+	flex-direction: row;
+	justify-content: space-between;
 }
 .mui-table-view .mui-media-object{
 	max-width: initial;
@@ -129,12 +131,12 @@
 	text-align: right;
 }
 .nopay-order-list .order-progress-content{
-	width: 130px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
     height: 42px;
     line-height: 42px;
+	min-width: 96px;
 }
 .nopay-order-list .order-progress-content span{
 	display: block;
