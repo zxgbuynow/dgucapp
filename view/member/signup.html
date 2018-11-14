@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>用户注册</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/member.css">
+    <style type="text/css">
+      .section-white{
+        background: #fff;
+        padding: 2rem 1rem;
+		margin-bottom: 2rem;
+      }
+		.container {
+			margin-top: -1px;
+		}
+      
+      .counsellor-head-content{
+        height: 10.5rem;
+        width: 100%;
+      }
+      .counsellor-head-content img.top-img{
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+
+  <body>
+	<header class="page-header nobd">
+		<div class="mui-navbar-inner mui-bar mui-bar-nav mui-navbar-center">
+			<i class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left bbc-icon bbc-icon-back"></i>
+			<h1 class="mui-center mui-title">用户注册</h1>
+			<a class="mui-right mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-right service">
+				<img src="../../img/tel.png">
+				<i class="search-hide icon-func bbc-icon callmm">客服</i>
+			</a>
+		</div>
+	</header>
+    <section class="container member-signup-body">
+      <!--<form class="" id="login_form">-->
+        <div class="member-content">
+			<div class="user-form">
+				<div class="mui-input-group signup">
+					<div class="mui-input-row">
+						<label>姓名：</label>
+						<input type="text" class="mui-input-clear" placeholder="请输入姓名">
+					</div>
+					<div class="mui-input-row">
+						<label>邮箱：</label>
+						<input type="text" class="mui-input-clear" placeholder="请输入邮箱">
+					</div>
+					<div class="mui-input-row">
+						<label>手机：</label>
+						<input type="text" class="mui-input-clear" placeholder="请输入手机">
+					</div>
+					<div class="mui-input-row">
+						<label>密码：</label>
+						<input type="password" class="mui-input-password" placeholder="请输入密码">
+					</div>
+					<div class="mui-button-row btn-options">
+						<button class="mui-btn mui-btn-block mui-btn-warning bbc-btn-warning">提交</button>
+					</div>
+				</div>
+			</div>
+		</div>
+        
+      <!--</form>-->
+      
+      
+      
+    </section>
+    <script src="../../js/zepto.js"></script>
+    <script src="../../js/mui.min.js"></script>
+    <script src="../../js/template.min.js"></script>
+    <script src="../../config.js"></script>
+    <script src="../../js/app.js"></script>
+    <script type="text/javascript" charset="utf-8">
+      mui.init({
+        swipeBack: true, //启用右滑关闭功能
+      });
+      mui.plusReady(function() {
+      	var type = plus.webview.currentWebview().type;
+      	if(type == 1){
+      		if(app.getState().token){
+      			document.getElementById("account").value = app.getState().account;
+      		}
+      		$('.header-title').html('升级心窝会员')
+      	}else{
+      		$('.header-title').html('赠送心窝会员')
+      	}
+      	//提交
+			$('#createTrade').on('tap', function(e) {
+				var account = $('#account').val()
+				if(!account){
+					mui.toast('请填写待升级账号');return false;
+				}
+				//判断是否为会员 
+				var param = {
+			          'method': config.apimethod.userinfo,
+			          'account': account,
+			          'source':config.source
+			     }
+			     $.dataRequest(param, function(rs) {
+			     	
+					//price chart accout counsellor_id
+					var param1 = {
+					  'method': config.apimethod.createTrade,
+					  'source':config.source,
+					  'counsellor_id': 0,
+					  'price': 36.5,
+					  'chart': '',
+					  'num': 1,
+					  'pertime':0,
+					  'type':type,
+					  'account': rs.id
+					}
+					w=plus.nativeUI.showWaiting();
+					$.dataRequest(param1, function(rm) {
+						 w.close();w=null;
+						mui.toast('订单创建成功！');
+						clicked('_www/view/checkout/payment.html',{
+							'price':36.5, 
+							'tid':rm.tid,
+							'counsellor_mobile':rs.mobile,
+							'paytype':1
+						});
+					})
+				})
+				
+			})
+      })
+    </script>
+  </body>
+
+</html>

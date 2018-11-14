@@ -5352,6 +5352,36 @@ a {
     margin-bottom: 2px;
 }
 
+/**2018-11-14new-version-tab-icon start**/
+.bbc-tab-mui-icon {
+	position: relative;
+	z-index: 20;
+	top: 2px;
+	width: 26px;
+	height: 26px;
+	padding-top: 0;
+	padding-bottom: 0;
+	margin-bottom: 2px;
+	font-size: 26px;
+	color: #fff;
+}
+.bbc-tab-item.bbc-active .bbc-tab-mui-icon{
+	color: #02F0FF;
+}
+/* .bbc-tab-mui-icon.consult{
+	color: #6C6C6C;
+}
+.bbc-tab-mui-icon.course{
+	color: #6C6C6C;
+}
+.bbc-tab-mui-icon.message{
+	color: #6C6C6C;
+}
+.bbc-tab-mui-icon.member{
+	color: #6C6C6C;
+} */
+/**2018-11-14 new-version-tab-icon end**/
+
 .bbc-bar-tab .bbc-tab-item .mui-icon ~ .mui-tab-label {
     display: block;
     font-size: 11px;
