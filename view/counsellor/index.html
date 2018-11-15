@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../fonts/iconfont.css" />
     <link rel="stylesheet" href="../../css/style.css" />
     <link rel="stylesheet" href="../../css/widgets.css" />
 		<link rel="stylesheet" href="../../css/counsellor.css" />
@@ -55,12 +56,28 @@
 		#agency{
 			font-size: 15px;
 		}*/
+		header{
+			height: 44px;
+		}
+		.right-icon-search{
+			position: absolute;
+			left: 6rem;
+			top: 6px;
+			display: block;
+			width: 20px;
+			height: 20px;
+			font-size: 20px;
+			color: red;
+		}
+		.bbc-pullrefresh-top{
+			top: 57px;
+		}
     </style>
   </head>
 
   <body>
     <header class="home-header">
-      <div class="header-logo"><img src="../../img/newlogo.png"></div>
+      <div class="header-logo"><span class="iconfont icon-logo- icon-home-logo"></span></div>
       <!--<div class="main">
         <form onsubmit="return false;">
           <div class="mui-input-row header-search-form"><input type="search" onfocus="toSearch(this,'_www/view/counsellor/list.html')" class="header-search mui-input-clear" placeholder="寻找咨询师"></div>
@@ -68,8 +85,11 @@
       </div>-->
       <div class="main">
         <form onsubmit="return false;">
-          <div class="mui-input-row header-search-form"><input type="search"  class="header-search mui-input-clear" placeholder="寻找咨询师"></div>
-        </form>
+          <div class="mui-input-row header-search-form">
+						<input type="search"  class="header-search mui-input-clear" placeholder="寻找咨询师">
+					</div>
+					<a href="#" class="right-icon-search"><i class="iconfont icon-search icon-home-search"></i></a>
+				</form>
       </div>
       <a href="#" ><i class="search-hide icon-func bbc-icon bbc-icon-submenu mui-action-menu"></i></a>
       <a href="#" class="txt-func search-cancel" style="display:none;">取消</a>
@@ -388,25 +408,26 @@
 		</div>
 
 	</div>
+	
 	<nav class="mui-bar bbc-bar-tab" >
       <a class="bbc-tab-item " data-webview="_www/view/index.html">
-        <span class="mui-icon bbc-icon bbc-icon-home"></span>
+        <span class="iconfont icon-shouye bbc-tab-mui-icon"></span>
         <span class="mui-tab-label">首页</span>
       </a>
       <a class="bbc-tab-item bbc-active" >
-        <span class="mui-icon bbc-icon bbc-icon-list"></span>
+        <span class="iconfont icon-zixun bbc-tab-mui-icon"></span>
         <span class="mui-tab-label">咨询</span>
       </a>
       <a class="bbc-tab-item" data-webview="_www/view/clac/index.html">
-        <span class="mui-icon bbc-icon bbc-icon-moments"></span>
+        <span class="iconfont icon-kechenghuodong- bbc-tab-mui-icon"></span>
         <span class="mui-tab-label">课程/活动</span>
       </a>
       <a class="bbc-tab-item " data-webview="_www/view/msg/index.html">
-        <span class="mui-icon bbc-icon bbc-icon-message"><span class="mui-badge mui-badge-danger mui-hidden" id="msg-count"></span></span>
+        <span class="iconfont icon-xiaoxi bbc-tab-mui-icon"><span class="mui-badge mui-badge-danger mui-hidden" id="msg-count"></span></span>
         <span class="mui-tab-label">消息</span>
       </a>
       <a class="bbc-tab-item" data-webview="_www/view/member/member.html">
-        <span class="mui-icon bbc-icon bbc-icon-user-empty"></span>
+        <span class="iconfont icon-wode bbc-tab-mui-icon"></span>
         <span class="mui-tab-label">我的</span>
       </a>
    </nav>

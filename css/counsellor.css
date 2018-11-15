@@ -252,7 +252,7 @@
 }
 .counsellor-homepage-content .doctor-honor {
 	color: #fff;
-	height: 1rem;
+	height: auto;
 }
 .counsellor-homepage-content .doctor-address{
 	font-size: 10px;
