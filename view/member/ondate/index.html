@@ -47,13 +47,32 @@
 				.mc-container{
 					margin-top: 45px;
 				}
-    		.mc-cell-catch{
-    			background-color: #3ab54a !important;
-    			border-radius: 30px;
-    		}
+		    		.mc-cell-catch{
+		    			/*4585D5*/
+		    			/*background-color: #3ab54a !important;*/
+		    			background-color: #4585D5 !important;
+		    			border-radius: 30px;
+		    		}
+		    		.mc-cell-catch a{
+		    			color: #fff!important;
+		    		}
+		    		.mc-cell-filled{
+		    			background-color: #E45F62 !important;
+		    			border-radius: 30px;
+		    		}
+		    		.mc-cell-filled a{
+		    			color: #fff!important;
+		    		}
+		    		.mc-cell-disabled{
+		    			background-color: #FE9900 !important;
+		    			border-radius: 30px;
+		    		}
+		    		.mc-cell-disabled a{
+		    			color: #fff!important;
+		    		}
 				.mc-cell-selected{
 					color: #fff;
-					background: #4585D5;
+/*					background: #4585D5;*/
 					border-radius: 50%;
 				}
 				.mc-table-cell-today.mc-cell-selected a{
@@ -98,8 +117,10 @@
 					color: #FE9900;
 				}
 				.mc-remark-options p.disabled i {
-					background: #4585D5;
+					/*background: #4585D5;*/
+					background: #FE9900;
 				}
+				
 				
     </style>
   </head>
@@ -132,14 +153,14 @@
         swipeBack: true //启用右滑关闭功能
       });
 			
-			var MC = mui("#container").MCalendar();
-			MC.changeDate(new Date())
-			MC.show()
+//			var MC = mui("#container").MCalendar();
+//			MC.changeDate(new Date())
+//			MC.show()
 			//alert(MC.getDate())
       var counsellor_id = 0;
       var tid
 //  Mc();
-//    var rs = [4];
+//    var rs = [4]; 
 //    $(".mc-table-cell").each(function(el){
 //    	var i = el+1;
 // 		if(rs.indexOf(i)>-1){
@@ -154,26 +175,40 @@
       });
 	  function Mc(){
 		var today = mui.DateUtil.addDate(mui.DateUtil.getToday(),0);
-		var MC = mui("#container").MCalendar({date:today});
+		var MC = mui("#container").MCalendar();
+			MC.changeDate(new Date())
+			MC.show()
+			
+//		var MC = mui("#container").MCalendar({date:today});
 		var state = app.getState();
 	  	var param = {
             'method': config.apimethod.getCurrentCander,
             'source':config.source,
             'account':counsellor_id
        }
-	  	log(param)
+	   log(param) 
        $.dataRequest(param, function(rs) {
-				 
-       	if(rs&&rs.length>0){
-					var c = 0;
+       	log(rs)
+       	if(rs){
+			var c = 0;
 	       	$(".mc-table-cell").each(function(el,m){
-						if(!$(m).attr('disabled')){
-							c++;
-						}
+				if(!$(m).attr('disabled')){
+					c++;
+				}
 				var i = el+1;
-				if(rs.indexOf(c)>-1){
-					$(this).addClass('mc-cell-catch')
-				} 
+				if(rs.k.indexOf(c)>-1){
+					if(rs.v[c]=='0'){
+						$(this).addClass('mc-cell-catch')
+					}else{
+						$(this).addClass('mc-cell-filled')
+					}
+					
+				}else{
+					if(!$(m).attr('disabled')){
+						$(this).addClass('mc-cell-disabled')
+					}
+					
+				}
 			});
 		}
        })
