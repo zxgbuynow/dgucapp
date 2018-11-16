@@ -5305,8 +5305,8 @@ a {
     border-top: 0;
     border-bottom: 0;
     -webkit-touch-callout: none;
-    background: url(../img/tab-bg.png) no-repeat;
-    background-size: 100% 100%;
+    /*background: url(../img/tab-bg.png) no-repeat;*/
+    /*background-size: 100% 100%;*/
 }
 
 .bbc-bar-tab .bbc-tab-item {
@@ -9710,7 +9710,7 @@ input[type="search"].header-search {
 	display: inline-block;
 	position: relative;
 	top: -15px;
-	font-size: 5.4rem;
+	font-size: 4.4rem;
 	height: 53px;
 	width: 5rem;
 	color: #5985CF;

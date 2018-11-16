@@ -532,7 +532,7 @@
 				</p>
 				<p class="doctor-address card-ellispse">
 					<i class="mui-icon bbc-icon bbc-icon-home bbc-icon-doctype small blue rt1"></i>
-					<span><%= shopname %></span>
+					<span><%= shopidsnm %></span>
 				</p>
 				<div class="zixun-time-block">
 					<img class="star" src="../../img/star-y.png">
@@ -663,73 +663,72 @@
 				</div>
 			</div>
 			
-		</section>
-		<section class="qualification-block desc">
-			<div class="section">
-				<h3 class="title">咨询师介绍</h3>
-				<!--<div class="certifi fontS font-gray-20">-->
-				<div class="certifi intro">
-					<%= intro%>
+		  <div class="doct-estimate-section">
+				<div class="section-title cons-detail-sub-header">
+					<div class="title-txt bg-blue-txt">评价</div>
+					<div class="more-link action-webview wd2" data-webview="_www/view/counsellor/eve.html" data-webparam = '{"counsellor_id":<%= counsellor_id %>}'>更多&gt
+					</div>
 				</div>
-				<p class="comment-con">
-					<img src="../../img/comment.png">
-					<div class="more-link action-webview mui-pull-right" data-webview="_www/view/counsellor/eve.html" data-webparam = '{"counsellor_id":<%= counsellor_id %>}'>更多</div>
-				</p>
-				<ul class="mui-table-view mui-table-view-chevron">
-					<% for(var i in evalist) { %>
-						
-					<li class="mui-table-view-cell mui-media " >
-						<a class="">
-							<span class="mui-pull-right mui-badge"> <%= $timestamp_To_Date(evalist[i].create_time) %></span>
-							<img class="mui-media-object mui-pull-left" src="<%= $add_server(evalist[i].avar) %>">
-							<div class="mui-media-body">
-								<%= evalist[i].nickname %><i style="font-size: 12px;color: deeppink;"> <%if(evalist[i].is_diamonds){ %>心窝会员<%}%></i>
-								<p class='mui-ellipsis mui-media-text'>
-									<img class="star" src="../../img/star-y.png">
-									<img class="star" src="../../img/star-y.png">
-									<img class="star" src="../../img/star-y.png">
-									<img class="star" src="../../img/star-y.png">
-									<% if(evalist[i].sorce>8 ){%>
+				<div class="doct-estimate-body">
+					<ul class="mui-table-view">
+						<% for(var i in evalist) { %>
+						<li class="list-cell mui-media " >
+							<a class="sub-cell flex-box">
+								<div class="flex-g0">
+									<img class="header-img40" src="<%= $add_server(evalist[i].avar) %>">
+								</div>
+								<div class="mui-media-body content-list">
+									<div class="clearfix content-sub">
+										<p class="mui-pull-left uname"><%= evalist[i].nickname %>
+											<%if(evalist[i].is_diamonds){ %>
+											<span class="cons-btn icon-bd-vip">心窝会员</span><%}%>
+										</p>
+										<p class="mui-pull-right utime">时间： <%= $timestamp_To_Date(evalist[i].create_time) %></p>
+									</div>
+									<p class="star-item">
 										<img class="star" src="../../img/star-y.png">
-									<%}else{%>
-										<img class="star" src="../../img/star-g.png">
-									<%}%>
-									
-								</p>
-								<p class="mui-ellipsis mui-media-text mui-media-author"><%= evalist[i].cotent %></p>
-								
-							</div>
-							
-							
-						</a>
-					</li>
-					<% } %>
-				  </ul>	
-			</div>
-	  </section>
-	  <section class="qualification-block desc">
-			<div class="section"> 
-				<h3 class="title">相关文章</h3>
-				<div class="certifi"> 
-					<ul class="mui-table-view mui-table-view-chevron">
-						<% for(var i in article) { %>
-							
-						<li class="mui-table-view-cell mui-media action-webview" data-webview="_www/view/artical/detail.html"  data-webparam = '{"article_id":<%= article[i].id %>}'>
-							<a class="mui-navigate-right">
-								<img class="mui-media-object mui-pull-left" src="<%= $add_server(article[i].cover) %>">
-								<div class="mui-media-body">
-									<%= article[i].title %>
-									<p class='mui-ellipsis mui-media-text'><%= article[i].description %></p>
-									<p class="mui-ellipsis mui-media-text mui-media-author">作者：<%= nickname %></p>
+										<img class="star" src="../../img/star-y.png">
+										<img class="star" src="../../img/star-y.png">
+										<img class="star" src="../../img/star-y.png">
+										<% if(evalist[i].sorce>8 ){%>
+											<img class="star" src="../../img/star-y.png">
+										<%}else{%>
+											<img class="star" src="../../img/star-g.png">
+										<%}%>
+									</p>
+									<p class='cell-desc'><%= evalist[i].cotent %></p>
 								</div>
 							</a>
 						</li>
 						<% } %>
-					  </ul>	
+					</ul>	
 				</div>
-				
 			</div>
-		</section>
+			<div class="doct-article-section">
+						<div class="section-title art-header">
+							<div class="title-txt">相关文章</div>
+							<div class="more-link action-webview wd2 " data-webview="_www/view/artical/list.html">更多&gt
+							</div>
+						</div>
+						<div class="doct-article-body">
+							<ul class="mui-table-view">
+								<% for(var i in article) { %>
+								<li class="list-cell mui-media action-webview" data-webview="_www/view/member/article/detail.html"  data-webparam = '{"article_id":<%= article[i].id %>}'>
+									<a class="sub-cell">
+										<img class="mui-media-object mui-pull-left" src="<%= $add_server(article[i].cover) %>">
+										<div class="mui-media-body">
+											<h3><%= article[i].title %></h3>
+											<p class='mui-ellipsis-2 cell-desc'><%= article[i].description %></p>
+											<p class="mui-ellipsis cell-desc cell-author">作者：本人</p>
+										</div>
+									</a>
+								</li>
+								<% } %>
+							</ul>	
+						</div>	
+						</div>
+				</section>
+				
 	<!--咨询师详情 end-->
   </script>
   <script type="text/html" id="counsellor_info1">

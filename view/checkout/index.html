@@ -102,6 +102,7 @@
 		        margin: 0 auto;
 						border-radius: 24px;
 		      }
+		     
 			.con-nums {
 				display: flex;
 				justify-content: flex-start;
@@ -118,7 +119,8 @@
 			}
 			#createTrade.disabled {
 				background: #C4C4C4;
-		}
+			}
+			
 		</style>
 	</head>
 	<body>
@@ -140,7 +142,7 @@
 				                    <h2>咨询方式<span class="counsellor-per">50分钟/次</span></h2>
 				                </div>
 				            	<ul class="mui-table-view mui-table-view-radio">
-									<li class="mui-table-view-cell" id="1" val="200">
+									<!--<li class="mui-table-view-cell" id="1" val="200">
 										<a class="mui-navigate-right">
 											<input type="radio" name="consult-type" id="tel">
 											<label for="tel">电话咨询</label>
@@ -167,7 +169,7 @@
 											<label for="face">地面咨询</label>
 											<span class="price">￥<em class="symbol">200</em>/次</span>
 										</a>
-									</li>
+									</li>-->
 								</ul>
 				            </div>
 			            </seciton>
@@ -193,7 +195,8 @@
 			                </div>
 			            </section>
 			            <section class="total-con section-white">
-			                <p class="total">总计<span class="f_orange num " id="zx-total"><i class="icon-price-symbol">￥</i>800元</span></p> 
+			            		<p class="mui-popup-text opentime" style="color: #C4C4C4;font-size: .8rem;display: none; ">该咨询师无开放时间</p>
+			                <p class="total">总计<span class="f_orange num " id="zx-total"><i class="icon-price-symbol"></i></span></p> 
 			                <div class="content-horizontal-padded form-op-section">
 												<!-- <span class="no-opentime-tip">该咨询师无开放时间</span>
 												<button id="createTrade" class="mui-btn mui-btn-block mui-btn-warning bbc-btn-warning disabled">提交</button> -->
@@ -202,25 +205,26 @@
 			            </section>
 			        <!--</form>-->
 			    </div>
-					<!-- <div class="mui-message-container">
+					 <div class="mui-message-container mui-message-ondate" style="display: none;">
 						<span class="mui-message-closed">X</span>
 						<div class="mui-message-cont">
 							<p>请注意咨询师的咨询的地点：</p>
 							<div class="bd-sign-list">
-								<span>上海</span>
+								
+								<!--<span>上海</span>
 								<span>镇江</span>
-								<span>南京</span>
+								<span>南京</span>-->
 							</div>
 						</div>
 						<div class="mui-message-cont-desc">
 							<p class="title">具体地址：</p>
+							<!--<p>请注意咨询师的咨询的地点</p>
 							<p>请注意咨询师的咨询的地点</p>
-							<p>请注意咨询师的咨询的地点</p>
-							<p>请注意咨询师的咨询的地点</p>
+							<p>请注意咨询师的咨询的地点</p>-->
 						</div>
-					</div> -->
-					<div class="mui-message-container">
-						<span class="mui-message-closed">X</span>
+					</div> 
+					<div class="mui-message-container " style="display: none;">
+						<span class="mui-message-closed"></span>
 						<div class="mui-message-cont appointment">
 							<p class="title">预约须知：</p>
 							<div class="options">
@@ -244,13 +248,13 @@
 						</div>
 						<div class="mui-input-row mui-radio mui-left">
 							<label>我已阅读</label>
-							<input name="radio1" type="radio">
+							<input name="agree" id="agree" type="radio" value="1">
 						</div>
 						<!-- <div class="mui-message-btn-box ">
 							<button class="mui-btn">确定</button>
 						</div> -->
 					</div>
-					<div class="mui-backdrop" style="opacity: 1;"></div>
+					<div class="mui-backdrop " style="opacity: 1;display: none;"></div>
 			</div>
 		</div>	
 		
@@ -259,13 +263,27 @@
 		  <script src="../../js/template.min.js"></script>
 		  <script src="../../config.js"></script>
 		  <script src="../../js/app.js"></script>
+		  <script type="text/html" id="city_list">
+		  	<%if(shopidsnm){%>
+			  	<% for(var i in shopidsnm) { %>
+			  		<span><%= shopidsnm[i]%></span> 
+			  	<%}%>
+		  	<%}else{%>
+		  		<span>无可咨询地点</span>
+		  	<%}%>
+		  </script>
+		  <script type="text/html" id="city_addrs">
+		  	<% for(var i in shopidsmap) { %>
+		  	<p><%= shopidsmap[i]%></p>
+		  	<%}%> 
+		  </script>
 		  <script type="text/html" id="counsellor_info1">
 		  	<% for(var i=0; i<chartArr.length; i++) { %>
 		  		<% if(chartArr[i].status){ %>
 		  		<li class="mui-table-view-cell <% if(i==0){ %> mui-selected <% } %>" id="<%= chartArr[i].chart %>" val="<%= chartArr[i].price %>">
 					<a class="mui-navigate-right">
 						<h2><%= chartArr[i].show %></h2>
-						<p><%= chartArr[i].price %>元/次</p>
+						<p><%= chartArr[i].price %>元/次 <%if(chartArr[i].chart=='videochart')%> <i class="tip">（暂不提供）</i><%}%></p>
 					</a>
 				</li>
 				<% } %>
@@ -299,9 +317,11 @@
 			var pertime =0;
 			var counsellor_mobile = 0;
 			$('.mui-message-closed').on('click',function(){
+				$('.mui-message-ondate,.mui-backdrop').hide();
 				$('.mui-message-container,.mui-backdrop').hide();
 			});
 			mui.plusReady(function() {
+				
 				//价格
 				counsellor_id = plus.webview.currentWebview().counsellor_id;
 				counsellor_mobile = plus.webview.currentWebview().counsellor_mobile;
@@ -317,15 +337,27 @@
 				  	pertime = rs.per;
 				  	//方式
 				  	var widgets = template('counsellor_info', rs);
+				  	
+				  	
 				  	if(!rs.condate){
 				  		$('.trade-date').addClass('nodate');
 				  		$('.trade-date').html('该咨询师暂无可预约时间');
 				  		$('.trade-date').removeClass('mui-font-red');
-				  		$('#createTrade').removeClass('bbc-btn-warning');
-				  		$('#createTrade').addClass('bbc-btn-grey');
+//				  		$('#createTrade').removeClass('bbc-btn-warning');
+				  		$('#createTrade').addClass('disabled');
+				  		$('.opentime').show();
+//						$('#createTrade').attr('disabled','disabled'); 
 				  	}
 				  	
         				$('.mui-table-view-radio').append(widgets);
+        				//citylist
+        				log(rs) 
+        				var cwidgets = template('city_list', rs);
+        				$('.bd-sign-list').append(cwidgets);
+        				//addrs
+        				var awidgets = template('city_addrs', rs);
+        				$('.mui-message-cont-desc').append(awidgets);
+        				
         				price = $("input[name='consult-type']:checked").attr('val');
 					chart = $("input[name='consult-type']:checked").attr('id');
 					totalprice(price);
@@ -378,35 +410,14 @@
 //				chart = $(this).attr('id'); 
 //				price = $(this).attr('val');
 				if($("input[name='consult-type']:checked").attr('id')=='facechart'){
-			 		mui.toast('地面咨询'); 
+					//
+					$('.mui-message-ondate,.mui-backdrop').show();
+//			 		mui.toast('地面咨询'); 
 			 	}
 				totalprice(price);	
 			})
 			
-			//提交
-			$('#createTrade').on('tap', function(e) {
-				if($(this).hasClass('bbc-btn-grey')){
-//		      		return false;
-		      	}
-				var msg = [
-					'1.退款条件　　　',
-					'2.自确认　　'
-				].join("\n");
-				
-				mui.confirm(msg, '预约需知', ['确认', '取消'], function(e) {
-					if (e.index == 0) {
-						mui.toast('确认');
-					}else{
-						mui.toast('取消');
-					}
-				})
-				
-//				clicked('_www/view/checkout/payment.html',{
-//						'price':price,
-//						'tid':'12345678'
-//					});
-//					return;
-				//price chart accout counsellor_id
+			 $("input[name='agree']").change(function(e){  
 				var param1 = {
 				  'method': config.apimethod.createTrade,
 				  'source':config.source,
@@ -435,6 +446,62 @@
 						'counsellor_mobile':counsellor_mobile
 					});
 				})
+				
+			})
+			//提交
+			$('#createTrade').on('tap', function(e) {
+				if($(this).hasClass('bbc-btn-grey')){
+		      		return false;
+		      	}
+				$('.mui-message-container,.mui-backdrop').show();
+//				
+//				var msg = [
+//					'1.退款条件　　　',
+//					'2.自确认　　'
+//				].join("\n");
+//				
+//				mui.confirm(msg, '预约需知', ['确认', '取消'], function(e) {
+//					if (e.index == 0) {
+//						mui.toast('确认');
+//					}else{
+//						mui.toast('取消');
+//					}
+//				})
+				
+//				clicked('_www/view/checkout/payment.html',{
+//						'price':price,
+//						'tid':'12345678'
+//					});
+//					return;
+				//price chart accout counsellor_id
+//				var param1 = {
+//				  'method': config.apimethod.createTrade,
+//				  'source':config.source,
+//				  'counsellor_id': counsellor_id,
+//				  'price': price*$('#per').val(),
+//				  'chart': chart,
+//				  'num': $('#per').val(),
+//				  'pertime':pertime,
+//				  'account': state.token
+//				}
+//
+//				w=plus.nativeUI.showWaiting();
+//				$.dataRequest(param1, function(rs) {
+//					 w.close();w=null;
+//					 log(rs)
+//					if(rs&&rs.flish){
+//						mui.toast('您是心窝会员，网络免费咨询！');
+//						clicked('_www/view/member/trade.html');
+//						return true;
+//					}
+//					mui.toast('订单创建成功！');
+//					clicked('_www/view/checkout/payment.html',{
+////						'price':price*$('#per').val(),
+//						'price':rs.price,
+//						'tid':rs.tid,
+//						'counsellor_mobile':counsellor_mobile
+//					});
+//				})
 			})
 			
 			function isNumber(val){

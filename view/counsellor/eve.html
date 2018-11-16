@@ -174,7 +174,7 @@
     </header>
     <div class="counsellor-homepage-content">
 			<!--咨询师详情 start-->
-				<section class="container section-white counsellor-info">
+				<section class="container section-white counsellor-info mui-hidden">
 					<div class="counsellor-head-content">
 						<img src="https://ossimg.xinli001.com/20170823/c91ab41f014b8df7bb2e8d4df9b594ca.png!120x120" class="avatar">			
 						<h2 class="teacher-name">朱志慧</h2>
@@ -258,7 +258,7 @@
 				</p>
 				<p class="doctor-address card-ellispse">
 					<i class="mui-icon bbc-icon bbc-icon-home bbc-icon-doctype small blue rt1"></i>
-					<span><%= shopname %></span>
+					<span><%= shopidsnm %></span>
 				</p>
 				<div class="zixun-time-block">
 					<img class="star" src="../../img/star-y.png">
@@ -291,7 +291,48 @@
 				</p>
 				<%}%>
 			</div>
-			<div class="section">
+			<div class="doct-estimate-section">
+				<div class="section-title cons-detail-sub-header">
+					<div class="title-txt bg-blue-txt">评价</div>
+					<div class="more-link action-webview wd2" data-webview="_www/view/category/category.html">更多&gt
+					</div>
+				</div>
+				<div class="doct-estimate-body">
+					<ul class="mui-table-view">
+						<% for(var i in evalist) { %>
+						<li class="list-cell mui-media action-webview" data-webview="_www/view/counsellor/eve.html" data-webparam = '{"counsellor_id":<%= counsellor_id %>}'>
+							<a class="sub-cell flex-box">
+								<div class="flex-g0">
+									<img class="header-img40" src="<%= $add_server(evalist[i].avar) %>">
+								</div>
+								<div class="mui-media-body content-list">
+									<div class="clearfix content-sub">
+										<p class="mui-pull-left uname"><%= evalist[i].nickname %>
+											<%if(evalist[i].is_diamonds){ %>
+											<span class="cons-btn icon-bd-vip">心窝会员</span><%}%>
+										</p>
+										<p class="mui-pull-right utime">时间： <%= $timestamp_To_Date(evalist[i].create_time) %></p>
+									</div>
+									<p class="star-item">
+										<img class="star" src="../../img/star-y.png">
+										<img class="star" src="../../img/star-y.png">
+										<img class="star" src="../../img/star-y.png">
+										<img class="star" src="../../img/star-y.png">
+										<% if(evalist[i].sorce>8 ){%>
+											<img class="star" src="../../img/star-y.png">
+										<%}else{%>
+											<img class="star" src="../../img/star-g.png">
+										<%}%>
+									</p>
+									<p class='cell-desc'><%= evalist[i].cotent %></p>
+								</div>
+							</a>
+						</li>
+						<% } %>
+					</ul>	
+				</div>
+			</div>
+			<div class="section mui-hidden">
 				<h3 class="title">评价列表</h3>
 				<div class="certifi">
 					<% for(var i in evalist) { %>
