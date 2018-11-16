@@ -274,6 +274,9 @@
 	.mc-remark-options p.disabled i, .ondate-time-main .time-items span.disabled {
 		background: #FE9900;
 	}
+	.container.ondate-time-main {
+    padding-top: 49px;
+	}
 	
 	.ondate-time-main .time-items{
 		padding: 0 1rem;
