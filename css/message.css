@@ -166,6 +166,7 @@ a.btn {
  
         .message .msg-time-content .time {
             margin-left: 10px;
+			color: #343434;
         }
  
     .message.me .msg-time-content {
@@ -195,67 +196,102 @@ a.btn {
     margin: 0 10px;
 }
  
-    .bubble.bubble_default {
-        background-color: #fff;
-    }
+.bubble.bubble_default {
+	background-color: #fff;
+}
+
+.bubble:before, .bubble:after {
+	position: absolute;
+	top: 8px;
+	border: 6px solid transparent;
+	content: " ";
+}
+
+.bubble.right{
+	border: 1px solid #4883DD;
+}
+	
+.bubble.right em,.bubble.right span{
+	font-style: normal;
+	font-size: 26px;
+	position: absolute;
+	right: -9px;
+	top: -5px;
+	color: #4883DD;
+}
+.bubble.right span{
+	right:-7.5px;
+	color:#E6F7FE;
+}
+
+
+.bubble.left:before, .bubble.left:after {
+	right: 100%;
+}
+
+.bubble.left:after {
+	border-right-color: #FFF;
+	border-right-width: 4px;
+}
+
+.bubble.left{
+	border: 1px solid #969696;
+}
+
+.bubble.left em,.bubble.left span{
+	font-style: normal;
+	font-size: 26px;
+	position: absolute;
+	left: -9px;
+	top: -5px;
+	color: #969696;
+}
+.bubble.left span{
+	left: -7.5px;
+	color: #fff;
+}
+
+.bubble.right:before, .bubble.right:after {
+	left: 100%;
+}
+
+.bubble.right:after {
+	border-left-color: #FFF;
+}
  
-    .bubble:before, .bubble:after {
-        position: absolute;
-        top: 14px;
-        border: 6px solid transparent;
-        content: " ";
-    }
+.bubble.bubble_primary {
+	background-color: #E6F7FF;
+/* 	border: 1px solid #7FA2CB; */
+}
  
-    .bubble.left:before, .bubble.left:after {
-        right: 100%;
-    }
+.bubble.bubble_primary.left:after {
+	border-right-color: #b2e281;
+	border-right-width: 4px;
+}
+
+.bubble.bubble_primary.right:after {
+	border-left-color: #E6F7FF;
+	border-left-width: 4px;
+}
+
+.bubble.bubble_primary.right.arrow_primary:before {
+	border-left-color: #b2e281;
+	border-left-width: 4px;
+}
+
+.bubble.bubble_primary.right.arrow_primary:after {
+	border-left-color: #fff;
+	border-left-width: 4px;
+	margin-left: -2px;
+}
  
-    .bubble.left:after {
-        border-right-color: #FFF;
-        border-right-width: 4px;
-    }
+.bubble.no_arrow {
+	background-color: transparent;
+}
  
-    .bubble.right:before, .bubble.right:after {
-        left: 100%;
-    }
- 
-    .bubble.right:after {
-        border-left-color: #FFF;
-    }
- 
-    .bubble.bubble_primary {
-        background-color: #E6F7FF;
-/* 		border: 1px solid #7FA2CB; */
-    }
- 
-        .bubble.bubble_primary.left:after {
-            border-right-color: #b2e281;
-            border-right-width: 4px;
-        }
- 
-        .bubble.bubble_primary.right:after {
-            border-left-color: #E6F7FF;
-            border-left-width: 4px;
-        }
- 
-        .bubble.bubble_primary.right.arrow_primary:before {
-            border-left-color: #b2e281;
-            border-left-width: 4px;
-        }
- 
-        .bubble.bubble_primary.right.arrow_primary:after {
-            border-left-color: #fff;
-            border-left-width: 4px;
-            margin-left: -2px;
-        }
- 
-    .bubble.no_arrow {
-        background-color: transparent;
-    }
- 
-        .bubble.no_arrow:before, .bubble.no_arrow:after {
-            display: none;
-        }
+.bubble.no_arrow:before, .bubble.no_arrow:after {
+	display: none;
+}
  
 .bubble_cont {
     word-wrap: break-word;
@@ -265,27 +301,34 @@ a.btn {
  
  
  
-    .bubble_cont img {
-        vertical-align: middle;
-    }
+.bubble_cont img {
+	vertical-align: middle;
+}
+
+.bubble.left .bubble_cont .plain {
+	color: #646464;
+}
+.bubble.right .bubble_cont .plain {
+	color: #4883DF;
+}
+.bubble_cont .plain {
+	padding: 9px 13px;
+}
  
-    .bubble_cont .plain {
-        padding: 9px 13px;
-    }
+.bubble_cont .picture {
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	overflow: hidden;
+	position: relative;
+	padding: 8px;
+}
  
-    .bubble_cont .picture {
-        border-radius: 4px;
-        -moz-border-radius: 4px;
-        -webkit-border-radius: 4px;
-        overflow: hidden;
-        position: relative;
-    }
- 
-        .bubble_cont .picture img {
-            display: block;
-            cursor: pointer;
-            max-width: 100%;
-        }
+.bubble_cont .picture img {
+	display: block;
+	cursor: pointer;
+	max-width: 100%;
+}
  
  
 .box_ft {
@@ -301,25 +344,25 @@ a.btn {
     display: flex;
 }
  
-    .box_ft_hd .eaitWrap {
-        flex: 1;
-        padding-bottom: 0;
-		max-height: 40px;
-    }
- 
-    .box_ft_hd .editArea {
-        overflow-y: auto;
-        overflow-x: hidden;
-        outline: 0;
-        border-bottom: 0;
-        font-size: 14px;
-        padding: 5px;
-        max-height: 31px;
-        line-height: 1.4;
-		margin: 4.5px 8px;
-		border: 1px solid #7d7d7d;
-		border-radius: 16px;
-    }
+.box_ft_hd .eaitWrap {
+	flex: 1;
+	padding-bottom: 0;
+	max-height: 40px;
+}
+
+.box_ft_hd .editArea {
+	overflow-y: auto;
+	overflow-x: hidden;
+	outline: 0;
+	border-bottom: 0;
+	font-size: 14px;
+	padding: 5px;
+	max-height: 31px;
+	line-height: 1.4;
+	margin: 4.5px 8px;
+	border: 1px solid #7d7d7d;
+	border-radius: 16px;
+}
  
 .web_wechat_face {
     background: url(../img/ico.png) -3px -805px;

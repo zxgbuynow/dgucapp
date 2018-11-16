@@ -7011,7 +7011,7 @@ header.home-header .main {
 header.home-header .header-logo {
     display: block;
     position: relative;
-    min-width: 3rem;
+    min-width: 4.5rem;
     height: 100%;
     padding: 0.5rem;
 }
@@ -7182,7 +7182,7 @@ input[type="checkbox"]:checked.input-action:before {
 
 input[type="search"].header-search {
     background: #fff;
-    height: 2.5rem;
+    /* height: 2.5rem; */
 }
 
 .switch-action.mui-active {
@@ -9479,7 +9479,8 @@ input[type="search"].header-search {
 	display: -webkit-flex;
 	-webkit-flex-direction: row;
 	display: flex;
-	flex-direction: row;
+	justify-content: center;
+  align-items: center;
 }
    
 .flex-g0 {
@@ -9702,16 +9703,26 @@ input[type="search"].header-search {
 .icon-home-search{
 	position: absolute;
 	font-size: 20px;
-	top: 6px;
+	top: 8px;
 	left: 4px;
 	color: #C4C4C4;
 }
 .icon-home-logo {
     display: inline-block;
-    position: relative;
-    top: -10px;
-    font-size: 4.4rem;
-    height: 48px;
-    width: 5rem;
+    position: absolute;
+    top: -12px;
+    left: 2px;
+    font-size: 4.2rem;
+    height: 54px;
+    width: 4.2rem;
     color: #5985CF;
+}
+.main.counselor-search-main a.icon-home-search{
+    position: absolute;
+    left: 4.6rem;
+    top: 6px;
+    display: block;
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
 }
