@@ -76,7 +76,7 @@
 		    }
 		.right-icon-search{
 			position: absolute;
-			left: 6rem;
+			left: 3rem;
 			top: 6px;
 			display: block;
 			width: 20px;
@@ -87,12 +87,16 @@
 		.bbc-pullrefresh-top{
 			top: 45px;
 		}
+		input[type="search"]{
+			text-align:left
+		}
     </style>
   </head>
 
   <body>
   	<header class="home-header">
-      <div class="header-logo"><span class="iconfont icon-logo- icon-home-logo"></span></div>
+      <!--<div class="header-logo"><span class="iconfont icon-logo- icon-home-logo"></span></div>-->
+      <i class="header-left icon-func bbc-icon bbc-icon-back mui-action-back"></i>
 	    <div class="main">
 	        <form onsubmit="return false;">
 	          <div class="mui-input-row header-search-form">
