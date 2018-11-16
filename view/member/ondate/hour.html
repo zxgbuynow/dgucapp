@@ -74,7 +74,7 @@
           <i class="header-left icon-func bbc-icon bbc-icon-back mui-action-back"></i>
       <div class="header-title">当前工作安排情况</div>
     </header>
-    <div class="container" id="container"> 
+    <div class="container ondate-time-main" id="container"> 
        <!--<section class="mui-keyboards">
             <div class="mui-number-section">
                 <p class="mui-num-btn mui-u-1of4" data-val="7">0:00</p>
@@ -101,6 +101,58 @@
                 
             </div>
         </section>-->
+				<div class="time-items">
+					<span class="disabled">0:00</span><span class="disabled">1:00</span><span class="disabled">2:00</span class="disabled"><span class="unable">3:00</span>
+					<span class="disabled">4:00</span><span class="disabled">5:00</span><span>6:00</span><span>7:00</span>
+					<span>8:00</span><span id="time_nine">9:00</span><span class="filled">10:00</span><span class="filled">11:00</span>
+					<span>12:00</span><span class="filled">13:00</span><span class="filled">14:00</span><span id="time_fifteen">15:00</span>
+					<span class="filled">16:00</span><span>17:00</span><span>18:00</span><span>19:00</span>
+					<span>20:00</span><span>21:00</span><span class="disabled">22:00</span><span class="disabled">23:00</span>
+				</div>
+				<div class="mc-remark-options">
+					<p class="on"><i></i><span>可预约</span></p>
+					<p class="filled"><i></i><span>已约满</span></p>
+					<p class="disabled"><i></i><span>不可预约</span></p>
+				</div>
+				
+				<!--单独确认框-->
+				<div class="mui-message-container" id="ondate_confirm" style="display: none;">
+					<div class="mui-message-cont ondate-time">
+						<p class="title">确认预约该时段？</p>
+					</div>
+					<div class="mui-message-btn-box btn-options flex-box">
+						<button class="mui-btn flex-g1 bd-cancel">取消</button>
+						<button class="mui-btn flex-g1 confirm">确定</button>
+					</div>
+				</div>
+				<!--单独确认框end-->
+				<div class="mui-backdrop" style="opacity: 1;display: none;"></div><!--遮罩层-->
+				<!--选择地点确认框-->
+				<div class="mui-message-container" id="ondate_address_confirm" style="display: none;">
+					<span class="mui-message-closed">X</span>
+					<div class="mui-message-cont">
+						<p>选择地面咨询地点为：</p>
+						<div class="bd-sign-list">
+							<span>上海</span>
+							<span class="on">镇江</span>
+							<span>南京</span>
+						</div>
+					</div>
+					<div class="mui-message-cont ondate-address-time">
+						<p class="title">确认预约该时段？</p>
+					</div>
+					<div class="mui-message-btn-box btn-options flex-box address-time">
+						<button class="mui-btn flex-g1">取消</button>
+						<button class="mui-btn flex-g1 confirm">确定</button>
+					</div>
+					<div class="mui-message-cont-desc">
+						<p class="title">具体地址：</p>
+						<p>请注意咨询师的咨询的地点</p>
+						<p>请注意咨询师的咨询的地点</p>
+						<p>请注意咨询师的咨询的地点</p>
+					</div>
+				</div>
+				<!--选择地点确认框end-->
     </div> 
    
     
@@ -141,7 +193,16 @@
         </section>
         </script>
     <script type="text/javascript">
-        //mui-btn-danger mui-btn-grey 
+        //mui-btn-danger mui-btn-grey
+			$('.mui-message-closed,.mui-btn').on('click',function(){
+				$('.mui-message-container,.mui-backdrop').hide();
+			});
+			$('#time_nine').on('click',function(){
+				$('#ondate_confirm,.mui-backdrop').show();
+			});
+			$('#time_fifteen').on('click',function(){
+				$('#ondate_address_confirm,.mui-backdrop').show();
+			});
       mui.plusReady(function() {
           var counsellor_id = plus.webview.currentWebview().counsellor_id;
           var tid = plus.webview.currentWebview().tid||0;

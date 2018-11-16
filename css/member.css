@@ -407,8 +407,11 @@ i.mem-icon24{
 }
 .widgets-icons-nav li a {
     display: block;
-	border: 1px solid #A7B8DC;
+	border: 0;
 	padding: .4rem;
+}
+.widgets-icons-nav li a.on {
+	border: 1px solid #A7B8DC;
 }
 .widgets-icons-nav li .sub-nav{
 	width: 60%;

@@ -9692,6 +9692,10 @@ input[type="search"].header-search {
 	white-space: nowrap;
 	
 }
+.bd-sign-list span.on{
+	background: #3E86E7;
+	color: #fff;
+}
 /** 专家推荐列表**/
 
 /**首页图标**/
