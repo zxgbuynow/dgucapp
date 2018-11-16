@@ -9461,6 +9461,16 @@ input[type="search"].header-search {
 	font-size:12px;
 	margin: 0 -2px;
 }
+.doctor-list-header ul li i.iconfont-icon-doctype,li.doctor-list-item span.iconfont-icon-doctype{
+	display: block;
+	text-align: center;
+	height: 1.2rem;
+	line-height: 1.2rem;
+}
+.mui-table-view-chevron .card-new-info .iconfont-icon-doctype.small{
+	font-size:12px;
+	margin: 0 -2px;
+}
 .mui-table-view-chevron .card-new-info .card-name i:first-child,.mui-table-view-chevron .card-new-info .doctor-address i:first-child{
 	margin-left:2px;
 }
@@ -9473,6 +9483,18 @@ input[type="search"].header-search {
 }
 .doctor-list-header ul li span.pink,.mui-table-view-chevron .card-new-info .bbc-icon-doctype.pink{
 	color: #E95759;
+}
+.doctor-list-header ul li span.blue,.mui-table-view-chevron .card-new-info .iconfont-icon-doctype.blue{
+	color: #4284DE;
+}
+.doctor-list-header ul li span.orange,.mui-table-view-chevron .card-new-info .iconfont-icon-doctype.orange{
+	color: #F99607;
+}
+.doctor-list-header ul li span.pink,.mui-table-view-chevron .card-new-info .iconfont-icon-doctype.pink{
+	color: #E95759;
+}
+.doctor-list-header ul li span.pink,.mui-table-view-chevron .card-new-info .iconfont-icon-doctype.gray{
+	color: #808080;
 }
 .flex-box{
 	width: 100%;
