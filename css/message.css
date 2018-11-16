@@ -62,14 +62,13 @@ a.btn {
 }
  
 .btn_send {
-	background-color: #5CB700;
-    color: white;
-    margin-left: 3px;
+	color: #4984DE;
+    margin-left: 0px;
     margin-top: 8px;
     margin-right: 10px;
     display: none;
-	margin-top: 10px;
-    margin-right: 10px;
+    margin-top: 10px;
+    margin-right: 6px;
     padding: 1px 4px 2px 4px;
 }
  
@@ -162,7 +161,7 @@ a.btn {
         word-wrap: normal;
 		text-align: center;
 		margin-top: 10px;
-		margin-bottom: 10px;
+		margin-bottom: 0;
     }
  
         .message .msg-time-content .time {
@@ -179,6 +178,7 @@ a.btn {
  
     .message .content {
         overflow: hidden;
+		padding-top: 20px;
     }
  
 .bubble {

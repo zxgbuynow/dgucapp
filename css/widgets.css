@@ -315,8 +315,15 @@
 		display: inline-block;
 		text-align: center;
 	}
+	
+	#ondate_confirm .mui-message-btn-box{
+		border-top: 0;
+	}
+	#ondate_confirm .mui-message-btn-box .mui-btn{
+		color: #009687;
+	}
 	.mui-message-btn-box.btn-options .mui-btn.bd-cancel{
-		border-right: 1px solid #b7b7b7
+		border-right: 0
 	}
 	
 	.mui-message-container .mui-message-btn-box.address-time{
