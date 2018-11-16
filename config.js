@@ -71,5 +71,6 @@ var config = {
 		evalist:'counsellor.evalist',
 		cancleUp:'cancle.up',
 		clacevaluate:'user.clacevaluate',
+		claccate:'clac.cate',
     }
 }
