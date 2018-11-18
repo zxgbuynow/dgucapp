@@ -6,23 +6,140 @@
     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../fonts/iconfont.css" />
     <link rel="stylesheet" href="../../css/style.css" />
+		<link rel="stylesheet" href="../../css/member.css">
     <style>
     		.single-img img{
     			max-width: 100%;
     			max-height: auto;
     			/*max-height: 300px;*/
     		}
+				.page-header{
+					heigt: 44px;
+				}
+				.main {
+					margin-right: 10px;
+					position: relative;
+			}
+			.mui-bar .mui-title {
+				width: auto;
+				left: 40px;
+				right: 52px;
+				top: 7px;
+				margin: 0;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				display: inline-block;
+		}
+		.icon-home-search {
+				top: 5px;
+		}
+		.user-info-body {
+				margin-left: 12px;
+				color: #333;
+		}
+		.user-main{
+			border-bottom: 1px solid #F8F8F8;
+			padding: 15px 0 8px 0;
+		}
+		.art-detail-main{
+			text-align: center;
+			margin: 12px auto;
+		}
+		.art-detail-main h3{
+			color: #060606;
+			font-size: 20px;
+		}
+		.art-detail-main p{
+			font-size: 14px;
+			color: #B6B6B6;
+			padding: 6px 10px;
+		}
+		.art-detail-main p>span{
+			display: inline-block;
+			padding-right: 12px;
+		}
+		.icon-art-star,.icon-art-link{
+			font-size: 22px;
+			color: #81A1C9;
+		}
+		.art-img{
+			width: 90%;
+			text-align: center;
+			margin: 4px auto 12px auto;
+		}
+		.art-img img{
+			width:100%;
+			height: auto;
+		}
+		.art-detail-body{
+			margin: .7rem 1rem;
+		}
+		.art-detail-body p{
+			color: #666;
+			font-size: 14px;
+			padding: .7rem;
+			text-align: left;
+		}
+		.art-detail-body p.title{
+			font-size: 20px;
+			text-align: center;
+		}
     </style>
     
   </head>
   <body>
-    <header class="page-header">
-      <i class="header-left icon-func bbc-icon bbc-icon-back mui-action-back"></i>
-      <div class="header-title">文章详情</div>
-
+    <header class="home-header">
+			<div class="mui-navbar-inner mui-bar mui-bar-nav mui-navbar-center">
+    	<i class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left bbc-icon bbc-icon-back"></i>
+    	<!--<div class="main">
+    		<form onsubmit="return false;">
+    			<div class="mui-input-row header-search-form"><input type="search" onfocus="toSearch(this,'_www/view/counsellor/list.html')" class="header-search mui-input-clear" placeholder="寻找咨询师"></div>
+    		</form>
+    	</div>-->
+			<div class="mui-center mui-title">
+				<form onsubmit="return false;">
+				<div class="mui-input-row header-search-form">
+					<input type="search"  class="header-search mui-input-clear" placeholder="寻找感兴趣的文章">
+				</div>
+				<a href="#" class="right-icon-search"><i class="iconfont icon-search icon-home-search"></i></a>
+			</form>
+			</div>
+    	<a class="mui-right mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-right service">
+    		<img src="../../img/tel.png">
+    		<i class="search-hide icon-func bbc-icon callmm">客服</i>
+    	</a>
+			</div>
     </header>
     <section class="container section-white">
+			<div class="flex-box user-main">
+				<div class="user-header-img">
+					<img class="userinfo-avatar" id="head-img" src="" onerror="Javascript:this.src='../../img/newlogo.png'"/>
+				</div>
+				<div class="user-info-body">
+					<h2>晋斌</h2>
+					<p class="">花若盛开，芬芳自来</p>
+				</div>
+			</div>
+			<div class="art-detail-main">
+				<h3>孝养之道(三)：如何倾心呵护父母的耳朵</h3>
+				<p>
+					<span>2018.5.10 14:58:28</span>
+					<span class="iconfont icon-search icon-art-star"></span>
+					<span class="iconfont icon-search icon-art-link"></span>
+				</p>
+				<div class="art-img">
+					<img class="top-img" src="../../img/xinwo_02.png">
+				</div>
+				<div class="art-detail-body">
+					<p class="title">耳朵与孝养</p>
+					<p>耳朵与孝养耳朵与孝养耳朵与孝养耳朵与孝养耳朵与孝养耳朵与孝养耳朵与孝养</p>
+					<p>耳朵与孝养耳朵与孝养耳朵与孝养耳朵与孝养耳朵与孝养耳朵与孝养</p>
+				</div>
+				
+				
+			</div>
     </section>
   </body>
   <script src="../../js/zepto.js"></script>

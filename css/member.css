@@ -400,14 +400,14 @@ i.mem-icon24{
     padding: 0.2rem;
     padding: 0;
     /* padding: 0.35rem; */
-    padding: 0.5rem;
+    padding: 0.5rem 0;
     text-align: center;
     font-size: 0.9rem;
     color: #666;
 }
 .widgets-icons-nav li a {
     display: block;
-	border: 0;
+	border: 1px solid #fff;
 	padding: .4rem;
 }
 .widgets-icons-nav li a.on {
@@ -433,3 +433,12 @@ i.mem-icon24{
 	padding-top: 3rem;
     padding: 3rem 1rem 0 1rem;
 }
+.icon-king{
+	display: inline-block;
+    width: 75px;
+    height: 22px;
+    padding-left: 18px;
+    background: #DC635F url(../img/king.png) no-repeat 4px 7px;
+    background-size: 12px 10px;
+}
+
