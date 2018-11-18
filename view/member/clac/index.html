@@ -81,10 +81,10 @@
 						</div>
 						<div class="mui-table-cell mui-col-xs-2 mui-text-right">
 							<%if(!list[i].claceva){%>
-		                    		<p><span class="mui-media-text  mui-btn-yellow action-webview" data-webview="_www/view/member/clac/eval.html"data-webparam='{"acid":<%= list[i].id %>,"actype":<%= list[i].typeid %>}' style="color: #FFFFFF;">评价</span></p>
+		                    		<p><span class="mui-media-text  mui-btn-yellow action-webview" data-webview="_www/view/member/clac/claceval.html"data-webparam='{"acid":<%= list[i].id %>,"actype":<%= list[i].typeid %>}' style="color: #FFFFFF;">评价</span></p>
 		                    <%}%>
 		                    <span class="mui-media-text bbc-btn-outlined">退款</span> 
-		                </div>
+		               </div> 
 					</div>
 				</li>
 				<% } %> 
@@ -100,7 +100,7 @@
       	//分类 
 	  	var param = {
 	            'method': config.apimethod.clacorder,
-	            'source':config.source,
+	            'source':config.source, 
 //	            'typeid': 1,
 	            'account': state.token
 	      }

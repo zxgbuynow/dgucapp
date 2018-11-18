@@ -76,8 +76,8 @@
 				<!--signup-concern start-->
 				<div class="concern-body signup-step2" style="display: none;">
 					<h4>您的关注点：</h4>
-					<ul class="widgets-icons-nav clearfix">
-						<li class="action-webview" data-webview="" data-webparam=''>
+					<ul class="widgets-icons-nav clearfix preference-list">
+						<!--<li class="action-webview" data-webview="" data-webparam=''>
 							<a href="#">
 								<div class="sub-nav"><img src="../../img/widgets_02_05.png"></div><span>婚姻家庭</span>
 							</a>
@@ -117,7 +117,7 @@
 							<a href="#">
 								<div class="sub-nav"><img src="../../img/widgets_02_20.png"></div><span>心理健康</span>
 							</a>
-						</li>	
+						</li>	-->
 					</ul>
 					<div class="mui-button-row btn-options">
 						<button class="mui-btn mui-btn-block mui-btn-warning bbc-btn-warning signup-sub2">下一步</button>
@@ -253,8 +253,35 @@
     <script src="../../js/im/strophe-1.2.8.js"></script>
     <script src="../../js/im/websdk-1.4.13.js"></script>
 	<script src="../../js/im/im.js"></script>
+	<script type="text/html" id="preference_list">
+		<% for(var i=0; i<list.length; i++) { %>
+			<li class="action-webview" data-webview="" data-webparam='' >
+				<a class="preference-tag" fid="<%= list[i].id%>">
+					<div class="sub-nav"><img src="<%= $add_server(list[i].cover) %>" ></div><span><%= list[i].title%></span>
+				</a>
+			</li>
+		<%}%>
+	</script>
     <script type="text/javascript" charset="utf-8">
 	$(function() {
+		var param = {
+	          'method': config.apimethod.category,
+	          'source':config.source
+	      }
+	      $.dataRequest(param, function(rs) {
+	        var data = rs;
+	         
+	        var widgets = template('preference_list', data);
+	    		$('.preference-list').append(widgets);
+	    		$('.preference-list').on('tap','a',function(){
+				if($(this).hasClass('on')){
+					$(this).removeClass('on');
+				}else{
+					$(this).addClass('on');
+				}
+		      		
+	      	})
+	    	})
 		//性别
 		var userPicker = new mui.PopPicker();
 		userPicker.setData([{
@@ -448,6 +475,7 @@
       mui.init({
         swipeBack: true, //启用右滑关闭功能
       });
+      var preference = '';
       mui.plusReady(function() {
       	document.getElementById("consolletime").addEventListener('tap', function() {
 			var dTime = new Date();
@@ -479,37 +507,49 @@
       	
       	$('.signup-sub').on('click',function(){
       		//
+      		
+      		
 	  		var nickname = $('#account').val();
 			var email = $('#email').val();
 			var mobile = $('#mobile').val();
 			var password = $('#password').val();
-			if(!nickname) {
-	            mui.alert('姓名不能为空');
-	            return false;
-	        }
-			if(!email) {
-	            mui.alert('邮箱不能为空');
-	            return false;
-	        }
-			if(!mobile) {
-	            mui.alert('手机号不能为空');
-	            return false;
-	        }
-	        if(!password) {
-	            mui.alert('密码不能为空');
-	            return false;
-	        }
+//			if(!nickname) {
+//	            mui.alert('姓名不能为空');
+//	            return false;
+//	        }
+//			if(!email) {
+//	            mui.alert('邮箱不能为空');
+//	            return false;
+//	        }
+//			if(!mobile) {
+//	            mui.alert('手机号不能为空');
+//	            return false;
+//	        }
+//	        if(!password) {
+//	            mui.alert('密码不能为空');
+//	            return false;
+//	        }
 	          
       		$('.signup-step1').hide()
       		$('.signup-step2').show()
       	})
       	
       	$('.signup-sub2').on('click',function(){
+      		var i = 0;
+      		var pf = {};
+      		mui('.preference-list .preference-tag').each(function() {
+      			if($(this).hasClass('on')){
+      				i++;
+      				pf.push($(this).attr('if'));
+      			}
+      		})
+      		log(pf);return false;
       		$('.signup-step2').hide()
       		$('.signup-step3').show()
       	})
       	
       	$('#register_next').on('tap', function() {
+      		
 	         var account = $('#account').val();
 			 var email = $('#email').val();
 			 var mobile = $('#mobile').val();

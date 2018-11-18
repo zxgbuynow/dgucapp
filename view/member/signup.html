@@ -145,43 +145,43 @@
 					<h4>您的关注点：</h4>
 					<ul class="widgets-icons-nav clearfix">
 						<li class="action-webview" data-webview="" data-webparam=''>
-							<a href="#">
+							<a class="on">
 								<div class="sub-nav"><img src="../../img/widgets_02_05.png"></div><span>婚姻家庭</span>
 							</a>
 						</li>
 						<li class="action-webview" data-webview="" data-webparam=''>
-							<a href="#">
+							<a >
 								<div class="sub-nav"><img src="../../img/widgets_02_07.png"></div><span>情绪管理</span>
 							</a>
 						</li>
 						<li class="action-webview" data-webview="" data-webparam=''>
-							<a href="#" class="on">
+							<a>
 								<div class="sub-nav"><img src="../../img/widgets_02_09.png"></div><span>恋爱心理</span>
 							</a>
 						</li>
 						<li class="action-webview" data-webview="" data-webparam=''>
-							<a href="#" >
+							<a>
 								<div class="sub-nav"><img src="../../img/widgets_02_11.png"></div><span>职场心理</span>
 							</a>
 						</li>
 							
 						<li class="action-webview" data-webview="" data-webparam=''>
-							<a href="#" class="on">
+							<a>
 								<div class="sub-nav"><img src="../../img/widgets_02_17.png"></div><span>人际关系</span>
 							</a>
 						</li>
 						<li class="action-webview" data-webview="" data-webparam=''>
-							<a href="#">
+							<a >
 								<div class="sub-nav"><img src="../../img/widgets_02_18.png"></div><span>亲子教育</span>
 							</a>
 						</li>
 						<li class="action-webview" data-webview="" data-webparam=''>
-							<a href="#">
+							<a class="on">
 								<div class="sub-nav"><img src="../../img/widgets_02_19.png"></div><span>个人成长</span>
 							</a>
 						</li>
 						<li class="action-webview" data-webview="" data-webparam=''>
-							<a href="#">
+							<a >
 								<div class="sub-nav"><img src="../../img/widgets_02_20.png"></div><span>心理健康</span>
 							</a>
 						</li>	
@@ -239,6 +239,15 @@
     <script src="../../js/app.js"></script>
     <script type="text/javascript" charset="utf-8">
 			$(function() {
+				$('.widgets-icons-nav').on('tap','a',function(){
+					if($(this).hasClass('on')){
+						$(this).removeClass('on');
+					}else{
+						$(this).addClass('on');
+					}
+		      		
+		      	})
+						
 				//性别
 				var userPicker = new mui.PopPicker();
 				userPicker.setData([{

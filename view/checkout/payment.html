@@ -171,6 +171,10 @@
               	log(pays[id])
                 plus.payment.request(pays[id], xhr.responseText, function(result) {
                 		if(paytype){
+                			//处理
+                			if(paytype==2){
+                				clicked('_www/view/member/share.html',{tid:tid});return false;
+                			}
                 			clicked('_www/view/index.html');
                 		}else{
                 			clicked('_www/view/member/trade.html');

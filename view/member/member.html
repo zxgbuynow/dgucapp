@@ -99,13 +99,19 @@
 						<h2>沐沐</h2>
 						<p class="info"><i class="iconfont icon-nanxing- mem-icon24"></i><span class="btn-bg-pink icon-king">心窝会员</span></p>
 						<p class="iconfont icon-shouji- mem-icon24">13265432435</p>
+						<!-- <h2 class="nicknm"></h2>
+						<p class="info">
+							<i class="iconfont icon-nanxing- mem-icon24 sex-i"></i>
+							<span class="btn-bg-pink mui-hidden">心窝会员</span>
+						</p>
+						<p class="iconfont icon-shouji- mem-icon24 username"></p> -->
 					</div>
 				</div>
       </div>
     </div>
 		<div class="btn-user-options">
-			<span class="iconfont icon-zengsongxinwohuiyuan- btn-vip blue"></span>
-			<span class="iconfont icon-chengweixinwohuiyuan- btn-vip pink"></span>
+			<span class="iconfont icon-zengsongxinwohuiyuan- btn-vip blue sendvip action-webview"  data-webparam='{"type":2}' data-webview="_www/view/member/apply.html"></span>
+			<span class="iconfont icon-chengweixinwohuiyuan- btn-vip pink tobevip  action-webview"  data-webparam='{"type":1}' data-webview="_www/view/member/apply.html"></span>
 		</div>
     <section class="section-white">
       <ul class="mui-table-view">
@@ -225,9 +231,17 @@
 			          'source':config.source
 			      }
 			      $.dataRequest(param, function(rs) {
-			        var data = rs;
+			      	log(rs) 
+			        var data = rs; 
+			        $('.username').html(data.username);
+			        $('.nicknm').html(data.nickname);
+			        if(data.sex==0){
+			        		$('.sex-i').removeClass('icon-nanxing-')
+			        		$('.sex-i').addClass('icon-nvxing-')
+			        }
 			        if(data.is_diamonds){
-			        		$('.start-icon').removeClass('mui-hidden')
+			        		$('.btn-bg-pink').removeClass('mui-hidden')
+			        		$('.tobevip').addClass('mui-hidden')
 			        }
 			        if(data.avar){
 			        		console.log(data.avar)
@@ -245,6 +259,7 @@
 			}
       	}
 		
+		//
 		
         $(window).on('tap', '.action-clickview', function() {
           

@@ -484,7 +484,7 @@
 			</div>
 		</section> -->
 	</div>
-	<nav class="mui-bar bbc-bar-tab op-group mui-hidden" >
+	<nav class="mui-bar bbc-bar-tab op-group " >
       <a class="bbc-tab-item  trade-talk" id="addfriend">
         <span class="mui-icon bbc-icon bbc-icon-home"></span>
         <span class="mui-tab-label">与他沟通</span>
@@ -902,9 +902,13 @@
       	var widgets = template('counsellor_info', rs);
         $('.counsellor-homepage-content').append(widgets);
         var text = $('.intro').text()
-        var des = text.replace(/\r\n/g, '<br/>').replace(/\n/g, '<br/>').replace(/\s/g, ' ');
-        $('.intro').empty()
-        $('.intro').append(des)
+        console.log(text);
+        if(text){
+        		var des = text.replace(/\r\n/g, '<br/>').replace(/\n/g, '<br/>').replace(/\s/g, ' ');
+	        $('.intro').empty()
+	        $('.intro').append(des)
+        }
+        
         $('.op-group').removeClass('mui-hidden')
         	 // 
          mui('.mui-scroll-wrapper').scroll({
