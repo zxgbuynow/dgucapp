@@ -65,7 +65,7 @@ function playCotrol() {
             $("#control").addClass("play").removeClass("pause");
             $("#control").html("点击播放");
             if (audio.currentTime == audio.duration) {
-                audio.stop();
+                audio.pause();
                 audio.currentTime = 0;
             }
         }, false);
