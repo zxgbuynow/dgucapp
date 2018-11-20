@@ -1,11 +1,12 @@
 //获取歌曲链接并插入dom中
-function getSong() { 
+function getSong(path) { 
     var audio = document.getElementById("audio");
-    audio.src = "../../img/no.mp3";
+//  audio.src = "../../img/no.mp3";
+    audio.src = path;
     audio.loop = false; //歌曲循环
     playCotrol(); //播放控制函数
 
-}
+} 
 
 //点击播放/暂停
 function clicks() {
@@ -45,6 +46,7 @@ function timeChange(time, timePlace) {//默认获取的时间是时间戳改成�
 
 //播放事件监听
 function playCotrol() {
+	var audio = document.getElementById("audio");
     audio.addEventListener("loadeddata", //歌曲一经完整的加载完毕( 也可以写成上面提到的那些事件类型)
         function() {
             $("#control").addClass("play").removeClass("color_gray");
@@ -54,7 +56,7 @@ function playCotrol() {
             timeChange(allTime, "allTime");
             setInterval(function() {
                 var currentTime = audio.currentTime;
-				console.log(currentTime);
+//				console.log(currentTime);
                 $("#time .currentTime").html(timeChange(currentTime, "currentTime"));
             }, 1000);
             clicks();

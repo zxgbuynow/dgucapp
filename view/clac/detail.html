@@ -139,7 +139,7 @@
       <i class="header-right icon-func bbc-icon bbc-icon-share share" style="color: #00C7C9;"></i>
     </header>
     <div class="counsellor-homepage-content">
-	    <section class=" section-white counsellor-info">
+	    <!--<section class=" section-white counsellor-info">
 			 <img src="https://ossimg.xinli001.com/20170823/c91ab41f014b8df7bb2e8d4df9b594ca.png!120x120" class="avatar">
 			 
 	    </section>
@@ -208,7 +208,7 @@
 			    	</div>    
 				</div>
 			</div>
-		</section>
+		</section>-->
 		
 	</div>
     <nav class="action-bar-mini op-group mui-bar bbc-bar-tab">
@@ -227,7 +227,7 @@
         </div>
       </div>
     </div>
-		<div class="mui-toast-container mui-active">
+		<div class="mui-toast-container mui-active" style="display: none;">
 			<div class="mui-toast-message">
 				<span class="audio_closed">X</span>
 				<!--audiostart-->
@@ -247,7 +247,7 @@
 				<div id="time"><div class="tiemDetail"><span class="currentTime" id="currentTime">00:00</span>/<span class="allTime" id="allTime">00:00</span></div></div>
 				<!--播放时间end-->
 				<!--歌曲信息start-->
-				<div id="songInfo">没时间-Leinov</div>
+				<div id="songInfo"></div>
 				<!--歌曲信息end-->
 			</div>
 		</div>
@@ -378,23 +378,24 @@
       </li>
   </script>
   <script>
-		$(function() {
-			getSong();
-			var audio = document.getElementById("audio");
-			//点击关闭试听
-			$('.audio_closed').on('click',function(){
-				$('.mui-toast-container').removeClass('mui-active').hide();
-				$("#control").addClass("play").removeClass("pause");
-				audio.pause();
-			})
-			//打开试听
-			$('#listen').on('click',function(){
-				$('.mui-toast-container').addClass('mui-active').show();
-				$("#control").addClass("pause").removeClass("play");
-				audio.play();//开始播放
-				dragMove();//并且滚动条开始滑动
-			})
-		})
+//		$(function() {
+//			getSong();
+//			var audio = document.getElementById("audio");
+//			//点击关闭试听
+//			$('.audio_closed').on('click',function(){
+//				$('.mui-toast-container').removeClass('mui-active').hide();
+//				$("#control").addClass("play").removeClass("pause");
+//				audio.pause();
+//			})
+//			//打开试听
+//			$('#listen').on('click',function(){
+//				$('.mui-toast-container').addClass('mui-active').show();
+//				$("#control").addClass("pause").removeClass("play");
+//				audio.play();//开始播放
+//				dragMove();//并且滚动条开始滑动
+//			})
+//		})
+	var audio = '';
     mui.plusReady(function() {
     var acid = plus.webview.currentWebview().acid;
     console.log(acid)
@@ -420,7 +421,7 @@
 	  }
       log(param)
       $.dataRequest(param, function(rs) {
-      	log(rs);
+      	log(rs); 
 //    	console.log(isEmptyObject(rs))
       	if(isEmptyObject(rs)){
       		return false;
@@ -429,6 +430,30 @@
       		$('#fav').addClass('isfaved')
       		$('#fav').text('已收藏')
 //    		$('#fav').next('i').removeClass('mui-icon-star').addClass('mui-icon-star-filled')
+      	}
+      	if(!rs.audio){
+      		$('#listen').hide()
+      	}else{
+      		getSong(config.imgser+rs.audio);
+
+      		audio = document.getElementById("audio");
+//			    audio.src = config.imgser+rs.audio;
+//			    log(config.imgser+rs.audio)
+//			    audio.loop = false; //歌曲循环
+//			    playCotrol(); //播放控制函数
+
+			//点击关闭试听
+			$('.audio_closed').on('click',function(){
+				$('.mui-toast-container').removeClass('mui-active').hide();
+				$("#control").addClass("play").removeClass("pause");
+				audio.pause();
+			})
+			$('#listen').on('click',function(){
+				$('.mui-toast-container').addClass('mui-active').show();
+				$("#control").addClass("pause").removeClass("play");
+				audio.play();//开始播放
+				dragMove();//并且滚动条开始滑动
+			})
       	}
       	rs.replyed = 0;
       	if(rs.reply){
@@ -441,6 +466,7 @@
       			}
       		}
       	}
+      	console.log('------------')
    	log(rs)
       	$('.header-title').text(rs.title)
       	$('.total').text(rs.price)
@@ -577,25 +603,40 @@
 					},1000)
 					
 		         
-			})
-	        $(window).on('tap','#listen',function(){
-							if(plus.os.name=='Android'){
-								clicked('_www/view/clac/audio.html',{audio:rs.audio});return false;
-							}
-// 							else{
-// 								clicked('_www/view/clac/audios.html',{audio:rs.audio});return false;
-// 							}
-							
-	        		var audio = document.createElement("audio");
-							audio.src = config.imgser+rs.audio;
-							if(audio.paused){ //如果当前是暂停状态
-									audio.play(); //播放
-									mui.toast('播放中')
-									return;
-							}else{//当前是播放状态
-								audio.pause(); //暂停
-							}
-	        })
+			}) 
+//	        $(window).on('tap','#listen',function(){
+//				if(rs.audio){
+//
+//					var audio = document.getElementById("audio");
+////					    audio.src = config.imgser+rs.audio;
+////					    audio.loop = false; //歌曲循环
+////					    playCotrol(); //播放控制函数
+////
+////					//点击关闭试听
+////					$('.audio_closed').on('click',function(){
+////						$('.mui-toast-container').removeClass('mui-active').hide();
+////						$("#control").addClass("play").removeClass("pause");
+////						audio.pause();
+////					})
+//					//打开试听
+////					$('#listen').on('click',function(){
+//						$('.mui-toast-container').addClass('mui-active').show();
+//						$("#control").addClass("pause").removeClass("play");
+//						audio.play();//开始播放
+//						dragMove();//并且滚动条开始滑动
+////					})
+////					var audio = document.createElement("audio");
+////					audio.src = config.imgser+rs.audio;
+////					if(audio.paused){ //如果当前是暂停状态
+////							audio.play(); //播放
+////							mui.toast('播放中')
+////							return;
+////					}else{//当前是播放状态
+////						audio.pause(); //暂停
+////					}
+//				}
+//	        	
+//	        })
 	        //收藏
 	        $(window).on('tap','#fav',function(){
 	        		var state = app.getState();
