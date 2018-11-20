@@ -29,7 +29,7 @@
 				width: auto;
 				left: 40px;
 				right: 52px;
-				top: 7px;
+				/*top: 7px;*/
 				margin: 0;
 				overflow: hidden;
 				text-overflow: ellipsis;
@@ -90,18 +90,74 @@
 				font-size: 20px;
 				text-align: center;
 			}
+		.icon-home-search {
+				top: 5px;
+		}
+		.user-info-body {
+				margin-left: 12px;
+				color: #333;
+		}
+		.user-main{
+			border-bottom: 1px solid #F8F8F8;
+			padding: 15px 0 8px 0;
+		}
+		.art-detail-main{
+			max-width: 100%;
+			text-align: center;
+			margin: 12px auto;
+		}
+		.art-detail-main h3{
+			color: #060606;
+			font-size: 20px;
+		}
+		.art-detail-main p{
+			font-size: 14px;
+			color: #B6B6B6;
+			padding: 6px 10px;
+		}
+		.art-detail-main p>span{
+			display: inline-block;
+			padding-right: 12px;
+		}
+		.icon-art-star,.icon-art-link{
+			font-size: 22px;
+			color: #81A1C9;
+		}
+		.art-img{
+			width: 90%;
+			text-align: center;
+			margin: 4px auto 12px auto;
+		}
+		.art-img img{
+			width:100%;
+			height: auto;
+		}
+
+		.art-detail-body{
+			max-width: 100%;
+			margin: .7rem 1rem;
+		}
+		.art-detail-body img{
+			width:100%;
+			height: auto;
+		}
+		/*.art-detail-body p{
+			color: #666;
+			font-size: 14px;
+			padding: .7rem;
+			text-align: left;
+		}
+		.art-detail-body p.title{
+			font-size: 20px;
+			text-align: center;
+		}*/
     </style>
     
   </head>
   <body>
-    <header class="home-header">
+    <!--<header class="home-header">
 			<div class="mui-navbar-inner mui-bar mui-bar-nav mui-navbar-center">
-    	<i class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left bbc-icon bbc-icon-back"></i>
-    	<!--<div class="main">
-    		<form onsubmit="return false;">
-    			<div class="mui-input-row header-search-form"><input type="search" onfocus="toSearch(this,'_www/view/counsellor/list.html')" class="header-search mui-input-clear" placeholder="寻找咨询师"></div>
-    		</form>
-    	</div>-->
+    	<i class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left bbc-icon bbc-icon-back"></i>】
 			<div class="mui-center mui-title">
 				<form onsubmit="return false;">
 				<div class="mui-input-row header-search-form">
@@ -115,9 +171,19 @@
     		<i class="search-hide icon-func bbc-icon callmm">客服</i>
     	</a>
 			</div>
-    </header>
+    </header>-->
+    <header class="page-header nobd">
+		<div class="mui-navbar-inner mui-bar mui-bar-nav mui-navbar-center">
+			<i class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left bbc-icon bbc-icon-back"></i>
+			<h1 class="mui-center mui-title">文章详情</h1>
+			<!--<a class="mui-right mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-right service">
+				<img src="../../img/tel.png">
+				<i class="search-hide icon-func bbc-icon callmm">客服</i>
+			</a>-->
+		</div>
+	</header>
     <section class="container section-white">
-			<div class="flex-box user-main">
+			<div class="flex-box user-main mui-hidden">
 				<div class="user-header-img">
 					<img class="userinfo-avatar" id="head-img" src="" onerror="Javascript:this.src='../../img/newlogo.png'"/>
 				</div>
@@ -126,7 +192,7 @@
 					<p class="">花若盛开，芬芳自来</p>
 				</div>
 			</div>
-			<div class="art-detail-main">
+			<div class="art-detail-main mui-hidden">
 				<h3>孝养之道(三)：如何倾心呵护父母的耳朵</h3>
 				<p>
 					<span>2018.5.10 14:58:28</span>
@@ -146,13 +212,23 @@
 				
 			</div>
     </section>
+    <div id="share_sheet" class="mui-popover mui-popover-bottom mui-popover-action">
+      <div class="section-white">
+        <div class="section-title theme-border-bottom">分享到</div>
+        <div class="section-container">
+          <div class="section-init action-share" data-platform="weixin"><i class="bbc-icon bbc-icon-weixin-member"></i></div>
+          <div class="section-init action-share" data-platform="timeline"><i class="bbc-icon bbc-icon-moments"></i></div>
+        </div>
+      </div>
+    </div>
   </body>
   <script src="../../js/zepto.js"></script>
   <script src="../../js/mui.min.js"></script>
   <script src="../../js/template.min.js"></script>
   <script src="../../config.js"></script>
   <script src="../../js/app.js"></script>
-  <script type="text/html" id="content-info">
+  <script src="../../js/share.js"></script>
+  <script type="text/html" id="content-info1">
     <section class="content-padded border-bottom">
       <h1 class="content-center content-padded"><%= title %></h1>
       <section class="content-center fonts font-gray-40"><%= $timestamp_To_Time(create_time) %></section>
@@ -161,24 +237,101 @@
       </div>
     </section>
   </script>
+  <script type="text/html" id="content-info">
+  	<%if(userid){%>
+    <div class="flex-box user-main ">
+		<div class="user-header-img">
+			<img class="userinfo-avatar" id="head-img" src="<%=$add_server(counsellor.avar) %>" onerror="Javascript:this.src='../../img/newlogo.png'"/>
+		</div>
+		<div class="user-info-body">
+			<h2><%=counsellor.nickname %></h2>
+			<p class=""><%=counsellor.slogan %></p>
+		</div>
+	</div>
+	<%}%>
+	<div class="art-detail-main ">
+		<h3><%= title %></h3>
+		<p>
+			<span><%= $timestamp_To_Time(create_time) %></span>
+			<span class="iconfont icon-collection icon-art-star mui-hidden" id="fav"></span><!--未收藏-->
+					<!-- <span class="iconfont icon-collection_fill icon-art-star"></span> --><!--已收藏-->
+			<span class="iconfont icon-fenxiang- icon-art-link" id="share"></span>
+		</p>
+		
+		<div class="art-detail-body ">
+			
+		</div>
+		
+		
+	</div>
+  </script>
   <script>
     mui.plusReady(function() {
+    	  var state = app.getState();
       var article_id = plus.webview.currentWebview().article_id;
-
-      var param = {
+       var param = {
           'method': config.apimethod.contentinfo,
           'source':config.source,
           'id': article_id
       }
+	  if(state.token){
+	  	 var param = {
+	          'method': config.apimethod.contentinfo,
+	          'source':config.source,
+	          'id': article_id,
+	          'account':state.token
+	      }
+	  }
+     
       $.dataRequest(param, function(rs) {
         var tempEl = template('content-info', rs);
         $('.container').html(tempEl);
-
+		if(state.token){
+			$('#fav').removeClass('mui-hidden');
+		}
 		var reg = new RegExp( '/uploads/images' , "g" )
 		var newstr = rs.content.replace( reg , config.imgser+'uploads/images' );
 
-//      console.log(newstr) 
-        $('.single-img').html(newstr); 
+        $('.art-detail-body').html(newstr); 
+        
+         //收藏
+        $(window).on('tap','#fav',function(){
+      		if(state.token){
+      			if($(this).hasClass('isfaved')){
+					return;
+				}
+				
+				var param = {
+		          'method': config.apimethod.addfav,
+		          'source':config.source,
+		          'typeid': 3,
+		          'fid': article_id,
+		          'account': state.token
+		          
+		      	}
+				log(param) 
+				$.dataRequest(param, function(rs) {
+					$(this).addClass('isfaved');
+					$('#fav').removeClass('icon-collection').addClass('icon-collection_fill') 
+				})
+				 
+      		}
+			
+		})
+        //分享
+        $(window).on('tap','#share',function(){
+        		var state = app.getState();
+			var shareData = {
+	            title: rs.title, 
+	            href: 'http://www.pgyer.com/kl4C', 
+	            desc: rs.title,
+	            content:rs.title,
+	            pic: 'http://39.105.4.51:88/uploads/images/logo.png'
+	         };
+			appshare(shareData);
+	         
+		})
+	        
       });
     });
   </script>

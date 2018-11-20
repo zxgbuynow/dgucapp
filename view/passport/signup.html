@@ -264,6 +264,7 @@
 	</script>
     <script type="text/javascript" charset="utf-8">
 	$(function() {
+		var preference = '';
 		var param = {
 	          'method': config.apimethod.category,
 	          'source':config.source
@@ -475,7 +476,7 @@
       mui.init({
         swipeBack: true, //启用右滑关闭功能
       });
-      var preference = '';
+      
       mui.plusReady(function() {
       	document.getElementById("consolletime").addEventListener('tap', function() {
 			var dTime = new Date();
@@ -513,22 +514,22 @@
 			var email = $('#email').val();
 			var mobile = $('#mobile').val();
 			var password = $('#password').val();
-//			if(!nickname) {
-//	            mui.alert('姓名不能为空');
-//	            return false;
-//	        }
-//			if(!email) {
-//	            mui.alert('邮箱不能为空');
-//	            return false;
-//	        }
-//			if(!mobile) {
-//	            mui.alert('手机号不能为空');
-//	            return false;
-//	        }
-//	        if(!password) {
-//	            mui.alert('密码不能为空');
-//	            return false;
-//	        }
+			if(!nickname) {
+	            mui.alert('姓名不能为空');
+	            return false;
+	        }
+			if(!email) {
+	            mui.alert('邮箱不能为空');
+	            return false;
+	        }
+			if(!mobile) {
+	            mui.alert('手机号不能为空');
+	            return false;
+	        }
+	        if(!password) {
+	            mui.alert('密码不能为空');
+	            return false;
+	        }
 	          
       		$('.signup-step1').hide()
       		$('.signup-step2').show()
@@ -536,14 +537,17 @@
       	
       	$('.signup-sub2').on('click',function(){
       		var i = 0;
-      		var pf = {};
+      		var pf = [];
       		mui('.preference-list .preference-tag').each(function() {
       			if($(this).hasClass('on')){
       				i++;
-      				pf.push($(this).attr('if'));
+      				pf.push($(this).attr('fid'));
       			}
       		})
-      		log(pf);return false;
+      		if(i==0){
+      			mui.toast('请选中关注点')
+      		}
+      		preference = pf.join(','); 
       		$('.signup-step2').hide()
       		$('.signup-step3').show()
       	})
@@ -600,7 +604,8 @@
 	              'city': city,
 	              'tel': tel,
 	              'isconsolle': isconsolle,
-	              'consolletime': consolletime
+	              'consolletime': consolletime,
+	              'preference':preference
 	           }
 	          // 环信SDK注册
 	            var options = {
