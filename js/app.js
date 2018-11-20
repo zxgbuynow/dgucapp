@@ -365,7 +365,7 @@ var Currency = {
           users.push(loginInfo);
           localStorage.setItem('$users', JSON.stringify(users));
           
-          return owner.createState(loginInfo.account, data.id,data.nickname, callback);
+          return owner.createState(loginInfo.account, data.id,data.nickname,data.avar, callback);
         } else {
           return callback(response.msg);
         }
@@ -377,11 +377,12 @@ var Currency = {
     });
   };
 
-  owner.createState = function(name, token, nickname,callback) {
+  owner.createState = function(name, token, nickname,avar,callback) {
     var state = owner.getState();
     state.account = name;
     state.nickname = nickname;
     state.token = token;
+    state.avar = config.server+avar;
     owner.setState(state);
     return callback();
   };

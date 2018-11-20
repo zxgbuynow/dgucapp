@@ -72,5 +72,9 @@ var config = {
 		cancleUp:'cancle.up',
 		clacevaluate:'user.clacevaluate',
 		claccate:'clac.cate',
+		sendhxmsg:'send.hxmsg',
+		hxmsgls:'hxmsg.ls',
+		hxmsgtwo:'hxmsg.two',
+		hxmsgup:'hxmsg.up',
     }
 }

@@ -96,7 +96,7 @@
 	    <script src="../../js/im/strophe-1.2.8.js"></script>
 	    <script src="../../js/im/websdk-1.4.13.js"></script>
 	    <script src="../../js/im/im.js"></script>
-	    <script id="session_list1" type="text/html">
+	    <script id="session_list" type="text/html">
 	    		<% for(var i=0; i<list.length; i++) { %>
 		    		<li class="mui-table-view-cell mui-media action-webview" data-webview="_www/view/msg/chat.html" data-webparam = '{"jid":"1", "username":"<%= list[i].nmkey %>" }'>
 					<img class="mui-media-object mui-pull-left" src="<%= list[i].receiverAvatar %>">
@@ -110,25 +110,9 @@
 				</li> 
 			<% } %>
 	    	</script>
-	    	<script id="session_list" type="text/html">
-	    		<% for(var i in list) { %>
-		    		<li class="mui-table-view-cell mui-media action-webview" data-webview="_www/view/msg/wechat.html" data-webparam = '{"jid":"1", "reciveid":"<%= list[i].mid %>", "account":"<%= list[i].account %>", "username":"<%= list[i].nickname %>","reciveavar":"<%= $add_server(list[i].cavar) %>" }'>
-					<img class="mui-media-object mui-pull-left" src="<%= $add_server(list[i].cavar) %>" onerror="Javascript:this.src='../../img/widgets_02_19.png' ">
-					<div class="mui-media-body">
-						<%= list[i].nickname %>
-						<p class='mui-ellipsis mui-media-text'><%= list[i].nmsg %></p>
-					</div>
-					<% if(!list[i].st){ %>
-					<span class="mui-badge mui-badge-danger" style="height: 12px;"></span>
-					<% } %>
-				</li> 
-			<% } %>
-	    	</script>
 		<script type="text/javascript" charset="utf-8">
 		var state = app.getState();
-		log(state)
 		 mui.plusReady(function(){
-		 	$('.session-list').html('');
 			if(state.token){
 				var token = plus.storage.getItem('webim_'+state.account)
 				var options = {
@@ -139,35 +123,104 @@
 				};
 				conn.open(options);
 				//获得历史聊天
-				var param = {
-					'method': config.apimethod.hxmsgls,
-					'account': state.token,
-					'source':config.source
+			 	var keyNames=[];
+				var values=[];
+				var sessionList = [];
+				var res = [];
+				var val = [];
+				var scount = 0;
+				var numKeys=plus.storage.getLength();
+	//			log(numKeys)
+				for(var i=0; i<numKeys; i++) {
+					keystr = plus.storage.key(i);
+//					console.log(keystr) 
+					if(keystr.indexOf(state.account+"msgbox_")>=0){
+						if(keystr.indexOf("_flag")>=0){
+							continue
+						} 
+	//					keyNames.push(keystr); 
+	//					values.push(plus.storage.getItem(keystr))
+						val = JSON.parse(plus.storage.getItem(keystr));
+						lval = val.pop()
+				 
+						log(keystr.split('_')[1]) 
+						var flag = plus.storage.getItem(keystr+'_flag')||0;
+						sessionList.push({
+							nmkey:keystr.split('_')[1],
+							nm:lval['nickname'],
+							receiverAvatar:lval['body']['receiverAvatar'],
+							msg:lval['body']['msg'],
+							fls:flag
+						})
+					}
+					
 				}
-				log(param)
-				$.dataRequest(param, function(rs) {
-					var widgets = template('session_list', rs);
+				if(sessionList){
+					res = {
+						list:sessionList
+					}
+					$('.session-list').html('')
+					var widgets = template('session_list', res);
 	            		$('.session-list').append(widgets);
-				})
+	          		console.log(widgets) 
+				}else{
+					$('.session-list').html('')
+				}
 			}else{
-				mui.toast('请登录')
+				//去登录 
+				var faid = plus.webview.currentWebview().id;
+                clicked('_www/view/passport/login.html', {
+                  'faid': faid
+                }, 'slide-in-bottom');
 			}
+		 	
+//			log(sessionList)  
 		 	
 		 })
 		 
 		window.addEventListener('refreshmsglist', refreshmsglist);
 		function refreshmsglist(){
 			//获得历史聊天
-			var param = {
-				'method': config.apimethod.hxmsgls,
-				'account': state.token,
-				'source':config.source
+		 	var keyNames=[];
+			var values=[];
+			var sessionList = [];
+			var res = [];
+			var val = [];
+			var scount = 0;
+			var numKeys=plus.storage.getLength();
+//			log(numKeys)
+			for(var i=0; i<numKeys; i++) {
+				keystr = plus.storage.key(i);
+//				console.log(keystr) 
+				if(keystr.indexOf(state.account+"msgbox_")>=0){
+					if(keystr.indexOf("_flag")>=0){
+						continue
+					}
+//					keyNames.push(keystr); 
+//					values.push(plus.storage.getItem(keystr))
+					val = JSON.parse(plus.storage.getItem(keystr));
+					lval = val.pop()
+					var flag = plus.storage.getItem(keystr+'_flag')||0;
+					sessionList.push({
+						nmkey:keystr.split('_')[1],
+						nm:lval['nickname'],
+						receiverAvatar:lval['body']['receiverAvatar'],
+						msg:lval['body']['msg'],
+						fls:flag
+					})
+				}
 			}
-			log(param)
-			$.dataRequest(param, function(rs) {
-				var widgets = template('session_list', rs);
+			if(sessionList){
+				res = {
+					list:sessionList
+				}
+				$('.session-list').html('')
+				var widgets = template('session_list', res);
             		$('.session-list').append(widgets);
-			})
+//          		console.log(widgets)
+			}else{
+				$('.session-list').html('')
+			}
 		}
 	 	$('.bbc-tab-item').on('tap', function() {
 	        var webview = $(this).data('webview');
