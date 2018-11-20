@@ -73,6 +73,62 @@
 		.bbc-tab-bar .mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
 		    color: #00C7C9;
 		}
+		.mui-toast-message{
+			position: relative;
+			width: 100%;
+			height: 264px;
+		}
+		#audio{ width: 100%;}
+		#control{ 
+		width: 90px;
+    height: 90px;
+    line-height: 90px;
+    text-align: center;
+    border-radius: 200px;
+    border: none;
+    color: #fff;
+    margin-left: -45px;
+    left: 50%;
+    top: 12%;
+    position: absolute;
+    box-shadow: #888 0 0 8px;
+	}
+
+
+		.color_gray{ background: #e4e4e4}
+		.hide{ display: none;}
+		.show{ display: block;}
+		.play{ background:  #f06060;}
+		.pause{ background:skyblue}
+		/*进度条样式*/
+		.progressBar{ width: 100%; height: 10px;margin: 30px auto 30px auto; position: absolute; left: 0; bottom: 35px;}
+		.progressBar div{ position: absolute;}
+		.progressBar .progressBac{ width: 100%; height: 10px;  left: 0; top:0; background: #e4e4e4;}
+		.progressBar .speed{width: 100%; height: 10px; left: -100%; background: #f06060; }
+		.progressBar .drag{ width: 30px; height: 30px; left: 0; top:-10px;  background: skyblue; opacity: 0.8; border-radius: 50px; box-shadow: #fff 0 0 5px;}
+		/*时间样式*/
+		#time{ width: 100%; height: 20px;position: absolute; left: 0; bottom:30px; color:#888;}
+		.tiemDetail{ position: absolute; right:10px; top:0;}
+		#songInfo{
+			overflow: hidden;
+			width: 200px;
+			height: 50px;
+			line-height: 50px;
+			text-align: center;
+			color: #fff;
+			margin-left: -100px;
+			left: 50%;
+			top: 48%;
+			 position: absolute;
+		 }
+		 .audio_closed{
+			 position: absolute;
+			 top: 2px;
+			 right: 15px;
+			 width: 40px;
+			 height: 40px;
+			 color: #fff;
+		 }
     </style>
     
   </head>
@@ -83,7 +139,7 @@
       <i class="header-right icon-func bbc-icon bbc-icon-share share" style="color: #00C7C9;"></i>
     </header>
     <div class="counsellor-homepage-content">
-	    <!--<section class=" section-white counsellor-info">
+	    <section class=" section-white counsellor-info">
 			 <img src="https://ossimg.xinli001.com/20170823/c91ab41f014b8df7bb2e8d4df9b594ca.png!120x120" class="avatar">
 			 
 	    </section>
@@ -152,7 +208,7 @@
 			    	</div>    
 				</div>
 			</div>
-		</section>-->
+		</section>
 		
 	</div>
     <nav class="action-bar-mini op-group mui-bar bbc-bar-tab">
@@ -171,8 +227,33 @@
         </div>
       </div>
     </div>
+		<div class="mui-toast-container mui-active">
+			<div class="mui-toast-message">
+				<span class="audio_closed">X</span>
+				<!--audiostart-->
+				<audio id="audio" src=""  loop="loop" ></audio>
+				<!--audio End-->
+				<!--播放控制按钮start-->
+				<button id="control" class="">loading</button>
+				<!--播放控制按钮end-->
+				<!--时间进度条块儿start-->
+				<section class="progressBar">
+				    <div class="progressBac"></div>
+				    <div class="speed" id="speed"></div>
+				    <div class="drag" id="drag"></div>
+				</section>
+				<!--时间进度条块儿end-->
+				<!--播放时间start-->
+				<div id="time"><div class="tiemDetail"><span class="currentTime" id="currentTime">00:00</span>/<span class="allTime" id="allTime">00:00</span></div></div>
+				<!--播放时间end-->
+				<!--歌曲信息start-->
+				<div id="songInfo">没时间-Leinov</div>
+				<!--歌曲信息end-->
+			</div>
+		</div>
   </body>
   <script src="../../js/zepto.js"></script>
+	<script src="../../js/audio.js"></script>
   <script src="../../js/mui.min.js"></script>
   <script src="../../js/template.min.js"></script>
   <script src="../../config.js"></script>
@@ -297,6 +378,23 @@
       </li>
   </script>
   <script>
+		$(function() {
+			getSong();
+			var audio = document.getElementById("audio");
+			//点击关闭试听
+			$('.audio_closed').on('click',function(){
+				$('.mui-toast-container').removeClass('mui-active').hide();
+				$("#control").addClass("play").removeClass("pause");
+				audio.pause();
+			})
+			//打开试听
+			$('#listen').on('click',function(){
+				$('.mui-toast-container').addClass('mui-active').show();
+				$("#control").addClass("pause").removeClass("play");
+				audio.play();//开始播放
+				dragMove();//并且滚动条开始滑动
+			})
+		})
     mui.plusReady(function() {
     var acid = plus.webview.currentWebview().acid;
     console.log(acid)
