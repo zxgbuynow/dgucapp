@@ -9,9 +9,10 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
     <link rel="stylesheet" href="../../css/style.css">
+    <link href="../../css/pay.css" rel="stylesheet" />
     <style>
       .mui-bar~.mui-content .mui-fullscreen {
-        top: 44px;
+        top: 50px;
         height: auto;
       }
 
@@ -105,12 +106,23 @@
 		.box-item-flex2{
 			font-size: 12px;
 		}
+		.bbc-tab-bar .mui-slider-indicator.mui-segmented-control{
+		    background: #4883DD;
+				color: #fff;
+		}
+		.bbc-tab-bar .mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+	    		color: #fff;
+	    		background: #41B8DA;
+	    }
+		.bbc-tab-bar .mui-segmented-control.mui-segmented-control-inverted ~ .mui-slider-progress-bar{
+			background-color: #41B8DA;
+		}
     </style>
   </head>
 
   <body>
     <div id="slider" class="mui-slider mui-fullscreen bbc-tab-bar">
-      <div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+      <div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted ">
         <a class="mui-control-item mui-active" href="#item1mobile">全部</a>
         <a class="mui-control-item " href="#item2mobile">待支付</a>
         <a class="mui-control-item" href="#item3mobile">已支付</a>

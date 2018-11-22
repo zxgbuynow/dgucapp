@@ -42,11 +42,45 @@
     		.mui-table-view-chevron .mui-table-view-cell{
     			padding-right:25px;
     		}
+    		.page-header{
+				heigt: 44px;
+			}
+			.main {
+				margin-right: 10px;
+				position: relative;
+			}
+			.mui-bar .mui-title {
+				width: auto;
+				left: 40px;
+				right: 52px;
+				top: 7px;
+				margin: 0;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				display: inline-block;
+			}
     </style>
   </head>
 
   <body>
-    <header class="home-header">
+  	<header class="home-header">
+			<div class="mui-navbar-inner mui-bar mui-bar-nav mui-navbar-center">
+   		 	<i class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left bbc-icon bbc-icon-back"></i>
+			<div class="mui-center mui-title">
+				<form onsubmit="return false;">
+				<div class="mui-input-row header-search-form">
+					<input type="search"  class="header-search mui-input-clear" placeholder="寻找感兴趣的文章">
+				</div>
+				<a href="#" class="right-icon-search"><i class="iconfont icon-search icon-home-search"></i></a>
+			</form>
+			</div>
+		    	<a class="mui-right  mui-btn  mui-btn-link mui-btn-nav mui-pull-right service">
+		    		<img src="../../img/tel.png">
+		    		<i class="search-hide icon-func bbc-icon callmm">客服</i>
+		    	</a>
+			</div>
+    </header>
+    <!--<header class="home-header">
       <div class="header-logo"><img src="../../img/newlogo.png"></div>
       <div class="main">
         <form onsubmit="return false;">
@@ -54,7 +88,7 @@
         </form>
       </div>
       <a href="#" class="txt-func search-cancel" style="display:none;">取消</a>
-    </header>
+    </header>-->
      
     <div class="container">
       <div class="mui-scroll-wrapper bbc-pullrefresh-top" >

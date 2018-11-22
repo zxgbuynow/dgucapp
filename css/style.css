@@ -6811,7 +6811,8 @@ header {
 header .icon-func {
     display: block;
     position: relative;
-    color: #ea2329;
+    /*color: #ea2329;*/
+    color: #fff;
     font-size: 1.2rem;
     width: 2.8rem;
     height: 2.8rem;
@@ -6824,7 +6825,8 @@ header.mui-bar-transparent .icon-func {
 }
 
 header .txt-func {
-    color: #ea2329;
+    /*color: #ea2329;*/
+    color: #FFFFFF;
     line-height: 3rem;
     padding: 0 1rem;
 }
@@ -6842,7 +6844,7 @@ header .header-right {
     position: relative;
     float: right;
     height: 3rem;
-    color: #ea2329;
+    /*color: #ea2329;*/
     font-size: 1.2rem;
     z-index: 10;
 }

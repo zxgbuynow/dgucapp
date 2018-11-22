@@ -15,19 +15,20 @@
     			width:100%
     		}
     		.bbc-tab-nav.mui-segmented-control{
-    			border-color: #00C7C9;
+    			border-color: #fff;
     		}
     		.bbc-tab-nav.mui-segmented-control .mui-control-item.mui-active {
-		    background: #00C7C9;
+		    background: #fff;
+				color: #4B84DE;
 		}
 		.bbc-tab-nav.mui-segmented-control .mui-control-item {
-		    border-color: #00C7C9;
-		    color: #00C7C9;
+		    border-color: #fff;
+		    color: #fff;
 		}
 		.mui-table-view .mui-media-object{
-	    		max-width: 80px; 
-			height: 80px;
-		}
+		    max-width: 72px; 
+    			height: 72px;
+    		}
 		.mui-media-text {
 			color: #646464;
 			font-size: 13px;
@@ -46,7 +47,7 @@
   </head>
 
   <body>
-    <header class="mui-bar-nav page-header">
+    <!--<header class="mui-bar-nav page-header">
       <i class="header-left icon-func bbc-icon bbc-icon-back mui-action-back"></i>
       <div class="header-title">
         <div style="padding: 10px 10px;">
@@ -57,6 +58,24 @@
           </div>
         </div>
       </div>
+    </header>-->
+    <header class="mui-bar-nav page-header nobd">
+		<div class="mui-navbar-inner mui-bar mui-bar-nav mui-navbar-center clearfix">
+			<i class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left bbc-icon bbc-icon-back"></i>
+			<div class="header-title">
+				<div style="padding: 10px 10px;">
+					<div id="segmentedControl" class="mui-segmented-control bbc-tab-nav bbc-tab-nav-sm">
+						<a class="mui-control-item fonts" webview="_www/view/member/fav/index.html">咨询师</a>
+						<a class="mui-control-item fonts" webview="_www/view/member/fav/clac.html">课程/活动</a>
+						<a class="mui-control-item mui-active fonts">文章</a>
+					</div>
+				</div>
+			</div>
+			<a class="mui-right  mui-btn  mui-btn-link mui-btn-nav mui-pull-right service">
+				<img src="../../../img/tel.png">
+				<i class="search-hide icon-func bbc-icon callmm">客服</i>
+			</a>
+		</div>
     </header>
     <div class="mui-content">
     		
