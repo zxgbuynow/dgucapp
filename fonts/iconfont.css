@@ -20,6 +20,11 @@
   vertical-align: middle;
 }
 
+
+.icon-checkboxoutline:before { content: "\e63c"; }
+
+.icon-check-box-outline-blank:before { content: "\e63e"; }
+
 .icon-collection_fill:before { content: "\e6ea"; }
 
 .icon-collection:before { content: "\e6eb"; }
@@ -99,5 +104,4 @@
 .icon-kefu-:before { content: "\e624"; }
 
 .icon-yuyindianhua-:before { content: "\e625"; }
-
 
