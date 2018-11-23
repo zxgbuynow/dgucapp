@@ -353,15 +353,16 @@
 	.cons-submit-options .cons-btn.icon-heart{
 		border: 1px solid #AFCAEF;
 		padding-left: 36px;
-		background: url(../img/video-new.png) no-repeat 6px center;
-		background-size: 24px 24px;
+		background: url(../img/sj.png) no-repeat 6px center;
+		background-size: 24px 18px;
 	}
 	
 	.cons-submit-options .cons-btn.icon-free-heart{
 		border: 1px solid #F09597;
-		padding-left: 36px;
-		background: url(../img/video-new.png) no-repeat 6px center;
-		background-size: 24px 24px;
+		color: #F09597;
+		padding-left: 34px;
+		background: url(../img/gift.png) no-repeat 6px center;
+		background-size: 22px 24px;
 	}
 	
 	
