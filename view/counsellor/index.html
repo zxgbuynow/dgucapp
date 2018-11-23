@@ -61,19 +61,28 @@
 			height: 44px;
 		}
 		.bbc-pullrefresh-top{
-			top: 57px;
+			top: 45px;
 		}
+		.main {
+				margin-right: 10px;
+				position: relative;
+			}
+			.mui-bar .mui-title {
+				width: auto;
+				left: 40px;
+				right: 52px;
+				top: 7px;
+				margin: 0;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				display: inline-block;
+			}
     </style>
   </head>
 
   <body>
-    <header class="home-header">
+    <!--<header class="home-header">
       <div class="header-logo"><span class="iconfont icon-logo- icon-home-logo"></span></div>
-      <!--<div class="main">
-        <form onsubmit="return false;">
-          <div class="mui-input-row header-search-form"><input type="search" onfocus="toSearch(this,'_www/view/counsellor/list.html')" class="header-search mui-input-clear" placeholder="寻找咨询师"></div>
-        </form>
-      </div>-->
       <div class="main counselor-search-main">
         <form onsubmit="return false;">
           <div class="mui-input-row header-search-form">
@@ -85,6 +94,21 @@
       <a href="#" ><i class="search-hide icon-func bbc-icon bbc-icon-submenu mui-action-menu"></i></a>
       <a href="#" class="txt-func search-cancel" style="display:none;">取消</a>
     </header>
+    -->
+    <header class="home-header">
+		<div class="mui-navbar-inner mui-bar mui-bar-nav mui-navbar-center">
+	 		<i class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left bbc-icon bbc-icon-back"></i>
+			<div class="mui-center mui-title">
+				<form onsubmit="return false;">
+				<div class="mui-input-row header-search-form">
+					<input type="search"  class="header-search mui-input-clear" placeholder="寻找咨询师">
+				</div>
+				<a href="#" class="right-icon-search"><i class="iconfont icon-search icon-home-search"></i></a>
+			</form>
+			</div>
+	    		 <a href="#" ><i class="search-hide header-right icon-func bbc-icon bbc-icon-submenu mui-action-menu " style=""></i></a>
+		</div>
+	</header>
      
     <div class="container">
       <div class="mui-scroll-wrapper bbc-pullrefresh-top" >
@@ -491,18 +515,19 @@
 								<div class="card-new-info">
 									<div class="flex-box">
 										<p class="card-name flex-g2 card-ellispse"><%= list[i].nickname %>
-											<i class="mui-icon bbc-icon bbc-icon-home bbc-icon-doctype small blue"></i>
+											<i class="iconfont icon-renzhengzixunshi- iconfont-icon-doctype small blue"></i>
 											<%if(list[i].tearch){%> 
-												<i class="mui-icon bbc-icon bbc-icon-home bbc-icon-doctype small orange"></i>
+												<i class="iconfont icon-renzhengjiangshi- iconfont-icon-doctype small orange"></i>
 											<%}%>
 											<%if(list[i].leader){%>
-												<i class="mui-icon bbc-icon bbc-icon-home bbc-icon-doctype small pink"></i>
+												<i class="iconfont icon-xiaotuantiLeader- iconfont-icon-doctype small pink"></i>
 											<%}%>
 										</p>
 										<p class="doctor-address flex-g1 card-ellispse">
-											<i class="mui-icon bbc-icon bbc-icon-home bbc-icon-doctype small blue rt1"></i>
+											<i class="iconfont icon-dizhi- iconfont-icon-doctype small gray rt1"></i>
 											<span><%= list[i].shopname %></span>
 										</p>
+										
 									</div>
 								</div>
 								<div class="doctor-sign-list">
@@ -552,16 +577,16 @@
 								<div class="card-new-info">
 									<div class="flex-box">
 										<p class="card-name flex-g2 card-ellispse"><%= list[i].nickname %>
-											<i class="mui-icon bbc-icon bbc-icon-home bbc-icon-doctype small blue"></i>
+											<i class="iconfont icon-renzhengzixunshi- iconfont-icon-doctype small blue"></i>
 											<%if(list[i].tearch){%> 
-												<i class="mui-icon bbc-icon bbc-icon-home bbc-icon-doctype small orange"></i>
+												<i class="iconfont icon-renzhengjiangshi- iconfont-icon-doctype small orange"></i>
 											<%}%>
 											<%if(list[i].leader){%>
-												<i class="mui-icon bbc-icon bbc-icon-home bbc-icon-doctype small pink"></i>
+												<i class="iconfont icon-xiaotuantiLeader- iconfont-icon-doctype small pink"></i>
 											<%}%>
 										</p>
 										<p class="doctor-address flex-g1 card-ellispse">
-											<i class="mui-icon bbc-icon bbc-icon-home bbc-icon-doctype small blue rt1"></i>
+											<i class="iconfont icon-dizhi- iconfont-icon-doctype small gray rt1"></i>
 											<span><%= list[i].shopname %></span>
 										</p>
 									</div>
