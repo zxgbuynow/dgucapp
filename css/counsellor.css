@@ -288,7 +288,7 @@
     float: left;
     width: 50%;
     margin-bottom: 10px;
-		align-items:center;
+		align-items: normal;
 }
 
 .consult-way-section .consult-way .label {
@@ -352,15 +352,16 @@
 }
 
 	.cons-submit-options .cons-btn.icon-heart{
-		border: 1px solid #AFCAEF;
+		border: 1px solid #598ee0;
+		color: #598ee0;
 		padding-left: 36px;
 		background: url(../img/sj.png) no-repeat 6px center;
 		background-size: 24px 18px;
 	}
 	
 	.cons-submit-options .cons-btn.icon-free-heart{
-		border: 1px solid #F09597;
-		color: #F09597;
+		border: 1px solid #e65f60;
+		color: #e65f60;
 		padding-left: 34px;
 		background: url(../img/gift.png) no-repeat 6px center;
 		background-size: 22px 24px;
