@@ -5370,6 +5370,9 @@ a {
 	color: #666666;
 	font-weight: bold;
 }
+.bbc-tab-mui-icon.iconfw_normal{
+	font-weight: normal;
+}
 .bbc-tab-item.bbc-active .bbc-tab-mui-icon{
 	color: #4782DC;
 }

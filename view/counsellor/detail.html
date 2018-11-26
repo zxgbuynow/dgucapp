@@ -10,44 +10,47 @@
     <link rel="stylesheet" href="../../css/counsellor.css" />
     <link rel="stylesheet" href="../../css/style.css" />
     <style>
-    		.mui-badge{
-    			margin-left: 185px!important;
-			    top: 5.5rem!important;
-			    position: absolute;
-    		}
-    		.counsellor-info{
-    			margin-bottom: 0.6rem;
-    			padding-top: 1rem;
-    		}
-    		.counsellor-head-content{
-    			text-align: center;
-    			padding-top: 4rem;
-    			padding-bottom: 0.4rem;
-    			/*background: url(../../img/head-bg.png) no-repeat;*/
-    			background-size: 100% 100%;
-    			margin-bottom: 0.6rem;
-					color: #fff;
-    		}
-    		.counsellor-head-content .avatar{
-			    height: 6rem;
-			    width: 6rem;
-			    border-radius: 50%;
-			    border: 5px solid #fff;
-    		}
-    		.counsellor-head-content .teacher-name{
-    			font-size: 25px;
-    			font-weight: 600;
-    			margin-bottom: 0.2rem;
-    		}
-    		.counsellor-head-content .zixun-time-block{
-    			padding-bottom: 0;
-    			margin-bottom: 0;
-    			background: transparent;
-    		}
-    		.counsellor-head-content .zixun-time-block .star{
-    			width: 13px;
-    			height: 14px;
-    		}
+			header{
+				height: 44px;
+			}
+			.mui-badge{
+				margin-left: 185px!important;
+				top: 5.5rem!important;
+				position: absolute;
+			}
+			.counsellor-info{
+				margin-bottom: 0.6rem;
+				padding-top: 1rem;
+			}
+			.counsellor-head-content{
+				text-align: center;
+				padding-top: 4rem;
+				padding-bottom: 0.4rem;
+				/*background: url(../../img/head-bg.png) no-repeat;*/
+				background-size: 100% 100%;
+				margin-bottom: 0.6rem;
+				color: #fff;
+			}
+			.counsellor-head-content .avatar{
+				height: 6rem;
+				width: 6rem;
+				border-radius: 50%;
+				border: 5px solid #fff;
+			}
+			.counsellor-head-content .teacher-name{
+				font-size: 25px;
+				font-weight: 600;
+				margin-bottom: 0.2rem;
+			}
+			.counsellor-head-content .zixun-time-block{
+				padding-bottom: 0;
+				margin-bottom: 0;
+				background: transparent;
+			}
+			.counsellor-head-content .zixun-time-block .star{
+				width: 13px;
+				height: 14px;
+			}
 			.counsellor-homepage-content{
 				padding: 0;
 			}
@@ -177,16 +180,16 @@
 						border-radius: 10px;
 						background: #DC635F;
 						color: #fff;
-						padding: 2px 5px;
+						padding: 2px 0;
 						margin-left: 4px;
+						font-size: 12px;
 				}
 				.btn-bg-pink.icon-king {
 						display: inline-block;
-						width: 92px;
-						height: 25px;
-						padding-left: 22px;
-						background: #DC635F url(../../img/king.png) no-repeat 5px 8px;
-						background-size: 14px 12px;
+						width: 72px;
+						padding-left: 18px;
+						background: #DC6361 url(../../img/king.png) no-repeat 3px 6px;
+						background-size: 12px 10px;
 				}
 				.sub-cell{
 					justify-content: normal;
@@ -206,7 +209,7 @@
     
   </head>
   <body>
-    <header class="page-header mui-hidden">
+    <header class="page-header">
       <i class="header-left icon-func bbc-icon bbc-icon-back mui-action-back"></i>
       <div class="header-title">咨询师</div>
       <!--<i id="addfriend" class="header-right txt-func ">与他交流</i>-->
@@ -247,11 +250,11 @@
 						</p>
 						<p class="doctor-sign-item card-ellispse">
 							<i class="iconfont icon-renzhengjiangshi- iconfont-icon-doctype small orange"></i>
-							<span>大观心理咨询师</span>
+							<span>大观心理认证讲师</span>
 						</p>
 						<p class="doctor-sign-item card-ellispse">
 							<i class="iconfont icon-xiaotuantiLeader- iconfont-icon-doctype small pink"></i>
-							<span>大观心理咨询师</span>
+							<span>大观心理认证小团体Leader</span>
 						</p>
 					</div>
 					<div class="section">
@@ -522,20 +525,20 @@
 	</div>
 	<nav class="mui-bar bbc-bar-tab op-group " >
       <a class="bbc-tab-item  trade-talk" id="addfriend">
-        <span class="mui-icon bbc-icon bbc-icon-home"></span>
+        <span class="iconfont icon-xiaoxi bbc-tab-mui-icon"></span>
         <span class="mui-tab-label">与他沟通</span>
       </a>
       <a class="bbc-tab-item" >
-        <span class="mui-icon bbc-icon bbc-icon-list trade-confirm"></span>
+        <span class="iconfont icon-shijian bbc-tab-mui-icon iconfw_normal"></span>
         <span class="mui-tab-label">预约</span>
       </a>
       <a class="bbc-tab-item" >
-        <span class="mui-icon bbc-icon bbc-icon-moments  addfav"></span>
+        <span class="iconfont icon-collection bbc-tab-mui-icon iconfw_normal"></span>
         <span class="mui-tab-label ">收藏</span>
       </a>
       
       <a class="bbc-tab-item trade-date " >
-        <span class="mui-icon bbc-icon bbc-icon-user-empty"></span>
+        <span class="iconfont icon-calendar bbc-tab-mui-icon iconfw_normal"></span>
         <span class="mui-tab-label">咨询师日程表</span>
       </a>
    </nav>

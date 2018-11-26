@@ -239,6 +239,7 @@
 	color: #8c8c8c;
 	font-size: 12px;
 	border-bottom: 2px solid #e6e6e6;
+	padding-bottom: 8px;
 }
 .doctor-sign-item{
 	display: inline-block;
@@ -415,6 +416,10 @@
 		font-size: 14px;
 	}
 	
+	.doct-estimate-body{
+		padding-top: .5rem;
+	}
+	
 	.doct-estimate-body li .sub-cell{
 		padding: 0.7rem 1rem;
 	}
@@ -436,6 +441,8 @@
 	.sub-cell .header-img40{
 		width: 42px;
 		height: 42px;
+		max-width: 42px;
+		overflow: hidden;
 	}
 	/****/
 .counsellor-per{
