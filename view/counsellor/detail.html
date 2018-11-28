@@ -532,11 +532,11 @@
         <span class="iconfont icon-xiaoxi bbc-tab-mui-icon"></span>
         <span class="mui-tab-label">与他沟通</span>
       </a>
-      <a class="bbc-tab-item" >
+      <a class="bbc-tab-item trade-confirm" >
         <span class="iconfont icon-shijian bbc-tab-mui-icon iconfw_normal"></span>
         <span class="mui-tab-label">预约</span>
       </a>
-      <a class="bbc-tab-item" >
+      <a class="bbc-tab-item addfav" >
         <span class="iconfont icon-collection bbc-tab-mui-icon iconfw_normal"></span>
         <span class="mui-tab-label ">收藏</span>
       </a>
@@ -629,13 +629,13 @@
 							<div class="consult-way flex-box">
 								<div class="flex-g1 con-img">
 									<% if(chartArr[i].chart == 'wordchart'){ %>
-										<img src="../../img/wenzi-new.png" />
+										<img src="../../img/consult_txt.png" />
 									<% }else if(chartArr[i].chart == 'speechchart'){ %>
-										<img src="../../img/yuyin.png" />
+										<img src="../../img/consult_tel.png" />
 									<% }else if(chartArr[i].chart == 'videochart'){ %>
-										<img src="../../img/face-new.png" />
+										<img src="../../img/consult_offline.png" />
 									<% }else{ %>
-										<img src="../../img/video-new.png" />
+										<img src="../../img/consult_video.png" />
 									<% } %>
 									<!--<img src="../../img/wenzi-new.png" />-->
 								</div>
@@ -964,19 +964,19 @@
       $('#addfriend').on('tap',function(){
 		var state = app.getState();
 		if(state.token){
-			var token = plus.storage.getItem('webim_'+state.account)
-			var options = {
-			    apiUrl: WebIM.config.apiURL,
-			    user: state.account,
-			    accessToken: token,
-			    appKey: WebIM.config.appkey
-			};
-			conn.open(options);
-			conn.subscribe({
-                to : counsellor_mobile,
-                message : "加个好友呗"
-            });
-            clicked('_www/view/msg/chat.html',{'jid':'2','username':counsellor_mobile})
+//			var token = plus.storage.getItem('webim_'+state.account)
+//			var options = {
+//			    apiUrl: WebIM.config.apiURL,
+//			    user: state.account,
+//			    accessToken: token,
+//			    appKey: WebIM.config.appkey
+//			};
+//			conn.open(options);
+//			conn.subscribe({
+//              to : counsellor_mobile,
+//              message : "加个好友呗"
+//          });
+//          clicked('_www/view/msg/chat.html',{'jid':'2','username':counsellor_mobile})
 		}else{
 			mui.toast('请先登录')
 		}
