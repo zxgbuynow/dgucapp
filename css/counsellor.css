@@ -431,6 +431,10 @@
 		margin-left: 0.6rem;
 		color: #8E8E8E;
 	}
+	.content-list.w1{
+		width: 100%;
+		line-height: 20px;
+	}
 	.content-list .content-sub .utime{
 		color: #8E8E8E;
 		font-size: .8rem;
@@ -438,6 +442,13 @@
 	.content-list .content-sub .cell-desc{
 		padding-top: .7rem;
 		font-size: 1rem;
+	}
+	p.item-desc{
+		padding: 0 0 .7rem 3.2rem;
+		margin: 0 1rem;
+		font-size: 1rem;
+		margin-top: -.7rem;
+    color: #8E8E8E;
 	}
 	.sub-cell .header-img42{
 		display: block;
