@@ -105,7 +105,7 @@
         <div class="mui-scroll">
          <div class="mui-content content-bottom-padded-nav">
           	  <!--情感标签 start-->
-		      <section class="widgets-category-nav section-white mui-hidden">
+		      <section class="widgets-category-nav section-white ">
 		        <ul class="widgets-icons-nav ">
 		          <li class="action-webview" data-webview="" data-webparam=''><i><a href="#"><img src="../../img/widgets_02_05.png"></a></i><span>婚姻家庭</li>
 		          <li class="action-webview" data-webview="" data-webparam=''><i><a href="#"><img src="../../img/widgets_02_07.png"></a></i><span>情绪管理</li>
@@ -159,7 +159,7 @@
 	<script type="text/html" id="nav_list">
 		<ul class="widgets-icons-nav">
 		<% for(var i in data) { %>
-          <li class="" data-webview="_www/view/artical/volist.html" data-webparam = '{"cat_id":<%= list[i].id %>}'><i><a href="#"><img src="<%= $add_server(data[i].cover) %>"></a></i><span><%= data[i].title %></li>
+          <li class="" data-webview="_www/view/artical/volist.html" ><i><a href="#"><img src="<%= $add_server(data[i].cover) %>"></a></i><span><%= data[i].title %></li>
         <%}%>
         </ul>
 	</script>

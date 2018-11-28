@@ -174,8 +174,7 @@
 					  'nm':nickname
 					}
 				}
-				clicked('_www/view/member/share.html')
-				log(param);return ;
+				
 				w=plus.nativeUI.showWaiting();
 				$.dataRequest(param, function(rm) {
 					 w.close();w=null;

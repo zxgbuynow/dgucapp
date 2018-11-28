@@ -168,7 +168,7 @@
       right: 0.5rem;
     }
     #slider .mui-segmented-control.mui-segmented-control-inverted .mui-control-item{
-      background: #2fbbc3;
+      /*background: #2fbbc3;*/
       color: #fff;
       position: relative;
     }
@@ -183,12 +183,23 @@
       content: '';
     }
     #slider .mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active{
-      background: #b1f1f7;
-      color: #047d84;
+      /*background: #b1f1f7;*/
+      /*color: #047d84;*/
     }
     #slider .mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active:after{
       content: '';
     }
+	.bbc-tab-bar .mui-slider-indicator.mui-segmented-control{
+		    background: #4883DD;
+				color: #fff;
+		}
+		.bbc-tab-bar .mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+	    		color: #fff;
+	    		background: #41B8DA;
+	    }
+		.bbc-tab-bar .mui-segmented-control.mui-segmented-control-inverted ~ .mui-slider-progress-bar{
+			background-color: #41B8DA;
+		}
     </style>
   </head>
 
@@ -276,7 +287,7 @@
 
     <script type="text/html" id="trade_list">
         <% for(var i=0; i<list.length; i++) { %>
-      		<li class="mui-table-view-cell mui-media <%if (list[i].status=='2'){%>action-webview<% } %>  <%if (list[i].status=='0'){%>godate <% } %> " <%if (list[i].status=='0'){%>data-webview="_www/view/msg/chat.html" data-cid="<%= list[i].id %>" data-ondate="<%= list[i].start_time %>" data-chart="<%= list[i].chartkey %>" data-webparam = '{"jid":"3", "username":"<%= list[i].mobile %>" }' <%}else{%>data-webview="_www/view/member/ondate/evaluate-new.html" data-webparam = {"c_id":<%= list[i].mid %>,"avar":"<%= list[i].avar %>","counsellor":"<%= list[i].counsellor %>"} <%}%>
+      		<li class="mui-table-view-cell mui-media <%if (list[i].status=='2'){%>action-webview<% } %>  <%if (list[i].status=='0'){%>godate <% } %> " <%if (list[i].status=='0'){%>data-webview="_www/view/msg/chat.html" data-cid="<%= list[i].id %>" data-ondate="<%= list[i].start_time %>" data-chart="<%= list[i].chartkey %>" data-webparam = '{"jid":"3", "username":"<%= list[i].mobile %>" }' <%}else{%>data-webview="_www/view/counsellor/eve_form.html" data-webparam = {"c_id":<%= list[i].mid %>,"avar":"<%= list[i].avar %>","counsellor":"<%= list[i].counsellor %>"} <%}%>
 	          <div class="box-flex">
               <div class="box-item-flex1">
   	          	<!--<img class="mui-media-object " src="../../img/activity_ads.jpg">-->
@@ -307,7 +318,7 @@
         var state = app.getState();
         var param = {
           'method': config.apimethod.recordlist,  
-          'account': 631,//state.token,
+          'account': state.token,
           'source':config.source,
           'status': 'all',
         	  'page_no': config.cpage,

@@ -77,7 +77,10 @@
 	    		.counsellor-homepage-content{
 	    			margin-bottom: 50px;
 	    		}
-					
+			.mui-inline{
+	    			text-align: center;
+	    			display:block;
+	    		}	
     </style>
     
   </head>
@@ -96,7 +99,7 @@
 			<!--咨询师评价 start-->
 				<section class="container section-white counsellor-info">
 					<div class="counsellor-head-content">
-						<img src="https://ossimg.xinli001.com/20170823/c91ab41f014b8df7bb2e8d4df9b594ca.png!120x120" class="avatar">			
+						<!--<img src="https://ossimg.xinli001.com/20170823/c91ab41f014b8df7bb2e8d4df9b594ca.png!120x120" class="avatar">			
 						<h2 class="teacher-name">朱志慧</h2>
 						<p class="card-addrs card-ellispse">心若盛开，芬芳自来</p>
 						<p class="doctor-honor card-ellispse">
@@ -113,28 +116,36 @@
 							<img class="star" src="../../img/star-g.png">
 							<img class="star" src="../../img/star-g.png">
 							<img class="star" src="../../img/star-g.png">
-						</div>
+						</div>-->
 					</div>
 
 
 					<div class="section eve-form">
 						<h3 class="title">咨询师评价</h3>
-						<div class="star-options">
+						<div class="icons mui-inline" >
+							<i data-index="1" class="mui-icon mui-icon-star"></i>
+							<i data-index="2" class="mui-icon mui-icon-star"></i>
+							<i data-index="3" class="mui-icon mui-icon-star"></i>
+							<i data-index="4" class="mui-icon mui-icon-star"></i>
+							<i data-index="5" class="mui-icon mui-icon-star"></i>
+						</div>
+						<!--<div class="star-options">
 							<img class="star" src="../../img/star-y.png">
 							<img class="star" src="../../img/star-g.png">
 							<img class="star" src="../../img/star-g.png">
 							<img class="star" src="../../img/star-g.png">
 							<img class="star" src="../../img/star-g.png">
-						</div>
+						</div>-->
 						<div class="desc-body">
-							<textarea placeholder="说说哪里好,鼓励一下我吧~"></textarea>
+							<textarea id="evaluateCotent" placeholder="说说哪里好,鼓励一下我吧~"></textarea>
 							<div class="btn-options">
-								<button class="mui-btn mui-btn-block mui-btn-warning bbc-btn-warning">提交评价</button>
+								<button id="evaluate" class="mui-btn mui-btn-block mui-btn-warning bbc-btn-warning">提交评价</button>
 							</div>
 						</div>
 					</div>
 				</section>
 			<!--咨询师详情 end-->
+				
 	    
 	</div>
 	<nav class="mui-bar bbc-bar-tab op-group mui-hidden" >
@@ -173,93 +184,38 @@
   <script src="../../js/im/websdk-1.4.13.js"></script>
   <script src="../../js/im/im.js"></script>
   <script type="text/html" id="counsellor_info">
-  	<!--咨询师详情 start-->
-		<section class="container section-white counsellor-info">
-			<div class="counsellor-head-content">
-				<img src="<%= $add_server(avar) %>" class="avatar">			
-				<h2 class="teacher-name"><%= nickname %></h2>
-				<p class="card-addrs card-ellispse"><%= slogan %></p>
-				<p class="doctor-honor card-ellispse">
-					<span>住进 <%= trade %> 个人的心窝</span>
-					<span class="star">好评率： <%= percent %></span>
-				</p>
-				<p class="doctor-address card-ellispse">
-					<i class="mui-icon bbc-icon bbc-icon-home bbc-icon-doctype small blue rt1"></i>
-					<span><%= city %></span>
-				</p>
-				<div class="zixun-time-block">
-					<img class="star" src="../../img/star-y.png">
-					<img class="star" src="../../img/star-y.png">
-					<img class="star" src="../../img/star-y.png">
-					<img class="star" src="../../img/star-y.png">
-					<% if(start>8 ){%>
-						<img class="star" src="../../img/star-y.png">
-					<%}else{%>
-						<img class="star" src="../../img/star-g.png">
-					<%}%>
-				</div>
-			</div>
-			<div class="doctor-sign-sublist">
-				<p class="doctor-sign-item card-ellispse">
-					<i class="mui-icon bbc-icon bbc-icon-home bbc-icon-doctype small blue rt1"></i>
-					<span>大观心理咨询师</span>
-				</p>
-				
-				<%if(tearch){%> 
-				<p class="doctor-sign-item card-ellispse">
-					<i class="mui-icon bbc-icon bbc-icon-home bbc-icon-doctype small blue rt1"></i>
-					<span>大观心理认证讲师</span>
-				</p>
-				<%}%>
-				<%if(leader){%>
-				<p class="doctor-sign-item card-ellispse">
-					<i class="mui-icon bbc-icon bbc-icon-home bbc-icon-doctype small blue rt1"></i>
-					<span>大观心理认证小团体Leader</span>
-				</p>
-				<%}%>
-			</div>
-			<div class="section">
-				<h3 class="title">评价列表</h3>
-				<div class="certifi">
-					<% for(var i in evalist) { %>
+  	
+		<img src="<%= $add_server(avar) %>" class="avatar">			
+		<h2 class="teacher-name"><%= nickname %></h2>
+		<p class="card-addrs card-ellispse"><%= slogan %></p>
+		<p class="doctor-honor card-ellispse">
+			<span>住进 <%= trade %> 个人的心窝</span>
+			<span class="star">好评率： <%= percent %></span>
+		</p>
+		<p class="doctor-address card-ellispse">
+			<i class="mui-icon bbc-icon bbc-icon-home bbc-icon-doctype small blue rt1"></i>
+			<span><%= city %></span>
+		</p>
+		<div class="zixun-time-block">
+			<img class="star" src="../../img/star-y.png">
+			<img class="star" src="../../img/star-y.png">
+			<img class="star" src="../../img/star-y.png">
+			<img class="star" src="../../img/star-y.png">
+			<% if(start>8 ){%>
+				<img class="star" src="../../img/star-y.png">
+			<%}else{%>
+				<img class="star" src="../../img/star-g.png">
+			<%}%>
+		</div>
 
-						<li class="mui-table-view-cell mui-media " >
-							<a class="">
-								<span class="mui-pull-right mui-badge"> <%= $timestamp_To_Date(evalist[i].create_time) %></span>
-								<img class="mui-media-object mui-pull-left" src="<%= $add_server(evalist[i].avar) %>">
-								<div class="mui-media-body">
-									<%= evalist[i].nickname %><i style="font-size: 12px;color: deeppink;"> <%if(evalist[i].is_diamonds){ %>心窝会员<%}%></i>
-									<p class='mui-ellipsis mui-media-text'>
-										<img class="star" src="../../img/star-y.png">
-										<img class="star" src="../../img/star-y.png">
-										<img class="star" src="../../img/star-y.png">
-										<img class="star" src="../../img/star-y.png">
-										<% if(evalist[i].sorce>8 ){%>
-											<img class="star" src="../../img/star-y.png">
-										<%}else{%>
-											<img class="star" src="../../img/star-g.png">
-										<%}%>
-										
-									</p>
-									<p class="mui-ellipsis mui-media-text mui-media-author"><%= evalist[i].cotent %></p>
-									
-								</div>
-								
-								
-							</a>
-						</li>
-					<%}%>
-				</div>		  
-			</div>
-			
-		</section>
-
-	<!--咨询师详情 end-->
   </script>
   
   <script>
     mui.plusReady(function() {
-      var counsellor_id = plus.webview.currentWebview().counsellor_id;
+   	  var self = plus.webview.currentWebview();
+      var counsellor_id = self.c_id;
+	  var avar = self.avar||'';
+	  var counsellor = self.counsellor;
       var counsellor_mobile = 0;
       var state = app.getState();
       var param = {
@@ -269,15 +225,58 @@
       }
       console.log(counsellor_id)
       log(param);
-      $.dataRequest(param, function(rs) { 
+      $.dataRequest(param, function(rs) {
       	log(rs)  
       	var widgets = template('counsellor_info', rs);
-        $('.counsellor-homepage-content').append(widgets);
+        $('.counsellor-head-content').append(widgets);
         	 // 
          mui('.mui-scroll-wrapper').scroll({
           indicators: false
         });
+        
       });
+      //获得咨询师头像和用户名
+		mui('.icons').on('tap','i',function(){
+		  	var index = parseInt(this.getAttribute("data-index"));
+		  	var parent = this.parentNode;
+		  	var children = parent.children;
+		  	if(this.classList.contains("mui-icon-star")){
+		  		for(var i=0;i<index;i++){
+	  				children[i].classList.remove('mui-icon-star');
+	  				children[i].classList.add('mui-icon-star-filled');
+		  		}
+		  	}else{
+		  		for (var i = index; i < 5; i++) {
+		  			children[i].classList.add('mui-icon-star')
+		  			children[i].classList.remove('mui-icon-star-filled')
+		  		}
+		  	}
+		  	starIndex = index*2;
+		  });
+			  
+		  //
+		  document.getElementById("evaluate").addEventListener('tap',function(){
+		  	
+		  	var param = {
+		  		'method': config.apimethod.evaluate,
+		        'account': state.account,
+		        'c_id': counsellor_id,
+		        'source':config.source,
+		  		'sorce' :starIndex,
+		  		'cotent':document.getElementById("evaluateCotent").value
+		  	}
+
+	        	$.dataRequest(param, function(c) {
+	        		mui.toast('评分成功')
+	        		setTimeout(function(){
+	        			var parentview = plus.webview.currentWebview().opener();
+		          	parentview.reload(true);
+		          	var ws = plus.webview.currentWebview();
+		          	plus.webview.close(ws,'slide-out-bottom');
+	        		},1000);
+            })
+		  	
+		  })
       
     });
   </script>
