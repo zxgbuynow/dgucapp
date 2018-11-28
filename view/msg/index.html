@@ -153,7 +153,14 @@
 				}
 				log(param)
 				$.dataRequest(param, function(rs) {
-					var widgets = template('session_list', rs);
+					var rt = {};
+					if(rs){
+						rt = {
+							'list':rs
+						};
+						
+					}
+					var widgets = template('session_list', rt);
 	            		$('.session-list').append(widgets);
 				})
 			}else{

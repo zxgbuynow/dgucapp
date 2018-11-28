@@ -222,7 +222,7 @@
 	    </header>
     <div class="counsellor-homepage-content">
 			<!--咨询师详情 start-->
-				<section class="container section-white counsellor-info">
+				<section class="container section-white counsellor-info mui-hidden">
 					<div class="counsellor-head-content">
 						<img src="https://ossimg.xinli001.com/20170823/c91ab41f014b8df7bb2e8d4df9b594ca.png!120x120" class="avatar">			
 						<h2 class="teacher-name">朱志慧</h2>
@@ -720,14 +720,14 @@
 						<% for(var i in evalist) { %>
 						<li class="list-cell mui-media " >
 							<a class="sub-cell flex-box">
-								<div class="flex-g0">
-									<img class="header-img40" src="<%= $add_server(evalist[i].avar) %>" onerror="Javascript:this.src='../../img/widgets_02_19.png' ">
+								<div class="header-img42">
+									<img  src="<%= $add_server(evalist[i].avar) %>" onerror="Javascript:this.src='../../img/widgets_02_19.png' ">
 								</div>
-								<div class="mui-media-body content-list">
+								<div class="mui-media-body content-list w1">
 									<div class="clearfix content-sub">
 										<p class="mui-pull-left uname"><%= evalist[i].nickname %>
 											<%if(evalist[i].is_diamonds){ %>
-											<span class="cons-btn icon-bd-vip">心窝会员</span><%}%>
+											<span class="btn-bg-pink icon-king">心窝会员</span><%}%>
 										</p>
 										<p class="mui-pull-right utime">时间： <%= $timestamp_To_Date(evalist[i].create_time) %></p>
 									</div>
@@ -742,9 +742,10 @@
 											<img class="star" src="../../img/star-g.png">
 										<%}%>
 									</p>
-									<p class='cell-desc'><%= evalist[i].cotent %></p>
+									
 								</div>
 							</a>
+							<p class='item-desc'><%= evalist[i].cotent %></p>
 						</li>
 						<% } %>
 					</ul>	
@@ -912,6 +913,10 @@
       var counsellor_id = plus.webview.currentWebview().counsellor_id;
       var counsellor_mobile = 0;
       var state = app.getState();
+      var isfrends = 0;
+      var nickname = '';
+      var reciveavar = '';
+      var reciveid = 0;
       var param = {
           'method': config.apimethod.counsellor,
           'source':config.source,
@@ -931,6 +936,13 @@
       	log(rs) 
       	counsellor_mobile = rs.mobile;
       	console.log(rs.avar) 
+      	isfrends = rs.isfrends;
+      	nickname = rs.nickname;
+      	if(rs.avar){
+      		reciveavar = config.server+rs.avar;
+      	}
+        
+
       	rs.counsellor_id = counsellor_id;
       	if(rs.isfav==1){
       		$('.addfav').addClass('isfaved')
@@ -964,6 +976,11 @@
       $('#addfriend').on('tap',function(){
 		var state = app.getState();
 		if(state.token){
+			if(isfrends){
+				clicked('_www/view/msg/chat.html',{'jid':'2','account':counsellor_mobile,'reciveid':counsellor_id,'username':nickname,'reciveavar':reciveavar})
+			}else{
+				mui.toast('双方还不是好友，下单预约即可成为好友哦')
+			}
 //			var token = plus.storage.getItem('webim_'+state.account)
 //			var options = {
 //			    apiUrl: WebIM.config.apiURL,
