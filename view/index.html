@@ -1166,7 +1166,7 @@
 	        <div class="title-txt">大观心师</div>
 	        <div class="more-link action-webview" data-webview="_www/view/category/category.html">更多</div>
 	    </div>-->
-	    <ul class="mui-table-view-chevron">
+	    <ul class="mui-table-view-chevron widget-counsellors-append">
 	    		<% for(var i=0; i<list.length; i++) { %>
 			<li class="card-wrapper card-wrapper-new action-webview" data-webview="_www/view/counsellor/detail.html" data-webparam='{"counsellor_id":<%= list[i].memberid %>}'>
 				<div class="avatar">
@@ -1247,6 +1247,64 @@
 	    </ul>
 	</section>
 	</script>
+	
+	<script type="text/html" id="widget_counsellors_app">
+	<section class="widgets-category-nav">
+		<ul class="mui-table-view-chevron widget-counsellors-append">
+	    		<% for(var i=0; i<list.length; i++) { %>
+			<li class="card-wrapper card-wrapper-new action-webview" data-webview="_www/view/counsellor/detail.html" data-webparam='{"counsellor_id":<%= list[i].memberid %>}'>
+				<div class="avatar">
+						<img src="<%= $add_server(list[i].avar) %>">
+				</div>
+				<div class="flex flex-hb flex-dc info-detail">
+						<div class="card-new-info">
+							<div class="flex-box">
+								<p class="card-name flex-g2 card-ellispse"><%= list[i].nickname %>
+									<i class="iconfont icon-renzhengzixunshi- iconfont-icon-doctype small blue"></i>
+									<%if(list[i].tearch){%> 
+										<i class="iconfont icon-renzhengjiangshi- iconfont-icon-doctype small orange"></i>
+									<%}%>
+									<%if(list[i].leader){%>
+										<i class="iconfont icon-xiaotuantiLeader- iconfont-icon-doctype small pink"></i>
+									<%}%>
+								</p>
+								<p class="doctor-address flex-g1 card-ellispse">
+									<i class="iconfont icon-dizhi- iconfont-icon-doctype small gray rt1"></i>
+									<span><%= list[i].shopname %></span>
+								</p>
+							</div>
+						</div>
+						<div class="doctor-sign-list">
+							<% for(var m in list[i].signarr) { %>
+								<span><%= list[i].signarr[m] %></span>
+							<%}%>
+							<!--<span>职场冲突</span>-->
+							<!--<span>亲自咨询</span>-->
+						</div>
+						<p class="card-addrs card-ellispse"><%= list[i].slogan %></p>
+						<div class="card-new-content">
+								<div class="flex-box card-new-opre">
+									<% if(list[i].online==1 ){%>
+										<p class="mui-badge mui-badge-blue flex-g1">在线</p>
+									<%}else{%>
+										<p class="mui-badge mui-badge-gray flex-g1">离线</p>
+									<%}%>
+									
+									<!-- <p class="mui-badge mui-badge-gray flex-g1">离线</p> -->
+									<p class="doctor-honor flex-g2 ">
+										<span>住进 <%= list[i].trade %> 个人的心窝</span>
+										<span class="star">好评率：<%= list[i].start %></span>
+									</p>
+									<p class="d-icon-detail action-webview flex-g1" data-webview="_www/view/counsellor/detail.html" data-webparam='{"counsellor_id":<%= list[i].memberid %>}'>详情》</p>
+								</div>
+						</div>
+				</div>
+			</li>
+	    	<%}%>
+		</ul>
+		</section>
+	</script>
+	
 	<script type="text/html" id="widget_single_pic">
         <section class="single-img action-webview" data-webview="<%= webview %>" data-webparam='<%= $json_string(webparam) %>'>
             <img src="<%= $add_server(cover) %>">
@@ -1262,8 +1320,65 @@
 //  speed:3500,
 //  autoplay:true
 //});
-  	
-      
+  	    //分页初始化
+	     mui.init({
+		      pullRefresh: {
+		        container: '#pullrefresh',
+		        up: {
+		          contentdown: '',
+		          contentrefresh: '正在加载...',
+		          callback: pullupRefresh
+		        }
+		      }
+	    	  });
+	       //定义上拉加载更多方法
+	       var no = 2;
+		    	function pullupRefresh() {
+//				mui.toast('pull') 
+				setTimeout(function(){
+					no++;
+				   //专家
+			        var aparam2 = {
+			            'method': config.apimethod.recommend,
+			            'source':config.source,
+			            'page_no':no,
+       					'page_size':10
+			        }
+			        if(app.getState().token!=undefined){
+			        		var aparam2 = {
+				            'method': config.apimethod.recommend,
+				            'account':app.getState().token,
+				            'source':config.source,
+				            'page_no':no,
+        						'page_size':10
+				        }
+			        }
+			        log(aparam2) 
+			        $.dataRequest(aparam2, function(rt) {
+			        	log(rt)
+			        		for (var i in rt['list']) {
+			        			if(rt['list'][i].avar==''){
+			        				rt['list'][i].avar = 'static/admin/img/none.png';
+			        			}
+			        		}
+			        		var widgets = template('widget_counsellors_app', rt);
+			            $('.container').append(widgets);
+			            console.log(rt['list'].length)
+			            if(10>rt['list'].length){
+							mui('#pullrefresh').pullRefresh().endPullupToRefresh(true);
+						}else{
+							mui('#pullrefresh').pullRefresh().endPullupToRefresh(false);
+						}
+			            	 // 
+			             mui('.mui-scroll-wrapper').scroll({
+				          indicators: false
+				        });
+				        
+				       
+				     })
+				},1000)
+		
+		    	}
 	  //获取数据 
 	  mui.plusReady(function() {
   		plus.navigator.setStatusBarStyle('light');  
@@ -1272,22 +1387,19 @@
 	  	mui('.mui-scroll-wrapper').scroll({
           indicators: false
         });
-	  	console.log(plus.storage.getItem('updatelv'))
+//	  	console.log(plus.storage.getItem('updatelv'))
 //	  	plus.nativeUI.closeWaiting();
-	  	var i = plus.storage.getItem('updatelv')?1:0;
-	  	 if(!plus.storage.getItem('updatelv')||!i){
-	  		// i++;
-//	  		plus.storage.setItem('updatelv','1');
-//	  		console.log(plus.storage.getItem('updatelv')) 
-	  		plus.nativeUI.actionSheet( {title:"是否成为心窝会员",cancel:"关闭",buttons:[{title:"现在去升级"},{title:"以后再说"}]}, function(e){
-				if(e.index==1){
-					clicked('_www/view/member/updatelv.html'); 
-				}else{
-					plus.storage.setItem('updatelv','1');
-				}
-			});	
-			
-	  	 }
+//	  	var i = plus.storage.getItem('updatelv')?1:0;
+//	  	 if(!plus.storage.getItem('updatelv')||!i){
+//	  		plus.nativeUI.actionSheet( {title:"是否成为心窝会员",cancel:"关闭",buttons:[{title:"现在去升级"},{title:"以后再说"}]}, function(e){
+//				if(e.index==1){
+//					clicked('_www/view/member/updatelv.html'); 
+//				}else{
+//					plus.storage.setItem('updatelv','1');
+//				}
+//			});	
+//			
+//	  	 }
 	  	
 	  	//lunbo
 	  	var param = {
@@ -1397,13 +1509,17 @@
 				            //专家
 					        var aparam2 = {
 					            'method': config.apimethod.recommend,
-					            'source':config.source
+					            'source':config.source,
+					            'page_no':1,
+	           					'page_size':10
 					        }
 					        if(app.getState().token!=undefined){
 					        		var aparam2 = {
 						            'method': config.apimethod.recommend,
 						            'account':app.getState().token,
-						            'source':config.source
+						            'source':config.source,
+						            'page_no':1,
+	            						'page_size':10
 						        }
 					        }
 					        log(aparam2) 
@@ -1420,6 +1536,8 @@
 					             mui('.mui-scroll-wrapper').scroll({
 						          indicators: false
 						        });
+						        
+						       
 						     })
 				        })
 				    

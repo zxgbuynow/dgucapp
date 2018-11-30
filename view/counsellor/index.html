@@ -110,9 +110,9 @@
 		</div>
 	</header>
      
-    <div class="container">
-      <div class="mui-scroll-wrapper bbc-pullrefresh-top" >
-        <div class="mui-scroll">
+    <div class="container" id="pullrefresh">
+      <!--<div class="mui-scroll-wrapper bbc-pullrefresh-top" >-->
+        <!--<div class="mui-scroll">-->
         	<!--<div class="mui-bar-nav mui-bar-standard mui-bar-header-secondary goods-filters">
 	        <div class="goods-filters-item active" data-order="">综合</div>
 	        <div class="goods-filters-item" data-order="sold_quantity">销量</div>
@@ -402,8 +402,8 @@
 							</div>
 						</section>
 						<!--人气排行 end-->
-          </div>
-        </div>
+          <!--</div>-->
+        <!--</div>-->
       </div>
     </div>
     <!--右上角弹出菜单-->
@@ -623,6 +623,68 @@
 			</ul>		
 		</div>
 	</section>
+	</script>
+	<script type="text/html" id="widget_recommend_app">
+	<!--人气排行 start-->
+	<section class="widgets-category-nav section-white ">
+
+		<div class="mui-table-view">
+			<ul class="mui-table-view mui-table-view-chevron">
+				<% for(var i in list) { %>
+				<li class="mui-table-view-cell mui-media pad-rt">
+					<img class="mui-media-object mui-pull-left" src="<%= $add_server(list[i].avar) %>">
+					<div class="mui-media-body pad-rt">
+						<div class="flex flex-hb flex-dc info-detail">
+								<div class="card-new-info">
+									<div class="flex-box">
+										<p class="card-name flex-g2 card-ellispse"><%= list[i].nickname %>
+											<i class="iconfont icon-renzhengzixunshi- iconfont-icon-doctype small blue"></i>
+											<%if(list[i].tearch){%> 
+												<i class="iconfont icon-renzhengjiangshi- iconfont-icon-doctype small orange"></i>
+											<%}%>
+											<%if(list[i].leader){%>
+												<i class="iconfont icon-xiaotuantiLeader- iconfont-icon-doctype small pink"></i>
+											<%}%>
+										</p>
+										<p class="doctor-address flex-g1 card-ellispse">
+											<i class="iconfont icon-dizhi- iconfont-icon-doctype small gray rt1"></i>
+											<span><%= list[i].shopname %></span>
+										</p>
+									</div>
+								</div>
+								<div class="doctor-sign-list">
+									<% for(var m in list[i].signarr) { %>
+										<span><%= list[i].signarr[m] %></span>
+									<%}%>
+									<!--<span>两性情爱</span>
+									<span>职场冲突</span>
+									<span>亲自咨询</span>-->
+								</div>
+								<p class="card-addrs card-ellispse"><%= list[i].slogan %></p>
+								<div class="card-new-content">
+									<div class="flex-box card-new-opre">
+										<% if(list[i].online==1 ){%>
+											<p class="mui-badge mui-badge-blue flex-g1">在线</p>
+										<%}else{%>
+											<p class="mui-badge mui-badge-gray flex-g1">离线</p>
+										<%}%>
+										<!--<p class="mui-badge mui-badge-blue flex-g1">在线</p>-->
+										<!-- <p class="mui-badge mui-badge-gray flex-g1">离线</p> -->
+										<p class="doctor-honor flex-g2 ">
+											<span>住进 <%= list[i].trade %> 个人的心窝</span>
+											<span class="star">好评率：<%= list[i].start %></span>
+										</p>
+										<p class="d-icon-detail action-webview flex-g1" data-webview="_www/view/counsellor/detail.html" data-webparam='{"counsellor_id":<%= list[i].memberid %>}'>详情》</p>
+									</div>
+								</div>
+						</div>
+					</div>
+				</li>
+				<% } %>
+			</ul>		
+		</div>
+	</section>
+	
 	<!--人气排行 end-->
 	</script>
     <script type="text/html" id="widget_recommend1">
@@ -666,6 +728,60 @@
       });
       var shopid = 0;
       var sex,online,ondate;
+      
+      //分页初始化
+	     mui.init({
+		      pullRefresh: {
+		        container: '#pullrefresh',
+		        up: {
+		          contentdown: '',
+		          contentrefresh: '正在加载...',
+		          callback: pullupRefresh
+		        }
+		      }
+	    	  });
+	       //定义上拉加载更多方法
+	    var no = 2;
+	    	function pullupRefresh() {
+//			mui.toast('pull') 
+			setTimeout(function(){
+				
+			   //专家
+		        var aparam2 = {
+		            'method': config.apimethod.recommend,
+		            'source':config.source,
+		            'page_no':no,
+		            'page_size':10
+		        }
+		        log(aparam2) 
+		        $.dataRequest(aparam2, function(rs) {
+		        	log(rs)
+		        		for (var i in rs['list']) {
+		        			if(rs['list'][i].avar==''){
+		        				rs['list'][i].avar = 'static/admin/img/none.png';
+		        			}
+		        		}
+		        		var widgetss = template('widget_recommend_app', rs);
+//		        		console.log(widgetss)
+		            $('.recom-box-list').append(widgetss);
+		            	 
+		            console.log(rs['list'].length)
+		            if(10>rs['list'].length){
+						mui('#pullrefresh').pullRefresh().endPullupToRefresh(true);
+					}else{
+						mui('#pullrefresh').pullRefresh().endPullupToRefresh(false);
+					}
+		            	 // 
+		             mui('.mui-scroll-wrapper').scroll({
+			          indicators: false
+			        });
+			        
+			       no++; 
+			     })
+			},1000)
+	
+	    	}
+		    	
 		//获取数据 
 	  mui.plusReady(function() {
 	  	//分类 
@@ -716,7 +832,9 @@
             //recommond
 	        var aparam = {
 	            'method': config.apimethod.recommend,
-	            'source':config.source
+	            'source':config.source,
+	            'page_no':1,
+	            'page_size':10
 	        }
 //			log(aparam)
 	        $.dataRequest(aparam, function(rt) {
@@ -741,7 +859,7 @@
 	  	
 	  })
         
-        mui('.mui-scroll-wrapper').scroll();
+//      mui('.mui-scroll-wrapper').scroll();
 		mui('body').on('shown', '.mui-popover', function(e) {
 			//console.log('shown', e.detail.id);//detail为当前popover元素
 		});
@@ -1038,11 +1156,11 @@
           e.detail.gesture.preventDefault();
         });
         //主界面向左滑动，若菜单未显示，则显示菜单；否则不做任何操作；
-        window.addEventListener("swipeleft", openMenu);
+//      window.addEventListener("swipeleft", openMenu);
         //主界面向右滑动，若菜单已显示，则关闭菜单；否则，不做任何操作；
-        window.addEventListener("swiperight", closeMenu);
+//      window.addEventListener("swiperight", closeMenu); 
         //menu页面向右滑动，关闭菜单；
-        window.addEventListener("menu:swiperight", closeMenu);
+//      window.addEventListener("menu:swiperight", closeMenu);
 
         window.addEventListener('_closeMenu', _closeMenu);
         window.addEventListener('closeMask', closeMask);
