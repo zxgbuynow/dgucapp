@@ -156,9 +156,9 @@
 							<img class="star" src="../../../img/star-g.png">
 						</div>-->
 						<div class="desc-body">
-							<textarea placeholder="说说哪里好,鼓励一下我吧~"></textarea>
+							<textarea id="evaluateCotent" placeholder="说说哪里好,鼓励一下我吧~"></textarea>
 							<div class="btn-options">
-								<button class="mui-btn mui-btn-block mui-btn-warning bbc-btn-warning">提价评价</button>
+								<button id="evaluate" class="mui-btn mui-btn-block mui-btn-warning bbc-btn-warning">提价评价</button>
 							</div>
 						</div>
 					</div>
@@ -258,6 +258,7 @@
 		if(!document.getElementById("evaluateCotent").value){
 			mui.toast('内容必填');return false;
 		}
+
         	$.dataRequest(param, function(c) {
         		mui.toast('评分成功')
         		setTimeout(function(){

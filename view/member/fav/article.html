@@ -91,7 +91,7 @@
 	        <div class="mui-table-view">
 	          <ul class="mui-table-view mui-table-view-chevron">
 	          	<% for(var i=0; i<list.length; i++) { %>
-				<li class="mui-table-view-cell mui-media " >
+				<li class="mui-table-view-cell mui-media action-webview" data-webview="_www/view/artical/detail.html" data-webparam = '{"article_id":<%= list[i].id %>}'>
 					<div class="mui-table">
 		                <div class="mui-table-cell mui-col-xs-10 ">
 							<img class="mui-media-object mui-pull-left" src="<%= $add_server(list[i].pic) %>" >

@@ -97,7 +97,7 @@
 					<div class="user-info-body">
 						<h2 class="nicknm"></h2>
 						<p class="info">
-							<i class="iconfont icon-nanxing- mem-icon24"></i>
+							<i class="iconfont icon-nanxing- mem-icon24 sex-i"></i>
 							<span class="btn-bg-pink icon-king mui-hidden">心窝会员</span>
 						</p>
 						<p class="iconfont icon-shouji- mem-icon24 username"></p>
@@ -134,7 +134,7 @@
 	
 	<section class="section-white">
       <ul class="mui-table-view">
-				<li data-needlog="true" data-view="_www/view/member/safe/safe.html" class="mui-table-view-cell action-clickview">
+				<li data-needlog="true" data-view="_www/view/member/safe/safe.html" class="mui-table-view-cell action-clickview mui-hidden">
 					<a class="mui-navigate-right"><i class="iconfont icon-wodeqiabao- icon-user-card"></i> 我的卡包</a>
 				</li>
         <li data-needlog="true" data-view="_www/view/member/safe/safe.html" class="mui-table-view-cell action-clickview">
@@ -149,7 +149,7 @@
         <li data-needlog="true" data-view="_www/view/member/complaint/complaint.html" class="mui-table-view-cell action-clickview">
           <a class="mui-navigate-right"><i class="user-icon bbc-icon bbc-icon-communication user-complain"></i> 我的投诉</a>
         </li>
-				<li data-needlog="true" data-view="_www/view/member/complaint/complaint.html" class="mui-table-view-cell action-clickview">
+				<li data-needlog="true" data-view="_www/view/member/complaint/complaint.html" class="mui-table-view-cell action-clickview mui-hidden">
 					<a class="mui-navigate-right"><i class="iconfont icon-checkboxoutline icon-user-refund"></i> 我的退款</a>
 				</li>
         <!--<li  class="mui-table-view-cell " onclick="testApp('weixin://wwww.baidu.com')">打开微信
@@ -171,7 +171,7 @@
         <span class="mui-tab-label">课程/活动</span>
       </a>
       <a class="bbc-tab-item " data-webview="_www/view/msg/index.html">
-        <span class="iconfont icon-xiaoxi bbc-tab-mui-icon"><span class="mui-badge mui-badge-danger mui-hidden" id="msg-count"></span></span>
+        <span class="iconfont icon-xiaoxi bbc-tab-mui-icon"><i class="mui-badge mui-badge-danger " id="msg-count"style=" margin-top: -28px; "></i></span>
         <span class="mui-tab-label">消息</span>
       </a>
       <a class="bbc-tab-item bbc-active" >
@@ -240,6 +240,10 @@
 			        if(data.sex==0){
 			        		$('.sex-i').removeClass('icon-nanxing-')
 			        		$('.sex-i').addClass('icon-nvxing-')
+			        }
+			        if(data.sex==2){
+			        		$('.sex-i').removeClass('icon-nanxing-')
+			        		$('.sex-i').removeClass('icon-nvxing-')
 			        }
 			        if(data.is_diamonds){
 			        		$('.btn-bg-pink').removeClass('mui-hidden')

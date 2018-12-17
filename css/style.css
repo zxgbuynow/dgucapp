@@ -1491,8 +1491,14 @@ input[type="submit"].mui-active:enabled,
     color: #333;
     background-color: rgba(0, 0, 0, 0.15);
     border-radius: 100px;
+   
 }
-
+#msg-count{
+	padding: 8px 6px 4px;
+	float: right;
+    margin-top: -32px;
+    margin-right: -10px;
+}
 .mui-badge.mui-badge-inverted {
     padding: 0 5px 0 0;
     color: #929292;

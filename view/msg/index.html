@@ -67,8 +67,8 @@
 	        <span class="iconfont icon-kechenghuodong- bbc-tab-mui-icon"></span>
 	        <span class="mui-tab-label">课程/活动</span>
 	      </a>
-	      <a class="bbc-tab-item bbc-active" >
-	        <span class="iconfont icon-xiaoxi bbc-tab-mui-icon"><span class="mui-badge mui-badge-danger mui-hidden" style="display: none;" id="msg-count"></span></span>
+	      <a class="bbc-tab-item bbc-active" > 
+	        <span class="iconfont icon-xiaoxi bbc-tab-mui-icon"><i class="mui-badge mui-badge-danger " id="msg-count" style="    margin-top: -28px;"></i></span>
 	        <span class="mui-tab-label">消息</span>
 	      </a>
 	      <a class="bbc-tab-item" data-webview="_www/view/member/member.html">
@@ -125,7 +125,7 @@
 						<%= list[i].nickname %>
 						<p class='mui-ellipsis mui-media-text'><%= list[i].nmsg %></p>
 					</div>
-					<% if(!list[i].st){ %>
+					<% if(!list[i].st&&!list[i].sendid){ %>
 					<span class="mui-badge mui-badge-danger" style="height: 12px;"></span>
 					<% } %>
 				</li> 
@@ -134,8 +134,44 @@
 		<script type="text/javascript" charset="utf-8">
 		var state = app.getState();
 		log(state)
-		 mui.plusReady(function(){
-		 	$('.session-list').html('');
+//		 mui.plusReady(function(){
+//		 	$('.session-list').html('');
+//			if(state.token){
+//				var token = plus.storage.getItem('webim_'+state.account)
+//				var options = {
+//				    apiUrl: WebIM.config.apiURL,
+//				    user: state.account,
+//				    accessToken: token,
+//				    appKey: WebIM.config.appkey
+//				};
+//				conn.open(options);
+//				//获得历史聊天
+//				var param = {
+//					'method': config.apimethod.hxmsgls,
+//					'account': state.token,
+//					'source':config.source
+//				}
+//				log(param)
+//				$.dataRequest(param, function(rs) {
+//					var rt = {};
+//					if(rs){
+//						rt = {
+//							'list':rs
+//						};
+//						
+//					}
+//					var widgets = template('session_list', rt);
+//	            		$('.session-list').append(widgets);
+//				})
+//			}else{
+//				mui.toast('请登录')
+//			}
+//		 	
+//		 })
+mui.plusReady(function(){
+		 refreshmsglist();
+		window.addEventListener('refresh', refreshmsglist);
+		function refreshmsglist(){
 			if(state.token){
 				var token = plus.storage.getItem('webim_'+state.account)
 				var options = {
@@ -160,29 +196,15 @@
 						};
 						
 					}
+					$('.session-list').html('')
 					var widgets = template('session_list', rt);
 	            		$('.session-list').append(widgets);
 				})
 			}else{
-				mui.toast('请登录')
+				$('.session-list').html('')
 			}
-		 	
-		 })
-		 
-		window.addEventListener('refreshmsglist', refreshmsglist);
-		function refreshmsglist(){
-			//获得历史聊天
-			var param = {
-				'method': config.apimethod.hxmsgls,
-				'account': state.token,
-				'source':config.source
-			}
-			log(param)
-			$.dataRequest(param, function(rs) {
-				var widgets = template('session_list', rs);
-            		$('.session-list').append(widgets);
-			})
 		}
+	})
 	 	$('.bbc-tab-item').on('tap', function() {
 	        var webview = $(this).data('webview');
 	        if(webview) {

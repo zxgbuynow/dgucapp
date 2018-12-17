@@ -77,6 +77,12 @@
 				text-overflow: ellipsis;
 				display: inline-block;
 			}
+			.header-search{
+				color: #666;
+			}
+			header.home-header .mui-input-clear ~ .mui-icon-clear{
+				top: -.5rem;
+			}
     </style>
   </head>
 
@@ -122,6 +128,7 @@
 	     </div>-->
          <div class="mui-content content-bottom-padded-nav">
          		<div class="cag-box-list"></div>
+         		<div class="search-box-list"></div>
          		<div class="deskrecom-box-list"></div>
          		<div class="recom-box-list"></div>
           	  <!--情感标签 start-->
@@ -438,7 +445,7 @@
         <span class="mui-tab-label">课程/活动</span>
       </a>
       <a class="bbc-tab-item " data-webview="_www/view/msg/index.html">
-        <span class="iconfont icon-xiaoxi bbc-tab-mui-icon"><span class="mui-badge mui-badge-danger mui-hidden" id="msg-count"></span></span>
+        <span class="iconfont icon-xiaoxi bbc-tab-mui-icon"><i class="mui-badge mui-badge-danger " id="msg-count" style=" margin-top: -28px; width: 0;"></i></span>
         <span class="mui-tab-label">消息</span>
       </a>
       <a class="bbc-tab-item" data-webview="_www/view/member/member.html">
@@ -508,8 +515,8 @@
 		<div class="mui-table-view">
 			<ul class="mui-table-view mui-table-view-chevron ">
 				<% for(var i=0; i<list.length; i++) { %>
-				<li class="mui-table-view-cell mui-media pad-rt">
-					<img class="mui-media-object mui-pull-left" src="<%= $add_server(list[i].avar) %>">
+				<li class="mui-table-view-cell mui-media pad-rt action-webview" data-webview="_www/view/counsellor/detail.html" data-webparam='{"counsellor_id":<%= list[i].memberid %>}'>
+					<img class="mui-media-object mui-pull-left " src="<%= $add_server(list[i].avar) %>" >
 					<div class="mui-media-body pad-rt">
 						<div class="flex flex-hb flex-dc info-detail">
 								<div class="card-new-info">
@@ -570,8 +577,71 @@
 		<div class="mui-table-view">
 			<ul class="mui-table-view mui-table-view-chevron">
 				<% for(var i in list) { %>
-				<li class="mui-table-view-cell mui-media pad-rt">
-					<img class="mui-media-object mui-pull-left" src="<%= $add_server(list[i].avar) %>">
+				<li class="mui-table-view-cell mui-media pad-rt action-webview" data-webview="_www/view/counsellor/detail.html" data-webparam='{"counsellor_id":<%= list[i].memberid %>}'>
+					<img class="mui-media-object mui-pull-left " src="<%= $add_server(list[i].avar) %>" >
+					<div class="mui-media-body pad-rt">
+						<div class="flex flex-hb flex-dc info-detail">
+								<div class="card-new-info">
+									<div class="flex-box">
+										<p class="card-name flex-g2 card-ellispse"><%= list[i].nickname %>
+											<i class="iconfont icon-renzhengzixunshi- iconfont-icon-doctype small blue"></i>
+											<%if(list[i].tearch){%> 
+												<i class="iconfont icon-renzhengjiangshi- iconfont-icon-doctype small orange"></i>
+											<%}%>
+											<%if(list[i].leader){%>
+												<i class="iconfont icon-xiaotuantiLeader- iconfont-icon-doctype small pink"></i>
+											<%}%>
+										</p>
+										<p class="doctor-address flex-g1 card-ellispse">
+											<i class="iconfont icon-dizhi- iconfont-icon-doctype small gray rt1"></i>
+											<span><%= list[i].shopname %></span>
+										</p>
+									</div>
+								</div>
+								<div class="doctor-sign-list">
+									<% for(var m in list[i].signarr) { %>
+										<span><%= list[i].signarr[m] %></span>
+									<%}%>
+									<!--<span>两性情爱</span>
+									<span>职场冲突</span>
+									<span>亲自咨询</span>-->
+								</div>
+								<p class="card-addrs card-ellispse"><%= list[i].slogan %></p>
+								<div class="card-new-content">
+									<div class="flex-box card-new-opre">
+										<% if(list[i].online==1 ){%>
+											<p class="mui-badge mui-badge-blue flex-g1">在线</p>
+										<%}else{%>
+											<p class="mui-badge mui-badge-gray flex-g1">离线</p>
+										<%}%>
+										<!--<p class="mui-badge mui-badge-blue flex-g1">在线</p>-->
+										<!-- <p class="mui-badge mui-badge-gray flex-g1">离线</p> -->
+										<p class="doctor-honor flex-g2 ">
+											<span>住进 <%= list[i].trade %> 个人的心窝</span>
+											<span class="star">好评率：<%= list[i].start %></span>
+										</p>
+										<p class="d-icon-detail action-webview flex-g1" data-webview="_www/view/counsellor/detail.html" data-webparam='{"counsellor_id":<%= list[i].memberid %>}'>详情》</p>
+									</div>
+								</div>
+						</div>
+					</div>
+				</li>
+				<% } %>
+			</ul>		
+		</div>
+	</section>
+	</script>
+	<script type="text/html" id="widget_recommends">
+	<!--人气排行 start-->
+	<section class="widgets-category-nav section-white ">
+		<div class="section-title mui-list-bd-headline">
+			<div class="title-txt">搜索结果</div>
+		</div>
+		<div class="mui-table-view">
+			<ul class="mui-table-view mui-table-view-chevron">
+				<% for(var i in list) { %>
+				<li class="mui-table-view-cell mui-media pad-rt action-webview" data-webview="_www/view/counsellor/detail.html" data-webparam='{"counsellor_id":<%= list[i].memberid %>}'>
+					<img class="mui-media-object mui-pull-left " src="<%= $add_server(list[i].avar) %>" >
 					<div class="mui-media-body pad-rt">
 						<div class="flex flex-hb flex-dc info-detail">
 								<div class="card-new-info">
@@ -631,8 +701,8 @@
 		<div class="mui-table-view">
 			<ul class="mui-table-view mui-table-view-chevron">
 				<% for(var i in list) { %>
-				<li class="mui-table-view-cell mui-media pad-rt">
-					<img class="mui-media-object mui-pull-left" src="<%= $add_server(list[i].avar) %>">
+				<li class="mui-table-view-cell mui-media pad-rt action-webview" data-webview="_www/view/counsellor/detail.html" data-webparam='{"counsellor_id":<%= list[i].memberid %>}'>
+					<img class="mui-media-object mui-pull-left " src="<%= $add_server(list[i].avar) %>" >
 					<div class="mui-media-body pad-rt">
 						<div class="flex flex-hb flex-dc info-detail">
 								<div class="card-new-info">
@@ -726,7 +796,7 @@
       mui.init({
         swipeBack: true //启用右滑关闭功能
       });
-      var shopid = 0;
+      var shopid = '';
       var sex,online,ondate;
       
       //分页初始化
@@ -754,7 +824,7 @@
 		            'page_size':10
 		        }
 		        log(aparam2) 
-		        $.dataRequest(aparam2, function(rs) {
+		        $.dataRequest(aparam2, function(rs) { 
 		        	log(rs)
 		        		for (var i in rs['list']) {
 		        			if(rs['list'][i].avar==''){
@@ -838,6 +908,7 @@
 	        }
 //			log(aparam)
 	        $.dataRequest(aparam, function(rt) {
+	        		log(rt);
 	        		for (var i in rt['list']) {
 	        			if(rt['list'][i].avar==''){
 	        				rt['list'][i].avar = 'static/admin/img/none.png';
@@ -895,17 +966,17 @@
       var sinput = $('input[type="search"]');
     	  $(form).submit(function() {
       	var search_val = $('input[type="search"]').val();
-           $('.mui-content').empty();
+           $('.recom-box-list').empty();
           var param = {
 	            'method': config.apimethod.category,
 	            'source':config.source
 	       }
 	       $.dataRequest(param, function(rs) {
 	        		var widgets = template('widget_category', rs);
-	            $('.mui-content').append(widgets);
+//	            $('.cag-box-list').append(widgets);
 	            //recommond
 		        var aparam = {
-		            'method': config.apimethod.searchcounsellor,
+		            'method': config.apimethod.searchcounsellor, 
 		            'source':config.source,
 		            'sex':sex,
 		            'shopid':shopid,
@@ -913,14 +984,23 @@
 		            'ondate':ondate,
 		            'search_keywords':search_val
 		        }
+		        for(var key in aparam) {
+				    if(aparam[key] === '') {
+				      delete aparam[key]
+				    }
+				 }
+		        log(aparam)
 		        $.dataRequest(aparam, function(rt) {
+		        	
 		        		for (var i in rt['list']) {
 		        			if(rt['list'][i].avar==''){
 		        				rt['list'][i].avar = 'static/admin/img/none.png';
 		        			}
 		        		}
-		        		var widgets = template('widget_recommend', rt);
-		            $('.mui-content').append(widgets);
+					var rs = ''
+		        		log(rt)
+		        		var widgets = template('widget_recommends', rt);
+		            $('.search-box-list').append(widgets);
 		            	 // 
 		             mui('.mui-scroll-wrapper').scroll({
 			          indicators: false
@@ -932,7 +1012,7 @@
     	  });
 	    
       window.addEventListener('getkey', function(event) {
-      	 $('.mui-content').empty();
+      	 $('.recom-box-list').empty();
           var search_val = $('input[type="search"]').val();
           var sex = event.detail.sex||'';
           var shopid = event.detail.shopid||'';
@@ -945,7 +1025,7 @@
 	       }
 	       $.dataRequest(param, function(rs) {
 	        		var widgets = template('widget_category', rs);
-	            $('.mui-content').append(widgets);
+//	            $('.mui-content').append(widgets);
 	            //recommond
 		        var aparam = {
 		            'method': config.apimethod.searchcounsellor,
@@ -956,6 +1036,11 @@
 		            'ondate':ondate,
 		            'search_keywords':search_val
 		        }
+		        for(var key in aparam) {
+				    if(aparam[key] === '') {
+				      delete aparam[key]
+				    }
+				 }
 		        log(aparam)
 		        $.dataRequest(aparam, function(rt) {
 		        	log(rt)
@@ -965,7 +1050,7 @@
 		        			}
 		        		}
 		        		var widgets = template('widget_recommend', rt);
-		            $('.mui-content').append(widgets);
+		            $('.search-box-list').append(widgets);
 		            	 // 
 		             mui('.mui-scroll-wrapper').scroll({
 			          indicators: false

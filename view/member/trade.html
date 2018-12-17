@@ -47,7 +47,23 @@
           }
         }]
       });
-
+	  
+	  mui.plusReady(function(){
+	  	var enaction = plus.webview.currentWebview().enaction;
+      	//处理结算页关闭
+      	if(enaction=='checkout'){
+      		var fw = plus.webview.currentWebview().opener();
+      		plus.webview.close(fw);
+      	}
+      	if (enaction=='payment') {
+      		var fw = plus.webview.currentWebview().opener();
+      		var ffw = fw.opener();
+      		plus.webview.close(fw);
+      		plus.webview.close(ffw);
+      	}
+      	
+		
+	  })
       var contentWebview = null;
       document.querySelector('header').addEventListener('doubletap', function() {
         if(contentWebview == null) {

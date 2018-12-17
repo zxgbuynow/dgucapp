@@ -57,7 +57,7 @@
             <label><i class="bbc-icon bbc-icon-zhifubao pay-style-zhifubao"></i> 支付宝</label>
             <input name="payment" type="radio" value="alipayApp" >
           </div>
-          <div class="mui-input-row mui-radio bbc-radio mui-hidden">
+          <div class="mui-input-row mui-radio bbc-radio ">
             <label><i class="bbc-icon bbc-icon-weixin pay-style-weixin"></i> 微信</label>
             <input name="payment" type="radio" value="wxpayApp">
           </div>
@@ -114,7 +114,14 @@
                 return
               }
               pay_id = $('input[name="payment"]:checked').val();
-              var SERVER = config.server +  '/pay/dopay?accessToken=' + state.token + '&payment_id=' + pid + '&method=' + config.apimethod.tradepay + '&pay_app_id=' + pay_id+'&source='+config.source;
+              if(pay_id=='alipayApp'){
+              	var SERVER = config.server +  '/pay/dopay?accessToken=' + state.token + '&payment_id=' + pid + '&method=' + config.apimethod.tradepay + '&pay_app_id=' + pay_id+'&source='+config.source;	
+              }
+              if(pay_id=='wxpayApp'){
+              	var SERVER = config.server +  '/wxpay/dopay?accessToken=' + state.token + '&payment_id=' + pid + '&method=' + config.apimethod.tradepay + '&pay_app_id=' + pay_id+'&source='+config.source;	
+              	console.log(SERVER)
+              	
+              }
 
               pay(SERVER, pay_id, pid, total);
 
@@ -183,24 +190,24 @@
                 			}
                 			clicked('_www/view/index.html');
                 		}else{
-                			clicked('_www/view/member/trade.html');
+                			clicked('_www/view/member/trade.html',{'enaction':'payment'});
 	                  	//付款处理好友申请 
-	                  	var state = app.getState();
-						if(state.token&&counsellor_mobile){
-							var token = plus.storage.getItem('webim_'+state.account)
-							var options = {
-							    apiUrl: WebIM.config.apiURL,
-							    user: state.account,
-							    accessToken: token,
-							    appKey: WebIM.config.appkey
-							};
-							conn.open(options);
-							conn.subscribe({
-				                to : counsellor_mobile,
-				                message : "加个好友呗"
-				            });
-	
-						}
+//	                  	var state = app.getState();
+//						if(state.token&&counsellor_mobile){
+//							var token = plus.storage.getItem('webim_'+state.account)
+//							var options = {
+//							    apiUrl: WebIM.config.apiURL,
+//							    user: state.account,
+//							    accessToken: token,
+//							    appKey: WebIM.config.appkey
+//							};
+//							conn.open(options);
+//							conn.subscribe({
+//				                to : counsellor_mobile,
+//				                message : "加个好友呗"
+//				            });
+//	
+//						}
                 		}
                   	
                 }, function(error) {

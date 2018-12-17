@@ -19,7 +19,12 @@ conn.listen({
     		console.log(JSON.stringify(message))
 		mui.plusReady(function(){
 			//声音提醒
-			plus.device.beep(3);
+//			plus.device.beep(3);
+			plus.audio.createPlayer("../../img/8855.wav").play();
+			var openchatw = plus.webview.getWebviewById('_www/view/msg/index.html');
+		        if(openchatw) {
+		          mui.fire(openchatw,'refresh'); 
+		        }
 		})
     		
     	},    //收到文本消息

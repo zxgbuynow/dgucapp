@@ -468,6 +468,9 @@
     .container{
     	margin-bottom: 52px;
     }
+    .doctor-list-header ul{
+    	font-size: .7rem;
+    }
     </style>
   </head>
   <body>
@@ -475,7 +478,10 @@
       <div class="header-logo"><span class="iconfont icon-logo- icon-home-logo"></span></div> 
       <div class="main" >
         <form onsubmit="return false;">
-          <div class="mui-input-row header-search-form"><i class="iconfont icon-search icon-home-search"></i><input type="search" onfocus="toSearch(this,'_www/view/artical/list.html')" class="header-search mui-input-clear" placeholder="寻找感兴趣的内容"></div>
+          <div class="mui-input-row header-search-form">
+          	<i class="iconfont icon-search icon-home-search"></i>
+          	<input type="search" class="header-search mui-input-clear" placeholder="寻找感兴趣的内容">
+          </div>
         </form>
       </div>
       <p class="service">
@@ -504,27 +510,7 @@
 	        </div>
       	</section> -->
       	
-       <!-- <div class="mui-scroll-wrapper bbc-pullrefresh-top">
-        <div class="mui-scroll">
-          <div class="mui-content content-bottom-padded-nav"> 
-          	<div class="business-news index-content-item">
-			<div class="business-news-wrap mui-flex ">
-				<div class="business-news-title" id="businessQurey1"><i class="mui-icon mui-icon-chat"></i></div>
-				<div class="business-news-content cell">
-					<div class="mui-flex">
-						<div class="cell business-news-list">
-							<div class="swiper-container" id="swiper_news">
-								<div class="swiper-wrapper">
-									<div class="swiper-slide ">国珍热点国珍热点国珍热点国珍热点国珍热点</div>
-									<div class="swiper-slide ">国珍焦点</div>
-									<div class="swiper-slide ">国珍激情点</div>  
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-	    </div>-->
+      
           	<!--轮播 start-->
           	<!--<div id="slider" class="mui-slider">
 		        <div class="mui-slider-group mui-slider-loop widgets-slider">
@@ -645,23 +631,7 @@
       </div> -->
 
 
-      <!--<section class="widgets-column-section">
-        <div class="column-wraper">
-			<div  class="expert-item">
-				<p class="expert-title">找专家</p>
-			</div>
-			<div  class="artical-wraper">
-				<p class="artical-title">文章推荐</p>
-				<div class="swiper-container" id="swiper_artical">
-					<div class="swiper-wrapper">
-						<div class="swiper-slide ">国珍热点国珍热点国珍热点国珍热点国珍热点</div>
-						<div class="swiper-slide ">国珍焦点</div>
-						<div class="swiper-slide ">国珍激情点</div>  
-					</div>
-				</div>				
-			</div>
-        </div>
-      </section>-->
+     
 	<!-- <section class="widgets-category-nav">
         <div class="section-title">
           <div class="title-txt">专家推荐</div>
@@ -750,23 +720,7 @@
 	    </ul>
 	</section>-->
 
-      <!--<section class="widgets-column-section">
-        <div class="column-wraper">
-			<div  class="expert-item">
-				<p class="expert-title">找专家</p>
-			</div>
-			<div  class="artical-wraper">
-				<p class="artical-title">文章推荐</p>
-				<div class="swiper-container" id="swiper_artical">
-					<div class="swiper-wrapper">
-						<div class="swiper-slide ">国珍热点国珍热点国珍热点国珍热点国珍热点</div>
-						<div class="swiper-slide ">国珍焦点</div>
-						<div class="swiper-slide ">国珍激情点</div>  
-					</div>
-				</div>				
-			</div>
-        </div>
-      </section>-->
+     
 	<section class="widgets-category-nav mui-hidden">
 		<div class="doctor-list-header">
 			<div class="title">专家推荐</div>
@@ -879,7 +833,7 @@
     		<span class="mui-tab-label">课程/活动</span>
     	</a>
     	<a class="bbc-tab-item " data-webview="_www/view/msg/index.html">
-    		<span class="iconfont icon-xiaoxi bbc-tab-mui-icon"><span class="mui-badge mui-badge-danger mui-hidden" id="msg-count"></span></span>
+    		<span class="iconfont icon-xiaoxi bbc-tab-mui-icon"><i class="mui-badge mui-badge-danger " id="msg-count"></i></span>
     		<span class="mui-tab-label">消息</span>
     	</a>
     	<a class="bbc-tab-item" data-webview="_www/view/member/member.html">
@@ -945,6 +899,9 @@
     </script>
     <script type="text/html" id="widget_nav">
 		<section class="widgets-category-nav section-white widgets-cate">
+			<div class="section-title">
+	          <div class="title-txt">咨询分类</div>
+	        </div>
 	        <ul class="widgets-icons-nav">
 	        	<!--<li class="action-webview" data-webview="_www/view/artical/tlist.html" ><i><a href="#"><img src="../img/widgets_02_07.png"></a></i><span>心理测试</li>-->
 	        		<li class="action-webview mui-hidden"  data-webview="_www/view/artical/list.html" data-webparam='{"cat_id":18}' ><i><a href="#"><img src="../img/xiaolv.png"></a></i><span>高效课程</li>
@@ -986,7 +943,7 @@
     		<% if(pic){%>
     		<section class="widgets-category-nav section-white swiper-wrapper-new">
 	        <div class="section-title">
-	          <div class="title-txt">课程</div>
+	          <div class="title-txt" style="text-align: center;">课程活动</div>
 		      <div class="more-link action-webview" data-webview="_www/view/clac/index.html" data-webparam='{"cat_id":18}'>更多</div>
 	        </div>
 		    <div class="swiper-container swiper-container1">
@@ -1035,7 +992,7 @@
             <!--文章 start-->
     		<section class="widgets-category-nav section-white swiper-wrapper-new">
 		        <div class="section-title">
-		          <div class="title-txt">好文推荐</div>
+		          <div class="title-txt" style="text-align: center;">好文推荐</div>
 			      <div class="more-link action-webview"  data-webview="_www/view/artical/list.html" >更多</div>
 		        </div>
 			    <div class="swiper-container swiper-container3">
@@ -1168,7 +1125,7 @@
 	    </div>-->
 	    <ul class="mui-table-view-chevron widget-counsellors-append">
 	    		<% for(var i=0; i<list.length; i++) { %>
-			<li class="card-wrapper card-wrapper-new action-webview" data-webview="_www/view/counsellor/detail.html" data-webparam='{"counsellor_id":<%= list[i].memberid %>}'>
+			<li class="card-wrapper card-wrapper-new action-webview" data-webview="_www/view/counsellor/detail.html" data-webparam='{"counsellor_id":<%= list[i].id %>}'>
 				<div class="avatar">
 						<img src="<%= $add_server(list[i].avar) %>">
 				</div>
@@ -1211,7 +1168,7 @@
 										<span>住进 <%= list[i].trade %> 个人的心窝</span>
 										<span class="star">好评率：<%= list[i].start %></span>
 									</p>
-									<p class="d-icon-detail action-webview flex-g1" data-webview="_www/view/counsellor/detail.html" data-webparam='{"counsellor_id":<%= list[i].memberid %>}'>详情》</p>
+									<p class="d-icon-detail action-webview flex-g1" data-webview="_www/view/counsellor/detail.html" data-webparam='{"counsellor_id":<%= list[i].id %>}'>详情》</p>
 								</div>
 						</div>
 				</div>
@@ -1220,7 +1177,7 @@
 		</ul>
 	    <ul class="mui-table-view-chevron mui-hidden">
 	    		<% for(var i=0; i<list.length; i++) { %>
-	        <li class="card-wrapper card-wrapper-new action-webview" data-webview="_www/view/counsellor/detail.html" data-webparam='{"counsellor_id":<%= list[i].memberid %>}'>
+	        <li class="card-wrapper card-wrapper-new action-webview" data-webview="_www/view/counsellor/detail.html" data-webparam='{"counsellor_id":<%= list[i].id %>}'>
 	            <div class="avatar">
 	                <img src="<%= $add_server(list[i].avar) %>">
 	            </div>
@@ -1252,7 +1209,7 @@
 	<section class="widgets-category-nav">
 		<ul class="mui-table-view-chevron widget-counsellors-append">
 	    		<% for(var i=0; i<list.length; i++) { %>
-			<li class="card-wrapper card-wrapper-new action-webview" data-webview="_www/view/counsellor/detail.html" data-webparam='{"counsellor_id":<%= list[i].memberid %>}'>
+			<li class="card-wrapper card-wrapper-new action-webview" data-webview="_www/view/counsellor/detail.html" data-webparam='{"counsellor_id":<%= list[i].id %>}'>
 				<div class="avatar">
 						<img src="<%= $add_server(list[i].avar) %>">
 				</div>
@@ -1295,7 +1252,7 @@
 										<span>住进 <%= list[i].trade %> 个人的心窝</span>
 										<span class="star">好评率：<%= list[i].start %></span>
 									</p>
-									<p class="d-icon-detail action-webview flex-g1" data-webview="_www/view/counsellor/detail.html" data-webparam='{"counsellor_id":<%= list[i].memberid %>}'>详情》</p>
+									<p class="d-icon-detail action-webview flex-g1" data-webview="_www/view/counsellor/detail.html" data-webparam='{"counsellor_id":<%= list[i].id %>}'>详情》</p>
 								</div>
 						</div>
 				</div>
@@ -1332,7 +1289,7 @@
 		      }
 	    	  });
 	       //定义上拉加载更多方法
-	       var no = 2;
+	       var no = 1;
 		    	function pullupRefresh() {
 //				mui.toast('pull') 
 				setTimeout(function(){
@@ -1354,7 +1311,9 @@
 				        }
 			        }
 			        log(aparam2) 
+			        mui.toast('加载更多……')
 			        $.dataRequest(aparam2, function(rt) {
+			        	console.log('---------')
 			        	log(rt)
 			        		for (var i in rt['list']) {
 			        			if(rt['list'][i].avar==''){
@@ -1365,6 +1324,7 @@
 			            $('.container').append(widgets);
 			            console.log(rt['list'].length)
 			            if(10>rt['list'].length){
+			            		mui.toast('没有更多数据')
 							mui('#pullrefresh').pullRefresh().endPullupToRefresh(true);
 						}else{
 							mui('#pullrefresh').pullRefresh().endPullupToRefresh(false);
@@ -1452,19 +1412,27 @@
 				        }
 			        }
 			        $.dataRequest(aparam4, function(rs) {
-			        	var widgets = template('widget_find', rs);
+			        	var widgets = template('widget_article', rs);
 			            $('.container').append(widgets);
-			             var swiper = new Swiper('#swiper_artical', {
-						  loop: true,
-						  direction: 'vertical',
-						  speed:3500,
-						  autoplay:true
-						});
+			            var mySwiper = new Swiper('.swiper-container3', {
+				        		slidesPerView: 1.5,
+				        		spaceBetween: 1,
+				        		centeredSlides: true,
+				        		initialSlide: 1,
+								speed:500,
+								pagination: '.swiper-pagination-custom',
+							})
+//			             var swiper = new Swiper('#swiper_artical', {
+//						  loop: true,
+//						  direction: 'vertical',
+//						  speed:3500,
+//						  autoplay:true
+//						});
 			            	 //
 //			            	 console.log(widgets)
-			             mui('.mui-scroll-wrapper').scroll({
-				          indicators: false
-				        });
+//			             mui('.mui-scroll-wrapper').scroll({
+//				          indicators: false
+//				        });
 				        //会员升级
 					    var aparam = {
 				            'method': config.apimethod.advsg,
@@ -1524,6 +1492,7 @@
 					        }
 					        log(aparam2) 
 					        $.dataRequest(aparam2, function(rt) {
+					        	console.log('----------')
 					        	log(rt)
 					        		for (var i in rt['list']) {
 					        			if(rt['list'][i].avar==''){
@@ -1554,8 +1523,11 @@
        
 	  	
 	  })
-	  
-	 
+	  var form = $('input[type="search"]').parents('form');
+	 	$(form).submit(function() { 
+            var keyword = $('input[type="search"]').val();
+            clicked('_www/view/artical/volist.html',{keyword:keyword});
+        })
        $('.callmm').on('tap',function(){
        	plus.device.dial( "4001001355", false );
        })

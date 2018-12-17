@@ -106,7 +106,7 @@
             <label><i class="bbc-icon bbc-icon-zhifubao pay-style-zhifubao"></i> 支付宝</label>
             <input name="payment" type="radio" value="alipayApp" >
           </div>
-          <div class="mui-input-row mui-radio bbc-radio mui-hidden">
+          <div class="mui-input-row mui-radio bbc-radio">
             <label><i class="bbc-icon bbc-icon-weixin pay-style-weixin"></i> 微信</label>
             <input name="payment" type="radio" value="wxpayApp">
           </div>
@@ -195,7 +195,16 @@
                 return
               }
               pay_id = $('input[name="payment"]:checked').val();
-              var SERVER = config.server +  '/pay/dopay?accessToken=' + state.token + '&payment_id=' + pid + '&method=' + config.apimethod.tradepay + '&pay_app_id=' + pay_id+'&source='+config.source+"&couponid="+couponid;
+			  if(pay_id=='alipayApp'){
+			  	var SERVER = config.server +  '/pay/dopay?accessToken=' + state.token + '&payment_id=' + pid + '&method=' + config.apimethod.tradepay + '&pay_app_id=' + pay_id+'&source='+config.source+"&couponid="+couponid;
+//            	var SERVER = config.server +  '/pay/dopay?accessToken=' + state.token + '&payment_id=' + pid + '&method=' + config.apimethod.tradepay + '&pay_app_id=' + pay_id+'&source='+config.source;	
+              }
+              if(pay_id=='wxpayApp'){
+              	var SERVER = config.server +  '/wxpay/dopay?accessToken=' + state.token + '&payment_id=' + pid + '&method=' + config.apimethod.tradepay + '&pay_app_id=' + pay_id+'&source='+config.source+"&couponid="+couponid;
+//            	var SERVER = config.server +  '/wxpay/dopay?accessToken=' + state.token + '&payment_id=' + pid + '&method=' + config.apimethod.tradepay + '&pay_app_id=' + pay_id+'&source='+config.source;	
+              	console.log(SERVER)
+              	
+              }
 			  //更新优惠券
 			  //发起支付
               pay(SERVER, pay_id, pid, total);

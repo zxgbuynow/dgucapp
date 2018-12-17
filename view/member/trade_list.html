@@ -253,6 +253,8 @@
 
     <script type="text/javascript" charset="utf-8">
       mui.plusReady(function() {
+      	
+      	
         var state = app.getState();
         var param = {
           'method': config.apimethod.trade,
@@ -264,10 +266,7 @@
       }
 	log(param)  
         $.tabWithPageRequest(param, 'trade_list', 'scroll1', 'status');
-        //
-        $(window).on('tap','',function(){
-        	
-        })
+        
       })
     </script>
   </body>

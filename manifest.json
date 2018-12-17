@@ -109,7 +109,7 @@
 					"alipay": {
 						"description": "阿里支付",
 						"scheme": ""
-					}
+					},"weixin":{"description":"微信支付","appid":"wx704f02d6e4b18396"}
 				}
 			},
 			"apple": {
@@ -1120,7 +1120,10 @@
 					"view/member/clac/index.html",
 					"view/member/point/coupon.html",
 					"view/h5.html",
-					"view/member/complaint/complaint.html"
+					"view/member/complaint/complaint.html",
+					"view/member/apply.html",
+					"view/clac/index.html",
+					"view/member/share.html"
 				],
 				"priority": 0
 			},
@@ -1198,7 +1201,9 @@
 				"refer": [
 					"view/passport/register.html",
 					"view/index.html",
-					"view/passport/forgetPassword.html"
+					"view/passport/forgetPassword.html",
+					"view/passport/signup.html",
+					"view/member/member.html"
 				],
 				"priority": 0
 			},
@@ -1427,7 +1432,8 @@
 					"view/member/updatelv.html",
 					"view/artical/tlist.html",
 					"view/counsellor/detail.html",
-					"view/clac/index.html"
+					"view/clac/index.html",
+					"view/artical/volist.html"
 				],
 				"priority": 0
 			},
@@ -1507,7 +1513,9 @@
 					"view/counsellor/counsellor_list.html",
 					"view/artical/artical_list.html"
 				],
-				"refer": [],
+				"refer": [
+					"view/artical/detail.html"
+				],
 				"priority": 0
 			},
 			"view/artical/artical_list.html": {
@@ -1532,7 +1540,11 @@
 					"view/msg/chat.html",
 					"view/member/ondate/index.html",
 					"view/member/updatelv.html",
-					"view/counsellor/eve.html"
+					"view/counsellor/eve.html",
+					"view/category/category.html",
+					"view/msg/wechat.html",
+					"view/artical/detail.html",
+					"view/member/apply.html"
 				],
 				"priority": 0
 			},
@@ -1556,7 +1568,9 @@
 			"view/error.html": {
 				"resources": [],
 				"refer": [
-					"view/msg/index.html"
+					"view/msg/index.html",
+					"view/artical/list.html",
+					"view/clac/index.html"
 				],
 				"priority": 0
 			},
@@ -1571,14 +1585,16 @@
 					"view/counsellor/index.html",
 					"view/passport/login.html",
 					"view/index.html",
-					"view/clac/index.html"
+					"view/clac/index.html",
+					"view/msg/wechat.html"
 				],
 				"priority": 0
 			},
 			"view/msg/group.html": {
 				"resources": [],
 				"refer": [
-					"view/msg/chat.html"
+					"view/msg/chat.html",
+					"view/msg/wechat.html"
 				],
 				"priority": 0
 			},
@@ -1624,7 +1640,8 @@
 				"refer": [
 					"view/member/ondate/evaluate.html",
 					"view/msg/chat.html",
-					"view/member/ondate/evaluate-new.html"
+					"view/member/ondate/evaluate-new.html",
+					"view/counsellor/eve_form.html"
 				],
 				"priority": 0
 			},
@@ -1726,7 +1743,8 @@
 			"view/clac/detail.html": {
 				"resources": [],
 				"refer": [
-					"view/checkout/clacpay.html"
+					"view/checkout/clacpay.html",
+					"view/clac/audio.html"
 				],
 				"priority": 0
 			},
@@ -1748,8 +1766,39 @@
 				"resources": [],
 				"refer": [
 					"view/clac/detail.html",
-					"view/member/clac/eval.html"
+					"view/member/clac/eval.html",
+					"view/member/clac/claceval.html"
 				],
+				"priority": 0
+			},
+			"view/member/apply.html": {
+				"resources": [],
+				"refer": [
+					"view/member/share.html"
+				],
+				"priority": 0
+			},
+			"view/msg/wechat.html": {
+				"resources": [],
+				"refer": [
+					"view/h5.html",
+					"view/counsellor/detail.html"
+				],
+				"priority": 0
+			},
+			"view/passport/signup.html": {
+				"resources": [],
+				"refer": [
+					"view/passport/verificationsms.html",
+					"view/passport/login.html"
+				],
+				"priority": 0
+			},
+			"view/artical/volist.html": {
+				"resources": [
+					"view/artical/artical_list.html"
+				],
+				"refer": [],
 				"priority": 0
 			}
 		},
@@ -1768,7 +1817,6 @@
 				"js/im/adapter.js",
 				"img/promotion_pagedemo.png",
 				"img/activity_ads.jpg",
-				"view/clac/audio.html",
 				"img/star-g.png",
 				"img/head-bg.png",
 				"js/mui.js",

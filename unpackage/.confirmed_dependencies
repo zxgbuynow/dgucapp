@@ -867,7 +867,10 @@
 			"view/member/clac/index.html",
 			"view/member/point/coupon.html",
 			"view/h5.html",
-			"view/member/complaint/complaint.html"
+			"view/member/complaint/complaint.html",
+			"view/member/apply.html",
+			"view/clac/index.html",
+			"view/member/share.html"
 		]
 	},
 	"view/member/setting.html": {
@@ -936,7 +939,9 @@
 		"refer": [
 			"view/passport/register.html",
 			"view/index.html",
-			"view/passport/forgetPassword.html"
+			"view/passport/forgetPassword.html",
+			"view/passport/signup.html",
+			"view/member/member.html"
 		]
 	},
 	"view/item/goodsdetail.html": {
@@ -1121,7 +1126,8 @@
 			"view/member/updatelv.html",
 			"view/artical/tlist.html",
 			"view/counsellor/detail.html",
-			"view/clac/index.html"
+			"view/clac/index.html",
+			"view/artical/volist.html"
 		],
 		"resources": [
 			"css/style.css",
@@ -1225,7 +1231,8 @@
 		],
 		"refer": [
 			"view/counsellor/counsellor_list.html",
-			"view/artical/artical_list.html"
+			"view/artical/artical_list.html",
+			"view/artical/detail.html"
 		]
 	},
 	"view/artical/artical_list.html": {
@@ -1249,7 +1256,11 @@
 			"view/msg/chat.html",
 			"view/member/ondate/index.html",
 			"view/member/updatelv.html",
-			"view/counsellor/eve.html"
+			"view/counsellor/eve.html",
+			"view/category/category.html",
+			"view/msg/wechat.html",
+			"view/artical/detail.html",
+			"view/member/apply.html"
 		],
 		"resources": []
 	},
@@ -1270,7 +1281,9 @@
 	},
 	"view/error.html": {
 		"refer": [
-			"view/msg/index.html"
+			"view/msg/index.html",
+			"view/artical/list.html",
+			"view/clac/index.html"
 		],
 		"resources": []
 	},
@@ -1284,13 +1297,15 @@
 			"view/counsellor/index.html",
 			"view/passport/login.html",
 			"view/index.html",
-			"view/clac/index.html"
+			"view/clac/index.html",
+			"view/msg/wechat.html"
 		],
 		"resources": []
 	},
 	"view/msg/group.html": {
 		"refer": [
-			"view/msg/chat.html"
+			"view/msg/chat.html",
+			"view/msg/wechat.html"
 		],
 		"resources": []
 	},
@@ -1332,7 +1347,8 @@
 		"refer": [
 			"view/member/ondate/evaluate.html",
 			"view/msg/chat.html",
-			"view/member/ondate/evaluate-new.html"
+			"view/member/ondate/evaluate-new.html",
+			"view/counsellor/eve_form.html"
 		],
 		"resources": []
 	},
@@ -1427,7 +1443,8 @@
 	},
 	"view/clac/detail.html": {
 		"refer": [
-			"view/checkout/clacpay.html"
+			"view/checkout/clacpay.html",
+			"view/clac/audio.html"
 		],
 		"resources": []
 	},
@@ -1448,8 +1465,34 @@
 	"view/member/clac/index.html": {
 		"refer": [
 			"view/clac/detail.html",
-			"view/member/clac/eval.html"
+			"view/member/clac/eval.html",
+			"view/member/clac/claceval.html"
 		],
 		"resources": []
+	},
+	"view/member/apply.html": {
+		"refer": [
+			"view/member/share.html"
+		]
+	},
+	"view/msg/wechat.html": {
+		"refer": [
+			"view/h5.html",
+			"view/counsellor/detail.html"
+		]
+	},
+	"view/passport/signup.html": {
+		"refer": [
+			"view/passport/verificationsms.html",
+			"view/passport/login.html"
+		]
+	},
+	"view/artical/volist.html": {
+		"resources": [
+			"view/artical/artical_list.html"
+		],
+		"refer": [
+			"view/artical/artical_list.html"
+		]
 	}
 }

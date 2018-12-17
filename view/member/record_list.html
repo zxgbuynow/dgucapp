@@ -287,7 +287,7 @@
 
     <script type="text/html" id="trade_list">
         <% for(var i=0; i<list.length; i++) { %>
-      		<li class="mui-table-view-cell mui-media <%if (list[i].status=='2'){%>action-webview<% } %>  <%if (list[i].status=='0'){%>godate <% } %> " <%if (list[i].status=='0'){%>data-webview="_www/view/msg/chat.html" data-cid="<%= list[i].id %>" data-ondate="<%= list[i].start_time %>" data-chart="<%= list[i].chartkey %>" data-webparam = '{"jid":"3", "username":"<%= list[i].mobile %>" }' <%}else{%>data-webview="_www/view/counsellor/eve_form.html" data-webparam = {"c_id":<%= list[i].mid %>,"avar":"<%= list[i].avar %>","counsellor":"<%= list[i].counsellor %>"} <%}%>
+      		<li class="mui-table-view-cell mui-media <%if (list[i].status=='2'||list[i].status=='1'){%>action-webview<% } %>  <%if (list[i].status=='0'){%>godate <% } %> " <%if (list[i].status=='0'){%>data-webview="_www/view/msg/wechat.html" data-cid="<%= list[i].id %>" data-ondate="<%= list[i].start_time %>" data-chart="<%= list[i].chartkey %>" data-webparam = '{"jid":"3","reciveid":"<%= list[i].mid %>",  "account":"<%= list[i].mobile %>", "username":"<%= list[i].counsellor %>","reciveavar":"<%= $add_server(list[i].avar) %>" }' <%}else{%>data-webview="_www/view/counsellor/eve_form.html" data-webparam = {"counsellor_id":<%= list[i].mid %>,"c_id":<%= list[i].id %>,"avar":"<%= list[i].avar %>","counsellor":"<%= list[i].counsellor %>"} <%}%>
 	          <div class="box-flex">
               <div class="box-item-flex1">
   	          	<!--<img class="mui-media-object " src="../../img/activity_ads.jpg">-->
@@ -300,6 +300,7 @@
                 <p class="voice"><%= list[i].chart%></p>
                 <p class="btn-options">
                   <%if (list[i].status=='1'){%><span class="btns font-red">已咨询</span>
+                  <span class="btns font-red">去评价</span>
                   <% } %>
                   <%if (list[i].status=='0'){%><span class="btns font-red">待咨询</span>
                   <% } %>

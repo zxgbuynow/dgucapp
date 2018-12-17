@@ -76,5 +76,6 @@ var config = {
 		hxmsgls:'hxmsg.ls',
 		hxmsgtwo:'hxmsg.two',
 		hxmsgup:'hxmsg.up',
+		clacsearch:'clac.search',
     }
 }
