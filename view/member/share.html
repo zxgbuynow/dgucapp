@@ -94,7 +94,7 @@
 				<div class="apply-form">
 					<div class="pay-body">
 						<div class="qr-code-img">
-							<img class="mui-media-object" src="../../img/60x60.gif">
+							<img class="mui-media-object" src="../../img/QRCode.png">
 							<span class="qr-code-txt mui-hidden">长按保存二维码</span>
 						</div>
 					</div>
@@ -111,6 +111,15 @@
       
       
     </section>
+    <div id="share_sheet" class="mui-popover mui-popover-bottom mui-popover-action">
+      <div class="section-white">
+        <div class="section-title theme-border-bottom">分享到</div>
+        <div class="section-container">
+          <div class="section-init action-share" data-platform="weixin"><i class="bbc-icon bbc-icon-weixin-member"></i></div>
+          <div class="section-init action-share" data-platform="timeline"><i class="bbc-icon bbc-icon-moments"></i></div>
+        </div>
+      </div>
+    </div>
     <script src="../../js/zepto.js"></script>
     <script src="../../js/mui.min.js"></script>
     <script src="../../js/template.min.js"></script>
@@ -139,9 +148,9 @@
 	          
 		      log(shareData)
 		      
-				setTimeout(function(){
-					appshare(shareData);
-				},1000)
+
+				appshare(shareData);
+
   		})
       })
     </script>

@@ -466,8 +466,7 @@
       			}
       		}
       	}
-      	console.log('------------')
-   	log(rs)
+      	
       	$('.header-title').text(rs.title)
       	$('.total').text(rs.price)
       	
@@ -475,13 +474,24 @@
       		ispayed = rs.ispay;
       		$('.trade-date').addClass('ispayed')
       		$('.trade-date').text('已报名')
+      	}else{
+      		if(rs.islimit){
+      			$('.trade-date').addClass('ispayed')
+      			$('.trade-date').text('已报满')
+      		}
       	}
       	
       	var widgets = template('counsellor_info', rs);
         $('.counsellor-homepage-content').append(widgets);
         
         var desc = rs.describe
-        $('.describe').html(desc); 
+        if(desc){
+        		var reg = new RegExp( '/uploads/images' , "g" )
+			var newstr = desc.replace( reg , config.imgser+'uploads/images' );
+	        $('.describe').html(newstr);
+        }
+         
+        
         var intro = rs.intro
         $('.intro').html(intro); 
 		mui(".mui-slider").slider();
@@ -530,6 +540,7 @@
 							};
 						}
 						appendreply(rt);
+						$('.replytocl').hide()
 					})
 					console.log(e.value)
 					

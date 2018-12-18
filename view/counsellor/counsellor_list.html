@@ -64,7 +64,12 @@
 							<div class="mui-media-body">
 								<p>
 									<span class="mui-text-left "><%= list[i].nickname %></span>
-									<span class="mui-text-right mui-media-action float-right mui-hidden">立即预约</span>
+									<% if(list[i].online==1 ){%>
+										<span class="mui-text-right mui-media-action  mui-badge mui-badge-blue flex-g1">在线</span>
+									<%}else{%>
+										<span class="mui-text-right mui-media-action  mui-badge mui-badge-gray flex-g1">离线</span>
+
+									<%}%>
 								</p>
 								<p class='mui-ellipsis mui-media-text'><%if(list[i].tearch){%>大观讲师 |<%}%><%if(list[i].leader){%>大观Leader<%}%> |<%= list[i].sign %></p>
 								<p class="mui-ellipsis mui-media-text mui-media-author">我在大观心理温暖过<%= list[i].trade %>人次</p>

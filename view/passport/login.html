@@ -111,7 +111,27 @@
           var entrance = plus.webview.currentWebview().entrance;
           var toMain = function() {
             var parentview = plus.webview.currentWebview().opener();
-            parentview.reload(true);
+            if(entrance){
+            		
+            		if(plus.webview.getWebviewById('_www/view/member/safe/logpassword.html')){
+            			plus.webview.close('_www/view/member/safe/logpassword.html', 'none');
+            		}
+            		if(plus.webview.getWebviewById('_www/view/passport/verificationsms.html')){
+            			plus.webview.close('_www/view/passport/verificationsms.html', 'none');
+            		}
+            		
+        			plus.webview.open(entrance,entrance);
+
+            		
+            }else{
+				if(parentview){
+					parentview.reload(true)
+				}
+    				
+
+
+            }
+            
 //          if(plus.webview.getWebviewById('_www/view/index.html')){
 //          		plus.webview.getWebviewById('_www/view/index.html').show()
 //          }else{

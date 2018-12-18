@@ -137,8 +137,8 @@
 			max-width: 100%;
 			margin: .7rem 1rem;
 		}
-		.art-detail-body img{
-			width:100%;
+		.art-detail-main img{
+			width:50%;
 			height: auto;
 		}
 		/*.art-detail-body p{
@@ -249,7 +249,7 @@
 		</div>
 	</div>
 	<%}%>
-	<div class="art-detail-main ">
+	<div class="art-detail-main " >
 		<h3><%= title %></h3>
 		<p>
 			<span><%= $timestamp_To_Time(create_time) %></span>
@@ -258,7 +258,7 @@
 			<span class="iconfont icon-fenxiang- icon-art-link" id="share"></span>
 		</p>
 		
-		<div class="art-detail-body ">
+		<div class="art-detail-body single-img" >
 			
 		</div>
 		
@@ -269,6 +269,7 @@
     mui.plusReady(function() {
     	  var state = app.getState();
       var article_id = plus.webview.currentWebview().article_id;
+      console.log(article_id)
        var param = {
           'method': config.apimethod.contentinfo,
           'source':config.source,

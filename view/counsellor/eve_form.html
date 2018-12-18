@@ -213,7 +213,8 @@
   <script>
     mui.plusReady(function() {
    	  var self = plus.webview.currentWebview();
-      var counsellor_id = self.c_id;
+      var counsellor_id = self.counsellor_id;
+      var c_id = self.c_id;
 	  var avar = self.avar||'';
 	  var counsellor = self.counsellor;
       var counsellor_mobile = 0;
@@ -259,13 +260,13 @@
 		  	
 		  	var param = {
 		  		'method': config.apimethod.evaluate,
-		        'account': state.account,
-		        'c_id': counsellor_id,
+		        'account': state.token,
+		        'c_id': c_id,
 		        'source':config.source,
 		  		'sorce' :starIndex,
 		  		'cotent':document.getElementById("evaluateCotent").value
 		  	}
-
+			log(param)
 	        	$.dataRequest(param, function(c) {
 	        		mui.toast('评分成功')
 	        		setTimeout(function(){

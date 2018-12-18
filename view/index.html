@@ -468,6 +468,9 @@
     .container{
     	margin-bottom: 52px;
     }
+    .doctor-list-header ul{
+    	font-size: .7rem;
+    }
     </style>
   </head>
   <body>
@@ -475,7 +478,10 @@
       <div class="header-logo"><span class="iconfont icon-logo- icon-home-logo"></span></div> 
       <div class="main" >
         <form onsubmit="return false;">
-          <div class="mui-input-row header-search-form"><i class="iconfont icon-search icon-home-search"></i><input type="search" onfocus="toSearch(this,'_www/view/artical/list.html')" class="header-search mui-input-clear" placeholder="寻找感兴趣的内容"></div>
+          <div class="mui-input-row header-search-form">
+          	<i class="iconfont icon-search icon-home-search"></i>
+          	<input type="search" class="header-search mui-input-clear" placeholder="寻找感兴趣的内容">
+          </div>
         </form>
       </div>
       <p class="service">
@@ -504,27 +510,7 @@
 	        </div>
       	</section> -->
       	
-       <!-- <div class="mui-scroll-wrapper bbc-pullrefresh-top">
-        <div class="mui-scroll">
-          <div class="mui-content content-bottom-padded-nav"> 
-          	<div class="business-news index-content-item">
-			<div class="business-news-wrap mui-flex ">
-				<div class="business-news-title" id="businessQurey1"><i class="mui-icon mui-icon-chat"></i></div>
-				<div class="business-news-content cell">
-					<div class="mui-flex">
-						<div class="cell business-news-list">
-							<div class="swiper-container" id="swiper_news">
-								<div class="swiper-wrapper">
-									<div class="swiper-slide ">国珍热点国珍热点国珍热点国珍热点国珍热点</div>
-									<div class="swiper-slide ">国珍焦点</div>
-									<div class="swiper-slide ">国珍激情点</div>  
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-	    </div>-->
+      
           	<!--轮播 start-->
           	<!--<div id="slider" class="mui-slider">
 		        <div class="mui-slider-group mui-slider-loop widgets-slider">
@@ -645,23 +631,7 @@
       </div> -->
 
 
-      <!--<section class="widgets-column-section">
-        <div class="column-wraper">
-			<div  class="expert-item">
-				<p class="expert-title">找专家</p>
-			</div>
-			<div  class="artical-wraper">
-				<p class="artical-title">文章推荐</p>
-				<div class="swiper-container" id="swiper_artical">
-					<div class="swiper-wrapper">
-						<div class="swiper-slide ">国珍热点国珍热点国珍热点国珍热点国珍热点</div>
-						<div class="swiper-slide ">国珍焦点</div>
-						<div class="swiper-slide ">国珍激情点</div>  
-					</div>
-				</div>				
-			</div>
-        </div>
-      </section>-->
+     
 	<!-- <section class="widgets-category-nav">
         <div class="section-title">
           <div class="title-txt">专家推荐</div>
@@ -750,23 +720,7 @@
 	    </ul>
 	</section>-->
 
-      <!--<section class="widgets-column-section">
-        <div class="column-wraper">
-			<div  class="expert-item">
-				<p class="expert-title">找专家</p>
-			</div>
-			<div  class="artical-wraper">
-				<p class="artical-title">文章推荐</p>
-				<div class="swiper-container" id="swiper_artical">
-					<div class="swiper-wrapper">
-						<div class="swiper-slide ">国珍热点国珍热点国珍热点国珍热点国珍热点</div>
-						<div class="swiper-slide ">国珍焦点</div>
-						<div class="swiper-slide ">国珍激情点</div>  
-					</div>
-				</div>				
-			</div>
-        </div>
-      </section>-->
+     
 	<section class="widgets-category-nav mui-hidden">
 		<div class="doctor-list-header">
 			<div class="title">专家推荐</div>
@@ -879,7 +833,7 @@
     		<span class="mui-tab-label">课程/活动</span>
     	</a>
     	<a class="bbc-tab-item " data-webview="_www/view/msg/index.html">
-    		<span class="iconfont icon-xiaoxi bbc-tab-mui-icon"><span class="mui-badge mui-badge-danger mui-hidden" id="msg-count"></span></span>
+    		<span class="iconfont icon-xiaoxi bbc-tab-mui-icon"><i class="mui-badge mui-badge-danger " id="msg-count"></i></span>
     		<span class="mui-tab-label">消息</span>
     	</a>
     	<a class="bbc-tab-item" data-webview="_www/view/member/member.html">
@@ -945,6 +899,9 @@
     </script>
     <script type="text/html" id="widget_nav">
 		<section class="widgets-category-nav section-white widgets-cate">
+			<div class="section-title">
+	          <div class="title-txt">咨询分类</div>
+	        </div>
 	        <ul class="widgets-icons-nav">
 	        	<!--<li class="action-webview" data-webview="_www/view/artical/tlist.html" ><i><a href="#"><img src="../img/widgets_02_07.png"></a></i><span>心理测试</li>-->
 	        		<li class="action-webview mui-hidden"  data-webview="_www/view/artical/list.html" data-webparam='{"cat_id":18}' ><i><a href="#"><img src="../img/xiaolv.png"></a></i><span>高效课程</li>
@@ -986,7 +943,7 @@
     		<% if(pic){%>
     		<section class="widgets-category-nav section-white swiper-wrapper-new">
 	        <div class="section-title">
-	          <div class="title-txt">课程</div>
+	          <div class="title-txt" style="text-align: center;">课程活动</div>
 		      <div class="more-link action-webview" data-webview="_www/view/clac/index.html" data-webparam='{"cat_id":18}'>更多</div>
 	        </div>
 		    <div class="swiper-container swiper-container1">
@@ -1035,7 +992,7 @@
             <!--文章 start-->
     		<section class="widgets-category-nav section-white swiper-wrapper-new">
 		        <div class="section-title">
-		          <div class="title-txt">好文推荐</div>
+		          <div class="title-txt" style="text-align: center;">好文推荐</div>
 			      <div class="more-link action-webview"  data-webview="_www/view/artical/list.html" >更多</div>
 		        </div>
 			    <div class="swiper-container swiper-container3">
@@ -1166,9 +1123,9 @@
 	        <div class="title-txt">大观心师</div>
 	        <div class="more-link action-webview" data-webview="_www/view/category/category.html">更多</div>
 	    </div>-->
-	    <ul class="mui-table-view-chevron">
+	    <ul class="mui-table-view-chevron widget-counsellors-append">
 	    		<% for(var i=0; i<list.length; i++) { %>
-			<li class="card-wrapper card-wrapper-new action-webview" data-webview="_www/view/counsellor/detail.html" data-webparam='{"counsellor_id":<%= list[i].memberid %>}'>
+			<li class="card-wrapper card-wrapper-new action-webview" data-webview="_www/view/counsellor/detail.html" data-webparam='{"counsellor_id":<%= list[i].id %>}'>
 				<div class="avatar">
 						<img src="<%= $add_server(list[i].avar) %>">
 				</div>
@@ -1211,7 +1168,7 @@
 										<span>住进 <%= list[i].trade %> 个人的心窝</span>
 										<span class="star">好评率：<%= list[i].start %></span>
 									</p>
-									<p class="d-icon-detail action-webview flex-g1" data-webview="_www/view/counsellor/detail.html" data-webparam='{"counsellor_id":<%= list[i].memberid %>}'>详情》</p>
+									<p class="d-icon-detail action-webview flex-g1" data-webview="_www/view/counsellor/detail.html" data-webparam='{"counsellor_id":<%= list[i].id %>}'>详情》</p>
 								</div>
 						</div>
 				</div>
@@ -1220,7 +1177,7 @@
 		</ul>
 	    <ul class="mui-table-view-chevron mui-hidden">
 	    		<% for(var i=0; i<list.length; i++) { %>
-	        <li class="card-wrapper card-wrapper-new action-webview" data-webview="_www/view/counsellor/detail.html" data-webparam='{"counsellor_id":<%= list[i].memberid %>}'>
+	        <li class="card-wrapper card-wrapper-new action-webview" data-webview="_www/view/counsellor/detail.html" data-webparam='{"counsellor_id":<%= list[i].id %>}'>
 	            <div class="avatar">
 	                <img src="<%= $add_server(list[i].avar) %>">
 	            </div>
@@ -1247,6 +1204,64 @@
 	    </ul>
 	</section>
 	</script>
+	
+	<script type="text/html" id="widget_counsellors_app">
+	<section class="widgets-category-nav">
+		<ul class="mui-table-view-chevron widget-counsellors-append">
+	    		<% for(var i=0; i<list.length; i++) { %>
+			<li class="card-wrapper card-wrapper-new action-webview" data-webview="_www/view/counsellor/detail.html" data-webparam='{"counsellor_id":<%= list[i].id %>}'>
+				<div class="avatar">
+						<img src="<%= $add_server(list[i].avar) %>">
+				</div>
+				<div class="flex flex-hb flex-dc info-detail">
+						<div class="card-new-info">
+							<div class="flex-box">
+								<p class="card-name flex-g2 card-ellispse"><%= list[i].nickname %>
+									<i class="iconfont icon-renzhengzixunshi- iconfont-icon-doctype small blue"></i>
+									<%if(list[i].tearch){%> 
+										<i class="iconfont icon-renzhengjiangshi- iconfont-icon-doctype small orange"></i>
+									<%}%>
+									<%if(list[i].leader){%>
+										<i class="iconfont icon-xiaotuantiLeader- iconfont-icon-doctype small pink"></i>
+									<%}%>
+								</p>
+								<p class="doctor-address flex-g1 card-ellispse">
+									<i class="iconfont icon-dizhi- iconfont-icon-doctype small gray rt1"></i>
+									<span><%= list[i].shopname %></span>
+								</p>
+							</div>
+						</div>
+						<div class="doctor-sign-list">
+							<% for(var m in list[i].signarr) { %>
+								<span><%= list[i].signarr[m] %></span>
+							<%}%>
+							<!--<span>职场冲突</span>-->
+							<!--<span>亲自咨询</span>-->
+						</div>
+						<p class="card-addrs card-ellispse"><%= list[i].slogan %></p>
+						<div class="card-new-content">
+								<div class="flex-box card-new-opre">
+									<% if(list[i].online==1 ){%>
+										<p class="mui-badge mui-badge-blue flex-g1">在线</p>
+									<%}else{%>
+										<p class="mui-badge mui-badge-gray flex-g1">离线</p>
+									<%}%>
+									
+									<!-- <p class="mui-badge mui-badge-gray flex-g1">离线</p> -->
+									<p class="doctor-honor flex-g2 ">
+										<span>住进 <%= list[i].trade %> 个人的心窝</span>
+										<span class="star">好评率：<%= list[i].start %></span>
+									</p>
+									<p class="d-icon-detail action-webview flex-g1" data-webview="_www/view/counsellor/detail.html" data-webparam='{"counsellor_id":<%= list[i].id %>}'>详情》</p>
+								</div>
+						</div>
+				</div>
+			</li>
+	    	<%}%>
+		</ul>
+		</section>
+	</script>
+	
 	<script type="text/html" id="widget_single_pic">
         <section class="single-img action-webview" data-webview="<%= webview %>" data-webparam='<%= $json_string(webparam) %>'>
             <img src="<%= $add_server(cover) %>">
@@ -1262,8 +1277,68 @@
 //  speed:3500,
 //  autoplay:true
 //});
-  	
-      
+  	    //分页初始化
+	     mui.init({
+		      pullRefresh: {
+		        container: '#pullrefresh',
+		        up: {
+		          contentdown: '',
+		          contentrefresh: '正在加载...',
+		          callback: pullupRefresh
+		        }
+		      }
+	    	  });
+	       //定义上拉加载更多方法
+	       var no = 1;
+		    	function pullupRefresh() {
+//				mui.toast('pull') 
+				setTimeout(function(){
+					no++;
+				   //专家
+			        var aparam2 = {
+			            'method': config.apimethod.recommend,
+			            'source':config.source,
+			            'page_no':no,
+       					'page_size':10
+			        }
+			        if(app.getState().token!=undefined){
+			        		var aparam2 = {
+				            'method': config.apimethod.recommend,
+				            'account':app.getState().token,
+				            'source':config.source,
+				            'page_no':no,
+        						'page_size':10
+				        }
+			        }
+			        log(aparam2) 
+			        mui.toast('加载更多……')
+			        $.dataRequest(aparam2, function(rt) {
+			        	console.log('---------')
+			        	log(rt)
+			        		for (var i in rt['list']) {
+			        			if(rt['list'][i].avar==''){
+			        				rt['list'][i].avar = 'static/admin/img/none.png';
+			        			}
+			        		}
+			        		var widgets = template('widget_counsellors_app', rt);
+			            $('.container').append(widgets);
+			            console.log(rt['list'].length)
+			            if(10>rt['list'].length){
+			            		mui.toast('没有更多数据')
+							mui('#pullrefresh').pullRefresh().endPullupToRefresh(true);
+						}else{
+							mui('#pullrefresh').pullRefresh().endPullupToRefresh(false);
+						}
+			            	 // 
+			             mui('.mui-scroll-wrapper').scroll({
+				          indicators: false
+				        });
+				        
+				       
+				     })
+				},1000)
+		
+		    	}
 	  //获取数据 
 	  mui.plusReady(function() {
   		plus.navigator.setStatusBarStyle('light');  
@@ -1272,22 +1347,19 @@
 	  	mui('.mui-scroll-wrapper').scroll({
           indicators: false
         });
-	  	console.log(plus.storage.getItem('updatelv'))
+//	  	console.log(plus.storage.getItem('updatelv'))
 //	  	plus.nativeUI.closeWaiting();
-	  	var i = plus.storage.getItem('updatelv')?1:0;
-	  	 if(!plus.storage.getItem('updatelv')||!i){
-	  		// i++;
-//	  		plus.storage.setItem('updatelv','1');
-//	  		console.log(plus.storage.getItem('updatelv')) 
-	  		plus.nativeUI.actionSheet( {title:"是否成为心窝会员",cancel:"关闭",buttons:[{title:"现在去升级"},{title:"以后再说"}]}, function(e){
-				if(e.index==1){
-					clicked('_www/view/member/updatelv.html'); 
-				}else{
-					plus.storage.setItem('updatelv','1');
-				}
-			});	
-			
-	  	 }
+//	  	var i = plus.storage.getItem('updatelv')?1:0;
+//	  	 if(!plus.storage.getItem('updatelv')||!i){
+//	  		plus.nativeUI.actionSheet( {title:"是否成为心窝会员",cancel:"关闭",buttons:[{title:"现在去升级"},{title:"以后再说"}]}, function(e){
+//				if(e.index==1){
+//					clicked('_www/view/member/updatelv.html'); 
+//				}else{
+//					plus.storage.setItem('updatelv','1');
+//				}
+//			});	
+//			
+//	  	 }
 	  	
 	  	//lunbo
 	  	var param = {
@@ -1340,19 +1412,27 @@
 				        }
 			        }
 			        $.dataRequest(aparam4, function(rs) {
-			        	var widgets = template('widget_find', rs);
+			        	var widgets = template('widget_article', rs);
 			            $('.container').append(widgets);
-			             var swiper = new Swiper('#swiper_artical', {
-						  loop: true,
-						  direction: 'vertical',
-						  speed:3500,
-						  autoplay:true
-						});
+			            var mySwiper = new Swiper('.swiper-container3', {
+				        		slidesPerView: 1.5,
+				        		spaceBetween: 1,
+				        		centeredSlides: true,
+				        		initialSlide: 1,
+								speed:500,
+								pagination: '.swiper-pagination-custom',
+							})
+//			             var swiper = new Swiper('#swiper_artical', {
+//						  loop: true,
+//						  direction: 'vertical',
+//						  speed:3500,
+//						  autoplay:true
+//						});
 			            	 //
 //			            	 console.log(widgets)
-			             mui('.mui-scroll-wrapper').scroll({
-				          indicators: false
-				        });
+//			             mui('.mui-scroll-wrapper').scroll({
+//				          indicators: false
+//				        });
 				        //会员升级
 					    var aparam = {
 				            'method': config.apimethod.advsg,
@@ -1397,17 +1477,22 @@
 				            //专家
 					        var aparam2 = {
 					            'method': config.apimethod.recommend,
-					            'source':config.source
+					            'source':config.source,
+					            'page_no':1,
+	           					'page_size':10
 					        }
 					        if(app.getState().token!=undefined){
 					        		var aparam2 = {
 						            'method': config.apimethod.recommend,
 						            'account':app.getState().token,
-						            'source':config.source
+						            'source':config.source,
+						            'page_no':1,
+	            						'page_size':10
 						        }
 					        }
 					        log(aparam2) 
 					        $.dataRequest(aparam2, function(rt) {
+					        	console.log('----------')
 					        	log(rt)
 					        		for (var i in rt['list']) {
 					        			if(rt['list'][i].avar==''){
@@ -1420,6 +1505,8 @@
 					             mui('.mui-scroll-wrapper').scroll({
 						          indicators: false
 						        });
+						        
+						       
 						     })
 				        })
 				    
@@ -1436,8 +1523,11 @@
        
 	  	
 	  })
-	  
-	 
+	  var form = $('input[type="search"]').parents('form');
+	 	$(form).submit(function() { 
+            var keyword = $('input[type="search"]').val();
+            clicked('_www/view/artical/volist.html',{keyword:keyword});
+        })
        $('.callmm').on('tap',function(){
        	plus.device.dial( "4001001355", false );
        })

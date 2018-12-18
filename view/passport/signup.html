@@ -28,6 +28,10 @@
         width: 100%;
         height: 100%;
       }
+      .user-form .mui-input-group.signup .mui-input-row.lb-tip input{
+      	left: 40%;
+      	margin-top: 2px;
+      }
     </style>
   </head>
 
@@ -346,13 +350,13 @@
 		//性别
 		var userPicker = new mui.PopPicker();
 		userPicker.setData([{
-			value: '0',
+			value: '2',
 			text: '不明'
 		}, {
 			value: '1',
 			text: '男'
 		}, {
-			value: '2',
+			value: '0',
 			text: '女'
 		}]);
 		var showSexPickerButton = document.getElementById('sex');
@@ -567,8 +571,6 @@
       	$('.signup-step3').hide()
       	
       	$('.signup-sub').on('click',function(){
-      		//
-      		
       		
 	  		var nickname = $('#account').val();
 			var email = $('#email').val();
@@ -612,7 +614,7 @@
       		$('.signup-step3').show()
       	})
       	
-      	$('#register_next').on('tap', function() {
+      	$('.register_next').on('tap', function() {
       		
 	         var account = $('#account').val();
 			 var email = $('#email').val();
@@ -653,7 +655,7 @@
 	              'email': email,
 	              'mobile': mobile,
 	              'password': password,
-	              'agency': agency,
+//	              'agency': agency,
 	              'birthday': birthday,
 	              'sex': sex,
 	              'edu': edu,
@@ -702,8 +704,8 @@
 	           }
 	          $.dataRequest(param, function(rs) {
 	          	clicked('_www/view/passport/verificationsms.html', {
-	                'mobile': account
-	//              'vcode': rs
+	                'mobile': account,
+	              'vcode': rs
 	              });
 	          })
 	        }

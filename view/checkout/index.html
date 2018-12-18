@@ -420,14 +420,15 @@
 				  'pertime':pertime,
 				  'account': state.token
 				}
-
+//				log(param1);return false;
 				w=plus.nativeUI.showWaiting();
 				$.dataRequest(param1, function(rs) {
 					 w.close();w=null;
 					 log(rs)
 					if(rs&&rs.flish){
 						mui.toast('您是心窝会员，网络免费咨询！');
-						clicked('_www/view/member/trade.html');
+						clicked('_www/view/member/trade.html',{'enaction':'checkout'});
+						
 						return true;
 					}
 					mui.toast('订单创建成功！');

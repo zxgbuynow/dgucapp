@@ -167,11 +167,13 @@
     
   </head>
   <body>
-    <header class="page-header">
-      <i class="header-left icon-func bbc-icon bbc-icon-back mui-action-back"></i>
-      <div class="header-title">评价</div>
-      <!--<i id="addfriend" class="header-right txt-func ">与他交流</i>-->
-    </header>
+   
+    <header class="page-header nobd">
+	      <div class="mui-navbar-inner mui-bar mui-bar-nav mui-navbar-center">
+	      <i class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left bbc-icon bbc-icon-back"></i>
+	      <h1 class="mui-center mui-title">评价</h1>
+	      </div>
+	    </header>
     <div class="counsellor-homepage-content">
 			<!--咨询师详情 start-->
 				<section class="container section-white counsellor-info mui-hidden">
@@ -210,30 +212,7 @@
 			<!--咨询师详情 end-->
 	    
 	</div>
-	<nav class="mui-bar bbc-bar-tab op-group mui-hidden" >
-      <a class="bbc-tab-item  trade-talk" id="addfriend">
-        <span class="mui-icon bbc-icon bbc-icon-home"></span>
-        <span class="mui-tab-label">与他沟通</span>
-      </a>
-      <a class="bbc-tab-item" >
-        <span class="mui-icon bbc-icon bbc-icon-list trade-confirm"></span>
-        <span class="mui-tab-label">预约</span>
-      </a>
-      <a class="bbc-tab-item" >
-        <span class="mui-icon bbc-icon bbc-icon-moments  addfav"></span>
-        <span class="mui-tab-label ">收藏</span>
-      </a>
-      
-      <a class="bbc-tab-item trade-date " >
-        <span class="mui-icon bbc-icon bbc-icon-user-empty"></span>
-        <span class="mui-tab-label">咨询师日程表</span>
-      </a>
-   </nav>
-    <!--<section class="action-bar-mini op-group mui-hidden">
-        <div class="op-group-item col-half trade-talk" id="addfriend">与他沟通</a></div>
-        <div class="op-group-item col-half trade-confirm" >预约</a></div>
-        <div class="op-group-item col-half trade-date">咨询师日程表</a></div>
-    </section>-->
+	
 
   </body>
   <script src="../../js/zepto.js"></script>
@@ -294,22 +273,22 @@
 			<div class="doct-estimate-section">
 				<div class="section-title cons-detail-sub-header">
 					<div class="title-txt bg-blue-txt">评价</div>
-					<div class="more-link action-webview wd2" data-webview="_www/view/category/category.html">更多&gt
+					<div class="more-link  wd2 " data-webview="_www/view/category/category.html">
 					</div>
 				</div>
 				<div class="doct-estimate-body">
 					<ul class="mui-table-view">
 						<% for(var i in evalist) { %>
-						<li class="list-cell mui-media action-webview" data-webview="_www/view/counsellor/eve.html" data-webparam = '{"counsellor_id":<%= counsellor_id %>}'>
+							<li class="list-cell mui-media " >
 							<a class="sub-cell flex-box">
-								<div class="flex-g0">
-									<img class="header-img40" src="<%= $add_server(evalist[i].avar) %>">
+								<div class="header-img42">
+									<img  src="<%= $add_server(evalist[i].avar) %>" onerror="Javascript:this.src='../../img/widgets_02_19.png' ">
 								</div>
-								<div class="mui-media-body content-list">
+								<div class="mui-media-body content-list w1">
 									<div class="clearfix content-sub">
 										<p class="mui-pull-left uname"><%= evalist[i].nickname %>
 											<%if(evalist[i].is_diamonds){ %>
-											<span class="cons-btn icon-bd-vip">心窝会员</span><%}%>
+											<span class="btn-bg-pink icon-king">心窝会员</span><%}%>
 										</p>
 										<p class="mui-pull-right utime">时间： <%= $timestamp_To_Date(evalist[i].create_time) %></p>
 									</div>
@@ -324,10 +303,12 @@
 											<img class="star" src="../../img/star-g.png">
 										<%}%>
 									</p>
-									<p class='cell-desc'><%= evalist[i].cotent %></p>
+									
 								</div>
 							</a>
+							<p class='item-desc'><%= evalist[i].cotent %></p>
 						</li>
+						
 						<% } %>
 					</ul>	
 				</div>

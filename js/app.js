@@ -382,7 +382,10 @@ var Currency = {
     state.account = name;
     state.nickname = nickname;
     state.token = token;
-    state.avar = config.server+avar;
+    state.avar = avar;
+    if(avar){
+    		state.avar = config.imgser+avar;
+    }
     owner.setState(state);
     return callback();
   };
@@ -583,7 +586,6 @@ function plusReady() {
   plus.webview.currentWebview().setStyle({
     scrollIndicator: 'none'
   });
-
   compatibleAdjust();
 }
 if(window.plus) {
@@ -618,7 +620,6 @@ function compatibleAdjust() {
   setTimeout(function() {
     plus.navigator.closeSplashscreen();
 //  plus.navigator.setStatusBarBackground('#FFFFFF');
-    
 	plus.navigator.setStatusBarBackground("#4883DD");
     if(plus.navigator.isImmersedStatusbar()) {
       plus.navigator.setStatusBarStyle('UIStatusBarStyleBlackOpaque');
@@ -1117,16 +1118,23 @@ if(document.getElementById("msg-count")){
 	  	var param = {
             'method': config.apimethod.getUserMsgCount,
             'source':config.source,
-            'account':state.account
+            'account':state.token
        }
        $.dataRequest(param, function(rs) {
        		if(rs){
 				document.getElementById("msg-count").classList.remove('mui-hidden');
-				document.getElementById("msg-count").innerHTML = rs;
+//				document.getElementById("msg-count").innerHTML = rs;
 			}else{
 				document.getElementById("msg-count").classList.add('mui-hidden');
 			}
        })
+	})
+}
+if($('.callmm')){
+	mui.plusReady(function() {
+		$('.callmm').on('tap',function(){
+			plus.device.dial( "4001001355", false );
+		})
 	})
 }
 //document.addEventListener('plusready',backreload);

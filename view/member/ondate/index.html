@@ -147,9 +147,8 @@
             'source':config.source,
             'account':counsellor_id
        }
-	   log(param) 
+	   log(param)
        $.dataRequest(param, function(rs) {
-       	log(rs);
        	if(rs){
 			var c = 0;
 	       	$(".mc-table-cell").each(function(el,m){
@@ -158,10 +157,11 @@
 				}
 				var i = el+1;
 				if(rs.k.indexOf(c)>-1){
-					if(rs.v[c]=='0'){
-						$(this).addClass('mc-cell-catch')
+					log(rs)
+					if(rs.v[c]==0){
+						$(this).removeClass('mc-cell-disabled').addClass('mc-cell-catch')
 					}else{
-						$(this).addClass('mc-cell-filled')
+						$(this).addClass('mc-cell-filled').removeClass('mc-cell-disabled')
 					}
 					
 				}else{

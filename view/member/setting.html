@@ -3,7 +3,7 @@
 
   <head>
     <meta charset="utf-8">
-    <title>Shopex Onex B2B2C</title>
+    <title></title>
     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -104,9 +104,14 @@
     <script src="../../js/im/websdk-1.4.13.js"></script>
     <script src="../../js/im/im.js"></script>
     <script type="text/javascript" charset="utf-8">
-      mui.init({
-        swipeBack: true, //启用右滑关闭功能
+    mui.plusReady(function() {
+    	  mui.init({
+        beforeback: function() {
+          var fw = plus.webview.currentWebview().opener();
+	        fw.reload(true);
+        }
       });
+      })
 	  var birthday = null;
       var state = app.getState();
       var data = null;
@@ -116,6 +121,7 @@
           'source':config.source
       }
       $.dataRequest(param, function(rs) {
+      	log(rs)
         data = rs;
         document.getElementById('account_info').innerText = data.username;
 //      document.getElementById('username_info').innerText = data.username;
@@ -291,8 +297,16 @@
 	          var data = rs.data;
 	            mui.toast('更新成功');
 	            plus.nativeUI.closeWaiting();
-	               var parent = plus.webview.getWebviewById('_www/view/member/member.html');
-	               parent.reload();
+	            var state = app.getState();
+				    state.avar = config.imgser+rs.avar;
+
+				    app.setState(state);
+	            setTimeout(function(){
+	            		plus.webview.currentWebview().close()
+	            		var parent = plus.webview.getWebviewById('_www/view/member/member.html');
+	               	parent.reload();
+	            },500)
+	               
 //	               parent.onloaded = function(){
 //	                 mui.back();
 //	               }
